@@ -1,0 +1,23 @@
+Mathematica true/false teting av vars i Polyphony.m:
+----------------------------------------------------
+
+Kan man debugge kode i en notebook? CHECK!
+
+TrueQ[Equal[a, b]]
+SameQ[a, b]
+
+Legg ut a == b og se om den returnerer false eller true på on/off button change
+
+If may return "Unevaluated" (returns itself), sjekk dette med en isolert If[...]:
+ret := If[exp, True, False]
+
+MERK: For-Loops (alle typer loops) er ikke veldig effektive i Mathematica, og det finnes altenativer!
+MERK: Det ser ikke ut til være nødvendig (eller riktig?) med { } i body'en på en if-test når det er flere statements, nok med å avslutte hvert statement med semikolon? TEST!
+
+Return[] returerer bare fra "the localizing construct that encloses the loop", altså bare den første, ikke hvis flere er nøstet utenpå hverandre. CHECK!
+Se også Module[], Block[], With[]
+
+MERK: ( ) er shorthand for CompoundExpression[], altså en block av statements. Bruke ( ) istedetfor { } i blokkene, men kanskje ikke nødvendig i If-blokkene? CHECK!
+
+
+

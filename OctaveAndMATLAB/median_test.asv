@@ -1,0 +1,11 @@
+function ret = median_test(data)
+	data = sort(data);
+	
+	if mod(length(data), 2) > 0
+		fprintf('Data: %d', data((length(data) + 1));
+		ret = data((length(data) + 1) / 2);
+	else
+		middle = length(data) / 2;
+		ret = (data(middle) + data(middle + 1)) / 2;
+	end
+end

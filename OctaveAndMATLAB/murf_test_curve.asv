@@ -1,0 +1,29 @@
+function [ret] = murf_test_curve()
+	createfigure('MuRF Pot Pos Curve');
+	clf;
+	
+	curve = 5 - (([5:-1:1 1:5].^2) / 50);
+	plot((curve), 'b-');
+	hold on;
+	curve = 5 - (([5:-1:1 1:5].^2) / 70);
+	grid;
+	plot((curve), 'r-');
+	hold off;
+	xlim([1, 100]);
+	enhancefigure('MuRF Envelope Curve', 'Time/Counter', 'Curve Percent');
+end
+
+function [ret] = murf_test_curve_temp()
+	createfigure('MuRF Pot Pos Curve');
+	clf;
+	
+	curve = 50 - (([50:-1:1 1:50].^2) / 50);
+	plot((curve), 'b-');
+	hold on;
+	curve = 50 - (([50:-1:1 1:50].^2) / 70);
+	grid;
+	plot((curve), 'r-');
+	hold off;
+	xlim([1, 100]);
+	enhancefigure('MuRF Envelope Curve', 'Time/Counter', 'Curve Percent');
+end

@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio" version="0.95"?>
+<regions>
+  <settings>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="true" printAreas="true" simpleEqualsOnly="false">
+      <paper id="9" orientation="Portrait" width="827" height="1169" />
+      <margins left="39" right="39" top="39" bottom="39" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+    </pageModel>
+    <dependences>
+      <assembly name="SMath Studio" version="0.95" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Math Region" version="0.95" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+      <assembly name="Text Region" version="1.8.4594.45" guid="485d28c5-349a-48b6-93be-12a35a1c1e39" />
+    </dependences>
+  </settings>
+  <region id="0" left="9" top="27" width="77" height="44" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">A</e>
+        <e type="operand">3</e>
+        <e type="operand">2</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">2</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="6">mat</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="1" left="90" top="27" width="52" height="44" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">x</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">mat</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="2" left="162" top="27" width="77" height="44" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">A</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">4</e>
+        <e type="operand">2</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="3" left="261" top="36" width="43" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">λ</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="4" left="315" top="36" width="143" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">result</e>
+        <e type="operand">A</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">λ</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">≡</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="5" left="477" top="36" width="94" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">result</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="6" left="315" top="63" width="395" height="24" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>x(2,1) is an eigenvector of A with eigenvalue 2</p>
+    </text>
+  </region>
+  <region id="7" left="9" top="108" width="68" height="44" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">A</e>
+        <e type="operand">1</e>
+        <e type="operand">6</e>
+        <e type="operand">5</e>
+        <e type="operand">2</e>
+        <e type="operand">2</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="6">mat</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="8" left="90" top="108" width="61" height="44" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">x</e>
+        <e type="operand">6</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">5</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">mat</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="9" left="162" top="108" width="94" height="44" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">A</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">24</e>
+        <e type="operand">20</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="10" left="261" top="117" width="52" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">λ</e>
+        <e type="operand">4</e>
+        <e type="operator" args="1">-</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="11" left="315" top="117" width="143" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">result</e>
+        <e type="operand">A</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">λ</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">≡</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="12" left="477" top="117" width="94" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">result</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="13" left="315" top="144" width="412" height="24" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>x(6,-5) is an eigenvector of A with eigenvalue -4</p>
+    </text>
+  </region>
+  <region id="14" left="9" top="207" width="43" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">λ</e>
+        <e type="operand">7</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="15" left="63" top="207" width="145" height="48" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">A</e>
+        <e type="operand">1</e>
+        <e type="operand">6</e>
+        <e type="operand">5</e>
+        <e type="operand">2</e>
+        <e type="operand">2</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="6">mat</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="6">mat</e>
+        <e type="operand">λ</e>
+        <e type="operator" args="2">*</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">-</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="16" left="207" top="207" width="96" height="44" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">A</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">6</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">6</e>
+        <e type="operand">5</e>
+        <e type="operand">5</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">2</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="6">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="17" left="342" top="207" width="43" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">λ</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="18" left="396" top="207" width="154" height="48" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">A</e>
+        <e type="operand">3</e>
+        <e type="operand">2</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">2</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="6">mat</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="6">mat</e>
+        <e type="operand">λ</e>
+        <e type="operator" args="2">*</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">-</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="19" left="567" top="207" width="87" height="44" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">A</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">2</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="6">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="20" left="9" top="270" width="143" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">result</e>
+        <e type="operand">A</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">λ</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">≡</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="21" left="171" top="270" width="94" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">result</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="22" left="108" top="351" width="79" height="44" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>r1 = 1/6 * r1</p>
+      </description>
+      <input>
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">5</e>
+        <e type="operand">5</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">0</e>
+        <e type="operand">2</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="8">mat</e>
+      </input>
+    </math>
+  </region>
+  <region id="23" left="225" top="351" width="70" height="44" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>r2 = r2 + 5*r1</p>
+      </description>
+      <input>
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">0</e>
+        <e type="operand">0</e>
+        <e type="operand">0</e>
+        <e type="operand">2</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="8">mat</e>
+      </input>
+    </math>
+  </region>
+  <region id="24" left="351" top="351" width="70" height="44" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>r1 = -1 * r1</p>
+      </description>
+      <input>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">0</e>
+        <e type="operand">0</e>
+        <e type="operand">0</e>
+        <e type="operand">0</e>
+        <e type="operand">2</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="8">mat</e>
+      </input>
+    </math>
+  </region>
+  <region id="25" left="18" top="369" width="79" height="44" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">6</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">6</e>
+        <e type="operand">0</e>
+        <e type="operand">5</e>
+        <e type="operand">5</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">0</e>
+        <e type="operand">2</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="8">mat</e>
+      </input>
+    </math>
+  </region>
+  <region id="26" left="18" top="432" width="283" height="24" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Eigenvectors = (-1,0) and (1,0)??</p>
+    </text>
+  </region>
+</regions>

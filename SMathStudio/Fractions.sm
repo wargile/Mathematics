@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio" version="0.95"?>
+<regions>
+  <settings>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="true" printAreas="true" simpleEqualsOnly="false">
+      <paper id="9" orientation="Portrait" width="827" height="1169" />
+      <margins left="39" right="39" top="39" bottom="39" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+    </pageModel>
+    <dependences>
+      <assembly name="SMath Studio" version="0.95" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Text Region" version="1.8.4594.45" guid="485d28c5-349a-48b6-93be-12a35a1c1e39" />
+      <assembly name="Math Region" version="0.95" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+    </dependences>
+  </settings>
+  <region id="0" left="9" top="27" width="536" height="24" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Just 28 percent of teacher students managed to solve this one...</p>
+    </text>
+  </region>
+  <region id="1" left="9" top="63" width="570" height="24" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Dahl school has 135 girls and 115 boys. How many percents are girls?</p>
+    </text>
+  </region>
+  <region id="2" left="9" top="99" width="93" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">girls</e>
+        <e type="operand">135</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="3" left="117" top="99" width="85" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">boys</e>
+        <e type="operand">115</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="4" left="306" top="99" width="213" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">sum_students</e>
+        <e type="operand">girls</e>
+        <e type="operand">boys</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="5" left="9" top="135" width="269" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">percent_girls</e>
+        <e type="operand">girls</e>
+        <e type="operand">sum_students</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="6" left="306" top="144" width="160" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">percent_girls</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">54</e>
+      </result>
+    </math>
+  </region>
+  <region id="7" left="9" top="216" width="285" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">girls</e>
+        <e type="operand">sum_students</e>
+        <e type="operand">percent_girls</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="8" left="306" top="225" width="103" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">girls</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">135</e>
+      </result>
+    </math>
+  </region>
+</regions>

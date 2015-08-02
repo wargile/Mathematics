@@ -1,0 +1,926 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio" version="0.95"?>
+<regions>
+  <settings>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="true" printAreas="true" simpleEqualsOnly="false">
+      <paper id="9" orientation="Landscape" width="1169" height="827" />
+      <margins left="39" right="39" top="39" bottom="39" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+    </pageModel>
+    <dependences>
+      <assembly name="SMath Studio" version="0.95" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Math Region" version="0.95" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+      <assembly name="Plot Region" version="1.7.4594.38" guid="c451c2b5-798b-4f08-b9ec-b90963d1ddaa" />
+      <assembly name="Special Functions" version="1.9.4594.42" guid="2814e667-4e12-48b1-8d51-194e480eabc5" />
+    </dependences>
+  </settings>
+  <region id="0" left="18" top="18" width="68" height="206" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">VX</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operand">3</e>
+        <e type="operand">4</e>
+        <e type="operand">5</e>
+        <e type="operand">6</e>
+        <e type="operand">7</e>
+        <e type="operand">8</e>
+        <e type="operand">9</e>
+        <e type="operand">10</e>
+        <e type="operand">11</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="13">mat</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="1" left="90" top="18" width="68" height="206" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">VR</e>
+        <e type="operand">0</e>
+        <e type="operand">6</e>
+        <e type="operand">18</e>
+        <e type="operand">40</e>
+        <e type="operand">65</e>
+        <e type="operand">10</e>
+        <e type="operand">65</e>
+        <e type="operand">40</e>
+        <e type="operand">18</e>
+        <e type="operand">6</e>
+        <e type="operand">0</e>
+        <e type="operand">11</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="13">mat</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="2" left="162" top="18" width="68" height="206" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">VF</e>
+        <e type="operand">7</e>
+        <e type="operand">15</e>
+        <e type="operand">28</e>
+        <e type="operand">52</e>
+        <e type="operand">75</e>
+        <e type="operand">10</e>
+        <e type="operand">75</e>
+        <e type="operand">52</e>
+        <e type="operand">28</e>
+        <e type="operand">15</e>
+        <e type="operand">7</e>
+        <e type="operand">11</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="13">mat</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="3" left="720" top="18" width="342" height="148" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="0.0936507329407661" scale_y="1.86160815731034" scale_z="0.174340968380623" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-127" transpose_y="-47" transpose_z="0">
+      <input>
+        <e type="operand">VX</e>
+        <e type="operand">VR</e>
+        <e type="function" preserve="true" args="2">augment</e>
+        <e type="operand">VX</e>
+        <e type="operand">VF</e>
+        <e type="function" preserve="true" args="2">augment</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">sys</e>
+      </input>
+    </plot>
+  </region>
+  <region id="4" left="243" top="108" width="255" height="28" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">V</e>
+        <e type="operand">VX</e>
+        <e type="operand">VR</e>
+        <e type="operand">VF</e>
+        <e type="function" preserve="true" args="2">augment</e>
+        <e type="function" preserve="true" args="2">augment</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="5" left="531" top="225" width="68" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>Rise flag</p>
+      </description>
+      <input>
+        <e type="operand">rise</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="6" left="621" top="225" width="68" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>Fall flag</p>
+      </description>
+      <input>
+        <e type="operand">fall</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="7" left="9" top="252" width="93" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">pot_pos</e>
+        <e type="operand">4</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="8" left="117" top="252" width="134" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">max_pot_pos</e>
+        <e type="operand">10</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="9" left="270" top="252" width="101" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">volt_ref</e>
+        <e type="operand">5</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="10" left="387" top="252" width="134" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">resolution</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="11" left="9" top="297" width="620" height="160" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>Find percent rise and fall</p>
+      </description>
+      <input>
+        <e type="operand">cur_pos</e>
+        <e type="operand">rf</e>
+        <e type="function" args="2">prf</e>
+        <e type="operand">cur_start_pos</e>
+        <e type="operand">cur_pos</e>
+        <e type="operand">cur_pos</e>
+        <e type="function" preserve="true" args="1">trunc</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">r_start</e>
+        <e type="operand">cur_pos</e>
+        <e type="function" preserve="true" args="1">trunc</e>
+        <e type="operand">3</e>
+        <e type="operator" args="2">*</e>
+        <e type="bracket">(</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">+</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">r_end</e>
+        <e type="operand">r_start</e>
+        <e type="operand">3</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">rf</e>
+        <e type="operand">rise</e>
+        <e type="operator" args="2">≡</e>
+        <e type="operand">p</e>
+        <e type="operand">V</e>
+        <e type="operand">r_start</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="operand">V</e>
+        <e type="operand">r_end</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="operand">V</e>
+        <e type="operand">r_start</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="operator" args="2">-</e>
+        <e type="bracket">(</e>
+        <e type="operand">cur_start_pos</e>
+        <e type="operator" args="2">*</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">p</e>
+        <e type="operand">V</e>
+        <e type="operand">r_start</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="operand">V</e>
+        <e type="operand">r_end</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="operand">V</e>
+        <e type="operand">r_start</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="operator" args="2">-</e>
+        <e type="bracket">(</e>
+        <e type="operand">cur_start_pos</e>
+        <e type="operator" args="2">*</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="operand">4</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="6">line</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="12" left="18" top="495" width="354" height="45" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">steps_rise</e>
+        <e type="operand">pot_pos</e>
+        <e type="operand">rise</e>
+        <e type="function" args="2">prf</e>
+        <e type="operand">resolution</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">/</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="13" left="387" top="495" width="354" height="45" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">steps_fall</e>
+        <e type="operand">pot_pos</e>
+        <e type="operand">fall</e>
+        <e type="function" args="2">prf</e>
+        <e type="operand">resolution</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">/</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="14" left="18" top="540" width="135" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">steps_rise</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">65</e>
+      </result>
+    </math>
+  </region>
+  <region id="15" left="153" top="540" width="135" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">steps_fall</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">75</e>
+      </result>
+    </math>
+  </region>
+  <region id="16" left="18" top="576" width="360" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">pot_pos_in_resolution</e>
+        <e type="operand">resolution</e>
+        <e type="operand">max_pot_pos</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">pot_pos</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="17" left="18" top="621" width="430" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">start_step</e>
+        <e type="operand">pot_pos_in_resolution</e>
+        <e type="operand">steps_rise</e>
+        <e type="operator" args="2">-</e>
+        <e type="function" preserve="true" args="1">trunc</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="18" left="459" top="621" width="144" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">start_step</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">25</e>
+        <e type="operator" args="1">-</e>
+      </result>
+    </math>
+  </region>
+  <region id="19" left="18" top="657" width="261" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">volt_per_step_rise</e>
+        <e type="operand">volt_ref</e>
+        <e type="operand">steps_rise</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="20" left="396" top="666" width="234" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">volt_per_step_rise</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.0769</e>
+      </result>
+    </math>
+  </region>
+  <region id="21" left="18" top="702" width="356" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">volt_per_step_fall</e>
+        <e type="operand">volt_ref</e>
+        <e type="operand">steps_fall</e>
+        <e type="operand">start_step</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="22" left="396" top="711" width="218" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">volt_per_step_fall</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.05</e>
+      </result>
+    </math>
+  </region>
+  <region id="23" left="18" top="756" width="315" height="129" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">start_step</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">&lt;</e>
+        <e type="operand">start_volt</e>
+        <e type="operand">volt_ref</e>
+        <e type="operand">steps_rise</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">start_step</e>
+        <e type="function" preserve="true" args="1">abs</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">ss</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="operand">start_volt</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">ss</e>
+        <e type="operand">start_step</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="function" preserve="true" args="3">if</e>
+      </input>
+    </math>
+  </region>
+  <region id="24" left="18" top="891" width="168" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">start_volt</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1.9231</e>
+      </result>
+    </math>
+  </region>
+  <region id="25" left="189" top="891" width="57" height="23" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">ss</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="26" left="18" top="918" width="724" height="230" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">step</e>
+        <e type="function" args="1">volt_at_step</e>
+        <e type="operand">step</e>
+        <e type="operand">steps_rise</e>
+        <e type="operand">start_step</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">≤</e>
+        <e type="bracket">(</e>
+        <e type="operand">step</e>
+        <e type="operand">ss</e>
+        <e type="operator" args="2">≥</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">&amp;</e>
+        <e type="operand">vs</e>
+        <e type="operand">start_volt</e>
+        <e type="operand">volt_per_step_rise</e>
+        <e type="operand">step</e>
+        <e type="operand">ss</e>
+        <e type="operator" args="2">-</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">*</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">+</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">step</e>
+        <e type="operand">steps_rise</e>
+        <e type="operand">start_step</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">&gt;</e>
+        <e type="bracket">(</e>
+        <e type="operand">vs</e>
+        <e type="operand">volt_ref</e>
+        <e type="operand">volt_per_step_fall</e>
+        <e type="operand">step</e>
+        <e type="operand">steps_rise</e>
+        <e type="operator" args="2">-</e>
+        <e type="operand">start_step</e>
+        <e type="operator" args="2">-</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">*</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">-</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">vs</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">:</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="operand">vs</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">&lt;</e>
+        <e type="operand">vs</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">vs</e>
+        <e type="operand">vs</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">^</e>
+        <e type="operand">volt_ref</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="27" left="18" top="1170" width="245" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">tStepRange</e>
+        <e type="operand">1</e>
+        <e type="operand">resolution</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">range</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="28" left="18" top="1197" width="722" height="179" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="0.9509900499" scale_y="0.252869968143997" scale_z="0.240476823623471" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-333" transpose_y="-64" transpose_z="0" animate="tStepRange" frameRate="20">
+      <input>
+        <e type="operand">t</e>
+        <e type="function" args="1">volt_at_step</e>
+        <e type="operand">t</e>
+        <e type="operand">t</e>
+        <e type="function" args="1">volt_at_step</e>
+        <e type="operand">0.7</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand" style="string">O</e>
+        <e type="operand">20</e>
+        <e type="operand" style="string">Cyan</e>
+        <e type="operand">1</e>
+        <e type="operand">5</e>
+        <e type="function" preserve="true" args="7">mat</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">sys</e>
+      </input>
+    </plot>
+  </region>
+  <region id="29" left="18" top="1440" width="654" height="535" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">cur_pos</e>
+        <e type="function" args="1">get_volt_curve</e>
+        <e type="operand">cur_pos</e>
+        <e type="operand">max_pot_pos</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">≤</e>
+        <e type="operand">steps_rise</e>
+        <e type="operand">cur_pos</e>
+        <e type="operand">rise</e>
+        <e type="function" args="2">prf</e>
+        <e type="operand">resolution</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">/</e>
+        <e type="function" preserve="true" args="1">trunc</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">steps_fall</e>
+        <e type="operand">cur_pos</e>
+        <e type="operand">fall</e>
+        <e type="function" args="2">prf</e>
+        <e type="operand">resolution</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">/</e>
+        <e type="function" preserve="true" args="1">trunc</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="operand">steps_rise</e>
+        <e type="operand">cur_pos</e>
+        <e type="operand">fall</e>
+        <e type="function" args="2">prf</e>
+        <e type="operand">resolution</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">/</e>
+        <e type="function" preserve="true" args="1">trunc</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">steps_fall</e>
+        <e type="operand">cur_pos</e>
+        <e type="operand">rise</e>
+        <e type="function" args="2">prf</e>
+        <e type="operand">resolution</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">/</e>
+        <e type="function" preserve="true" args="1">trunc</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="operand">start_step</e>
+        <e type="operand">resolution</e>
+        <e type="operand">max_pot_pos</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">cur_pos</e>
+        <e type="operator" args="2">*</e>
+        <e type="bracket">(</e>
+        <e type="operand">steps_rise</e>
+        <e type="operator" args="2">-</e>
+        <e type="function" preserve="true" args="1">trunc</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">volt_per_step_rise</e>
+        <e type="operand">volt_ref</e>
+        <e type="operand">steps_rise</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">volt_per_step_fall</e>
+        <e type="operand">volt_ref</e>
+        <e type="operand">steps_fall</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">start_step</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">&lt;</e>
+        <e type="operand">start_volt</e>
+        <e type="operand">volt_ref</e>
+        <e type="operand">steps_rise</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">start_step</e>
+        <e type="function" preserve="true" args="1">abs</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">ss</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="operand">start_volt</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">ss</e>
+        <e type="operand">start_step</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operand">resolution</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operand">volt_vector</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">volt_vector</e>
+        <e type="operand">n</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="function" args="1">volt_at_step</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="function" preserve="true" args="3">for</e>
+        <e type="operand">volt_vector</e>
+        <e type="operand">7</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="9">line</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="30" left="18" top="1998" width="238" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">tPotPosRange</e>
+        <e type="operand">0.01</e>
+        <e type="operand">10</e>
+        <e type="operand">0.1</e>
+        <e type="function" preserve="true" args="3">range</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="31" left="18" top="2025" width="800" height="185" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="0.877521022998969" scale_y="0.252869968143998" scale_z="0.221898713131437" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-364" transpose_y="-61" transpose_z="0" animate="tPotPosRange" frameRate="5">
+      <input>
+        <e type="operand">t</e>
+        <e type="function" args="1">get_volt_curve</e>
+      </input>
+    </plot>
+  </region>
+  <region id="32" left="9" top="2268" width="263" height="1808" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">6</e>
+        <e type="function" args="1">get_volt_curve</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+        <e type="operand">0.2502</e>
+        <e type="operand">2</e>
+        <e type="operand">0.2805</e>
+        <e type="operand">3</e>
+        <e type="operand">0.3125</e>
+        <e type="operand">4</e>
+        <e type="operand">0.3463</e>
+        <e type="operand">5</e>
+        <e type="operand">0.3818</e>
+        <e type="operand">6</e>
+        <e type="operand">0.419</e>
+        <e type="operand">7</e>
+        <e type="operand">0.4579</e>
+        <e type="operand">8</e>
+        <e type="operand">0.4986</e>
+        <e type="operand">9</e>
+        <e type="operand">0.541</e>
+        <e type="operand">10</e>
+        <e type="operand">0.5852</e>
+        <e type="operand">11</e>
+        <e type="operand">0.6311</e>
+        <e type="operand">12</e>
+        <e type="operand">0.6787</e>
+        <e type="operand">13</e>
+        <e type="operand">0.728</e>
+        <e type="operand">14</e>
+        <e type="operand">0.7791</e>
+        <e type="operand">15</e>
+        <e type="operand">0.8319</e>
+        <e type="operand">16</e>
+        <e type="operand">0.8864</e>
+        <e type="operand">17</e>
+        <e type="operand">0.9427</e>
+        <e type="operand">18</e>
+        <e type="operand">1.0007</e>
+        <e type="operand">19</e>
+        <e type="operand">1.0604</e>
+        <e type="operand">20</e>
+        <e type="operand">1.1219</e>
+        <e type="operand">21</e>
+        <e type="operand">1.1851</e>
+        <e type="operand">22</e>
+        <e type="operand">1.25</e>
+        <e type="operand">23</e>
+        <e type="operand">1.3167</e>
+        <e type="operand">24</e>
+        <e type="operand">1.385</e>
+        <e type="operand">25</e>
+        <e type="operand">1.4552</e>
+        <e type="operand">26</e>
+        <e type="operand">1.527</e>
+        <e type="operand">27</e>
+        <e type="operand">1.6006</e>
+        <e type="operand">28</e>
+        <e type="operand">1.6759</e>
+        <e type="operand">29</e>
+        <e type="operand">1.7529</e>
+        <e type="operand">30</e>
+        <e type="operand">1.8317</e>
+        <e type="operand">31</e>
+        <e type="operand">1.9122</e>
+        <e type="operand">32</e>
+        <e type="operand">1.9945</e>
+        <e type="operand">33</e>
+        <e type="operand">2.0784</e>
+        <e type="operand">34</e>
+        <e type="operand">2.1641</e>
+        <e type="operand">35</e>
+        <e type="operand">2.2516</e>
+        <e type="operand">36</e>
+        <e type="operand">2.3407</e>
+        <e type="operand">37</e>
+        <e type="operand">2.4316</e>
+        <e type="operand">38</e>
+        <e type="operand">2.5242</e>
+        <e type="operand">39</e>
+        <e type="operand">2.6186</e>
+        <e type="operand">40</e>
+        <e type="operand">2.7147</e>
+        <e type="operand">41</e>
+        <e type="operand">2.8125</e>
+        <e type="operand">42</e>
+        <e type="operand">2.912</e>
+        <e type="operand">43</e>
+        <e type="operand">3.0133</e>
+        <e type="operand">44</e>
+        <e type="operand">3.1163</e>
+        <e type="operand">45</e>
+        <e type="operand">3.2211</e>
+        <e type="operand">46</e>
+        <e type="operand">3.3276</e>
+        <e type="operand">47</e>
+        <e type="operand">3.4358</e>
+        <e type="operand">48</e>
+        <e type="operand">3.5457</e>
+        <e type="operand">49</e>
+        <e type="operand">3.6574</e>
+        <e type="operand">50</e>
+        <e type="operand">3.7708</e>
+        <e type="operand">51</e>
+        <e type="operand">3.8859</e>
+        <e type="operand">52</e>
+        <e type="operand">4.0028</e>
+        <e type="operand">53</e>
+        <e type="operand">4.1214</e>
+        <e type="operand">54</e>
+        <e type="operand">4.2417</e>
+        <e type="operand">55</e>
+        <e type="operand">4.3637</e>
+        <e type="operand">56</e>
+        <e type="operand">4.4875</e>
+        <e type="operand">57</e>
+        <e type="operand">4.6131</e>
+        <e type="operand">58</e>
+        <e type="operand">4.7403</e>
+        <e type="operand">59</e>
+        <e type="operand">4.8693</e>
+        <e type="operand">60</e>
+        <e type="operand">5</e>
+        <e type="operand">61</e>
+        <e type="operand">4.8788</e>
+        <e type="operand">62</e>
+        <e type="operand">4.7591</e>
+        <e type="operand">63</e>
+        <e type="operand">4.6408</e>
+        <e type="operand">64</e>
+        <e type="operand">4.5241</e>
+        <e type="operand">65</e>
+        <e type="operand">4.4088</e>
+        <e type="operand">66</e>
+        <e type="operand">4.2951</e>
+        <e type="operand">67</e>
+        <e type="operand">4.1828</e>
+        <e type="operand">68</e>
+        <e type="operand">4.072</e>
+        <e type="operand">69</e>
+        <e type="operand">3.9627</e>
+        <e type="operand">70</e>
+        <e type="operand">3.8548</e>
+        <e type="operand">71</e>
+        <e type="operand">3.7485</e>
+        <e type="operand">72</e>
+        <e type="operand">3.6437</e>
+        <e type="operand">73</e>
+        <e type="operand">3.5403</e>
+        <e type="operand">74</e>
+        <e type="operand">3.4384</e>
+        <e type="operand">75</e>
+        <e type="operand">3.338</e>
+        <e type="operand">76</e>
+        <e type="operand">3.2391</e>
+        <e type="operand">77</e>
+        <e type="operand">3.1417</e>
+        <e type="operand">78</e>
+        <e type="operand">3.0458</e>
+        <e type="operand">79</e>
+        <e type="operand">2.9514</e>
+        <e type="operand">80</e>
+        <e type="operand">2.8584</e>
+        <e type="operand">81</e>
+        <e type="operand">2.767</e>
+        <e type="operand">82</e>
+        <e type="operand">2.677</e>
+        <e type="operand">83</e>
+        <e type="operand">2.5885</e>
+        <e type="operand">84</e>
+        <e type="operand">2.5015</e>
+        <e type="operand">85</e>
+        <e type="operand">2.416</e>
+        <e type="operand">86</e>
+        <e type="operand">2.3319</e>
+        <e type="operand">87</e>
+        <e type="operand">2.2494</e>
+        <e type="operand">88</e>
+        <e type="operand">2.1684</e>
+        <e type="operand">89</e>
+        <e type="operand">2.0888</e>
+        <e type="operand">90</e>
+        <e type="operand">2.0107</e>
+        <e type="operand">91</e>
+        <e type="operand">1.9341</e>
+        <e type="operand">92</e>
+        <e type="operand">1.859</e>
+        <e type="operand">93</e>
+        <e type="operand">1.7854</e>
+        <e type="operand">94</e>
+        <e type="operand">1.7133</e>
+        <e type="operand">95</e>
+        <e type="operand">1.6426</e>
+        <e type="operand">96</e>
+        <e type="operand">1.5735</e>
+        <e type="operand">97</e>
+        <e type="operand">1.5058</e>
+        <e type="operand">98</e>
+        <e type="operand">1.4396</e>
+        <e type="operand">99</e>
+        <e type="operand">1.3749</e>
+        <e type="operand">100</e>
+        <e type="operand">1.3117</e>
+        <e type="operand">100</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="202">mat</e>
+      </result>
+    </math>
+  </region>
+</regions>

@@ -1,0 +1,42 @@
+function num_out = fifteen(number)
+%Creates a 15Puzzle number array. If possible, a matrix is created.
+
+	x = 1;
+    
+	if nargin == 0
+      disp('No input value given, using default value of 16.');
+	  maxnum = 16;
+	else
+      try
+        if isnumeric(number) == 0 || number < 1 || nargin > 1
+          error('Input argument must be a number larger than zero.');
+        else
+          maxnum = number;
+        end
+      catch exception
+        error(strcat('Invalid input argument:\\t', exception.message));
+        % rethrow(exception);
+      end
+	end
+    num_out = 1:maxnum;
+
+	if mod(sqrt(maxnum), 1) == 0
+	  num_out = zeros(sqrt(maxnum));
+	else
+	  for n = 1:maxnum
+		num_out(n) = 0;
+	  end
+	end
+
+	while x <= maxnum
+		num = floor(rand(1) * maxnum) + 1;
+		for n = 1:x
+			if  num == num_out(n)
+			  break;
+			end
+			if n >= x
+			  num_out(x) = num;
+			  x = x + 1;
+			end
+		end
+	end

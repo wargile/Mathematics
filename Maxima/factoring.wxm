@@ -1,0 +1,33 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 11.04.0 ] */
+
+/* [wxMaxima: comment start ]
+Just testing some basic factoring...
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+x:2$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(5*x + 4)^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(5*x + 4)*(5*x + 4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Use (F)irst (O)uter (I)nner (L)ast here:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+25*x^2 + 20*x + 20*x + 16;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+25*x^2 + 40*x + 16;
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

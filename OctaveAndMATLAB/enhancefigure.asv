@@ -1,0 +1,40 @@
+function enhancefigure(varargin)
+%ENHANCEFIGURE Set title, xlabel and ylabel on an existing figure.
+%
+% ENHANCEFIGURE (title, xlabel, ylabel)
+
+  %fignum = gcf;
+
+  my_title = my_xlabel = my_ylabel = [];
+  
+  switch nargin
+    case 1
+      my_title = varargin{1};
+    case 2
+      my_title = varargin{1};
+      my_xlabel = varargin{2};
+    case 3
+      my_title = varargin{1};
+      my_xlabel = varargin{2};
+      my_ylabel = varargin{3};
+	otherwise
+	  error('Wrong number of parameters.')
+  end
+  
+  %figure(fignum);
+  
+  if ~isempty(my_title)
+    title(my_title, 'FontWeight', 'bold', 'FontSize', 11, ...
+        'Color', 'black') 
+  end
+  
+  set(gca, 'FontSize', 8, 'FontWeight', 'normal');
+  
+  if ~isempty(my_xlabel)
+    xlabel(my_xlabel, 'FontSize', 8);
+  end
+  
+  if ~isempty(my_ylabel)
+    ylabel(my_ylabel, 'FontSize', 8);
+  end
+end

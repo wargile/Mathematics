@@ -1,0 +1,1333 @@
+------------------------------------------------------------------------------------------------------------
+Kelly: The Complete Idiot's Guide To Algebra
+------------------------------------------------------------------------------------------------------------
+
+Chapter 6, problem 4:
+---------------------
+Put the linear equation 5/4y = 7/3 + 1/6x in standard form.
+ 
+5/4y = 7/3 + 1/6x
+Multiply everything by least common denominator of 12:
+12/1(5/4y) = 12/1(7/3) + 12/1(1/6x)
+60/4y = 84/3 + 12/6x
+15y = 28 + 2x
+-2x + 15y = 28
+Multiply all with -1:
+Answer: 2x - 15y = -28 (Correct!)
+
+Chapter 6, problem 5:
+---------------------
+Write the equation of the line that passes through the points (–3,5) and
+(–8,0) in standard form.
+
+m=0-5/-8-(-3)
+m=-5/-5
+m=1
+Slope/m is 1. Plug into the point slope form y-y1=m(x-x1):
+y - 0 = 1(x - (-8))
+y = 1(x + 8)
+y = x + 8
+-x + y = 8
+Multiply all with -1:
+Answer: x - y = -8 (Correct!)
+
+Chapter 6, problem 6:
+---------------------
+Write the equation of line j in standard form if j passes through the point
+(–6,1) and is parallel to the line –2x + 6y = 7.
+
+Find the slope-intercept to get slope/m:
+y = 1/6(2x) + 1/6(7)
+y = 2/6x + 7/6
+Slope/m is 2/6. Apply point-slope form y-y1=m(x-x1):
+y - 1 = 2/6(x - (-6))
+y - 1 = 2/6(x + 6)
+y - 1 = 2/6x + 12/6
+y - 1 = 1/3x + 2
+-1/3x + y = 1 + 2
+-1/3x + y = 3
+Multiply all with -1:
+1/3x - y = -3
+Multiply everything by 3 to get rid of fractions:
+Answer: x - 3y = -9 (Correct!)
+
+REMEMBER:
+---------
+- The point-slope formula says that a line with slope m which passes through the
+point (x1, y1) will have equation y – y1 = m(x – x1).
+
+- To put an equation into slope-intercept form, solve it for y: y = mx + b. The
+slope of the line will be m, and b is the equation’s y-intercept.
+
+- Parallel lines have equal slopes, and perpendicular lines have slopes which are
+opposite reciprocals of one another (5, 1/5) (-1/5, -5).
+
+
+Chapter 7
+---------
+
+Problem 2: Solve the inequality 2(w – 6) <= 18.
+
+Way to solve 1:
+2(w – 6) <= 18
+w – 6 <= 18/2
+w – 6 <= 9
+w <= 9 + 6
+Answer: w <= 15
+
+Way to solve 2:
+2(w – 6) <= 18
+2w – 12 <= 18
+2w <= 18 + 12
+2w <= 30
+w <= 30/2
+Answer: w <= 15
+
+
+Problem 3: Graph the solution to 1 – x >= 2x – 5.
+
+1 – x >= 2x – 5
+-x - 2x >= -1 – 5
+-3x >= -6
+NOTE: When multiplying with - 1, SWITCH sign direction!
+3x <= 6
+x <= 6/3
+x <= 2
+Solution: Graph a solid dot at 2, with arrow pointing left.
+
+
+Problem 4: Solve the inequality –1 < 2x + 5 < 13.
+
+–1 < 2x + 5 < 13
+Subtract 5 from all three statements:
+-6 < 2x < 8
+Divide all three statements by 2 to isolate x:
+-6/2 < 2x/2 < 8/2
+Answer: -3 < x < 4
+
+
+Problem 5: Graph the compound inequality –2 <= x < 5.
+
+Answer: Put a closed dot on -2 and draw a line from -2, to the right, up to 5. Put an open dot on 5.
+
+
+Problem 6: Solve the absolute value inequality 4|x - 5| < 8.
+
+(Method for less than/less than or equal signs)
+4|x - 5| < 8
+Isolate the absolute value inequality by dividing with 4 on both sides:
+|x - 5| < 8/4
+|x - 5| < 2
+Move the opposite of 2 to the left of the absolute value inequality, and remove the '|' signs.
+Put a matching symbol (<) to the left of x.
+-2 < x - 5 < 2
+Add 5 to each part:
+3 < x < 7
+Answer: Put an open dot on 3 and draw a line from 3, to the right, up to 7. Put an open dot on 7.
+
+
+Problem 7: Solve the inequality |x - 4| >= 2 and graph the solution.
+
+|x - 4| >= 2
+Split the inequality in two forms:
+|x - 4| >= 2 or |x - 4| <= -2
+Solve for each:
+x >= 6 or x <= 2
+Answer: Put a closed dot on 2 and draw a line from 2, to the left.
+Put a closed dot on 6 and draw a line from 6, to the right.
+
+
+Problem 8: Graph the inequality y >= –2x + 3.
+
+y >= –2x + 3
+Find slope intercept like for a regular equality expression:
+y = -2x + 3
+Find y intercept:
+2x = -y + 3
+x = -2y + 6
+Plug in 0 for x:
+-2y + 6 = 0
+2y - 6 = 0
+2y = 6
+y = 6/2
+y = 3
+Plug in 0 for y to find x-intercept:
+-2x + 3 = 0
+-2x = -3
+x = -3/-2
+x = 1.5
+So we get graph coordinates (0, 3) and (1.5, 0).
+The graph:
+\|
+ |
+ |\
+_|_\__
+ |  \
+Test equation with 0 in both x and y:
+0 >= -2*0 + 3. 0 >= 3. That is FALSE. So 0 (origin) is NOT in the solution values.
+Graph a solid line (since we have a >= sign) and shade the RIGHT hand side area of the graph.
+The right side holds all possible solutions values.
+
+
+Chapter 8:
+----------
+
+Problem 1: Solve the system by graphing.
+--
+| 2x + y = 3
+| x - 3y = -9 (NOTE: Error in book here, solution graph says x - 3y = -9)
+--
+
+First equation:
+Find x1, y1 intercept: 2x + 0 = 3. x = 3/2. x1 = 1.5, y1 = 0
+Find x2, y2 intercept: 2*0 + y = 3. 0 + y = 3. x2 = 0, y2 = 3
+Second equation:
+Find x1, y1 intercept. x - 3*0 = -9. x1 = -9. y1 = 0. 
+Find x2, y2 intercept: 0 - 3y = -9. y = -9/-3. x2 = 0. y2 = 3
+Both graphs intersect at (0,3).
+
+
+Problem 2: Use the substitution method to solve the system
+--
+| x - 4y = 11
+| 3x + 7y = -5
+--
+
+Solve the x in the first expression by inserting 1 for x:
+x = 4y + 11
+Inserting the expression we get for x in expression 2:
+3(4y + 11) + 7y = -5
+12y + 33 + 7y = -5
+12y + 7y = -5 - 33
+19y = -38
+y = -2
+Now, insert y in the original expression to get x:
+x - 4(-2) = 11
+x - (-8) = 11
+x + 8 = 11
+x = 11 - 8
+x = 3
+Answer: The coordinates are (3,-2)
+
+
+Problem 3: Solve the system using the elimination method.
+--
+| 2x - y = -11
+| 5x + 2y = 4
+--
+
+Multiply top equation with -2 to get rid of y:
+--
+| 4x - (-2y) = -22
+| 5x +   2y =    4
+--
+9x = -18
+x = -18/9
+x = -2
+Put x value into one of the equations to find y:
+5(-2) + 2y = 4
+-10 + 2y = 4
+2y = 4 + 10
+2y = 14
+y = 7
+Answer: The coordinates are (-2,7)
+
+
+Problem 4: Solve the system of equations.
+--
+| 4x + 3y = -2
+| -8x - 6y = 4
+|--
+Multiply y in top expression with 2:
+--
+|  8x + 6y = -4
+| -8x - 6y =  4
+--
+Result: 0 = 0 (All variables disappear, and 0 = 0 = TRUE.
+(This is a dependent system; the system has infinitely many solutions, and graphs overlap completely.)
+
+
+Problem 5: Graph the solution to the system of inequalities.
+--
+| y <= -2/3x + 1
+| y > 4x - 5
+--
+Find slope intercept like for a regular equality expression:
+y = -2/3x + 1
+Find y intercept:
+2/3x = -y + 1
+x = -y/(2/3) + 1
+Plug in 0 for x:
+-y(2/3) + 1 = 0
+-y(2/3) = -1
+-y = -1(2/3)
+-y = -2/3
+-y = -0.666667
+y = 0.666667
+Plug in 0 for y to find x-intercept:
+-2/3x + 1 = 0
+-2/3x = -1
+2/3x = 1
+x = 1/(2/3)
+x = 3/2
+x = 1.5
+Graph 1: We get graph coordinates (0, 0.66667) and (1.5, 0).
+Solid line, since we have "less than or equal" inequality.
+
+Find slope intercept like for a regular equality expression:
+y = 4x - 5
+Find y intercept:
+Plug in 0 for x:
+y = 4(0) - 5
+y = -5
+Plug in 0 for y to find x-intercept:
+4x - 5 = 0
+4x = 5
+x = 5/4
+x = 1.25
+Graph 2: We get graph coordinates (0, -5) and (1.25, 0).
+Dotted line, since we have "greater than" inequality.
+
+
+Chapter 9
+---------
+
+Problem 1: If B = <matrix>, evaluate 4B.
+Matrix = 
+1   4  9
+-2  7 -3
+11 -5  6
+
+ 1(4) 4(4)  9(4)
+-2(4) 7(4) -3(4)
+11(4) -5(4) 6(4)
+
+Answer:
+ 4  16  36
+-8  28 -12
+44 -20  24
+
+
+Problem 2: If A = <matrix> and B = <matrix>, evaluate 4A + -3B
+Matrix 1:
+-1 1/2
+ 5   3
+Matrix 2:
+ 1  -4
+-7   6
+
+1) Multiply matrix 1 with 4:
+-1(4) 1/2(4)
+ 5(4)   3(4)
+Result 1:
+-4   2
+20  12
+
+2) Multiply matrix 2 with -3:
+ 1(-3)  -4(-3)
+-7(-3)   6(-3)
+Result 2:
+-3   12
+21  -18
+
+3) ADD the two matrices together:
+-4+(-3)  2+12
+20+21   12+(-18)
+
+Answer:
+-7 14
+41 -6
+
+
+Problem 3: If A is a matrix of order 3 × 4 and B is a matrix of order 3 × 3, which product exists,
+A * B or B * A? What is the order of the only possible product matrix?
+
+Answer: B(3x3) * A(3x4) exists, since B cols(3) = A rows(3).
+IMPORTANT: The order of B*A is 3x4 (rows B * cols A).
+
+
+Problem 4: calculate the product.
+Matrix 1:
+ 2 -5
+-3  1
+-4  0
+Matrix 2:
+ 6 -2
+-1  3
+---------------
+2( 6) + (-5)(-1)
+2(-2) + (-5)( 3)
+
+(-3)( 6) + 1(-1)
+(-3)(-2) + 1( 3)
+
+(-4)( 6) + 0(-1)
+(-4)(-2) + 0( 3)
+---------------
+ 12  +    5
+(-4) + (-15)
+
+(-18) + (-1)
+   6  +   3
+
+(-24) + 0
+   8  + 0
+---------------
+
+Answer: End product is of order R3xC2:
+
+ 17 -19
+-19   9
+-24   8
+
+
+Problem 5: Evaluate the determinant of matrix <matrix>.
+Matrix:
+| 9 -4 |
+| 3 -1 |
+
+Use: ad-bc.
+9(-1)-3(-4)
+-9-(-12
+-9+12
+Answer: Determinant is 3.
+
+In 2×2 determinants, you multiply diagonally down and then subtract
+the upward diagonal.
+
+Similarly, in 3×3 matrices, you multiply diagonally down three times
+(adding the results) and then subtract three upward diagonals.
+
+
+
+Problem 6: Calculate the determinant.
+Matrix:
+| -2 -4  9 |
+|  3 -5  1 |
+|  7  2 -3 |
+
+Add the two first cols to the right:
+| -2 -4  9 -2 -4 |
+|  3 -5  1  3 -5 |
+|  7  2 -3  7 -3 |
+Multiply diagonals down to the right, add results. Multiply diagonals up to the left, subtracy results:
+(-2)(-5)(-3) + (-4)(1)(7) + (9)(3)(-3) - (7)(-5)(9) - (2)(1)(-2) - (-3)(3)(-4)
+(-30) + (-28) + 54 - (-315) - (-4) - (36)
+-30 - 28 + 54 + 315 + 4 - 36
+Answer: Determinant is 279.
+
+
+Problem 7: Solve the system using Cramer’s Rule.
+---
+| 6x - 5y = -7
+| 3x + 2y =  1
+---
+
+C = 6 -5
+    3  2
+
+A = -7 -5
+     1  2
+
+B = 6 -7
+    3  1
+
+Determinant A = (-7)(2) - ((1)(-5) = -14 - (-5) = -14 + 5 = -9
+Determinant B =  (6)(1) - (3)(-7) = 6 - (-21) = 6 + 21 = 27
+Determinant C =  (6)(2) - (3)(-5) = 12 - (-15) = 12+ 15 = 27
+
+Answer:
+x = det A / det C: -9/27 = -1/3
+y = det B / det C: 27/27 = 1
+
+
+
+Chapter 10:
+-----------
+
+Problem 1: Classify the following polynomials: 4x^3 + 2
+
+Answer: This is a cubic binomial of degree 3, with two terms.
+
+
+Problem 2: Simplify the expression 3x^2 – 9 + 2(x^2 – 6x + 5).
+
+Start by applying the distributive property (multiplying everything within paranthesises with 2):
+3x^2 - 9 + 2x^2 - 12x + 10
+Answer: 5x^2 - 12x + 1
+
+
+Problem 3: Calculate the product: (3x^2)y(5x^3 + (4x^2)y – 2y^5)
+
+Answer: (15x^5)y + (12x^4)y^2 - (6x^2)y^6
+
+
+Problem 4: Find the product and simplify.
+(2x + y)(x – 3y)
+
+(2x)(x) - (2x)(3y) + (y)(x) + (y)(-3y)
+2x^2 - 6xy + xy - 3y^2
+Answer: 2x^2 + 5xy - 3y^2
+
+
+-------------------------------------------------------------
+Husk gå tilbake til side 135 og lære long/synthetic division!
+-------------------------------------------------------------
+
+
+Chapter 11:
+-----------
+
+Problem 1: Factor the polynomial 9x^5y^2 + 3x^4y^3 – 6x^3y^7
+
+9x^5y^2     3x^4y^3     6x^3y^7
+-------  +  -------  -  -------
+3x^3y^2     3x^3y^2     3x^3y^2
+
+3x^(5-3)y^(2-2) + x^1y^1 - 2x^(3-3)y^(7-2)
+(3x^2)(y^0) + (x^1)(y^1) - (2x^0)(y^5)
+(3x^2)(1) + (x^1)(y^1) - (2*1)(y^5)
+3x^2 + xy - 2y^5
+
+Answer: 3x^3y^2(3x^2 + xy - 2y^5)
+
+
+Problem 2: Factor the polynomial 12x^4 + 6x^3 + 14x + 7
+
+(12x^4 + 6x^3) + (14x + 7)
+6x^3(2x + 1) + 7(2x + 1)
+
+Answer: (2x + 1)(6x^3 + 7)
+
+
+Problem 3: Factor the polynomial 5x^2 – 125
+
+5x^2 – 125
+Take out the GCF (5) first:
+5(x^2 - 25)
+That leaves the difference of two perfect squares (x^2 - 25):
+Answer: 5(x+5)(x-5)
+
+
+Problem 4: Factor the polynomial 2x^3 – 24x^2 + 64x
+(Hint: Once you factor out the GCF, it will look like the problems in Example 4, p.148)
+
+2x^3 – 24x^2 + 64x
+Take out GCF:
+2x(x^2 - 12x + 32)
+
+Answer: 2x(x - 8)(x - 4)
+
+
+Problem 5: Factor the polynomial 4x^2 + 23x – 6
+
+4x^2 + 23x – 6
+Find the numbers whose sum is 23, and whose product is -24: -1 and 24.
+4x^2 + (24 - 1)x – 6
+4x^2 + 24x - x - 6
+(4x^2 + 24x) - (x - 6)
+4x(x + 6) - (x + 6)(1)
+Factor out (x + 6):
+Answer: (4x - 1)(x + 6)
+
+
+Chapter 12:
+-----------
+
+Problem 1: simplify the radical Sqrt[300x^6y^3]
+
+Sqrt[300x^6y^3] = Sqrt(implicit 2)[300x^6y^3]
+Sqrt[ (10^2 * 3) ((x^3)^2) (y^2)(y) ]
+10^2 (x^3)^2 y^2 Sqrt[ (3) (y) ]
+Get rid of the square powers:
+Answer: 10x^3y Sqrt[3y]
+
+
+Problem 2: Simplify the expression 25^(3/2)
+
+25^(3/2) = (Sqrt2[25])^3 = (Sqrt2[5^2])^3
+Since ^2 is also the index (2) of the radical, it "escapes" the radicand, and we can get rid of the square powers:
+Answer: 5^3 = 5*5*5 = 125
+
+
+Problem 3: Simplify the expression Sqrt3[8x^4] + 4x Sqrt3[x]
+
+Sqrt3[8x^4] + 4x Sqrt3[x]
+Sqrt3[(x^3)*(2^3)*x] + 4x Sqrt3[x]
+Sqrt3[2x^3*x] + 4x Sqrt3[x]
+2x Sqrt3[x] + 4x Sqrt3[x]
+Answer: 6x Sqrt3[x]
+
+
+Problem 4: Simplify the product Sqrt(12x^2y)Sqrt(3xy)
+
+Sqrt(12x^2y)Sqrt(3xy)
+Multiply the radicands:
+Sqrt(36x^3 * y^2)
+Answer: 6|xy|Sqrt(x)
+
+
+Problem 5: Find the quotient and rationalize, if necessary: Sqrt(2x^2y^3) / Sqrt(18x^3y^2)
+
+Sqrt(2x^2y^3) / Sqrt(18x^3y^2)
+Sqrt(y / 9x)
+Sqrt(y / 3^2x)
+Move 3 out:
+Sqrt(y) / 3 Sqrt(x)
+Multiply denominator and numerator with Sqrt(x):
+Sqrt(xy) / 3 Sqrt(x^2)
+Simplify:
+Answer: Sqrt(xy) / 3|x|
+
+
+Problem 6: Solve the equation 2 Sqrt(x - 3) = 8
+
+2 Sqrt(x - 3) = 8
+Divide both sides by 2:
+Sqrt(x - 3) = 4
+Sqrt(x - 3)^2 = 4^2
+x - 3 = 16
+x = 16 + 3
+Answer: x = 19
+
+
+Problem 7: Simplify the expression Sqrt(-36)+i^3
+
+Sqrt(-36) + i^3
+Sqrt(-1 * 6 * 6) + i^3
+Pull out the 6^2:
+6 Sqrt(-1) + i^3
+Sqrt(-1) can be rewritten as i:
+6i + i^3
+Rewrite i^3:
+6i + i^2 * i
+Replace i^2 with -1:
+6i + (-1)i
+6i - 1i
+Answer: 5i
+
+
+
+
+------------------------------------------------------------------------------------------------------------
+Kelly: The Complete Idiot's Guide To Calculus
+------------------------------------------------------------------------------------------------------------
+
+Chapter Two:
+Problem 1: Put the following linear equation into standard form: 3x – 4y – 1 = 9x + 5y – 12
+
+3x – 4y – 1 = 9x + 5y – 12
+3x - 9x - 4y - 5y = 1 - 12
+-6x - 9y = -11
+Multiply everything by -1 to get a positive x-value:
+Answer: 6x + 9y = 11
+
+
+Problem 2: Find the equation of the line through point (0,–2) with slope 2/3 and put it in
+standard form
+
+Use point-slope form: y – y1 = m(x – x1)
+y - (-2) = 2/3(x - 0)
+y + 2 = 2/3x
+Multiply everything by 3 to get rid of the 2/3 fraction:
+3y + 6 = 2x
+-2x + 3y = -6
+Multiply everything by -1 to get a positive x-value:
+Answer: 2x - 3y = 6
+
+
+Problem 3: Find the slope of the line that contains points (3,7) and (–1,4)
+
+Plug points (a,b) and (c,d) into this formula: (d-b)/(c-a):
+(4-7)/(-1-(+3))
+-3/-4
+Answer: -3/-4 = 3/4
+
+
+Problem 4: Simplify the expression (3x^–3 y^2)^2 using exponential rules.
+
+(3x^–3 y^2)^2
+Square everything by 2:
+9x^-6 y^4
+Move negative exponent x^-6 to denominator:
+Answer: 9y^4/x^6
+
+
+Problem 5: Factor the expression 7x^2y – 21xy^3
+
+7x^2y – 21xy^3
+Answer: 7xy(x - 3y^2)
+
+
+Problem 6: Factor the expression 8x^3 + 343
+
+8x^3 + 343
+This is:
+(2*2*2)(x*x*x) + (7*7*7)
+Answer: (2x + 7)(4x^2 - 14x + 49)
+
+
+Problem 7: Solve the equation 3x^2 + 12x = 0 three times, using all the methods you
+have learned for solving quadratic equations
+
+Method 1: Factoring
+3x^2 + 12x = 0
+3x(x+4) = 0
+Answer: x = 0 or x = -4
+
+Method 2: Completing the square
+3x^2 + 12x = 0
+Divide each term by 3 to make the coefficient (3) of 3x^2 equal to 1:
+x^2 + 4x = 0
+Take half of the coefficient of the x term (4), That is 2. Square it: That gives 4.
+Add 4 to both sides of the equation:
+x^2 + 4x + 4 = 4
+(x + 2)(x + 2) = 4
+(x + 2)^2 = 4
+Take the square root of both sides:
+Sqrt((x + 2)^2) = +/- Sqrt(4)
+(x + 2) = +/- 2
+Answer: x = 0 or x = -4
+
+Method 3: The quadratic formula
+There is no constant term in this equation (needs to be ax^2 + bx + c), so a = 3, b = 12 and c = 0 here.
+
+
+Chapter Three:
+
+Problem 1: If f(x) = (x - 1)/6, g(x) = x^2 + 15, and h(x) = Sqrt3(x), evaluate h(g(f(43))).
+
+Start with the innermost, f(x):
+f(43) = (43 - 1)/6 = 42/6 = 7
+Then do g(x) with that result: g(7) = 7^2 + 15 = 49 + 15 = 64
+Last, do h(x) with that result: g(64) = Sqrt3(64) = 4.
+Answer: 4
+
+
+Problem 2: Determine what kind of symmetry, if any, is evident in the graph of y = x^3/|x|
+
+Plug in -1 for x and y:
+-y = -x^3/|x|
+Multiply both sides with - 1:
+y = x^3/|x|
+You get back the original function.
+Answer: Origin symmetric.
+
+
+Problem 3:
+
+
+
+Problem 4:
+
+Problem 4: Find the inverse function of h(x) = (2/3)x + 5
+
+Replace h(x) with y:
+y = (2/3)x + 5
+Switch x and y:
+h-1(x) = (2/3)y + 5
+Solve for y:
+x = (2/3)y + 5
+Multiply both sides with 3/2 to get rid of the 2/3 fraction:
+3/2x = y + 15/2
+y = 3/2x - 15/2
+Answer: h-1(x) = 3/2x - 15/2
+
+
+Problem 5: Put the parametric equations x = t + 1, y = t^2 – t + 1 into rectangular form
+
+Solve for x by subtracting 1 on both sides:
+x = t + 1
+t = x - 1
+Plug (x - 1) into the other equation:
+y = (x - 1)^2 - (x - 1) + 1
+(TODO: HOW DO WE GET THIS ANSWER?)
+Answer: x^2 - 3x + 3
+
+
+Chapter 4:
+
+Problem 1: Evaluate Cos(14*Pi)/4 using a coterminal angle and the unit circle.
+
+Cos(14*Pi)/4
+Cos(14*Pi)/4 - 2Pi
+Cos(14*Pi)/4 - 8Pi/4 (or: first simplify 14Pi/4 to 7Pi/2 etc.)
+Cos(6*Pi)/4
+Simplify:
+Answer: Cos(3*Pi)/2 = 0
+
+
+Problem 2: The Mama theorem is an identity, and therefore true for every input. Show
+that it is true for x = (2Pi)/3.
+
+"Mama" theorem of the pythagorean identites: (cos^2)x + (sin^2)x = 1
+Cos of (2Pi)/3 = -1/2. sin of (2Pi)/3 = Sqrt(3)/2
+(-1/2)^2 + (Sqrt(3)/2)^2 = 1/4 + 3/4 = 1
+Answer: The "mama" theorem is true for x = (2Pi)/3
+
+
+Problem 3: Factor and simplify the expression (2sin x cos x) – (4sin^3 x cos x).
+
+(2sin x cos x) – (4sin^3 x cos x)
+Factor out greates common factor 2sin x cos x:
+2sin x cos x(1 - 2sin^2 x cos x)
+Use double angle formulas to substitute:
+sin2x ... TODO: HOW DID WE GET THIS ANSWER? 
+Answer: sin 2x cos x
+
+
+Problem 4: Solve the equation sin 2x + 2sin x = 0 and provide all solutions on the 
+interval [0, 2Pi).exit
+
+sin 2x + 2sin x = 0
+(2sinx cos x) + 2sin x = 0
+Factor out 2sin x:
+2sin x(cos x + 1) = 0
+2 sin x = 0 AND cos x + 1 = 0
+sin x = 0 AND cos x = -1
+Answer: x = (0, Pi). -1 = Pi on the unit circle. 0 = 0 or Pi.
+
+
+Chapter 5:
+
+Here are a couple of limits to try on your own based on the graph of f (x) used in the
+example in Figure 5.8:
+
+Answers:
+1. lim(x -> 4-)f(x): No general limit. f(x) goes towards infinity- as you approach from the LEFT 
+2. lim(x -> 3) f(x): No general limit. f(x) goes towards limits -2 and 3 
+3. lim(x -> 1) f(x): General limit of 1
+
+Chapter 6:
+
+Problem 1: Evaluate the following limits using substitution:
+a) lim(x -> pi) cos(x) / x
+Answer: 0.32 (or more correctly, -1/pi, since cos(pi) = -1 from the unit circle)
+b) lim(x -> -2) (x^2 + 1)/(x^2 - 1)
+Answer: 5/3
+
+
+Problem 2: Evaluate these limits using the factoring method:
+a) lim(x -> 5) (2x^2 - 7x - 15)/(x - 5)
+Factor out x - 5 in numerator and denominator:
+(x - 5)(2x + 3) / (x - 5)
+2x + 3
+(2 * 5) + 3
+Answer: lim = 15
+ 
+b) lim(x -> 1) (x^3 - 1)/(x - 1)
+Here we have perfect cubes in x^3 - 1. Factor out x - 1:
+(x - 1)(x^2 + x + 1)
+Take away x - 1 in numerator and denominator and substitute:
+(1^2 + 1 + 1)
+Answer: lim = 3 
+
+
+Problem 3: Evaluate the following limits: 
+a) lim(x -> -2) (x + 2)/(sqrt(x + 6) - 2)
+(x + 2)(sqrt(x + 6) + 2)/(sqrt(x + 6) - 2)(sqrt(x + 6) + 2)
+Denominator becomes: (x + 6) + 2(sqrt(x + 6)) - 2(sqrt(x + 6)) - 4
+(x + 2)/(sqrt(x + 6) + 2)((x + 6) - 4)
+(x + 2)/(sqrt(x + 6) + 2)(x + 2)
+Cancel out x + 2 in numerator and denominator:
+(sqrt(x + 6) + 2)
+Substitute:
+sqrt(-2 + 6) + 2
+sqrt(4) + 2
+2 + 2
+Answer: lim = 4
+
+b) lim(x -> 1) (sqrt(x + 4) - 3)/(x + 1)
+Substitute here:
+(sqrt(1 + 4) - 3)/(1 + 1)
+Answer: (sqrt(5) - 3)/2 (no simplifying can be done here!)
+
+
+Problem 4: Determine the x–values at which is (2x^3 - 3x^2 + x)/(2x^3 + 5x^2 - 3x) is undefined. If possible, 
+evaluate the limits as x approaches each of those values.
+
+Factor:
+x(2x - 1)(x - 1) / x(2x - 1)(x + 3)
+Function is undefined at x = 0, x = 1/2 and x = -3
+substitute:
+0(2*0 - 1)(0 - 1) / 0(2*0 - 1)(0 + 3) = 0/0
+1/2(2*1/2 - 1)(1/2 - 1) / 1/2(2*1/2 - 1)(1/2 + 3) = 0/0
+-3(2*-3 - 1)(-3 - 1) / -3(2*-3 - 1)(-3 + 3) = -84/0
+Answer: Limits exists for 0 and 1/2 (holes there), but not for -3, as the answer -84/0 indicates a vertical asymptote there.
+So the limit there is infinity, written as: lim(x -> -3) = -infinity.
+
+
+Problem 5: Evaluate the following limits:
+
+a) lim(x -> infinity) (2x^2 + 6)/(3x^2 - 4x + 1)
+Answer: Get the coefficient of the highest degree numerator/denominator (degree 2): 2/3
+b) lim(x -> -infinity) (3x^2 + 4x + 3)/(x^3 + 8x + 14)
+Answer: Denominator has higher degree (3) than numerator (2). Answer: 0
+
+
+Problem 6: Evaluate lim(x -> infinity)((5/x^3) + (1 + (1/x))^x)
+
+This is a two-part expression, each with it's own limit:
+First part: Since denominator has a higher degree (3) than numerator (none): 0
+Second part: Since we have 1 + an extremely small number (1/x), raised to an infinitely large power (x): Euler's constant (e) (2.71828...)
+Answer: 0 + e
+
+
+Chapter 7:
+
+Problem 1: Determine whether or not the function g(x), as defined below, is continuous at x = 1.
+
+g(x) = { ((3x^2 - x - 2)/(x - 1) for x <> 1) AND (-2 for x = 1) }
+
+(3x + 2)(x - 1)/(x - 1)
+OR:
+(x - 1)(3x + 2)/(x - 1)
+FACTORING IN KELLY'S ALGEBRA p.146:
+Rule: What two numbers add up to x (=1) but multiply to give you -2? -1 and 2, or 2 and -1
+
+Getting rid of (x - 1) in numerator and denominator gives: 3x + 2. Substitute for x: (3 * 1) + 2 = 5 
+Answer: Factoring method gives lim(x -> 1) = 5, so this piecewise function is discontinuous.
+
+
+Problem 2: Find the value of a which makes the function h(x) everywhere continuous if:
+h(x) = { (2x^2 + x - 7 for x < -1) AND (ax + 6) for x >= -1 }
+
+Even if the rule says LOWER THAN -1, the limit is really - 1, so substitute:
+2(-1^2) + (-1) - 7
+2 - 1 - 7
+Limit = -6
+Answer: a = 12 (Because ax + 6 = (12*-1) + 6 = -6)
+
+-------------------------------------------------------------------
+Page 84 factorization:
+
+Numerator: 3x^2 + 13x + 4
+Should give: (x + 4)(3x + 1)
+
+Factor out GCF, if it exists. It doesen't, so:
+Use "bomb" method (ax^2 + bx + c):
+Find two "mystery" numbers: 1 and 12
+(Because: Product = 12 and sum = 13)
+Put mystery number into middle coefficient:
+3x^2 + (1 + 12)x + 4
+Distribute x in middle expression:
+3x^2 + x + 12x + 4
+3x(x + 4) + 1(x + 4)
+(3x + 1)(x + 4)
+
+Denominator: 9x^2 - 3x - 2
+Should give: (3x + 1)(3x - 2)
+
+Factor out GCF 3x:
+3x(3x - 1) - 2
+(3x + 1)(3x - 2)
+
+You can then cancel out (3x + 1) to get the answer (3x - 2)/(x + 4)
+-------------------------------------------------------------------
+
+
+Problem 3: Give all x-values for which the function g(x) = (2x^2 + 5x - 25)/(x^2 - 25)
+is discontinuous, and classify each instance of discontinuity.
+
+(2x^2 + 5x - 25)/(x^2 - 25)
+
+Answer 1: x = 5: Denominator is 0. indicates vertical asymptote, infinite discontinuity. No limit.
+
+Answer 2: x = -5: Result is 0/0. indicates function hole.
+Factorization gives: (2x - 5)(x + 5)/(x + 5)(x - 5). There is point discontinuity at x = -5 (result = 0/0).
+
+
+Problem 4: Use the Intermediate Value Theorem to explain why the function 
+g(x) = x^2 + 3x – 6 must have a root (x-intercept) on the closed interval [1,2].
+
+Answer: since g(1) = -2 and g(2) = 4, the values between -2 and 4 includes 0, thus giving an x-intercept.
+
+
+Chapter 8:
+
+Problem 1: Find the derivative of g(x) = 5x^2 + 7x – 6 and use it to calculate g´(–1).
+
+f(x) = 5x^2 + 7x – 6
+(D = delta symbol here)
+f(x + Dx) = (5x + D5x)^2 + 7(x + Dx) - 6
+5x^2 + 10xDx + 5(Dx)^2 + 7x + 7Dx - 6
+And then.... ??????
+TODO: GO BACK TO THIS ONE!
+
+
+Problem 2: Calculate the derivative of h(x) = Sqrt(x + 1) when x = 8 using the alternate dif-
+ference quotient.
+
+Plug in 8:
+h(x) = Sqrt(8 + 1) = Sqrt(9) = 3
+lim(x -> 8) = (h(x) - h(3))/(x - 8)
+lim(x -> 8) = (Sqrt(x + 1) - 3)/(x - 8)
+Find using CONJUGATE method:
+lim(x -> 8) = (Sqrt(x + 1) - 3)(Sqrt(x + 1) + 3) / (x - 8)(Sqrt(x + 1) + 3)
+USE: (a + b)(c + d) = ac + ad + bc + bd
+((x + 1) + 3Sqrt(x + 1) - 3Sqrt(x + 1) - 9) / ((x - 8)(Sqrt(x + 1) + 3))
+((x + 1) - 9) / ((x - 8)(Sqrt(x + 1) + 3))
+(x - 8) / (x - 8)(Sqrt(x + 1) + 3)
+1 / (Sqrt(x + 1) + 3) *** IMPORTANT: When simplifying (removing (x - 8) in num./den.), LEAVE 1 AS NUMERATOR!!! ***
+Substitute x = 8:
+1 / (Sqrt(8 + 1) + 3)
+1 / (Sqrt(9) + 3)
+1 / (3 + 3)
+Answer: Derivative of h(x) when x = 8 is 1/6
+
+
+Chapter 9:
+
+Problem 1: Find derivatives using the Power Rule:
+
+a) y = (2/3)x^3 + 3x^2 - 6x + 1
+y = 3*(2/3)x^(3-1) + (2*3)x^(2-1) - 6x^(1-1) + 1
+y = (6/3)x^2 + 6x^1 - 6x^(0) + 0
+Answer: y = 2x^2 + 6x - 6 (REMEMBER: 6^0 = 1)
+
+b) f(x) = Sqrt3(x) + 2*Sqrt5(x)
+Write the radical terms as fractional exponents:
+TODO: NEED TO LOOK AT THIS AGAIN!
+Answer: 1/3x^2/3 + 2/5x^4/5
+
+
+Problem 2: Find the derivative of g(x) = (2x – 1)(x + 4) using (1) the Power Rule, and
+(2) the Product Rule, and show that the results are the same.
+
+(2x – 1)(x + 4)
+Product rule: h'(x) = f(x) * g'(x) + f'(x) * g(x)
+h'(x) = (2x - 1)(1) + 2(x + 4)
+h'(x) = 2x  - 1 + 2x + 8
+Answer: 4x + 7
+
+(2x – 1)(x + 4)
+Power rule:
+Multiply binomials together:
+(2x * x) + (2x * 4) - (1 * x) - (1 * 4)
+2x^2 + 8x - x - 4
+2x^2 + 7x - 4
+Answer: 4x + 7 
+
+
+Problem 3: Use the Quotient Rule to differentiate f(x) = (3x^4 + 2x^2 - 7x)/(x-5) and simplify f'(x)
+
+(3x^4 + 2x^2 - 7x)/(x-5)
+
+Numerator: ((x - 5) * (12x^3 + 4x - 7)) - ((3x^4 + 2x^2 - 7x) * 1)
+Denominator: (x - 5)^2
+
+Numerator: (12x^4 + 4x^2 - 7x - 60x^3 - 20x + 35) - (3x^4 + 2x^2 - 7x)
+Denominator: x^2 - 10x + 25
+
+Numerator: (12x^4 - 60x^3 + 4x^2 - 27x + 35) - 3x^4 - 2x^2 + 7x
+Denominator: x^2 - 10x + 25
+
+TODO: SVARET ER KORREKT, MEN STUDÉR NÆRMERE +/- HÅNDTERING OSV.
+Answer: f'(x) = 
+Numerator: 9x^4 + 60x^3 + 2x^2 + 20x - 35
+Denominator: x^2 - 10x + 25
+
+
+Problem 4: Use the Chain Rule to differentiate y = (x2 + 1)^5
+
+y = (x^2 + 1)^5
+f(x) = x^5
+g(x) = (x^2 + 1)
+
+f'(x) = 5x^4
+5(x^2 + 1)^4
+Derivative of g(x) = (x^2 + 1) = 2x
+
+2x * 5((x^2 + 1)^4)
+Answer: 10x((x^2 + 1)^4)
+
+
+Problem 5: Given the function g(x) = 3x^2 – 5x + 6, find the following values:
+a) the instantaneous rate of change of g(x) when x = 4
+b) the average rate of change on the x interval [–1,3]
+
+a) Find the derivative: 3x^2 – 5x + 6 = 6x - 5.
+g'(4) = (6*4) - 5 = 19
+Answer: The derivative is 19
+
+b) y1 = 3*(-1^2) – (5*-1) + 6 = 3 - (-5) + 6 = 3 + 5 + 6 = 14
+   y2 = 3*(3^2) – (5*3) + 6 = 27 - 15 + 6 = 18
+   (y2 - y1)/(x2 - x1) = (18 - 14)/(3 - (-1)) = 4/4 = 1
+Answer: Average rate of change = 1
+
+
+Problem 6: TODO: DO LATER!
+
+
+Chapter 10:
+-----------
+
+Problem 1: Find the equation of the tangent line to g(x) = 3x^3 – x^2 + 4x – 2 when x = –1.
+
+Plug in x to find y:
+3*(-1^3) – (-1)^2 + 4*(-1) – 2
+(3*-1) - 1 + (-4) - 2
+-3 - 5 - 2
+y = -10. Point of tangency is (-1,-10)
+
+Get the slope by finding the derivative:
+3x^3 – x^2 + 4x – 2
+9x^2 - 2x + 4
+f'(-1) = 9*(-1)^2 - (2*-1) + 4
+f'(-1) = 9 - (-2) + 4
+f'(-1) = 9 + 2 + 4 = 15
+y - (-10) = 15(x - (-1))
+y + 10 = 15(x + 1)
+y + 10 = 15x + 15
+subtract -10 on both sides:
+Answer: y = 15x + 5
+
+
+Problem 2: Find the slope of the tangent line to the graph of 4x + xy – 3y^2 = 6
+at the point (3,2).
+
+4x + xy – 3y^2 = 6
+4 + (x*dx/dy) + y - (6y*dx/dy) = 0
+(x*dx/dy) - (6y*dx/dy) = -y -4
+dx/dy(x - 6y) = -y -4
+Divide both sides of the equation with (x - 6y):
+dx/dy = (-y -4) / (x - 6y)
+Plug in (3,2) for x and y:
+dx/dy = (-2 -4) / (3 - (6*2))
+-6/-9
+Multiply numerator and denominator with -1:
+Answer: The slope at point (3,2) is 6/9 = 2/3
+
+
+Problem 3: Use the technique of Example 3, Method 2 to evaluate f-1(6) if f(x) = Sqrt(2x^3 - 18).
+
+This is the same as solving for Sqrt(2x^3 - 18) = 6
+Multiply both sides with itself to get rid of the fraction:
+Sqrt(2x^3 - 18) * Sqrt(2x^3 - 18) = 6 * 6
+2x^3 - 18 = 36
+Add 18 to both sides:
+2x^3 = 54
+x^3 = 54/2
+x^3 = 27
+Cube root:
+x = Sqrt3(27)
+Answer: x = 3. f-1(6) = 3
+
+
+Problem 4: If g(x) = 3x^5 + 4x^3 + 2x + 1, evaluate (g-1)'(-2).
+
+3x^5 + 4x^3 + 2x + 1 = -2
+Result: x = 0.6749465398
+g' = 15x^4 + 12x^2 + 2
+Substitute for x:
+1 / ((15 * (0.6749465398))^4 + (12 * 0.6749465398)^2 + 2)
+Answer: 0.0945
+
+
+Problem 5: TODO LATER!
+
+
+Chapter 11
+----------
+
+Problem 1: Given h(x) = –x^2 + 6x + 27, calculate the critical number of h'(x), and
+determine whether or not it represents a relative maximum or minimum, based on the
+signs of h'(x).
+
+h(x) = –x^2 + 6x + 27
+h'(x) = -2x + 6
+-2x + 6 = 0
+-2(3) + 6 = 0
+Critical number is: 3
+Plug in a lower and a higher number:
+h'(2) = -2(2) + 6 = 2
+h'(4) = -4(2) + 6 = -2
+Answer: 3 represents a releative maximum on the graph.
+
+
+Problem 2: Draw the wiggle graph for the function g(x) = 2x^3 - (7/2)x^2 - 3x + 10, and determine the intervals on which g is increasing.
+
+g'(x) = 6x^2 - (14/2)x - 3
+g'(x) = 6x^2 - 7x - 3
+6x^2 - 7x - 3 = 0
+Factor: (3x + 1)(2x - 3)
+Critical numbers are: -1/3 and 3/2
+Because f'(x) is positive on the intervals (inf,-1/3) and (3/2,inf), f'(x) is increasing on those intervals.
+
+
+Problem 3: Find the absolute maximum and minimum of g(x) = x^3 + 4x^2 + 5x – 2 on the closed interval [–5,2].
+
+g(x) = x^3 + 4x^2 + 5x – 2
+g'(x) = 3x^2 + 8x + 5
+3x^2 + 8x + 5 = 0
+Factor it:
+(3x + 5)(x + 1) = 0
+x = -5/3 and x = -1
+Test all four x-candidates:
+g(–5) = –52, g(-5/3) = -3.852, g(–1) = –4, and g(2) = 32
+Answer: The absolute max is 32 and the absolute min is -52
+
+
+Problem 4: When is f(x) = cos x concave down on (0,2pi)?
+
+f'(x) = -sin(x)
+f''(x) = -cos(x)
+Set -cos(x) = 0 to get the critical numbers:
+TODO: HOW DID WE GET THIS ANSWER?
+Answer: (0, pi/2) and (3pi/2,2pi)
+
+
+Chapter 12
+----------
+
+Problem 1: A particle moves vertically (in inches) along the y-axis according to the 
+position equation s(t) = 1/2t^3 - 5t^2 + 3t + 6, where t represents seconds. At what time(s) 
+is the particle 30 inches below the origin?
+
+1/2t^3 - 5t^2 + 3t + 6 = -30
+Set to zero to find x-intercept:
+1/2t^3 - 5t^2 + 3t + 36 = 0
+etc. (need calc to solve this...)
+Answer: t = 4 and t = 8.196 seconds.
+
+
+Problem 2: A particle moves vertically (in inches) along the y-axis according to the 
+position equation s(t) = 1/2t^3 - 5t^2 + 3t + 6, where t represents seconds. Rank the following
+from least to greatest: the speed when t = 3, the velocity when t = 7, and the average
+velocity on the interval [2,6].
+
+Speed - find the derivative and plug in 3, and set it positive if not (speed can not be negative)
+1/2t^3 - 5t^2 + 3t + 6
+3/2t^2 - 10t + 3
+3/2(3)^2 - 10(3) + 3 = |-13.5| = 13.5
+
+Velocity - find the derivative and plug in 7:
+1/2t^3 - 5t^2 + 3t + 6
+3/2t^2 - 10t + 3
+3/2(7)^2 - 10(7) + 3 = 6.5
+
+Average velocity (y2 - y1 / x2 - x1):
+y1: 1/2(2)^3 - 5(2)^2 + 3(2) + 6 = -4
+y2: 1/2(6)^3 - 5(6)^2 + 3(6) + 6 = -48
+(-48 -(-4))/(6 - 2) = -44/4 = -11
+
+Answer: The correct order is: the average velocity, the velocity at t = 7, and lastly the speed at t = 3
+
+
+Problem 3: A particle moves vertically (in inches) along the y-axis according to the 
+position equation s(t) = 1/2t^3 - 5t^2 + 3t + 6, where t represents seconds. At what time t is
+the acceleration of the particle equal to –1 in/sec^2?
+
+Find acceleration, which is the second derivative:
+s(t) = 1/2t^3 - 5t^2 + 3t + 6
+s'(t) = v(t) = 3/2t^2 - 10t + 3
+s''(t) = a(t) = 6/2t - 10 = 3t - 10
+Solve equation for -1:
+3t - 10 = -1
+3t = 10 - 1
+3t = 9
+t = 9/3
+t = 3
+Answer: t = 3 seconds
+
+
+Problem 4: If a cannonball is fired from a hillside 75 meters above ground with an init
+velocity of 100 meters/second, what is the greatest height the cannonball will reach?
+
+Use the projectile position equation with g = 9.8 (for meters, 32 if using inches).
+h0 = initial height, v0 = initial velocity
+s(t) = -1/2g * t^2 + v0 * t + h0
+s(t) = -1/2(9.8) * t^2 + 100 * t + 75
+The position equation is s(t) = -4.9t^2 + 100t + 75
+Find the first derivative to find the relativemaximum of the position equation:
+s'(t) = -9.8t + 100
+s'(t) = t = -100/-9.8 = 10.204
+Plug that into the position equation:
+-1/2(9.8) * 10.204^2 + 100 * 10.204 + 75 = 585.204 meters
+Verify that this is the max by finding the second derivative - should give a negative result:
+s''(t) = -9.8
+Answer: The maximum height is 505.204 meters at time = 10.204 seconds
+
+
+Chapter 13:
+-----------
+
+Problem 1: Evaluate lim->INF (x^-2 * lin(x)) using L’Hôpital’s Rule. Hint: Begin by writing the
+expression as a fraction.
+
+x^-2 * lin(x)
+Since x^-2 has a negative power, move it to the denominator:
+lin(x) / x^2
+Find derivatives of numerator and denominator:
+(1/x) / 2x
+This can be rewritten as: 1 / 2x^2 (multiply with x in numerator and denominator)
+This gives: 1 / (huge number), which is equal to 0 according to the third special limit theorem (see chapter 6).
+Answer: lim = 0
+
+
+Problem 2: Given the function f(x) = 1/x, find the x-value that satisfies the Mean Value
+Theorem on the interval [1/4, 1].
+
+Find the derivative of 1/x:
+1/x can be written as x^-1
+f'(x) = -1x^-2, which can be written as -1/x^2
+Plug in 1/4 and 1 into the original function:
+x1 = 1/1 = 1
+x2 = 1/(1/4) = 4
+(4 - 1) / (1/4 - 1) = 3/(-3/4) = -4
+Solve:
+-1/x^2 = -4
+x^-2 = -4
+x = -2/-4
+Answer: x = 1/2
+
+
+Problem 3 & 4: DO LATER!
+
+
+Chapter 14:
+-----------
+
+Problem 1: Approximate the area beneath the curve g(x) = –cos x on the interval [pi/2, 3pi/2]
+using n = 4 rectangles and (1) left sums, (2) right sums, and (3) midpoint sums.
+
+Rectangle width (delta x) = ((3pi/2) - (pi/2))/4 = (2pi/2)/4 = pi/4
+
+DO LATER!
+
+
+Problem 3: Approximate the area beneath y = 1/x on the interval [1,5] using Simpson’s
+Rule with n = 4 subintervals.
+
+x = (5 - 1)/4 = 4/4 = 1
+(5 - 1)/(4 * 3) * (1 + 4*(1/2) + 2*(1/3) + 4*(1/4) + 1/5)
+1/3 * (1 + 2 + 2/3 + 1 + 1/5)
+1/3 * (4 + 0,667 + 0.20)
+Answer: The area is 1.622
+
+
+Chapter 15:
+-----------
+
+Problem 1: Evaluate Integrate(2x^4 + x^3/3 + Sqrt(x)).
+
+Integrate(2x^4 + x^3/3 + Sqrt(x))
+Pull out coefficients:
+(2 * Integrate(x^4)) + (1/3 * Integrate(x^3)) + Integrate(x^(1/2))
+(2 * (x^5/5)) + (1/3 * (x^4/4)) + x^(3/2)/(3/2)) + C
+Answer: (2/5)x^5 + (1/12)x^4 + (2/3)x^(3/2) + C
+
+
+Problem 2: Calculate Integrate(limits: pi/2, 3pi/2) cos(x)dx. Explain what is meant by the answer.
+
+Integrate(limits: pi/2, 3pi/2) cos(x)dx
+
+The integral of cos(x) is sin(x). Write it like this:
+sin(x) | 3pi/2
+       | pi/2
+
+sin(3pi/2) - sin(pi/2)
+Answer: The area under the curve is: -2. The area is below the x-axis, since the result is negative.
+
+
+Problem 3:

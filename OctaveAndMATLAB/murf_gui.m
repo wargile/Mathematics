@@ -1,0 +1,459 @@
+function varargout = murf_gui(varargin)
+% MURF_GUI MATLAB code for murf_gui.fig
+%      MURF_GUI, by itself, creates a new MURF_GUI or raises the existing
+%      singleton*.
+%
+%      H = MURF_GUI returns the handle to a new MURF_GUI or the handle to
+%      the existing singleton*.
+%
+%      MURF_GUI('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in MURF_GUI.M with the given input arguments.
+%
+%      MURF_GUI('Property','Value',...) creates a new MURF_GUI or raises the
+%      existing singleton*.  Starting from the left, property value pairs are
+%      applied to the GUI before murf_gui_OpeningFcn gets called.  An
+%      unrecognized property name or invalid value makes property application
+%      stop.  All inputs are passed to murf_gui_OpeningFcn via varargin.
+%
+%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+%      instance to run (singleton)".
+%
+% See also: GUIDE, GUIDATA, GUIHANDLES
+
+% Edit the above text to modify the response to help murf_gui
+
+% Last Modified by GUIDE v2.5 18-Apr-2012 09:22:20
+
+% Begin initialization code - DO NOT EDIT
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+                   'gui_Singleton',  gui_Singleton, ...
+                   'gui_OpeningFcn', @murf_gui_OpeningFcn, ...
+                   'gui_OutputFcn',  @murf_gui_OutputFcn, ...
+                   'gui_LayoutFcn',  [] , ...
+                   'gui_Callback',   []);
+
+if nargin && ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+end
+
+if nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+    gui_mainfcn(gui_State, varargin{:});
+end
+% End initialization code - DO NOT EDIT
+
+% --- Executes just before murf_gui is made visible.
+function murf_gui_OpeningFcn(hObject, eventdata, handles, varargin)
+% This function has no output args, see OutputFcn.
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% varargin   command line arguments to murf_gui (see VARARGIN)
+
+% Choose default command line output for murf_gui
+handles.output = hObject;
+
+% Update handles structure
+guidata(hObject, handles);
+
+% This sets up the initial plot - only do when we are invisible
+% so window can get raised using murf_gui.
+%if strcmp(get(hObject,'Visible'),'off')
+%    plot(rand(5));
+%end
+
+%set(handles.PotPos, 'Min', 0.1);
+
+if strcmp(get(hObject,'Visible'),'off')
+    do_sine = get(handles.ChkDoSineCurve, 'Value');
+
+    DoPlot(round(get(handles.MaxElements, 'Value')), ...
+        get(handles.PotPos, 'Value'), do_sine);
+    
+    buf = sprintf('Pot pos: %.2f Max elements: %d', ...
+        get(handles.PotPos, 'Value'), ...
+        round(get(handles.MaxElements, 'Value')));
+    
+    set(handles.PotPosition, 'String', buf);
+end
+
+% UIWAIT makes murf_gui wait for user response (see UIRESUME)
+% uiwait(handles.figure1);
+
+
+% --- Outputs from this function are returned to the command line.
+function varargout = murf_gui_OutputFcn(hObject, eventdata, handles)
+% varargout  cell array for returning output args (see VARARGOUT);
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+
+% --------------------------------------------------------------------
+function FileMenu_Callback(hObject, eventdata, handles)
+% hObject    handle to FileMenu (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --------------------------------------------------------------------
+function OpenMenuItem_Callback(hObject, eventdata, handles)
+% hObject    handle to OpenMenuItem (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+file = uigetfile('*.fig');
+if ~isequal(file, 0)
+    open(file);
+end
+
+% --------------------------------------------------------------------
+function PrintMenuItem_Callback(hObject, eventdata, handles)
+% hObject    handle to PrintMenuItem (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+printdlg(handles.figure1)
+
+% --------------------------------------------------------------------
+function CloseMenuItem_Callback(hObject, eventdata, handles)
+% hObject    handle to CloseMenuItem (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+selection = questdlg(['Close ' get(handles.figure1,'Name') '?'],...
+                     ['Close ' get(handles.figure1,'Name') '...'],...
+                     'Yes','No','Yes');
+if strcmp(selection,'No')
+    return;
+end
+
+delete(handles.figure1)
+
+% --- Executes on slider movement.
+function PotPos_Callback(hObject, eventdata, handles)
+% hObject    handle to PotPos (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+    do_sine = get(handles.ChkDoSineCurve, 'Value');
+
+    DoPlot(round(get(handles.MaxElements, 'Value')), ...
+        get(handles.PotPos, 'Value'), do_sine);
+    
+    buf = sprintf('Pot pos: %.2f Max elements: %.d', ...
+        get(handles.PotPos, 'Value'), ...
+        round(get(handles.MaxElements, 'Value')));
+    
+    set(handles.PotPosition, 'String', buf);    
+    
+function DoPlot(max_elements, pot_pos, do_sine)
+    LEFT = 0;
+    MIDDLE = 1;
+    RIGHT = 2;
+
+    if do_sine == 0 % DO COS CURVE
+        if pot_pos <= 5
+            [elements_rise, elements_fall] = get_pot_pos_value(pot_pos);
+        else
+            [elements_fall, elements_rise] = get_pot_pos_value(10 - pot_pos);
+        end
+
+        if pot_pos <= 5
+            p1 = get_pot_pos_value(pot_pos - 0.0001);
+            p2 = get_pot_pos_value(pot_pos);
+        else
+            p2 = get_pot_pos_value(10 - pot_pos - 0.0001);
+            p1 = get_pot_pos_value(10 - pot_pos);
+        end
+        
+        if p1 < p2 && pot_pos <= 5
+            pos = LEFT;
+        elseif (p1 > p2 && pot_pos <= 5) || ((p1 < p2 && pot_pos > 5))
+            pos = MIDDLE;
+        elseif p1 > p2 && pot_pos > 5
+            pos = RIGHT;
+        end        
+    else % DO SINE CURVE
+        if pot_pos > 5
+            [elements_rise, elements_fall] = get_sine_value(pot_pos);
+        else
+            [elements_fall, elements_rise] = get_sine_value(pot_pos);
+        end
+        
+        % TODO: Problem with pot_pos = -0.001 for sine
+        p1 = get_sine_value(pot_pos - 0.001);
+        p2 = get_sine_value(pot_pos);
+      
+        if p1 < p2 && pot_pos <= 5
+            pos = LEFT;
+        elseif (p1 > p2 && pot_pos <= 5) || ((p1 < p2 && pot_pos > 5))
+            pos = MIDDLE;
+        elseif p1 > p2 && pot_pos > 5
+            pos = RIGHT;
+        end
+    end
+    
+    % TODO: An error at pot_pos = max_elements, not reaching ref_voltage
+    %ref_voltage = 5;
+    %if elements_rise < ref_voltage
+    %    elements_rise = ref_voltage;
+    %end
+
+    CreatePlot(max_elements, elements_rise, elements_fall, pot_pos, pos);
+
+% --- Executes during object creation, after setting all properties.
+function PotPos_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to PotPos (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+function [the_curve] = CreatePlot(max_elements, elements_rise, ...
+    elements_fall, pot_pos, pos)
+
+    LEFT = 0;
+    %MIDDLE = 1;
+    RIGHT = 2;
+
+    ref_voltage = 5;
+
+    % Calculate elements_rise and elements_fall for values other than 100
+    elements_rise = (elements_rise * max_elements) / 100.0;
+    elements_fall = (elements_fall * max_elements) / 100.0;
+
+    takeaway_elements_rise = 0;
+    init_rise = 0;
+    start_pos = 1;
+
+    % TODO: Error here? What about pos > 5, different handling??
+    if (elements_rise + elements_fall) > max_elements
+        takeaway_elements_rise = ...
+            floor(((elements_rise + elements_fall) - max_elements) / 2.0);
+    end
+
+    if (elements_rise + elements_fall) > max_elements
+        init_rise = (ref_voltage / elements_rise) * takeaway_elements_rise;
+    end
+
+    elements_rise = elements_rise - takeaway_elements_rise;
+
+    change_interval_rise = (ref_voltage - init_rise) / elements_rise;
+    
+    if takeaway_elements_rise > 0
+        change_interval_fall = (ref_voltage - init_rise) / ...
+            (max_elements - (start_pos + elements_rise));
+    else
+        change_interval_fall = ref_voltage / elements_fall;
+    end
+
+    the_curve = zeros(1, max_elements + 1);
+    % +1 here just to ensure 0 value at end of curve, not needed for PIC DAC
+    % Sending PIC DAC values should ALWAYS start and end with zero value
+    change = init_rise;
+    
+    % Transitions: LEFT: 2.82 RIGHT: 7.18
+    
+    if (elements_rise + elements_fall) < max_elements
+        if pos == LEFT
+            start_pos = 1;
+        elseif pos == RIGHT    
+            start_pos = round(max_elements - (elements_rise + elements_fall));
+        else
+            start_pos = round((max_elements / 2) - elements_fall);
+        end
+    end
+
+    if start_pos < 1
+        start_pos = 1;
+    end
+
+    fprintf('Start: %f ERise: %f EFall: %f Take: %f Pos: %d\n', ...
+        start_pos, elements_rise, elements_fall, ...
+        takeaway_elements_rise, pos);
+    
+    curve_rising = 1;
+
+    for counter = start_pos:max_elements + 1
+        %fprintf('Start pos: %d Change: %f\n', start_pos, change);
+
+        if change > ref_voltage
+            change = ref_voltage;
+        end
+
+        if change >= 0
+            the_curve(counter) = change;
+        end
+
+        if counter < (elements_rise + start_pos)
+            curve_rising = 1;
+            change = change + change_interval_rise;
+        else
+            if curve_rising == 1
+                curve_rising = 0;
+                %change = change - change_interval_fall;
+            end
+
+            change = change - change_interval_fall;
+        end
+    end
+    
+    %createfigure('MuRF DAC Volt Curve');
+    stairs(the_curve, 'b');
+    hold on;
+    plot(the_curve, 'co-');
+    hold off;
+    buf = sprintf('MuRF volt curve for %d timer ticks and pot position %.2f', ...
+        max_elements, pot_pos);
+    enhancefigure(buf, 'Timer Ticks', 'Volt');
+    %axis tight;
+    ylim([-0.3 ref_voltage + 0.2]);
+    xlim([0 max_elements + 1]);
+    %xticks = get(gca, 'XTick');
+    
+    %if xticks(numel(xticks)) > max_elements
+    %    xticks(numel(xticks)) = max_elements;
+    %    set(gca, 'XTick', xticks);
+    %end
+    
+    %xlim([0 xticks(numel(xticks)) + 2]);
+    box off;
+    grid;
+
+function [rise_percent, fall_percent] = get_pot_pos_value(pot_pos)
+    start1 = 5;
+    start2 = 4.7;
+    dip1 = 1.7;
+    dip2 = 1.65;
+    inc_factor1 = 12;
+    inc_factor2 = 13.5;
+    max_pot_pos = 10;
+   
+    interval = (start1 - dip1) / (max_pot_pos / 2.0);
+    interval2 = (start2 - dip2) / (max_pot_pos / 2.0);
+    
+    if pot_pos <= 5
+        rise_percent = 1 - cos(start1 - (interval * pot_pos)) * 3.5;
+    else
+        rise_percent = 1 - cos(dip1 + (interval * pot_pos)) * 3.5;
+    end
+
+    if pot_pos <= 5 
+        fall_percent = 1 - cos(start2 - (interval2 * pot_pos)) * 3.5;
+    else
+        fall_percent = 1 - cos(dip2 + (interval2 * pot_pos)) * 3.5;
+    end
+
+    rise_percent = rise_percent * inc_factor1;
+    fall_percent = fall_percent * inc_factor2;
+    
+    if rise_percent < 0
+        rise_percent = 0;
+    end
+    
+    if fall_percent < 0
+        fall_percent = 0;
+    end
+    
+    fprintf('Rise: %f, Fall %f\n', rise_percent, fall_percent);
+
+% --- Executes on slider movement.
+function MaxElements_Callback(hObject, eventdata, handles)
+% hObject    handle to MaxElements (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+    do_sine = get(handles.ChkDoSineCurve, 'Value');
+ 
+    DoPlot(round(get(handles.MaxElements, 'Value')), ...
+        get(handles.PotPos, 'Value'), do_sine);
+    
+    buf = sprintf('Pot pos: %.2f Max elements: %d', ...
+        get(handles.PotPos, 'Value'), ...
+        round(get(handles.MaxElements, 'Value')));
+    
+    set(handles.PotPosition, 'String', buf);    
+    
+% --- Executes during object creation, after setting all properties.
+function MaxElements_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to MaxElements (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+% --- Executes on button press in ChkDoSineCurve.
+function ChkDoSineCurve_Callback(hObject, eventdata, handles)
+% hObject    handle to ChkDoSineCurve (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of ChkDoSineCurve
+    do_sine = get(handles.ChkDoSineCurve, 'Value');
+    %disp(do_sine);
+    
+    DoPlot(floor(get(handles.MaxElements, 'Value')), ...
+        get(handles.PotPos, 'Value'), do_sine);
+
+function [rise_percent_at_pot_pos, fall_percent_at_pot_pos] = ...
+    get_sine_value(pot_pos)
+%MURF_SINE_CALC Do a MuRF DAC volt curve for pot pos from 0 to 10
+
+    start_rise = 4.2; %3.8;
+    end_rise = -0.8; %-0.5;
+    %interval_rise = 0.001; %-0.085;
+    start_fall = 4.7; %4.6;
+    end_fall = -0.705; %-0.3568;
+    %interval_fall = 0.001; %-0.1;
+    inc_rise = 35;
+    inc_fall = 28;
+    max_pot_pos = 5; % 10/2, half of the curve!
+    max_pot_value = 10;
+    
+    if pot_pos > max_pot_value / 2.0
+        pot_pos = max_pot_value - pot_pos;
+    end
+   
+    % START CODE TO FIND PERCENT_RISE AND PERCENT_FALL
+    %elements_rise = abs((start_rise - end_rise) / interval_rise);
+    %elements_fall = abs((start_fall - end_fall) / interval_fall);
+    
+    %pot_pos_intervals_rise = abs(((elements_rise * pot_pos) / ...
+    %    max_pot_pos) * interval_rise);
+    %rise_percent_at_pot_pos = (sin(start_rise - ...
+    %    pot_pos_intervals_rise) + 1) * inc_rise;
+    %pot_pos_intervals_fall = abs(((elements_fall * pot_pos) / ...
+    %    max_pot_pos) * interval_fall);
+    %fall_percent_at_pot_pos = (sin(start_fall - ...
+    %    pot_pos_intervals_fall) + 1) * inc_fall;
+    % END CODE TO FIND PERCENT_RISE AND PERCENT_FALL
+
+    pot_pos_intervals_rise = ((start_rise + abs(end_rise)) * ...
+        pot_pos) / max_pot_pos;
+        
+    rise_percent_at_pot_pos = (sin(start_rise - ...
+        pot_pos_intervals_rise) + 1) * inc_rise;
+        
+    pot_pos_intervals_fall = ((start_fall + abs(end_fall)) * ...
+        pot_pos) / max_pot_pos;
+
+    fall_percent_at_pot_pos = (sin(start_fall - ...
+        pot_pos_intervals_fall) + 1) * inc_fall;
+
+    fprintf('Rise: %f, Fall %f\n', rise_percent_at_pot_pos, ...
+        fall_percent_at_pot_pos);

@@ -1,0 +1,84 @@
+/**
+ * PIC timer register settings
+ * Copyright (C) T. Bakkelokken & E. Stormer 2006-2011
+ */
+
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <delays.h>
+#include <math.h>
+
+#pragma config WDT = OFF
+#pragma config FOSC = HS // HSPLL
+#pragma config MCLRE = ON
+#pragma config DEBUG = OFF // Background debugger disabled, RB6 and RB7 configured as general purpose I/O pins
+#pragma config LVP = OFF
+#pragma config PBADEN = OFF
+#pragma config LPT1OSC = OFF // High power timer1 osc
+
+void rx_handler(void);
+
+#pragma code rx_interrupt = 0x08
+
+void rx_int(void)
+{
+	_asm
+		goto rx_handler
+	_endasm
+}
+
+#pragma code
+#pragma interrupt rx_handler
+
+void rx_handler(void)
+{
+	if (PIR2bits.TMR2IF)
+	{
+		PIR2bits.TMR1IF = 0;
+	}
+}
+
+#pragma code
+
+void main(void)
+{
+	TRISA = 0b00000000;
+	PORTA = 0;
+	TRISB = 0b00000000;
+	PORTB = 0;
+	TRISC = 0b00000000;
+	PORTC = 0;
+	TRISD = 0b00000000;
+	PORTD = 0;
+
+	CMCON = 0x7;			// Turn off voltage compare to enable digital I/O pins
+	ADCON1 = 0xF;			// Ensure PORTA/B all digital
+	ADCON0bits.ADON = 0;	// IMPORTANT: Bit 0 in ADCON0 (AD ON bit) must be cleared for digital in.
+	ADCON2 = 0;
+
+	T2CON = 0b00000000;
+	// Presaler settings
+	T2CONbits.T2CKPS0 = {prescaler_ps0};
+	T2CONbits.T2CKPS1 = {prescaler_ps1};
+	// Postscaler_settings
+	T2CONbits.T2OUTPS0 = {postscaler_ps0};
+	T2CONbits.T2OUTPS1 = {postscaler_ps1};
+	T2CONbits.T2OUTPS2 = {postscaler_ps2};
+	T2CONbits.T2OUTPS3 = {postscaler_ps3};
+
+	PR2 = {tmr_preload};	// Timer 2 preload
+	PIE1bits.TMR2IE = 1;
+	T2CONbits.TMR2ON = 1;
+	
+	INTCON2bits.RBPU = 1;	// PORTB pullup disabled
+
+	INTCONbits.GIE = 1;
+	INTCONbits.PEIE = 1;
+	
+	while (1)
+	{
+        Delay10TCYx(1);
+	} // END while(1)
+}
+

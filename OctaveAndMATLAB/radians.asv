@@ -1,0 +1,22 @@
+function radians()
+% display radians for clock minutes
+
+iX_Center = 50;
+iY_Center = 50;
+dAspectRatio = 1;
+iRadius = 30;
+
+hold on;
+
+for m = 1:60
+    dRadian = ((m * (360 / 60)) + 90) * (pi / 180.0);
+    iX1 = iX_Center - round(cos(dRadian));
+    iY1 = iY_Center - (sin(dRadian) * dAspectRatio);
+    iX2 = iX_Center - (cos(dRadian) * (iRadius - (iRadius / 6)));
+    iY2 = iY_Center - (sin(dRadian) * (iRadius - (iRadius / 6)) * dAspectRatio);
+
+    pos1 = [iY1, iX1];
+    pos2 = [iY2, iX2];
+    
+    line(pos2, pos1);
+end

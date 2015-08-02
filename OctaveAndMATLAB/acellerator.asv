@@ -1,0 +1,57 @@
+function [trig_signals] = accelerator()
+%ACCELERATOR Create an accelerating trigger signal curve
+    MAX_INTERVALS = 5;
+    VAL = 2; % NOTE: Minimum value = 2
+    MAX_STEPS = VAL * 16;
+    FIG_NAME = 'Accelerator';
+	MAX_VALUE = 1000;
+	counter = 1;
+    
+    trig_signals = zeros(1, MAX_VALUE - 4);
+    steps = [VAL, VAL * 2, VAL * 4, VAL * 8, VAL * 16];
+    step_values = [VAL * 32, VAL * 16, VAL * 8, VAL * 4, VAL * 2];
+    % step_colors = {'b', 'r', 'g', 'm', 'c'};
+    my_colors = [0.57, 0.85, 0.92; ...
+        0.67, 0.75, 0.85; ...
+        0.77, 0.85, 0.75; ...
+        0.87, 0.75, 0.65; ...
+        0.97, 0.85, 0.55];
+    
+	for maxcount = MAX_VALUE:-1:4
+        for p = 1:MAX_INTERVALS
+            if mod(maxcount - 1, (steps(p) / 2)) == 0 % Trig off
+                trig_signals(counter) = step_values(p) * -1;
+            end
+			
+            if mod(maxcount - 1, steps(p)) == 0 % Trig on
+                trig_signals(counter) = step_values(p);
+            end
+		end
+		
+		counter = counter + 1;
+	end
+
+    createfigure(FIG_NAME, false);
+    hold on;
+        
+    stairs(trig_signals);
+
+    hold off;
+    title(FIG_NAME, 'FontWeight', 'bold', 'FontSize', 11, ...
+        'Color', 'black')    
+
+    set(gca, 'FontSize', 8, 'FontWeight', 'normal');
+	grid off;
+    box off;
+
+	ylim([-((VAL * 32) + 2), (VAL * 32) + 2]);
+	xlim([0, MAX_STEPS + 1]);
+    ylabel('Triggers');
+    xlabel('Time');
+	
+    if MAX_STEPS <= 32 
+		set(gca, 'XTick', 1:MAX_STEPS);
+    end
+
+	%colormap(cm_old); % Restore default colormap
+end

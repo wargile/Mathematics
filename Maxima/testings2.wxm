@@ -1,0 +1,79 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 11.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+r:random(8);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+%;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r:random(8);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r:random(8);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r:random(8);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r:random(8);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r:random(8);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r:random(8);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+p:4$
+i:0$ for i:1 thru (p - 1) do
+(
+    if i >= 2 then print("BIG!", i),
+    if i = 3 then return(false),
+    print(i)
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r:makelist(0, k, 1, 8);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x:1$ m_max:8$ num:0$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+random_array(max) := block
+(    
+    while x <= m_max do
+    (
+        num: random(m_max) + 1,
+        print(num),
+        r[x]: num,
+        if num > 8 then return(false),
+        x: x + 1
+    )$
+    r
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

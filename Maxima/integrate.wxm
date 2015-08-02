@@ -1,0 +1,296 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 11.04.0 ] */
+
+/* [wxMaxima: comment start ]
+Just testing some calculus...
+First, clear x as a variable. (Use kill(x) to get rid of it)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+remvalue(x)$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(x^2*((5*(x^3) + 2)^4), x, 0, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+((2*x) + 2)^2, set u =  2x + 2, du = 2, dx = (1/2)du, u^2 * (1/2), u^3/3 * (1/2), u^3 / 6, (2x + 2)^3 / 6,
+(4/3)* (x + 1)^3, restricted values answer below
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(((2*x) + 2)^2, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate((x^3)*(((x^4) - 7)^4), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate((x^3)*(((3*x^4) - 7)^4), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate((x^5)*(((2*x^6) - 7)^6), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate((x^4)^2, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate((x + 3)^4, x, 0, 3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+NOTE: Output below is the alternate form of the answer (x + 3)^5 / 5 + C
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate((x + 3)^4, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(sqrt(x)/x, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+sqrt(x)/x, x^(1/2)/x, x^(-1/2), x^(1/2) / (1/2)
+Multiply by 2 in numerator and denominator to get rid of the denominator
+1/2 fraction: (x^(1/2)*2) / ((1/2) *2) = 2 * sqrt(x)
+See answer below, matches integrate above.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+(x^(1/2)*2) / ((1/2) * 2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(sqrt(x), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+sqrt(x), x^(1/2), x^(3/2) / (3/2)
+Multiply by 2 in numerator and denominator to get rid of the denominator
+3/2 fraction: (x^(3/2)*2) / ((3/2)*2) = (2 * x^(3/2)) / 3
+See answer below, matches integrate above.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+(x^(3/2)*2) / ((3/2)*2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+The two below are equal...
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+sqrt(x)/x^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ (sqrt(x) * sqrt(x))/(x^(2+(1/2)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+(3 - x)^10, u = (-x + 3), du = (-1)dx  OR  (-1)du = dx, u^10 * (-1)du, -1 integrate(u^10 du),
+-u^11/11 + C, (-(3 - x)^11)/11 + C  OR  (-1/11) * (3 - x)^11 + C      
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate((3 - x)^10, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+4*cos(3*x)
+Let u = 3*x, du = 3dx, (1/3)du = dx
+4*cos(u)*(1/3)du
+(4 * sin(u)) / 3
+(4 * sin(3 * x)) / 3 + C
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(4*cos(3*x), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+sqrt(7*x + 9)
+Let u = (7*x + 9), du = 7dx, (1/7)du = dx
+sqrt(u)*(1/7)du
+u^(1/2)*(1/7)du
+(1/7) * u^(3/2)/(3/2)
+(1/7)*(2/3)*(7*x + 9)^(3/2)
+(2/21)*(7*x + 9)^(3/2)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(sqrt(7*x + 9), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate((2 * x) + sqrt(7*x + 9), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+x + 4, (Remember that 4 is actually 4*x^0) x^2/2 + 4*x^1, x^2/2 + 4*x 
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(x + 4, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(x^2/2 + 4*x, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+x * 4, x^2/2 * 4, (4*x^2) / 2, 2*x^2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(x * 4, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+sqrt(4 * x) is the same as: 2*x^(1/2), (2*x^(3/2)) / (3/2), (2*x^(3/2)*(2/3))    
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(sqrt(x * 4), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(2*x^(3/2)*(2/3));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+set u = 3x, du = 3, dx = (1/3)du, sqrt(u) is the same as (u)^(1/2), (u)^(1/2) * (1/3)du,
+((u)^(3/2) / (3/2)) * (1/3),  (3*x)^(3/2) * (2/3) * (1/3)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(sqrt(x * 3), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(3*x)^(3/2) * (2/3) * (1/3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+sqrt(8 * x^2), sqrt(2 * 2 * 2 * x * x),  (2x)sqrt(2), set u = 2x, du = 2, dx = (1/2)u,
+((u)^2/2)*(1/2)*sqrt(2), ((2*abs(x))^2/2)*(1/2)*sqrt(2)
+NOTE: We're using abs(x), thus assuming that x is positive.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(sqrt(8*(x^2)), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(sqrt(8)*sqrt(x^2), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+((2*abs(x))^2/2)*(1/2)*sqrt(2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+2*x^5, factor out constant: 2 * integrate x^5, 2 * integrate x^6 / 6, 2*x^6 / 6 = x^6 / 3,
+(4^6 / 3) - (1^6 / 3) = 1365
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(2*x^5, x, 1, 4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(4^6 / 3) - (1^6 / 3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+3x + 5x = 8x, sqrt(2*2*2*x), factor out constants: 2 * sqrt(2) * integrate(sqrt(x)),
+integral of sqrt(x) = x^(3/2) / (3/2) = 2x^(3/2) / 3,
+add constants to get: (4/3) * sqrt(2) * x^(3/2)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(sqrt(3*x + 5*x), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(4/3) * sqrt(2) * x^(3/2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+6*x^3 + 5, integral of 6x^3 = (6 * x^4) / 4 = 3x^4 / 2, integral of 5 = 5x,
+answer is the sum of the two integrals: (3x^4 / 2) + (5x) + C
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(6*x^3 + 5, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+1/(-x + 2), set u = (-x + 2) and du = -1dx (or simply du = -dx), -1 * 1/u,
+integral of 1/u = log(u), substituting back we get: -1 * log(2 - x) = -log(2 - x) + C
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(1/(2-x), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([integrate(1/(2-x), x)], [x, -1, 1.99])$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Calculate volume (two symmetrical/opposite curves, the height of the curve being the radius):
+Get the radius (pi*r^2) from A to B for f(x) = sqrt(x)
+  |    __
+  |  /    \__
+  | /
+---------------
+  | \      __
+  |  \__/
+  |
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(pi*sqrt(x)^2, x, 0, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Product Rule:
+Derivative of [f(x)]^n = n * [f(x)]^n-1 * f'(x)
+diff((2x - 3)^10) = 10 * (2x - 3)^9 * 2 = 20 * (2x - 3)^9
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+diff((2*x - 3)^10, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Quotient rule: f'(x)*g(x) - g'(x)*f(x) / (g(x))^2
+(3 * (5*x + 4) - 5 * (3*x - 2)) / (5*x + 4)^2
+(15x + 12 - 15x + 10) / (5x + 4)*^2
+Answer: 22 / (5x + 4)^2 
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+diff((3*x - 2)/(5*x + 4), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Product rule: f'(x)*g(x) + g'(x)*f(x)
+3*(5*x + 4) + 5*(3*x - 2)
+15x + 12 + 15x - 10
+Answer: 30x + 2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+diff((3*x - 2)*(5*x + 4), x);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

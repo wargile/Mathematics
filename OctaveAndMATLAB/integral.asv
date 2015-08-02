@@ -1,0 +1,63 @@
+function [area, x_coords, y_coords] = integral(a, b, f)
+%INTEGRAL Just testing some manual integration...
+%
+%   The derivative = The slope (m). Which is dy/dx or df(x)/dx.
+%
+%   For instance: When x changes from 0 to 1, y changes from 0 to 3.
+%   Derivative = 3/1 = 3.
+%   For instance: When x changes from 0 to 2, y changes from 0 to 1.
+%   Derivative = 1/2 = 0.5.
+%
+%   A derivative is a measure of how much one thing changes compared
+%   to another. A derivative is A RATE.
+    
+    if nargin == 0
+        f = 'x * 2';
+        a = 0;
+        b = 10;
+    end
+    
+    %x = 1; %#ok<NASGU>
+    
+    %if eval(f) < 0
+    %    error 'Error in function. Function must return a positive value';
+    %end
+    
+    if nargin == 3 && (a >= b)
+        error 'Error in range parameters.'
+    end
+    
+    % Find area under curve between a and b
+    
+    fprintf('Working...');
+    %fflush(stdout); % Needed in Octave to update screen
+    
+    divisions = (b - a) / 10000; % split in tiny squares...
+    %increments = zeros(1, floor((b - a) / divisions));
+    y_coords = zeros(1, floor((b - a) / divisions));
+    x_coords = zeros(1, floor((b - a) / divisions));
+    
+    area = 0;
+    p = 1;
+    x = a; %#ok<NASGU>
+    x_coords(1) = a;
+    y_coords(1) = a + eval(f);
+    
+    for x = a:divisions:b
+        area = area + (divisions * (eval(f)));
+        %increments(p) = area;
+        if mod(p, 2000) == 0
+            fprintf('.');
+            %fflush(stdout); % Needed in Octave to update screen
+        end
+        if (p > 1)
+            x_coords(p) = x_coords(p - 1) + divisions;
+            y_coords(p) = y_coords(p - 1) + eval(f);
+        end
+        p = p + 1;
+    end
+    
+    plot(x_coords, y_coords);
+    grid;
+    fprintf('\nDone!\n');
+end

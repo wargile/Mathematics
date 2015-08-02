@@ -1,0 +1,576 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio" version="0.95"?>
+<regions>
+  <settings>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="true" printAreas="true" simpleEqualsOnly="false">
+      <paper id="9" orientation="Landscape" width="1169" height="827" />
+      <margins left="39" right="39" top="39" bottom="39" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+    </pageModel>
+    <dependences>
+      <assembly name="SMath Studio" version="0.95" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Text Region" version="1.8.4594.45" guid="485d28c5-349a-48b6-93be-12a35a1c1e39" />
+      <assembly name="Math Region" version="0.95" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+      <assembly name="Special Functions" version="1.9.4594.42" guid="2814e667-4e12-48b1-8d51-194e480eabc5" />
+      <assembly name="Picture Region" version="1.8.4594.35" guid="06b5df04-393e-4be7-9107-305196fcb861" />
+    </dependences>
+  </settings>
+  <region id="0" left="9" top="18" width="707" height="24" border="true" color="#000000" bgColor="#ffff80" fontSize="10">
+    <text lang="eng">
+      <p>En pølse med brød koster 25 kr. Pølsa koster 20 kr mer enn brødet. Hva koster brødet?</p>
+    </text>
+  </region>
+  <region id="1" left="9" top="54" width="536" height="24" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>PølseMedBrød = 25. Brød = x, Pølse = (x + 20). x + (x + 20) = 25 </p>
+    </text>
+  </region>
+  <region id="2" left="9" top="90" width="684" height="24" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>x + (x + 20) = 25. 2x + 20 = 25. 2x = 25 - 20. 2x = 5. x = 2,50. Brødet koster 2,50</p>
+    </text>
+  </region>
+  <region id="3" left="9" top="126" width="68" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">x</e>
+        <e type="operand">2.50</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="4" left="90" top="126" width="119" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">x</e>
+        <e type="operand">x</e>
+        <e type="operand">20</e>
+        <e type="operator" args="2">+</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">+</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">25</e>
+      </result>
+    </math>
+  </region>
+  <region id="5" left="9" top="351" width="463" height="358" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>Function to find duplicate values in a matrix, use below?</p>
+      </description>
+      <input>
+        <e type="operand">V</e>
+        <e type="operand">value</e>
+        <e type="function" args="2">findvals</e>
+        <e type="operand">pos</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">found</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="operand">V</e>
+        <e type="function" preserve="true" args="1">length</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operand">V</e>
+        <e type="operand">counter</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="operand">value</e>
+        <e type="operator" args="2">≡</e>
+        <e type="bracket">(</e>
+        <e type="operand">found</e>
+        <e type="operand">found</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">0</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">line</e>
+        <e type="function" preserve="true" args="3">for</e>
+        <e type="operand">found</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">&gt;</e>
+        <e type="bracket">(</e>
+        <e type="operand">foundresult</e>
+        <e type="operand">1</e>
+        <e type="operand">found</e>
+        <e type="function" preserve="true" args="2">matrix</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="operand">V</e>
+        <e type="function" preserve="true" args="1">length</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operand">V</e>
+        <e type="operand">counter</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="operand">value</e>
+        <e type="operator" args="2">≡</e>
+        <e type="bracket">(</e>
+        <e type="operand">foundresult</e>
+        <e type="operand">1</e>
+        <e type="operand">pos</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">counter</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">pos</e>
+        <e type="operand">pos</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="operand">0</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">line</e>
+        <e type="function" preserve="true" args="3">for</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="operand">foundresult</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="2">matrix</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">line</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="operand">foundresult</e>
+        <e type="operand">5</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="7">line</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="6" left="9" top="765" width="856" height="24" border="true" color="#000000" bgColor="#ffff80" fontSize="10">
+    <text lang="eng">
+      <p>(André Sainte-Laguë:) Formel for valgresultat og antall stoler på Stortinget: Valgresultat/(2*Stoler+1)</p>
+    </text>
+  </region>
+  <region id="7" left="0" top="792" width="1002" height="666" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">vr</e>
+        <e type="operand">max_stoler</e>
+        <e type="operand">metode</e>
+        <e type="operand">utregning</e>
+        <e type="function" args="4">finnstoler</e>
+        <e type="operand">stoler</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">stoler_parti</e>
+        <e type="operand">1</e>
+        <e type="operand">vr</e>
+        <e type="function" preserve="true" args="1">length</e>
+        <e type="function" preserve="true" args="2">matrix</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">resultat_parti</e>
+        <e type="operand">1</e>
+        <e type="operand">vr</e>
+        <e type="function" preserve="true" args="1">length</e>
+        <e type="function" preserve="true" args="2">matrix</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="operand">vr</e>
+        <e type="function" preserve="true" args="1">length</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operand">stoler_parti</e>
+        <e type="operand">1</e>
+        <e type="operand">counter</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">:</e>
+        <e type="function" preserve="true" args="3">for</e>
+        <e type="operand">stoler</e>
+        <e type="operand">max_stoler</e>
+        <e type="operator" args="2">&lt;</e>
+        <e type="bracket">(</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="operand">vr</e>
+        <e type="function" preserve="true" args="1">length</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operand">utregning</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">≡</e>
+        <e type="bracket">(</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">≡</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">&amp;</e>
+        <e type="operand">resultat_parti</e>
+        <e type="operand">1</e>
+        <e type="operand">counter</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">vr</e>
+        <e type="operand">counter</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="operand">1.4</e>
+        <e type="operand">stoler_parti</e>
+        <e type="operand">counter</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">resultat_parti</e>
+        <e type="operand">1</e>
+        <e type="operand">counter</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">vr</e>
+        <e type="operand">counter</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="operand">metode</e>
+        <e type="operand">stoler_parti</e>
+        <e type="operand">counter</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="function" preserve="true" args="3">for</e>
+        <e type="operand">maxres</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="operand">vr</e>
+        <e type="function" preserve="true" args="1">length</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operand">res</e>
+        <e type="operand">resultat_parti</e>
+        <e type="operand">1</e>
+        <e type="operand">counter</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">res</e>
+        <e type="operand">maxres</e>
+        <e type="operator" args="2">&gt;</e>
+        <e type="operand">pos</e>
+        <e type="operand">counter</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">maxres</e>
+        <e type="operand">res</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="operand">0</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="function" preserve="true" args="3">for</e>
+        <e type="operand">rs</e>
+        <e type="operand">resultat_parti</e>
+        <e type="operand">maxres</e>
+        <e type="function" args="2">findvals</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">rs</e>
+        <e type="function" preserve="true" args="1">length</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">&gt;</e>
+        <e type="operand">stoler_parti</e>
+        <e type="operand">1</e>
+        <e type="operand">rs</e>
+        <e type="operand">rs</e>
+        <e type="function" preserve="true" args="1">length</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="function" preserve="true" args="1">eval</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">stoler_parti</e>
+        <e type="operand">1</e>
+        <e type="operand">rs</e>
+        <e type="operand">rs</e>
+        <e type="function" preserve="true" args="1">length</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="function" preserve="true" args="1">eval</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">stoler_parti</e>
+        <e type="operand">1</e>
+        <e type="operand">pos</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">stoler_parti</e>
+        <e type="operand">1</e>
+        <e type="operand">pos</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="operand">0</e>
+        <e type="operand">0</e>
+        <e type="operand">resultat_parti</e>
+        <e type="function" preserve="true" args="1">trace</e>
+        <e type="operand">rs</e>
+        <e type="function" preserve="true" args="1">length</e>
+        <e type="function" preserve="true" args="1">trace</e>
+        <e type="operand">stoler</e>
+        <e type="operand">stoler</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">10</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="12">line</e>
+        <e type="function" preserve="true" args="2">while</e>
+        <e type="operand">stoler_parti</e>
+        <e type="operand">6</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="8">line</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="8" left="18" top="1503" width="159" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">d_Hondts_metode</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="9" left="198" top="1503" width="167" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">St_Lagues_metode</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="10" left="405" top="1503" width="159" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">norsk_utregning</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="11" left="585" top="1503" width="183" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">standard_utregning</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="12" left="18" top="1548" width="377" height="25" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>Data fra http://no.wikipedia.org/wiki/Sainte-Laguës_metode</p>
+      </description>
+      <input>
+        <e type="operand">valgresultater</e>
+        <e type="operand">340000</e>
+        <e type="operand">280000</e>
+        <e type="operand">160000</e>
+        <e type="operand">60000</e>
+        <e type="operand">15000</e>
+        <e type="operand">1</e>
+        <e type="operand">5</e>
+        <e type="function" preserve="true" args="7">mat</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="13" left="18" top="1602" width="663" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">valgresultater</e>
+        <e type="operand">7</e>
+        <e type="operand">St_Lagues_metode</e>
+        <e type="operand">standard_utregning</e>
+        <e type="function" args="4">finnstoler</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">3</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">5</e>
+        <e type="function" preserve="true" args="7">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="14" left="18" top="1629" width="597" height="25" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">valgresultater</e>
+        <e type="operand">7</e>
+        <e type="operand">d_Hondts_metode</e>
+        <e type="operand">standard_utregning</e>
+        <e type="function" args="4">finnstoler</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">3</e>
+        <e type="operand">3</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">5</e>
+        <e type="function" preserve="true" args="7">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="15" left="18" top="1683" width="287" height="25" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>Data brukt i "Siffer" programmet</p>
+      </description>
+      <input>
+        <e type="operand">valgresultater</e>
+        <e type="operand">525000</e>
+        <e type="operand">245000</e>
+        <e type="operand">100000</e>
+        <e type="operand">1</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="5">mat</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="16" left="18" top="1737" width="574" height="25" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">valgresultater</e>
+        <e type="operand">6</e>
+        <e type="operand">St_Lagues_metode</e>
+        <e type="operand">standard_utregning</e>
+        <e type="function" args="4">finnstoler</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">3</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="5">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="17" left="18" top="1773" width="552" height="25" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">valgresultater</e>
+        <e type="operand">6</e>
+        <e type="operand">St_Lagues_metode</e>
+        <e type="operand">norsk_utregning</e>
+        <e type="function" args="4">finnstoler</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">4</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="5">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="18" left="18" top="1800" width="904" height="24" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>&lt; Skulle vært 4,2,0. To partier har likt antall underveis, da får det partiet som ikke fikk sete sist, setet.</p>
+    </text>
+  </region>
+  <region id="19" left="18" top="1854" width="597" height="24" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Se på: Spillteori/game theory: http://en.wikipedia.org/wiki/Game_theory</p>
+    </text>
+  </region>
+  <region id="20" left="18" top="1908" width="840" height="24" border="true" color="#000000" bgColor="#ffff80" fontSize="10">
+    <text lang="eng">
+      <p>I en bygd har 85% TV, 75% har radio, 70% har både radio og TV. Hvor mange har hverken radio eller TV?</p>
+    </text>
+  </region>
+  <region id="21" left="18" top="1935" width="146" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">BareRadio</e>
+        <e type="operand">75</e>
+        <e type="operand">70</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="22" left="189" top="1935" width="121" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">BareTV</e>
+        <e type="operand">85</e>
+        <e type="operand">70</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="23" left="342" top="1935" width="125" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">BeggeDeler</e>
+        <e type="operand">70</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="24" left="504" top="1935" width="453" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">HverkenRadioEllerTV</e>
+        <e type="operand">100</e>
+        <e type="operand">BeggeDeler</e>
+        <e type="operator" args="2">-</e>
+        <e type="operand">BareTV</e>
+        <e type="operator" args="2">-</e>
+        <e type="operand">BareRadio</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="25" left="504" top="1962" width="210" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">HverkenRadioEllerTV</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">10</e>
+      </result>
+    </math>
+  </region>
+  <region id="26" left="27" top="1998" width="418" height="167" border="true" color="#000000" bgColor="#ffffff">
+    <picture readOnly="false">
+      <raw format="png" encoding="base64">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</raw>
+    </picture>
+  </region>
+</regions>

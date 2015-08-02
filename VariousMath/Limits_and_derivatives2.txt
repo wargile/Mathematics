@@ -1,0 +1,103 @@
+Derivative:
+-----------
+f'(x0) = limit as delta x -> 0 (= m, slope)
+
+Formula:
+
+f(x0+delta x) - f(x0)
+---------------------
+       delta x
+
+(Always need some cancellation in the fraction, because x0 = 0 (as delta x -> 0) gives 0/0)
+
+Example:
+--------
+f(x) = 1/x
+
+delta f / delta x = 
+((1 / (x0 + delta x)) - (1 / x0)) / delta x
+This is called the difference quotient
+
+Put it over a common denominator:
+(1 / delta x) * (((x0 - (x0 + delta x)) / ((x0 * delta x) * x0)) = 
+(1 / delta x) * (- delta x / ((x0 + delta x) * x0)) = 
+-1 / ((x0 + delta x) * x0) =
+as delta x approaches xero, we get the answer:
+-1 / x0^2
+The derivative of 1/x is -1/x^2
+===============================
+
+delta y / delta x = the average rate of change
+dy / dx = the instantaneous rate of change (at a specific point)
+
+Physics example: q = charge, dq/dt = current (t = time)
+Physics example: s = distance, ds/dt = speed (t = time)
+
+Drop a pumpkin from top of a building 80 meters high:
+-----------------------------------------------------
+height (h) = 80 meters
+Acceleration due to gravity:
+h = 80 - 5t^2
+t = 0, h = 80; t = 4, h = 0
+Average speed: delta h / delta t = (0 - 80) / (4 - 0) = - 20m/sec.
+Instantaneous speed: d/dt h = 0 - 10t (d/dt 80 = 0, d/dt 5t^2 = 10t)
+Moment of impact: t = 4, d/dt h = -40m/sec. (because: d/dt h = 0 - 10t)
+
+Derivatives used for GPS tracking, landing airplanes, etc.
+----------------------------------------------------------
+
+Definition of a continuous function:
+------------------------------------
+f is continuous at x0 IF lim f(x) as x->x0 = f(x0)
+(both left and right limit, and limits must be equal)
+
+Jump discontinuity:
+---------------------
+Limits from left and right exists, but are NOT equal.
+For instance this pair:
+curve right: y = x+1 when x > 0
+curve left: y = -x+2 when x < 0
+lim right: 1, lim left: 2
+
+------------------------------------------------------------------------------------------------------------
+
+Derivative formulas:
+
+-Specific: x^n, 1/x etc.
+-General: (u+v)' = u'+v', (cu)' = cu' (c is constant)
+Need both kinds for polynomials.
+
+Trig functions, specific formulas:
+d/dx sin(x) and d/dx cos(x)
+
+(sin(x + deltax) - sin x) / deltax =
+(RULE: sin(a + b) = sin a cos b + cos a sin b)
+((sin x cos deltax) + (cos x sin deltax) - sin x) / delta x
+Factor out sin x (NOTE: -sin x becomes -1 when factoring out sin x !!):
+(sin x (cos deltax - 1 / deltax)) + (cos x (sin deltax / deltax))
+As deltax goes to zero: 1st term: sin(0) = 0, 2nd term: cos(0) = 1
+WHY? Because (cos(0)-1)/0 = (1-1)/0 = 0/0 and sin(0) = 0, and sin(0)/0 = 0/0 and cos(0) = 1
+So: First term result is zero, so it cancels, and we are left with: cos x as deltax->0
+Answer: The derivative of sin(x) is cos(x)
+------------------------------------------
+
+((cos x + deltax) - cos x) / delta x
+(RULE: cos(a + b) = cos a cos b - sin a sin b)
+((cos x cos deltax - sinx sin deltax) - cos x) / deltax = 
+Factor out cos x:
+(cos x (cos deltax - 1 / delta x)) + ((-sin x) (sin deltax / deltax))
+As deltax goes to zero: 1st term: cos(0) = 0, 2nd term: -sin(0)
+So: First term result is zero, so it cancels, and we are left with: -sin x as deltax->0
+Answer: The derivative of cos(x) is -sin(x)
+-------------------------------------------
+
+Remarks:
+
+If you take the rate of change of cos x at x = 0 (d/dx cos x at x = 0) = lim x->0 =
+cos deltax - cos x = cos(0) - 1  = 1 - 1 / cos(0) = 0
+If you take the rate of change of sin x at x = 0 (d/dx sin x at x = 0) = lim x->0 =
+sin deltax - sin x = sin(0.0000001) - 0 / sin(0.0000001) = 1
+NOTE: It's the limit x->0, so it's NOT 0, it's 0.0000001, for instance, and sin(0.0000001) / 0.00000001 = 1!
+ 
+The derivative of sine and cosine at x=0 give ALL values of d/dx sinx and d/dx cosx
+

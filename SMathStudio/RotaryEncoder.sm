@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio" version="0.95"?>
+<regions>
+  <settings>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="true" printAreas="true" simpleEqualsOnly="false">
+      <paper id="9" orientation="Portrait" width="827" height="1169" />
+      <margins left="39" right="39" top="39" bottom="39" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+    </pageModel>
+    <dependences>
+      <assembly name="SMath Studio" version="0.95" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Text Region" version="1.8.4594.45" guid="485d28c5-349a-48b6-93be-12a35a1c1e39" />
+      <assembly name="Math Region" version="0.95" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+      <assembly name="Special Functions" version="1.9.4594.42" guid="2814e667-4e12-48b1-8d51-194e480eabc5" />
+      <assembly name="Plot Region" version="1.7.4594.38" guid="c451c2b5-798b-4f08-b9ec-b90963d1ddaa" />
+    </dependences>
+  </settings>
+  <region id="0" left="9" top="9" width="258" height="24" border="true" color="#000000" bgColor="#ffff80" fontSize="10">
+    <text lang="eng">
+      <p>Find rotary encoder resolution</p>
+    </text>
+  </region>
+  <region id="1" left="9" top="45" width="167" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">tmr16_overflow</e>
+        <e type="operand">160</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="2" left="189" top="45" width="109" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">prescaler</e>
+        <e type="operand">4</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="3" left="315" top="45" width="76" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">f_osc</e>
+        <e type="operand">8</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="4" left="414" top="45" width="151" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">res_standard</e>
+        <e type="operand">160</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="5" left="594" top="45" width="93" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="6" left="9" top="72" width="186" height="43" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">t_osc</e>
+        <e type="operand">f_osc</e>
+        <e type="operand">4</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+        <e type="bracket">(</e>
+        <e type="operand">1000000</e>
+        <e type="operator" args="2">*</e>
+      </input>
+    </math>
+  </region>
+  <region id="7" left="9" top="117" width="350" height="45" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">log_curve</e>
+        <e type="operand">tmr16_overflow</e>
+        <e type="operand">4</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="2">matrix</e>
+        <e type="function" preserve="true" args="1">eval</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="8" left="9" top="162" width="350" height="45" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">lin_curve</e>
+        <e type="operand">tmr16_overflow</e>
+        <e type="operand">4</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="2">matrix</e>
+        <e type="function" preserve="true" args="1">eval</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="9" left="9" top="225" width="578" height="222" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">n</e>
+        <e type="operand">tmr16_overflow</e>
+        <e type="operator" args="2">&lt;</e>
+        <e type="operand">n</e>
+        <e type="operand">n</e>
+        <e type="operand">4</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">log_curve</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">p</e>
+        <e type="operand">tmr16_overflow</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">-</e>
+        <e type="operand">10</e>
+        <e type="function" preserve="true" args="2">log</e>
+        <e type="function" preserve="true" args="1">eval</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">log_curve</e>
+        <e type="operand">counter</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">res_standard</e>
+        <e type="operand">res_standard</e>
+        <e type="operand">p</e>
+        <e type="operator" args="2">/</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">-</e>
+        <e type="operand">0</e>
+        <e type="function" preserve="true" args="2">round</e>
+        <e type="operand">72</e>
+        <e type="operator" args="2">+</e>
+        <e type="function" preserve="true" args="1">eval</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">lin_curve</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">lin_curve</e>
+        <e type="operand">counter</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">res_standard</e>
+        <e type="operand">tmr16_overflow</e>
+        <e type="operand">tmr16_overflow</e>
+        <e type="operand">n</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">/</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">0</e>
+        <e type="function" preserve="true" args="2">round</e>
+        <e type="function" preserve="true" args="1">eval</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">counter</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">6</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="8">line</e>
+        <e type="function" preserve="true" args="4">for</e>
+      </input>
+    </math>
+  </region>
+  <region id="10" left="9" top="468" width="374" height="221" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="0.080545095283986" scale_y="0.72171" scale_z="0.0581302007174056" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-143" transpose_y="-50" transpose_z="0">
+      <input>
+        <e type="operand">log_curve</e>
+        <e type="operand">lin_curve</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">sys</e>
+      </input>
+    </plot>
+  </region>
+  <region id="11" left="396" top="468" width="330" height="221" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="2.65929121529967" scale_y="1" scale_z="2.65929121529967" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-131" transpose_y="-16" transpose_z="0">
+      <input>
+        <e type="operand">x</e>
+        <e type="operand">10</e>
+        <e type="function" preserve="true" args="2">log</e>
+        <e type="operand">x</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="2">log</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">sys</e>
+      </input>
+    </plot>
+  </region>
+</regions>

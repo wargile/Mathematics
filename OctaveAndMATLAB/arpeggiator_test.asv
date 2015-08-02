@@ -1,0 +1,145 @@
+function [scale, note_name] = ...
+    chord_generator(chord_number, transposed, direction, bars)
+%CHORD_GENERATOR Creates chords/arpeggiator patterns
+%
+%   CHORD_GENERATOR([note_number],[transposed],[direction],[bars])
+%
+%   Example:
+%     CHORD_GENERATOR(8, 4, 1, 2)
+%
+%   Returns:
+%     scale: Note values
+%     note_name: Note names
+%
+%   See also: ARPEGGIATOR, ARPEGGIATOR_TEST
+
+%   Copyright (C) T. Bakkelokken 2011
+%   http://www.8notes.com/piano_chord_chart/Em9.asp
+%
+%   TODO: Direction modes (FWD, REV, PND, RND)
+%         Beats pr. measure (3/4, 4/4, etc.)
+
+    FIGURE_NAME = 'Chord Generator';
+    SEMI_TONES = 12;
+    FWD = 1; REV = 2; PND = 3; RND = 4;
+    
+    if nargin == 0
+        chord_number = 1;
+        transposed = 0;
+        direction = FWD;
+    end
+
+    if nargin == 1
+        transposed = 0;
+        direction = FWD;
+    end
+
+    if nargin == 2
+        direction = FWD;
+    end
+    
+    if transposed > SEMI_TONES - 1 || transposed < 0
+        error 'Valid transpose values are 0 to 11.'
+    end
+    
+    chord_notes = ...
+    [
+        bin2dec('000010010001'), ...        % 1:  major
+        bin2dec('001010010001'), ...        % 2:  major6
+        bin2dec('000010001001'), ...        % 3:  m
+        bin2dec('010010010001'), ...        % 4:  7
+        bin2dec('100010010010001'), ...     % 5:  9
+        bin2dec('001010001001'), ...        % 6:  m6
+        bin2dec('010010001001'), ...        % 7:  m7
+        bin2dec('100010010001001'), ...     % 8:  m9
+        bin2dec('1000100010010001001'), ... % 9:  m11
+        bin2dec('001001001001'), ...        % 10: dim7
+        bin2dec('100010010001'), ...        % 11: maj7
+        bin2dec('000010100001'), ...        % 12: sus4
+        bin2dec('010010100001'), ...        % 13: 7sus4
+        bin2dec('000010000101'), ...        % 14: sus2
+        bin2dec('000100010001') ...         % 15: aug5
+    ];
+
+    MAX_CHORDS = numel(chord_notes);
+
+    if chord_number > MAX_CHORDS
+        error (['Max chord number is ', num2str(MAX_CHORDS), '.']);
+    end
+
+    chord_names = {'', '6', 'm', '7', '9', 'm6', 'm7', ...
+        'm9', 'm11', 'dim7', 'maj7', 'sus4', '7sus4', 'sus2', 'aug5' };
+
+    chord_lengths = [12 12 12 12 15 12 12 15 19 12 12 12 12 12 12];
+
+    noteletters = { 'C', 'Db', 'D', 'Eb', 'E', 'F', ...
+        'Gb', 'G', 'Ab', 'A', 'Bb', 'B' };
+		
+    % Init the xlabels
+    for counter = 1:numel(note_name)
+        note_name{counter} = '.';
+    end
+
+    % Find number of notes in the chord
+    notes_in_chord = 0;
+    
+    for counter = 1:chord_lengths(chord_number)
+        if bitget(chord_notes(chord_number), counter) == 1
+            notes_in_chord = notes_in_chord + 1;
+        end
+    end
+
+    p = 1;
+    note_found = 0;
+    notes_in_bar = 4;
+
+    len = notes_in_bar * bars;
+    scale = zeros(1, len);
+    note_name = cell(1, len);
+		counter2 
+
+    for counter = 1:100
+        if bitget(chord_notes(chord_number), mod((p - 1), ...
+            chord_lengths(chord_number)) + 1) == 1
+            note_found = note_found + 1;
+            
+            %if note_found > (notes_in_bar * bars)
+            %    break;
+            %end
+            
+            scale(counter2) = mod((counter - 1 + transposed), ...
+                SEMI_TONES) + 1;
+            octave_no = floor((SEMI_TONES + counter + ...
+                transposed - 1) / SEMI_TONES);             
+            note_name{counter2} = [noteletters{mod((counter - 1 + ...
+                transposed), SEMI_TONES) + 1}, num2str(octave_no)];
+						counter2 = counter2 + 1;
+        end
+
+        if p == chord_lengths(chord_number)
+            p = (chord_lengths(chord_number) - SEMI_TONES) + 1;
+        else
+            p = p + 1;
+        end
+    end
+
+    createfigure(FIGURE_NAME);
+    h = bar(scale);
+    set(h, 'FaceColor', [0.46 0.67 0.88]);
+    set(h, 'EdgeColor', 'blue');    
+    set(gca, 'XTick', 1:len);
+    set(gca, 'YTick', 1:SEMI_TONES);
+    set(gca, 'XTickLabel', note_name);
+    set(gca, 'YGrid', 'on');
+    xlim([0, len + 1]);
+    ylim([0, SEMI_TONES]);
+    box off;
+	
+    the_title = strcat(FIGURE_NAME, ' [', ...
+        noteletters{transposed + 1}, ...
+        chord_names{chord_number}, ' chord]');
+
+    enhancefigure(the_title, strcat( ...
+        noteletters{transposed + 1}, chord_names{chord_number}, ...
+        ' chord'), 'Note number');
+end

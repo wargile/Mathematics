@@ -1,0 +1,217 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      7280,        208]
+NotebookOptionsPosition[      6735,        184]
+NotebookOutlinePosition[      7084,        199]
+CellTagsIndexPosition[      7041,        196]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"myData", "=", 
+  RowBox[{
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "\"\<C:/coding/R/TestData/Poverty_PISAscore_by_Country2.csv\>\"", ",", 
+     " ", "\"\<Table\>\"", ",", " ", 
+     RowBox[{"\"\<FieldSeparators\>\"", "\[Rule]", "\"\<;\>\""}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\"\<HeaderLines\>\"", "\[Rule]", " ", "1"}]}], " ", "]"}], "  ",
+    "//", " ", "Grid"}]}]], "Input",
+ CellChangeTimes->{{3.5879949852759814`*^9, 3.5879950056311455`*^9}, 
+   3.587995054324931*^9, {3.587995303725196*^9, 3.587995316685937*^9}, {
+   3.5879953706600237`*^9, 3.587995376667368*^9}, 3.5879954267332315`*^9, {
+   3.5879954920599675`*^9, 3.587995549610259*^9}, {3.6064655390489883`*^9, 
+   3.6064655672246003`*^9}, {3.6064656702794943`*^9, 
+   3.6064656871824617`*^9}, {3.6064660409406953`*^9, 
+   3.6064660743636065`*^9}, {3.6064662776032314`*^9, 3.6064662872027807`*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"Denmark\"\>", "2.4`", "495"},
+    {"\<\"Finland\"\>", "3.4`", "536"},
+    {"\<\"Norway\"\>", "3.6`", "503"},
+    {"\<\"Belgium\"\>", "6.7`", "506"},
+    {"\<\"Switzerland\"\>", "6.8`", "501"},
+    {"\<\"Czech Republic\"\>", "7.2`", "478"},
+    {"\<\"France\"\>", "7.3`", "496"},
+    {"\<\"Netherlands\"\>", "9.`", "508"},
+    {"\<\"Germany\"\>", "10.9`", "497"},
+    {"\<\"Australia\"\>", "11.6`", "515"},
+    {"\<\"Greece\"\>", "12.4`", "483"},
+    {"\<\"Hungary\"\>", "13.1`", "494"},
+    {"\<\"Austria\"\>", "13.3`", "471"},
+    {"\<\"Canada\"\>", "13.6`", "524"},
+    {"\<\"Japan\"\>", "14.3`", "520"},
+    {"\<\"Poland\"\>", "14.5`", "500"},
+    {"\<\"Portugal\"\>", "15.6`", "489"},
+    {"\<\"Ireland\"\>", "15.7`", "496"},
+    {"\<\"Italy\"\>", "15.7`", "486"},
+    {"\<\"United Kingdom\"\>", "16.2`", "494"},
+    {"\<\"New Zealand\"\>", "16.3`", "521"},
+    {"\<\"United States\"\>", "21.7`", "500"}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{
+  3.5879950584121647`*^9, 3.587995317701995*^9, 3.5879953772914033`*^9, 
+   3.587995427696286*^9, {3.5879954951971474`*^9, 3.587995550358302*^9}, 
+   3.6064651912800975`*^9, {3.606465554413868*^9, 3.6064655687666883`*^9}, {
+   3.606465674022709*^9, 3.606465687943505*^9}, {3.6064660437948585`*^9, 
+   3.6064660750096436`*^9}, {3.6064662821284904`*^9, 3.606466288003826*^9}, 
+   3.6137920187372713`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Insert", "[", 
+  RowBox[{"myData", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Background", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"None", ",", 
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{"White", ",", 
+           RowBox[{"Lighter", "[", 
+            RowBox[{
+             RowBox[{"Blend", "[", 
+              RowBox[{"{", 
+               RowBox[{"Blue", ",", "Green"}], "}"}], "]"}], ",", "0.8`"}], 
+            "]"}]}], "}"}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"Dividers", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"{", 
+        RowBox[{"Gray", ",", 
+         RowBox[{"{", "LightGray", "}"}], ",", "Gray"}], "}"}], "}"}]}], ",", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"Spacings", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", 
+        RowBox[{"{", 
+         RowBox[{"2", ",", 
+          RowBox[{"{", "0.7`", "}"}], ",", "2"}], "}"}]}], "}"}]}]}], "}"}], 
+   ",", "2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6064653382415032`*^9, 3.6064653733365107`*^9}},
+ NumberMarks->False],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"Denmark\"\>", "2.4`", "495"},
+    {"\<\"Finland\"\>", "3.4`", "536"},
+    {"\<\"Norway\"\>", "3.6`", "503"},
+    {"\<\"Belgium\"\>", "6.7`", "506"},
+    {"\<\"Switzerland\"\>", "6.8`", "501"},
+    {"\<\"Czech Republic\"\>", "7.2`", "478"},
+    {"\<\"France\"\>", "7.3`", "496"},
+    {"\<\"Netherlands\"\>", "9.`", "508"},
+    {"\<\"Germany\"\>", "10.9`", "497"},
+    {"\<\"Australia\"\>", "11.6`", "515"},
+    {"\<\"Greece\"\>", "12.4`", "483"},
+    {"\<\"Hungary\"\>", "13.1`", "494"},
+    {"\<\"Austria\"\>", "13.3`", "471"},
+    {"\<\"Canada\"\>", "13.6`", "524"},
+    {"\<\"Japan\"\>", "14.3`", "520"},
+    {"\<\"Poland\"\>", "14.5`", "500"},
+    {"\<\"Portugal\"\>", "15.6`", "489"},
+    {"\<\"Ireland\"\>", "15.7`", "496"},
+    {"\<\"Italy\"\>", "15.7`", "486"},
+    {"\<\"United Kingdom\"\>", "16.2`", "494"},
+    {"\<\"New Zealand\"\>", "16.3`", "521"},
+    {"\<\"United States\"\>", "21.7`", "500"}
+   },
+   AutoDelete->False,
+   GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {{
+        GrayLevel[1], 
+        RGBColor[0.8, 0.9, 0.9]}}},
+   GridBoxDividers->{"Columns" -> {
+       GrayLevel[0.5], {
+        GrayLevel[0.85]}, 
+       GrayLevel[0.5]}},
+   GridBoxFrame->{"ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> True}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+   GridBoxSpacings->{"Columns" -> {{2}}, "Rows" -> {2, {0.7}, 2}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{{3.606465318723387*^9, 3.60646537472659*^9}, 
+   3.606465558618108*^9, {3.6064656774339037`*^9, 3.606465690889673*^9}, 
+   3.613792018819276*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"myData", "[", 
+  RowBox[{"[", 
+   RowBox[{"All", ",", " ", 
+    RowBox[{"Range", "[", 
+     RowBox[{"1", ",", "4"}], "]"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.606465936431718*^9, 3.6064659675884995`*^9}, {
+  3.606466120307235*^9, 3.606466130506818*^9}, {3.6137919551556344`*^9, 
+  3.613792055857394*^9}, {3.613792172729079*^9, 3.613792243609133*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"Denmark\"\>", "2.4`", "495"},
+    {"\<\"Finland\"\>", "3.4`", "536"},
+    {"\<\"Norway\"\>", "3.6`", "503"},
+    {"\<\"Belgium\"\>", "6.7`", "506"}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{
+  3.6064659691575894`*^9, 3.6064660487441416`*^9, 3.6064660789338684`*^9, {
+   3.606466122639368*^9, 3.6064661312318597`*^9}, {3.613791976269842*^9, 
+   3.6137920564024253`*^9}, {3.613792176489294*^9, 3.61379221208033*^9}, 
+   3.6137922447852*^9}]
+}, Open  ]]
+},
+WindowSize->{1071, 1060},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (January 25, 2013)",
+StyleDefinitions->"TerjeDefault.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 902, 17, 48, "Input"],
+Cell[1484, 41, 1498, 34, 350, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3019, 80, 1080, 31, 48, "Input"],
+Cell[4102, 113, 1607, 39, 439, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5746, 157, 387, 8, 29, "Input"],
+Cell[6136, 167, 583, 14, 74, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

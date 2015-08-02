@@ -1,0 +1,158 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5765,        149]
+NotebookOptionsPosition[      5448,        133]
+NotebookOutlinePosition[      5792,        148]
+CellTagsIndexPosition[      5749,        145]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"myvar", " ", "=", "  ", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", " ", "0"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"cresetvalue", " ", "=", "0"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TestStuff", "[", "dd_", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"myvar", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], " ", "+=", " ", 
+       RowBox[{"dd", " ", "*", " ", "2"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"myvar", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], " ", "+=", " ", 
+       RowBox[{"dd", " ", "*", " ", "10"}]}], ";", "\[IndentingNewLine]", 
+      "myvar"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"mresult", " ", "=", " ", 
+  RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"If", " ", "[", 
+       RowBox[{
+        RowBox[{"cc", " ", "\[Equal]", " ", "cresetvalue"}], ",", " ", 
+        RowBox[{"myvar", " ", "=", " ", 
+         RowBox[{"TestStuff", "[", "1", "]"}]}], ",", " ", 
+        RowBox[{"myvar", " ", "=", " ", 
+         RowBox[{"TestStuff", "[", "2", "]"}]}]}], "]"}], ";", 
+      "\[IndentingNewLine]", "myvar"}], "\[IndentingNewLine]", "}"}], ",", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"cc", ",", " ", "cresetvalue", ",", " ", "\"\<C\>\""}], "}"}], 
+      ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"1", "->", "\"\<note on\>\""}], ",", " ", 
+        RowBox[{"0", "->", "\"\<note off\>\""}]}], "}"}], ",", "  ", 
+      "Setter"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"TrackedSymbols", "\[RuleDelayed]", "Manipulate"}], ",", " ", 
+    RowBox[{"SaveDefinitions", "\[Rule]", "False"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Initialization", "\[RuleDelayed]", 
+     RowBox[{"{", 
+      RowBox[{"myvar", " ", "=", " ", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", " ", "0"}], "}"}]}], "}"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.523780246354343*^9, 3.523780405718458*^9}, {
+  3.523780439638398*^9, 3.5237804778615847`*^9}, {3.5237805079663067`*^9, 
+  3.5237805463655024`*^9}, {3.5237819020290422`*^9, 3.5237820488124375`*^9}, {
+  3.523784409690472*^9, 3.523784509276168*^9}, {3.523786453144351*^9, 
+  3.5237864781747828`*^9}, {3.523787686598901*^9, 3.5237876891820483`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`cc$$ = 0, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`cc$$], 0, "C"}, {1 -> "note on", 0 -> "note off"}}}, 
+    Typeset`size$$ = {74., {2., 8.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`cc$124713$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`cc$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`cc$$, $CellContext`cc$124713$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> {
+       If[$CellContext`cc$$ == $CellContext`cresetvalue, $CellContext`myvar = \
+$CellContext`TestStuff[1], $CellContext`myvar = $CellContext`TestStuff[
+           2]]; $CellContext`myvar}, 
+      "Specifications" :> {{{$CellContext`cc$$, 0, "C"}, {
+         1 -> "note on", 0 -> "note off"}, ControlType -> Setter}}, 
+      "Options" :> {TrackedSymbols :> Manipulate}, "DefaultOptions" :> {}],
+     ImageSizeCache->{141., {49., 54.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`myvar = {0, 0}}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.5237803731595955`*^9, {3.5237804148579807`*^9, 3.5237804789846487`*^9}, {
+   3.5237805165027943`*^9, 3.5237805501267176`*^9}, {3.523781968044818*^9, 
+   3.523782049573481*^9}, {3.523784482360629*^9, 3.5237845098592014`*^9}, 
+   3.523786478975828*^9, 3.5237866179467773`*^9, 3.5237876903561153`*^9, 
+   3.552360010592704*^9}]
+}, Open  ]]
+},
+WindowSize->{607, 867},
+WindowMargins->{{266, Automatic}, {Automatic, 65}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 2652, 63, 432, "Input"],
+Cell[3234, 87, 2198, 43, 120, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,124 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 11.04.0 ] */
+
+/* [wxMaxima: comment start ]
+Just testing some Calculus stuff...
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Integral notation: Why is it as it is?
+
+Integrate f(x) dx |0 3 = "The sum of f(x)*dx between 0 and 3"
+
+"f(x)" is the y-intercept (height, y-axis).
+"dx" is "Delta x", that is, the infitesimal (small) difference between
+a point a and b on the x-axis.
+
+So it is actually the sum of all the infitesimally small rectangles (height * width)
+(between A and B, if a definite integral)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate((x^2)*((5*(x^3) + 2)^4), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(x^2*((5*(x^3) + 2)^4), x, 0, 4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(((3*x) + 2)^4, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate((x^3)*(((x^4) - 7)^4), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate((x^3)*(((x^4) - 7)^4), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate((x^3)*(((3*x^4) - 7)^4), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate((x^5)*(((2*x^6) - 7)^6), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate((x^4)^2, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate((x + 3)^4, x, 0, 3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate((x + 3)^4, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate((x^5)*((2*x^6 + 5)^2), x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+The integral of a sum or difference of functions, is equal to the sum
+or difference of the integrals of the functions (x4/4 + x3/3 below)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(x^3 + x^2, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(x^3 - x^2, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+The integral of a constant times a function, is equal to the constant
+times the integral of the function (7 * x4/4 below)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(7*x^3, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Below we get: 3 * x^3/3, which is 3x^3/3, which gives the result x^3 + C
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(3*x^2, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Some differentation...
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(3*x^2 + 16*x, x, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(3*x^2 + 16*x, x, 2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(3*x^2 + 16*x, x, 3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(3*x^3 + 16*x^2 - 4*x, x, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(3*x^3 + 16*x^2 - 4*x, x, 2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(3*x^3 + 16*x^2 - 4*x, x, 3);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

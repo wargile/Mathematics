@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio Desktop" version="0.96.4909.6802"?>
+<regions>
+  <settings>
+    <identity>
+      <id>2347c507-efbe-4f75-b9ca-a2f4ef70fedc</id>
+      <revision>9</revision>
+    </identity>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="true" printAreas="true" simpleEqualsOnly="false" printBackgroundImages="true">
+      <paper id="9" orientation="Portrait" width="827" height="1169" />
+      <margins left="39" right="39" top="39" bottom="39" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+      <backgrounds />
+    </pageModel>
+    <dependences>
+      <assembly name="SMath Studio Desktop" version="0.96.4909.6802" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Math Region" version="0.96.4909.6802" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+      <assembly name="Special Functions" version="1.10.4909.6779" guid="2814e667-4e12-48b1-8d51-194e480eabc5" />
+      <assembly name="Plot Region" version="1.8.4909.6768" guid="c451c2b5-798b-4f08-b9ec-b90963d1ddaa" />
+    </dependences>
+  </settings>
+  <region id="0" left="18" top="27" width="556" height="111" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">max_num</e>
+        <e type="function" args="1">create_rand_signal</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operand">max_num</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operand">the_range</e>
+        <e type="operand">n</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">max_num</e>
+        <e type="function" preserve="true" args="1">random</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="bracket">(</e>
+        <e type="operand">10</e>
+        <e type="operator" args="2">/</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">the_range</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="function" preserve="true" args="3">for</e>
+        <e type="operand">the_range</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="1" left="18" top="144" width="441" height="96" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">max_num</e>
+        <e type="function" args="1">create_sine_signal</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operand">max_num</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operand">the_range</e>
+        <e type="operand">n</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="function" preserve="true" args="1">sin</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">the_range</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="function" preserve="true" args="3">for</e>
+        <e type="operand">the_range</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="2" left="18" top="252" width="569" height="107" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">max_num</e>
+        <e type="function" args="1">create_rand_sine_signal</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operand">max_num</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operand">the_range</e>
+        <e type="operand">n</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="function" preserve="true" args="1">sin</e>
+        <e type="operand">n</e>
+        <e type="function" preserve="true" args="1">random</e>
+        <e type="operand">10</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">the_range</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="function" preserve="true" args="3">for</e>
+        <e type="operand">the_range</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="3" left="18" top="369" width="117" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">max_range</e>
+        <e type="operand">36</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="4" left="18" top="396" width="181" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">tRange</e>
+        <e type="operand">1</e>
+        <e type="operand">max_range</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="5" left="18" top="423" width="703" height="198" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="0.732549480757132" scale_y="0.904382075008806" scale_z="1.13329029332728" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-321" transpose_y="8" transpose_z="0" animate="tRange" frameRate="5">
+      <input>
+        <e type="operand">max_range</e>
+        <e type="function" args="1">create_sine_signal</e>
+        <e type="operand">max_range</e>
+        <e type="function" args="1">create_rand_sine_signal</e>
+        <e type="operand">max_range</e>
+        <e type="function" args="1">create_rand_signal</e>
+        <e type="operand">3</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="5">sys</e>
+      </input>
+    </plot>
+  </region>
+</regions>

@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio Desktop" version="0.97.5189.3332"?>
+<regions>
+  <settings>
+    <identity>
+      <id>8a6a495f-d254-475b-8888-8fbbbfd20e86</id>
+      <revision>28</revision>
+    </identity>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="true" printAreas="true" simpleEqualsOnly="false" printBackgroundImages="true">
+      <paper id="1" orientation="Landscape" width="1100" height="850" />
+      <margins left="39" right="39" top="39" bottom="39" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+      <backgrounds />
+    </pageModel>
+    <dependences>
+      <assembly name="SMath Studio Desktop" version="0.97.5189.3332" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Text Region" version="1.10.5189.3348" guid="485d28c5-349a-48b6-93be-12a35a1c1e39" />
+      <assembly name="Math Region" version="0.97.5189.3332" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+      <assembly name="Special Functions" version="1.11.5189.3346" guid="2814e667-4e12-48b1-8d51-194e480eabc5" />
+      <assembly name="Plot Region" version="1.9.5189.3341" guid="c451c2b5-798b-4f08-b9ec-b90963d1ddaa" />
+    </dependences>
+  </settings>
+  <region id="0" left="18" top="9" width="661" height="24" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Markow Chain example, stock markets (http://en.wikipedia.org/wiki/Markov_chain)</p>
+    </text>
+  </region>
+  <region id="1" left="18" top="27" width="614" height="24" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>http://www.r-bloggers.com/getting-started-with-hidden-markov-models-in-r/</p>
+    </text>
+  </region>
+  <region id="2" left="18" top="63" width="126" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">timePeriods</e>
+        <e type="operand">3</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="3" left="18" top="99" width="176" height="62" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">A</e>
+        <e type="operand">0.9</e>
+        <e type="operand">0.075</e>
+        <e type="operand">0.025</e>
+        <e type="operand">0.15</e>
+        <e type="operand">0.8</e>
+        <e type="operand">0.05</e>
+        <e type="operand">0.25</e>
+        <e type="operand">0.25</e>
+        <e type="operand">0.5</e>
+        <e type="operand">3</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="11">mat</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="4" left="198" top="117" width="807" height="24" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>A = a transition/probability/substitution/Markov matrix. NOTE: All rows sum to a probability of 1</p>
+    </text>
+  </region>
+  <region id="5" left="18" top="171" width="370" height="34" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="5">mat</e>
+        <e type="operand">A</e>
+        <e type="operand">timePeriods</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.3575</e>
+        <e type="operand">0.5682</e>
+        <e type="operand">0.0742</e>
+        <e type="operand">1</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="5">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="6" left="387" top="180" width="357" height="24" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>The state &lt;timePeriods&gt; time periods later</p>
+    </text>
+  </region>
+  <region id="7" left="18" top="216" width="397" height="34" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="5">mat</e>
+        <e type="operand">A</e>
+        <e type="operand">timePeriods</e>
+        <e type="operator" args="1">-</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.5835</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">2.6214</e>
+        <e type="operand">1.0379</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">1</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="5">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="8" left="18" top="261" width="670" height="400" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">min_num</e>
+        <e type="operand">max_num</e>
+        <e type="function" args="2">create_time_period</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">n</e>
+        <e type="operand">min_num</e>
+        <e type="operand">max_num</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operand">the_range</e>
+        <e type="operand">counter</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="5">mat</e>
+        <e type="operand">A</e>
+        <e type="operand">n</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">the_range</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">bullmarket</e>
+        <e type="operand">counter</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="5">mat</e>
+        <e type="operand">A</e>
+        <e type="operand">n</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">bullmarket</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">bearmarket</e>
+        <e type="operand">counter</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="5">mat</e>
+        <e type="operand">A</e>
+        <e type="operand">n</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">bearmarket</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">stagnantmarket</e>
+        <e type="operand">counter</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="5">mat</e>
+        <e type="operand">A</e>
+        <e type="operand">n</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">1</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">stagnantmarket</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">0</e>
+        <e type="operand">counter</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">10</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="12">line</e>
+        <e type="function" preserve="true" args="3">for</e>
+        <e type="operand">the_range</e>
+        <e type="operand">bullmarket</e>
+        <e type="operand">bearmarket</e>
+        <e type="operand">stagnantmarket</e>
+        <e type="operand">4</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="6">sys</e>
+        <e type="operand">3</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="5">line</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="9" left="18" top="675" width="109" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">max_range</e>
+        <e type="operand">6</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="10" left="144" top="675" width="109" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">min_range</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="11" left="18" top="702" width="400" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">result</e>
+        <e type="operand">min_range</e>
+        <e type="operand">max_range</e>
+        <e type="function" args="2">create_time_period</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="12" left="18" top="729" width="123" height="32" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">bull</e>
+        <e type="operand">result</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="13" left="153" top="729" width="123" height="32" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">bear</e>
+        <e type="operand">result</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="14" left="288" top="729" width="156" height="32" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">stagnant</e>
+        <e type="operand">result</e>
+        <e type="operand">4</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="15" left="18" top="783" width="576" height="227" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="8.95430243255239" scale_y="4.95388632632158" scale_z="44.3585963823694" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-228" transpose_y="-72" transpose_z="0">
+      <input>
+        <e type="operand">bull</e>
+        <e type="operand">bear</e>
+        <e type="operand">stagnant</e>
+        <e type="operand">3</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="5">sys</e>
+      </input>
+    </plot>
+  </region>
+  <region id="16" left="18" top="1080" width="175" height="134" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">result</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="2">el</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">0.15</e>
+        <e type="operand">2</e>
+        <e type="operand">0.2675</e>
+        <e type="operand">3</e>
+        <e type="operand">0.3575</e>
+        <e type="operand">4</e>
+        <e type="operand">0.4256</e>
+        <e type="operand">5</e>
+        <e type="operand">0.4766</e>
+        <e type="operand">6</e>
+        <e type="operand">0.5147</e>
+        <e type="operand">7</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="16">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="17" left="207" top="1080" width="175" height="134" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">result</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="2">el</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="operand">0.8</e>
+        <e type="operand">2</e>
+        <e type="operand">0.6637</e>
+        <e type="operand">3</e>
+        <e type="operand">0.5682</e>
+        <e type="operand">4</e>
+        <e type="operand">0.5</e>
+        <e type="operand">5</e>
+        <e type="operand">0.4505</e>
+        <e type="operand">6</e>
+        <e type="operand">0.4144</e>
+        <e type="operand">7</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="16">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="18" left="396" top="1080" width="175" height="134" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">result</e>
+        <e type="operand">4</e>
+        <e type="function" preserve="true" args="2">el</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">0.05</e>
+        <e type="operand">2</e>
+        <e type="operand">0.0688</e>
+        <e type="operand">3</e>
+        <e type="operand">0.0742</e>
+        <e type="operand">4</e>
+        <e type="operand">0.0745</e>
+        <e type="operand">5</e>
+        <e type="operand">0.0729</e>
+        <e type="operand">6</e>
+        <e type="operand">0.0709</e>
+        <e type="operand">7</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="16">mat</e>
+      </result>
+    </math>
+  </region>
+</regions>

@@ -1,0 +1,704 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     32535,        695]
+NotebookOptionsPosition[     31318,        650]
+NotebookOutlinePosition[     31921,        673]
+CellTagsIndexPosition[     31836,        668]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["PIC Timer", "Title",
+ CellChangeTimes->{{3.5233467929119263`*^9, 3.5233467987762613`*^9}, 
+   3.523348697065837*^9, {3.524655660027506*^9, 3.5246556619546165`*^9}}],
+
+Cell["\<\
+This notebook demonstrates code for setting PIC timer register values for a \
+desired frequency.
+Copyright \[Copyright] Terje B. 2006-2011\
+\>", "Text",
+ CellChangeTimes->{{3.5233468122310305`*^9, 3.523346838231518*^9}, {
+  3.5233487048452826`*^9, 3.5233487204891768`*^9}, {3.523365567813789*^9, 
+  3.5233656062519875`*^9}, {3.523365704813625*^9, 3.5233657065257225`*^9}, {
+  3.524655667842953*^9, 3.524655676155429*^9}, {3.524714176429077*^9, 
+  3.5247141982613254`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Clear", "[", "GetRegisterValues", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.5246652147000017`*^9, 3.524665230641914*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GetRegisterValues", "[", 
+   RowBox[{
+   "osc_Integer", ",", " ", "tmr_Integer", ",", " ", "prescaler_Integer", ",",
+     " ", "postscaler_Integer", ",", "\[IndentingNewLine]", "preload_Integer",
+     ",", " ", "desiredfrequency_"}], "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmr16overflow", " ", "=", " ", "65536"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"tosc", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"osc", " ", "*", " ", "1000000"}], ")"}], " ", "/", " ", 
+       "4"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"frequency", " ", "=", " ", "0"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", " ", "[", 
+      RowBox[{
+       RowBox[{"tmr", " ", "\[Equal]", " ", "2"}], ",", " ", 
+       RowBox[{"frequency", " ", "=", "  ", 
+        RowBox[{"N", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"tosc", " ", "/", " ", "postscaler"}], " ", "/", " ", 
+           "preload"}], " ", "/", " ", "prescaler"}], "]"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"frequency", " ", "=", "  ", 
+        RowBox[{"N", "[", 
+         RowBox[{
+          RowBox[{"tosc", " ", "/", " ", 
+           RowBox[{"(", 
+            RowBox[{"tmr16overflow", " ", "-", " ", "preload"}], ")"}]}], " ",
+           "/", " ", "prescaler"}], "]"}]}]}], "\[IndentingNewLine]", "]"}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"errorrate", " ", "=", " ", 
+      RowBox[{"Abs", "[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"desiredfrequency", "-", "frequency"}], ")"}], "/", 
+          "frequency"}], ")"}], "*", "100"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"frequency", ",", " ", "errorrate"}], "}"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.524656063475582*^9, 3.524656226369899*^9}, {
+  3.5246562601178293`*^9, 3.5246562810340257`*^9}, {3.5246572459952183`*^9, 
+  3.524657282131285*^9}, {3.524657853215949*^9, 3.524657903742839*^9}, {
+  3.5246579514955707`*^9, 3.5246580009193974`*^9}, {3.524664528212737*^9, 
+  3.5246645374442654`*^9}, {3.5246646788693542`*^9, 3.5246648063946486`*^9}, {
+  3.5246649440255203`*^9, 3.524664961569524*^9}, {3.5246650739129496`*^9, 
+  3.5246650860076413`*^9}, {3.5246651504233255`*^9, 3.5246651507443438`*^9}, {
+  3.5246652653388987`*^9, 3.5246653399501657`*^9}, {3.5246654112552443`*^9, 
+  3.524665428975258*^9}, {3.524665504286566*^9, 3.5246655383965163`*^9}, {
+  3.524665568861259*^9, 3.5246655987499685`*^9}, {3.524665630467783*^9, 
+  3.524665642236456*^9}, {3.5247261523400593`*^9, 3.5247262060061293`*^9}}],
+
+Cell["Test the GetRegisterValues module:", "Text",
+ CellChangeTimes->{{3.523341172999485*^9, 3.523341178694811*^9}, {
+   3.523341253520091*^9, 3.523341253974117*^9}, 3.523343368066036*^9, 
+   3.5233467673924665`*^9, {3.523348734997007*^9, 3.5233487364900923`*^9}, {
+   3.5242400675427017`*^9, 3.5242400691827955`*^9}, {3.524726402465366*^9, 
+   3.5247264031594057`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Grid", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\"\<Timer 1\>\"", ",", " ", 
+        RowBox[{"GetRegisterValues", "[", 
+         RowBox[{"8", ",", " ", "1", ",", " ", "16", ",", " ", 
+          RowBox[{"-", "1"}], ",", " ", "7844", ",", " ", "2.16667"}], 
+         "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Timer 2\>\"", ",", " ", 
+        RowBox[{"GetRegisterValues", "[", 
+         RowBox[{
+         "8", ",", " ", "2", ",", " ", "16", ",", " ", "16", ",", " ", "255", 
+          ",", " ", "2.16667"}], "]"}]}], "}"}]}], "}"}], ",", " ", 
+    RowBox[{"Alignment", "\[Rule]", "Left"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Spacings", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", " ", "1.4"}], "}"}]}], ",", " ", 
+    RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}], " "}]], "Input",
+ CellChangeTimes->{{3.524664905964343*^9, 3.524664917604009*^9}, {
+  3.524665005139016*^9, 3.524665031371516*^9}, {3.5246650904908977`*^9, 
+  3.5246650923240023`*^9}, {3.524665361297387*^9, 3.52466539912055*^9}, {
+  3.5246655510882425`*^9, 3.5246655761026735`*^9}, {3.524665654103134*^9, 
+  3.5246657088622665`*^9}, {3.524714081491647*^9, 3.524714142151116*^9}, {
+  3.5247143843709707`*^9, 3.5247144022619934`*^9}, {3.5247264632678432`*^9, 
+  3.524726557546236*^9}, {3.524726614161474*^9, 3.524726617560669*^9}, {
+  3.524798624280534*^9, 3.524798624638554*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"Timer 1\"\>", 
+     RowBox[{"{", 
+      RowBox[{"2.1666782222838523`", ",", "0.00037948800001214657`"}], "}"}]},
+    {"\<\"Timer 2\"\>", 
+     RowBox[{"{", 
+      RowBox[{"30.637254901960784`", ",", "92.92798912`"}], "}"}]}
+   },
+   AutoDelete->False,
+   GridBoxAlignment->{"Columns" -> {{Left}}},
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+   GridBoxSpacings->{"Columns" -> {{1}}, "Rows" -> {{1.4}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{
+  3.524665395566347*^9, 3.5246654315004025`*^9, {3.5246654895977254`*^9, 
+   3.524665581201965*^9}, {3.5246656329339237`*^9, 3.524665709378296*^9}, 
+   3.5246712349743423`*^9, 3.524714015919896*^9, {3.5247140852608624`*^9, 
+   3.524714120030851*^9}, {3.5247143965996695`*^9, 3.524714403132043*^9}, 
+   3.5247258316537175`*^9, 3.5247258683428164`*^9, 3.5247262160547037`*^9, {
+   3.5247265088914533`*^9, 3.524726559070323*^9}, 3.5247266183767157`*^9, 
+   3.5247986253715963`*^9, 3.524932731293522*^9, 3.5523581116480904`*^9, 
+   3.552358626766554*^9}]
+}, Open  ]],
+
+Cell["\<\
+Animate and control the PIC Timer GetRegisterValues module with the \
+MANIPULATE command:\
+\>", "Text",
+ CellChangeTimes->{{3.5233412325908937`*^9, 3.5233412464466863`*^9}, {
+   3.5233487408733425`*^9, 3.5233487578813157`*^9}, 3.5233490387093782`*^9, {
+   3.5242400395030975`*^9, 3.524240063719483*^9}, {3.5246556925643673`*^9, 
+   3.5246556937714357`*^9}, {3.52472638505237*^9, 3.524726385543398*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"bpm", " ", "=", " ", 
+     RowBox[{"desiredfreq", " ", "*", " ", "60"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Grid", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Item", "[", 
+           RowBox[{"\"\<Desired\\nfrequency/BPM\>\"", ",", " ", 
+            RowBox[{"Background", "\[Rule]", "LightYellow"}]}], "]"}], ",", 
+          " ", 
+          RowBox[{"Item", "[", 
+           RowBox[{
+            RowBox[{"Style", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"desiredfreq", ",", " ", "bpm"}], "}"}], ",", " ", 
+              "Bold"}], "]"}], ",", " ", 
+            RowBox[{"Background", "\[Rule]", "LightYellow"}]}], "]"}]}], 
+         "}"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Item", "[", 
+           RowBox[{"\"\<Timers\>\"", ",", " ", 
+            RowBox[{"Background", "\[Rule]", "LightBlue"}]}], "]"}], ",", " ", 
+          RowBox[{"Item", "[", 
+           RowBox[{"\"\<Frequency/\\nError rate in percent\>\"", ",", " ", 
+            RowBox[{"Background", "\[Rule]", "LightBlue"}]}], "]"}]}], "}"}], 
+        ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Item", "[", 
+           RowBox[{"\"\<Timer 0\>\"", ",", " ", 
+            RowBox[{"Background", "->", "LightGray"}]}], "]"}], ",", "  ", 
+          RowBox[{"GetRegisterValues", "[", 
+           RowBox[{
+           "osc", ",", " ", "1", ",", " ", "prescaler0", ",", " ", "1", ",", 
+            " ", "preload0", ",", " ", "desiredfreq"}], "]"}]}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Item", "[", 
+           RowBox[{"\"\<Timer 1/3\>\"", ",", " ", 
+            RowBox[{"Background", "\[Rule]", "LightGray"}]}], "]"}], ",", " ", 
+          RowBox[{"GetRegisterValues", "[", 
+           RowBox[{
+           "osc", ",", " ", "1", ",", " ", "prescaler13", ",", " ", "1", ",", 
+            " ", "preload13", ",", " ", "desiredfreq"}], "]"}]}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Item", "[", 
+           RowBox[{"\"\<Timer 2\>\"", ",", " ", 
+            RowBox[{"Background", "\[Rule]", "LightGray"}]}], "]"}], ",", " ", 
+          RowBox[{"GetRegisterValues", "[", 
+           RowBox[{
+           "osc", ",", " ", "2", ",", " ", "prescaler2", ",", " ", 
+            "postscaler2", ",", " ", "preload2", ",", " ", "desiredfreq"}], 
+           "]"}]}], "}"}]}], "}"}], ",", " ", 
+      RowBox[{"Frame", "\[Rule]", "All"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Alignment", "\[Rule]", "Left"}], ",", " ", 
+      RowBox[{"Spacings", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", " ", "1.4"}], "}"}]}]}], "]"}]}], ",", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "desiredfreq", ",", " ", "2.166667", ",", " ", 
+       "\"\<Desired frequency\>\""}], "}"}], ",", " ", "0.1", ",", " ", 
+     "1000", ",", " ", "0.1", ",", " ", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", " ", 
+   "Delimiter", ",", "\[IndentingNewLine]", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<Oscillator\>\"", ",", " ", "Bold"}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"osc", ",", " ", "8", ",", " ", "\"\<Oscillator in Mhz\>\""}], 
+      "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "1", ",", " ", "2", ",", " ", "4", ",", " ", "8", ",", " ", "20", ",", 
+       " ", "40"}], "}"}]}], "}"}], ",", "\[IndentingNewLine]", "Delimiter", 
+   ",", " ", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<TMR0 settings\>\"", ",", " ", "Bold"}], "]"}], ",", 
+   "\[IndentingNewLine]", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"prescaler0", ",", " ", "16", ",", " ", "\"\<Prescaler\>\""}], 
+      "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "1", ",", " ", "2", ",", " ", "4", ",", " ", "8", ",", " ", "16", ",", 
+       " ", "32", ",", " ", "64", ",", " ", "128", ",", " ", "256"}], "}"}]}],
+     "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"preload0", ",", " ", "7844", ",", " ", "\"\<Preload\>\""}], 
+      "}"}], ",", " ", "1", ",", " ", "65535", ",", " ", "1", ",", " ", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{"TODO", ":", " ", 
+     RowBox[{"Can", " ", "preload", " ", "be", " ", 
+      RowBox[{"zero", "?"}]}]}], " ", "*)"}], "\[IndentingNewLine]", " ", 
+   "Delimiter", ",", " ", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<TMR1/3 settings\>\"", ",", " ", "Bold"}], "]"}], ",", 
+   "\[IndentingNewLine]", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"prescaler13", ",", " ", "8", ",", " ", "\"\<Prescaler\>\""}], 
+      "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", " ", "2", ",", " ", "4", ",", " ", "8"}], "}"}]}], 
+    "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"preload13", ",", " ", "1", ",", " ", "\"\<Preload\>\""}], 
+      "}"}], ",", " ", "1", ",", " ", "65535", ",", " ", "1", ",", " ", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", "Delimiter", ",", " ", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<TMR2 settings\>\"", ",", " ", "Bold"}], "]"}], ",", 
+   "\[IndentingNewLine]", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"prescaler2", ",", " ", "16", ",", " ", "\"\<Prescaler\>\""}], 
+      "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", " ", "4", ",", " ", "16"}], "}"}]}], "}"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"postscaler2", ",", " ", "16", ",", " ", "\"\<Postscaler\>\""}],
+       "}"}], ",", "1", ",", " ", "16", ",", " ", "1", ",", " ", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Open\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"preload2", ",", " ", "255", ",", " ", "\"\<PR2\>\""}], "}"}], 
+     ",", " ", "1", ",", " ", "255", ",", " ", "1", ",", " ", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{"TODO", ":", " ", 
+     RowBox[{"Can", " ", "PR2", " ", "be", " ", 
+      RowBox[{"zero", "?"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Left"}], ",", " ", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.523334735287269*^9, 3.523334772905421*^9}, {
+   3.523334810583576*^9, 3.5233349224789762`*^9}, 3.523334954318797*^9, {
+   3.523335017417406*^9, 3.5233350252068515`*^9}, {3.523335129780833*^9, 
+   3.5233351326449966`*^9}, {3.523335168615054*^9, 3.5233352066852317`*^9}, {
+   3.5233352413272133`*^9, 3.523335242829299*^9}, {3.523335295548314*^9, 
+   3.5233353258140454`*^9}, {3.5233354012213583`*^9, 
+   3.5233354219075413`*^9}, {3.5233354774347177`*^9, 
+   3.5233354782507644`*^9}, {3.5233362134068127`*^9, 
+   3.5233362383632402`*^9}, {3.5233362883190975`*^9, 3.523336310254352*^9}, {
+   3.523336382461482*^9, 3.5233363852136393`*^9}, {3.523336424543889*^9, 
+   3.5233364450070596`*^9}, {3.5233370440863247`*^9, 
+   3.5233370703448267`*^9}, {3.5233376679760094`*^9, 
+   3.5233376833808904`*^9}, {3.5233379520542574`*^9, 
+   3.5233380398512793`*^9}, {3.523338073347195*^9, 3.5233380978275957`*^9}, {
+   3.5233381380998993`*^9, 3.5233382357864866`*^9}, {3.5233383088686666`*^9, 
+   3.5233383276987433`*^9}, {3.523338371419244*^9, 3.5233384199140177`*^9}, {
+   3.523341301536837*^9, 3.523341340597071*^9}, {3.5233414725936213`*^9, 
+   3.5233414916587114`*^9}, {3.5233415678470693`*^9, 
+   3.5233415945485964`*^9}, {3.523341642388333*^9, 3.5233416546280327`*^9}, {
+   3.5233416996686087`*^9, 3.5233417049809127`*^9}, {3.5233418366604443`*^9, 
+   3.5233418457859664`*^9}, {3.5233419973876376`*^9, 
+   3.5233420023939238`*^9}, {3.5233420462974353`*^9, 
+   3.5233420469864745`*^9}, {3.5233421031536875`*^9, 
+   3.5233421227608085`*^9}, {3.5233427988414783`*^9, 3.523342817124524*^9}, {
+   3.5233435179436083`*^9, 3.5233435791191072`*^9}, {3.523343658665657*^9, 
+   3.5233436917655506`*^9}, {3.5233437968965635`*^9, 
+   3.5233437971485777`*^9}, {3.5233446814391565`*^9, 3.523344703415414*^9}, {
+   3.5233455873949747`*^9, 3.523345589081071*^9}, {3.5233459761102076`*^9, 
+   3.5233460158134785`*^9}, 3.5233460894316893`*^9, {3.523346140383603*^9, 
+   3.5233462434284973`*^9}, {3.5233463488385267`*^9, 
+   3.5233464232117805`*^9}, {3.523346627677475*^9, 3.523346628742536*^9}, {
+   3.5233490475608845`*^9, 3.523349108182352*^9}, {3.523365221592986*^9, 
+   3.5233652716558495`*^9}, {3.5239753813817234`*^9, 3.523975411836465*^9}, {
+   3.5246555039435787`*^9, 3.5246555051146455`*^9}, {3.524655550523243*^9, 
+   3.524655552118334*^9}, {3.524655594654767*^9, 3.5246556469587584`*^9}, {
+   3.5246557254542484`*^9, 3.524655739622059*^9}, {3.5246557778562455`*^9, 
+   3.5246557956212616`*^9}, {3.5246559415006056`*^9, 3.524656058620304*^9}, {
+   3.524656239972677*^9, 3.524656244435932*^9}, {3.524656407390253*^9, 
+   3.524656585888462*^9}, {3.5246566733274636`*^9, 3.5246568406230326`*^9}, {
+   3.524656888623778*^9, 3.5246569258489065`*^9}, {3.524657003607354*^9, 
+   3.5246571175488715`*^9}, {3.524657195092307*^9, 3.524657241269948*^9}, {
+   3.5246573177193203`*^9, 3.5246573898384457`*^9}, {3.5246574642617025`*^9, 
+   3.5246574762063856`*^9}, {3.524657830525652*^9, 3.5246578428893585`*^9}, {
+   3.5246579314344234`*^9, 3.52465794588225*^9}, {3.5246582347527723`*^9, 
+   3.524658255535961*^9}, {3.5246641942416353`*^9, 3.5246643278942795`*^9}, {
+   3.524664387921713*^9, 3.52466441444123*^9}, {3.524664456383629*^9, 
+   3.524664496918947*^9}, {3.524664561102618*^9, 3.5246646220791063`*^9}, {
+   3.52466481848634*^9, 3.5246648245276856`*^9}, {3.5246654569068556`*^9, 
+   3.524665466635412*^9}, {3.5246658416718626`*^9, 3.524665854607603*^9}, {
+   3.524665903048373*^9, 3.5246660194410305`*^9}, {3.524718696971637*^9, 
+   3.524718739133048*^9}, {3.5247188999652476`*^9, 3.5247189208184404`*^9}, {
+   3.5247190734371696`*^9, 3.524719320739314*^9}, {3.5247258194390187`*^9, 
+   3.524725825369358*^9}, {3.5247258905090837`*^9, 3.5247259560388317`*^9}, {
+   3.5247260152172165`*^9, 3.52472601562424*^9}, {3.5247986322899914`*^9, 
+   3.524798632826022*^9}, {3.5249327182577763`*^9, 3.524932727224289*^9}, {
+   3.524932757374013*^9, 3.524932784226549*^9}, {3.524933266629141*^9, 
+   3.5249333443845882`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`desiredfreq$$ = 30.518, $CellContext`osc$$ =
+     8, $CellContext`postscaler2$$ = 16, $CellContext`preload0$$ = 
+    1, $CellContext`preload13$$ = 1, $CellContext`preload2$$ = 
+    255, $CellContext`prescaler0$$ = 1, $CellContext`prescaler13$$ = 
+    1, $CellContext`prescaler2$$ = 1, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`desiredfreq$$], 2.166667, "Desired frequency"}, 0.1, 
+      1000, 0.1}, {
+      Hold[
+       Style["Oscillator", Bold]], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`osc$$], 8, "Oscillator in Mhz"}, {1, 2, 4, 8, 20, 
+      40}}, {
+      Hold[
+       Style["TMR0 settings", Bold]], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`prescaler0$$], 16, "Prescaler"}, {1, 2, 4, 8, 16, 32,
+       64, 128, 256}}, {{
+       Hold[$CellContext`preload0$$], 7844, "Preload"}, 1, 65535, 1}, {
+      Hold[
+       Style["TMR1/3 settings", Bold]], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`prescaler13$$], 8, "Prescaler"}, {1, 2, 4, 8}}, {{
+       Hold[$CellContext`preload13$$], 1, "Preload"}, 1, 65535, 1}, {
+      Hold[
+       Style["TMR2 settings", Bold]], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`prescaler2$$], 16, "Prescaler"}, {1, 4, 16}}, {{
+       Hold[$CellContext`postscaler2$$], 16, "Postscaler"}, 1, 16, 1}, {{
+       Hold[$CellContext`preload2$$], 255, "PR2"}, 1, 255, 1}}, 
+    Typeset`size$$ = {264., {89., 94.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`desiredfreq$124597$$ = 0, $CellContext`osc$124598$$ = 
+    0, $CellContext`prescaler0$124599$$ = 0, $CellContext`preload0$124600$$ = 
+    0, $CellContext`prescaler13$124601$$ = 
+    0, $CellContext`preload13$124602$$ = 0, $CellContext`prescaler2$124603$$ =
+     0, $CellContext`postscaler2$124604$$ = 
+    0, $CellContext`preload2$124605$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`desiredfreq$$ = 
+        2.166667, $CellContext`osc$$ = 8, $CellContext`postscaler2$$ = 
+        16, $CellContext`preload0$$ = 7844, $CellContext`preload13$$ = 
+        1, $CellContext`preload2$$ = 255, $CellContext`prescaler0$$ = 
+        16, $CellContext`prescaler13$$ = 8, $CellContext`prescaler2$$ = 16}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`desiredfreq$$, $CellContext`desiredfreq$124597$$, 
+         0], 
+        Hold[$CellContext`osc$$, $CellContext`osc$124598$$, 0], 
+        Hold[$CellContext`prescaler0$$, $CellContext`prescaler0$124599$$, 0], 
+        Hold[$CellContext`preload0$$, $CellContext`preload0$124600$$, 0], 
+        Hold[$CellContext`prescaler13$$, $CellContext`prescaler13$124601$$, 
+         0], 
+        Hold[$CellContext`preload13$$, $CellContext`preload13$124602$$, 0], 
+        Hold[$CellContext`prescaler2$$, $CellContext`prescaler2$124603$$, 0], 
+        Hold[$CellContext`postscaler2$$, $CellContext`postscaler2$124604$$, 
+         0], 
+        Hold[$CellContext`preload2$$, $CellContext`preload2$124605$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`bpm = $CellContext`desiredfreq$$ 60; Grid[{{
+           Item["Desired\nfrequency/BPM", Background -> LightYellow], 
+           Item[
+            Style[{$CellContext`desiredfreq$$, $CellContext`bpm}, Bold], 
+            Background -> LightYellow]}, {
+           Item["Timers", Background -> LightBlue], 
+           Item[
+           "Frequency/\nError rate in percent", Background -> LightBlue]}, {
+           Item["Timer 0", Background -> LightGray], 
+           $CellContext`GetRegisterValues[$CellContext`osc$$, 
+            1, $CellContext`prescaler0$$, 
+            1, $CellContext`preload0$$, $CellContext`desiredfreq$$]}, {
+           Item["Timer 1/3", Background -> LightGray], 
+           $CellContext`GetRegisterValues[$CellContext`osc$$, 
+            1, $CellContext`prescaler13$$, 
+            1, $CellContext`preload13$$, $CellContext`desiredfreq$$]}, {
+           Item["Timer 2", Background -> LightGray], 
+           $CellContext`GetRegisterValues[$CellContext`osc$$, 
+            2, $CellContext`prescaler2$$, $CellContext`postscaler2$$, \
+$CellContext`preload2$$, $CellContext`desiredfreq$$]}}, Frame -> All, 
+         Alignment -> Left, Spacings -> {1, 1.4}]), 
+      "Specifications" :> {{{$CellContext`desiredfreq$$, 2.166667, 
+          "Desired frequency"}, 0.1, 1000, 0.1, Appearance -> "Labeled"}, 
+        Delimiter, 
+        Style[
+        "Oscillator", Bold], {{$CellContext`osc$$, 8, "Oscillator in Mhz"}, {
+         1, 2, 4, 8, 20, 40}}, Delimiter, 
+        Style[
+        "TMR0 settings", 
+         Bold], {{$CellContext`prescaler0$$, 16, "Prescaler"}, {1, 2, 4, 8, 
+         16, 32, 64, 128, 256}}, {{$CellContext`preload0$$, 7844, "Preload"}, 
+         1, 65535, 1, Appearance -> "Labeled"}, Delimiter, 
+        Style[
+        "TMR1/3 settings", 
+         Bold], {{$CellContext`prescaler13$$, 8, "Prescaler"}, {1, 2, 4, 
+         8}}, {{$CellContext`preload13$$, 1, "Preload"}, 1, 65535, 1, 
+         Appearance -> "Labeled"}, Delimiter, 
+        Style[
+        "TMR2 settings", 
+         Bold], {{$CellContext`prescaler2$$, 16, "Prescaler"}, {1, 4, 
+         16}}, {{$CellContext`postscaler2$$, 16, "Postscaler"}, 1, 16, 1, 
+         Appearance -> "Open"}, {{$CellContext`preload2$$, 255, "PR2"}, 1, 
+         255, 1, Appearance -> "Labeled"}}, 
+      "Options" :> {ControlPlacement -> Left}, "DefaultOptions" :> {}],
+     ImageSizeCache->{677., {213., 220.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`bpm = 480., $CellContext`GetRegisterValues[
+         Pattern[$CellContext`osc, 
+          Blank[Integer]], 
+         Pattern[$CellContext`tmr, 
+          Blank[Integer]], 
+         Pattern[$CellContext`prescaler, 
+          Blank[Integer]], 
+         Pattern[$CellContext`postscaler, 
+          Blank[Integer]], 
+         Pattern[$CellContext`preload, 
+          Blank[Integer]], 
+         Pattern[$CellContext`desiredfrequency, 
+          Blank[]]] := 
+       Module[{}, $CellContext`tmr16overflow = 
+          65536; $CellContext`tosc = ($CellContext`osc 1000000)/
+           4; $CellContext`frequency = 0; 
+         If[$CellContext`tmr == 2, $CellContext`frequency = 
+           N[($CellContext`tosc/$CellContext`postscaler) \
+($CellContext`preload^(-1)/$CellContext`prescaler)], $CellContext`frequency = 
+           N[$CellContext`tosc (($CellContext`tmr16overflow - \
+$CellContext`preload)^(-1)/$CellContext`prescaler)]]; $CellContext`errorrate = 
+          Abs[(($CellContext`desiredfrequency - \
+$CellContext`frequency)/$CellContext`frequency) 
+            100]; {$CellContext`frequency, $CellContext`errorrate}], \
+$CellContext`tmr16overflow = 65536, $CellContext`tosc = 
+       2000000, $CellContext`frequency = 
+       30.637254901960784`, $CellContext`errorrate = 92.92798912}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.5247191496335278`*^9, 3.5247191920259523`*^9}, {
+   3.524719228595044*^9, 3.5247192408587456`*^9}, {3.524719281226054*^9, 
+   3.524719322249401*^9}, {3.5247258270244527`*^9, 3.5247258317567234`*^9}, 
+   3.5247258684568224`*^9, {3.5247259349156237`*^9, 3.5247259571198936`*^9}, 
+   3.5247260165472927`*^9, 3.524726216149709*^9, 3.5247986362372174`*^9, 
+   3.5249327339896755`*^9, {3.5249327705807686`*^9, 3.5249327850395956`*^9}, {
+   3.52493327517163*^9, 3.52493334528864*^9}, 3.5523581117020936`*^9, 
+   3.5523586268815603`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Slider"}]], "Input",
+ CellChangeTimes->{{3.5259580088337364`*^9, 3.525958032135069*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Slider\\\", \\\"[\\\", StyleBox[\\\"x\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\) represents a slider with setting \!\(\*StyleBox[\\\
+\"x\\\", \\\"TI\\\"]\) in the range 0 to 1. \\n\!\(\*RowBox[{\\\"Slider\\\", \
+\\\"[\\\", RowBox[{\\\"Dynamic\\\", \\\"[\\\", StyleBox[\\\"x\\\", \
+\\\"TI\\\"], \\\"]\\\"}], \\\"]\\\"}]\) takes the setting to be the \
+dynamically updated current value of \!\(\*StyleBox[\\\"x\\\", \\\"TI\\\"]\), \
+with the value of \!\(\*StyleBox[\\\"x\\\", \\\"TI\\\"]\) being reset if the \
+slider is moved. \\n\!\(\*RowBox[{\\\"Slider\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], \
+StyleBox[\\\"max\\\", \\\"TI\\\"]]}], \\\"}\\\"}]}], \\\"]\\\"}]\) represents \
+a slider with range \!\(\*SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], \
+StyleBox[\\\"min\\\", \\\"TI\\\"]]\) to \
+\!\(\*SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"max\\\", \
+\\\"TI\\\"]]\). \\n\!\(\*RowBox[{\\\"Slider\\\", \\\"[\\\", RowBox[{StyleBox[\
+\\\"x\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], StyleBox[\\\"min\\\", \
+\\\"TI\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"x\\\", \\\"TI\\\"], \
+StyleBox[\\\"max\\\", \\\"TI\\\"]], \\\",\\\", StyleBox[\\\"dx\\\", \
+\\\"TI\\\"]}], \\\"}\\\"}]}], \\\"]\\\"}]\) represents a slider that jumps in \
+steps \!\(\*StyleBox[\\\"dx\\\", \\\"TI\\\"]\). \\n\!\(\*RowBox[{\\\"Slider\\\
+\", \\\"[\\\", RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", RowBox[{\\\
+\"{\\\", RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\
+\"], StyleBox[\\\"1\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"e\
+\\\", \\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\
+\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}], \\\"}\\\"}]}], \\\"]\\\"}]\) \
+represents a slider in which equally spaced intervals correspond to \
+successive settings \!\(\*SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\). \\n\!\(\*RowBox[{\\\"Slider\\\", \
+\\\"[\\\", RowBox[{StyleBox[\\\"x\\\", \\\"TI\\\"], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"w\\\", \\\"TI\\\"], \
+StyleBox[\\\"1\\\", \\\"TR\\\"]]}], \\\"}\\\"}], \\\",\\\", \
+RowBox[{\\\"{\\\", RowBox[{SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"w\\\", \
+\\\"TI\\\"], StyleBox[\\\"2\\\", \\\"TR\\\"]]}], \\\"}\\\"}], \\\",\\\", \
+StyleBox[\\\"\[Ellipsis]\\\", \\\"TR\\\"]}], \\\"}\\\"}], \\\"}\\\"}]}], \
+\\\"]\\\"}]\) uses intervals of relative widths \
+\!\(\*SubscriptBox[StyleBox[\\\"w\\\", \\\"TI\\\"], StyleBox[\\\"i\\\", \
+\\\"TI\\\"]]\) for the \!\(\*SubscriptBox[StyleBox[\\\"e\\\", \\\"TI\\\"], \
+StyleBox[\\\"i\\\", \\\"TI\\\"]]\). \"\>", "MSG"], "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Slider"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.552358626982566*^9},
+ CellTags->"Info3552365826-1892219"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "x", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"Slider", "[", 
+    RowBox[{
+     RowBox[{"Dynamic", "[", "x", "]"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "255"}], "}"}]}], "]"}], ",", 
+   RowBox[{"Dynamic", "[", "x", "]"}]}], "}"}]}], "Input",
+ CellChangeTimes->{{3.525958052177215*^9, 3.5259581021670747`*^9}, {
+  3.552358127219981*^9, 3.5523582066035213`*^9}, {3.552358237332279*^9, 
+  3.552358269059094*^9}, {3.5523583419622636`*^9, 3.5523583474985805`*^9}, {
+  3.552358393610218*^9, 3.552358394505269*^9}, {3.55522805833447*^9, 
+  3.5552281856587524`*^9}, {3.5552282178105917`*^9, 3.5552282730097485`*^9}, {
+  3.5552284126497355`*^9, 3.555228483392782*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   SliderBox[Dynamic[$CellContext`x], {1, 255}], ",", 
+   DynamicBox[ToBoxes[$CellContext`x, StandardForm],
+    ImageSizeCache->{16., {0., 8.}}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.555228441252372*^9, 3.555228484357837*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1065, 1067},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+ShowSelection->True,
+FrontEndVersion->"10.1 for Microsoft Windows (64-bit) (March 23, 2015)",
+StyleDefinitions->"TerjeDefault.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info3552365826-1892219"->{
+  Cell[26823, 566, 3396, 51, 133, "Print",
+   CellTags->"Info3552365826-1892219"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info3552365826-1892219", 31729, 662}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 170, 2, 101, "Title"],
+Cell[752, 26, 482, 9, 49, "Text"],
+Cell[1237, 37, 160, 3, 31, "Input"],
+Cell[1400, 42, 2772, 59, 252, "Input"],
+Cell[4175, 103, 370, 5, 30, "Text"],
+Cell[CellGroupData[{
+Cell[4570, 112, 1480, 30, 72, "Input"],
+Cell[6053, 144, 1131, 23, 75, "Output"]
+}, Open  ]],
+Cell[7199, 170, 412, 7, 30, "Text"],
+Cell[CellGroupData[{
+Cell[7636, 181, 10815, 221, 512, "Input"],
+Cell[18454, 404, 8212, 153, 470, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26703, 562, 117, 2, 29, "Input"],
+Cell[26823, 566, 3396, 51, 133, "Print",
+ CellTags->"Info3552365826-1892219"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30256, 622, 760, 16, 48, "Input"],
+Cell[31019, 640, 271, 6, 40, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

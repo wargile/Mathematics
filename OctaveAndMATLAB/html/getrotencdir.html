@@ -1,0 +1,222 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      --><title>getrotencdir</title><meta name="generator" content="MATLAB 7.10"><meta name="date" content="2010-04-14"><meta name="m-file" content="getrotencdir"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#3">Check arguments</a></li><li><a href="#4">Convert string arguments to integers and check values</a></li><li><a href="#5">Find and display encoder direction</a></li></ul></div><pre class="codeinput"><span class="keyword">function</span> direction = getrotencdir(gcprev, gcnext)
+</pre><pre class="codeinput"><span class="comment">%GETROTENCDIR Gets the direction value (forward or reverse) for a</span>
+<span class="comment">%   rotary encoder.</span>
+<span class="comment">%</span>
+<span class="comment">%   GETROTENCDIR gets the direction value (forward or reverse) for a</span>
+<span class="comment">%   rotary encoder using 2-bit graycode.</span>
+<span class="comment">%</span>
+<span class="comment">%   Syntax: getrotencdir(gcprev, gcnext)</span>
+<span class="comment">%   Example: getrotencdir('01', '11')</span>
+</pre><h2>Check arguments<a name="3"></a></h2><pre class="codeinput">    <span class="keyword">if</span> (nargin ~= 2)
+        error(<span class="string">'Usage: getrotencdir(gcprev, gcnext)'</span>);
+    <span class="keyword">end</span>
+
+    <span class="keyword">if</span> isnumeric(gcprev) || isnumeric(gcnext)
+        error(<span class="string">'Inputs must be string values.'</span>);
+    <span class="keyword">end</span>
+
+    <span class="keyword">if</span> (strcmp(gcprev, gcnext) == 1)
+        error(<span class="string">'Input strings must be different values.'</span>);
+    <span class="keyword">end</span>
+
+    <span class="keyword">if</span> length(gcprev) &gt; 2 || length(gcnext) &gt; 2
+        error([<span class="string">'Invalid input string(s). '</span>, <span class="keyword">...</span>
+            <span class="string">'Valid string values are ''00'' and ''01''.'</span>]);
+    <span class="keyword">end</span>
+
+    <span class="keyword">if</span> gcprev(1) + gcprev(2) &gt; (<span class="string">'1'</span> + <span class="string">'1'</span>) || <span class="keyword">...</span>
+            gcnext(1) + gcnext(2) &gt; (<span class="string">'1'</span> + <span class="string">'1'</span>)
+        error([<span class="string">'Invalid input string(s). '</span>, <span class="keyword">...</span>
+            <span class="string">'Valid string values are ''00'' and ''01''.'</span>]);
+    <span class="keyword">end</span>
+
+    <span class="comment">% 2-bit gray code:</span>
+    <span class="comment">% A B</span>
+    <span class="comment">% 0 0</span>
+    <span class="comment">% 0 1</span>
+    <span class="comment">% 1 1</span>
+    <span class="comment">% 1 0</span>
+
+    <span class="comment">% Rev: 0-1-3-2-0-1-3-2</span>
+    <span class="comment">% Fwd: 2-3-1-0-2-3-1-0</span>
+</pre><pre class="codeoutput">Error using ==&gt; getrotencdir at 13
+Usage: getrotencdir(gcprev, gcnext)
+</pre><h2>Convert string arguments to integers and check values<a name="4"></a></h2><pre class="codeinput">    gcprev_a = str2double(gcprev(1));
+    gcprev_b = str2double(gcprev(2));
+    gcnext_a = str2double(gcnext(1));
+    gcnext_b = str2double(gcnext(2));
+
+    <span class="keyword">if</span> gcprev_a &gt; 1 || gcprev_b &gt; 1 || gcnext_a &gt; 1 || gcnext_b &gt; 1
+        error([<span class="string">'Invalid input arguments. '</span>, <span class="keyword">...</span>
+            <span class="string">'Valid string values are ''00'' and ''01''.'</span>]);
+    <span class="keyword">end</span>
+
+    CW = 1;
+    CCW = 0;
+
+    oldrotaryvalue = bitor(gcprev_b, (bitshift(gcprev_a, 1)));
+    rotaryvalue = bitor(gcnext_b, (bitshift(gcnext_a, 1)));
+
+    <span class="keyword">if</span> bitxor(oldrotaryvalue, rotaryvalue) &gt; 2
+        error(<span class="string">'Wrong gray code number pair.'</span>);
+    <span class="keyword">end</span>
+</pre><h2>Find and display encoder direction<a name="5"></a></h2><pre class="codeinput">    <span class="keyword">if</span> (xor(bitand(oldrotaryvalue, 1), <span class="keyword">...</span>
+            (bitand(bitshift(rotaryvalue, -1), 1))) == CW)
+        direction = CW;
+        fprintf(<span class="string">'Direction is CW.\n'</span>);
+    <span class="keyword">elseif</span> (xor(bitand(oldrotaryvalue, 1), <span class="keyword">...</span>
+            (bitand(bitshift(rotaryvalue, -1), 1))) == CCW)
+        direction = CCW;
+        fprintf(<span class="string">'Direction is CCW.\n'</span>);
+    <span class="keyword">else</span>
+        fprintf([<span class="string">'Unable to detect direction from '</span>, <span class="keyword">...</span>
+            <span class="string">'inputs ''%s'' and ''%s''.\n'</span>], gcprev, gcnext);
+    <span class="keyword">end</span>
+</pre><p class="footer"><br>
+      Published with MATLAB&reg; 7.10<br></p></div><!--
+##### SOURCE BEGIN #####
+function direction = getrotencdir(gcprev, gcnext)
+%GETROTENCDIR Gets the direction value (forward or reverse) for a
+%   rotary encoder.
+%
+%   GETROTENCDIR gets the direction value (forward or reverse) for a
+%   rotary encoder using 2-bit graycode.
+%
+%   Syntax: getrotencdir(gcprev, gcnext)
+%   Example: getrotencdir('01', '11')
+
+    %% Check arguments
+    if (nargin ~= 2)
+        error('Usage: getrotencdir(gcprev, gcnext)');
+    end
+    
+    if isnumeric(gcprev) || isnumeric(gcnext)
+        error('Inputs must be string values.');
+    end
+    
+    if (strcmp(gcprev, gcnext) == 1)
+        error('Input strings must be different values.');
+    end
+    
+    if length(gcprev) > 2 || length(gcnext) > 2 
+        error(['Invalid input string(s). ', ...
+            'Valid string values are ''00'' and ''01''.']); 
+    end
+    
+    if gcprev(1) + gcprev(2) > ('1' + '1') || ...
+            gcnext(1) + gcnext(2) > ('1' + '1')
+        error(['Invalid input string(s). ', ...
+            'Valid string values are ''00'' and ''01''.']); 
+    end  
+
+    % 2-bit gray code:
+    % A B
+    % 0 0
+    % 0 1
+    % 1 1
+    % 1 0
+
+    % Rev: 0-1-3-2-0-1-3-2
+    % Fwd: 2-3-1-0-2-3-1-0
+
+    %% Convert string arguments to integers and check values
+    gcprev_a = str2double(gcprev(1));
+    gcprev_b = str2double(gcprev(2));
+    gcnext_a = str2double(gcnext(1));
+    gcnext_b = str2double(gcnext(2));
+
+    if gcprev_a > 1 || gcprev_b > 1 || gcnext_a > 1 || gcnext_b > 1
+        error(['Invalid input arguments. ', ...
+            'Valid string values are ''00'' and ''01''.']);
+    end
+
+    CW = 1;
+    CCW = 0;
+
+    oldrotaryvalue = bitor(gcprev_b, (bitshift(gcprev_a, 1)));
+    rotaryvalue = bitor(gcnext_b, (bitshift(gcnext_a, 1)));
+
+    if bitxor(oldrotaryvalue, rotaryvalue) > 2
+        error('Wrong gray code number pair.');
+    end
+
+    %% Find and display encoder direction
+    if (xor(bitand(oldrotaryvalue, 1), ...
+            (bitand(bitshift(rotaryvalue, -1), 1))) == CW)
+        direction = CW; 
+        fprintf('Direction is CW.\n');
+    elseif (xor(bitand(oldrotaryvalue, 1), ...
+            (bitand(bitshift(rotaryvalue, -1), 1))) == CCW)
+        direction = CCW; 
+        fprintf('Direction is CCW.\n');
+    else
+        fprintf(['Unable to detect direction from ', ...
+            'inputs ''%s'' and ''%s''.\n'], gcprev, gcnext);
+    end
+
+##### SOURCE END #####
+--></body></html>

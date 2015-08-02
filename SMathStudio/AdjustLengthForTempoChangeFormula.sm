@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio" version="0.95"?>
+<regions>
+  <settings>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="true" printAreas="true" simpleEqualsOnly="false">
+      <paper id="9" orientation="Portrait" width="827" height="1169" />
+      <margins left="39" right="39" top="39" bottom="39" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+    </pageModel>
+    <dependences>
+      <assembly name="SMath Studio" version="0.95" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Text Region" version="1.8.4594.45" guid="485d28c5-349a-48b6-93be-12a35a1c1e39" />
+      <assembly name="Math Region" version="0.95" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+    </dependences>
+  </settings>
+  <region id="0" left="18" top="9" width="418" height="31" border="true" color="#000000" bgColor="#ffff80" fontSize="14">
+    <text lang="eng">
+      <p>See: Audacity, effect: Change Tempo</p>
+    </text>
+  </region>
+  <region id="1" left="18" top="45" width="460" height="24" border="true" color="#000000" bgColor="#ffff80" fontSize="10">
+    <text lang="eng">
+      <p>Change the length of a soundclip, so that a 100% change</p>
+    </text>
+  </region>
+  <region id="2" left="18" top="72" width="454" height="24" border="true" color="#000000" bgColor="#ffff80" fontSize="10">
+    <text lang="eng">
+      <p>makes the new clip length half as long as the original</p>
+    </text>
+  </region>
+  <region id="3" left="18" top="117" width="200" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">clip_org_length</e>
+        <e type="operand">150.13</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="4" left="234" top="117" width="183" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">change_in_percent</e>
+        <e type="operand">22</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="5" left="18" top="153" width="299" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">change_factor</e>
+        <e type="operand">100</e>
+        <e type="operand">change_in_percent</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="6" left="333" top="162" width="193" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">change_factor</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">5.5455</e>
+      </result>
+    </math>
+  </region>
+  <region id="7" left="18" top="207" width="318" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">change</e>
+        <e type="operand">clip_org_length</e>
+        <e type="operand">1</e>
+        <e type="operand">change_factor</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="8" left="18" top="261" width="337" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">clip_new_length</e>
+        <e type="operand">clip_org_length</e>
+        <e type="operand">change</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="9" left="378" top="261" width="227" height="24" border="true" color="#000000" bgColor="#ffffd5" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">clip_new_length</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">123.0574</e>
+      </result>
+    </math>
+  </region>
+  <region id="10" left="18" top="297" width="425" height="62" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">clip_org_length</e>
+        <e type="operand">clip_org_length</e>
+        <e type="operand">100</e>
+        <e type="operand">change_in_percent</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">-</e>
+        <e type="bracket">(</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">123.0574</e>
+      </result>
+    </math>
+  </region>
+  <region id="11" left="18" top="387" width="300" height="24" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Simpler way to get the same result:</p>
+    </text>
+  </region>
+  <region id="12" left="18" top="423" width="258" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">fraction</e>
+        <e type="operand">change_in_percent</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="13" left="315" top="432" width="136" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">fraction</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1.22</e>
+      </result>
+    </math>
+  </region>
+  <region id="14" left="18" top="468" width="279" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">clip_new_length</e>
+        <e type="operand">clip_org_length</e>
+        <e type="operand">fraction</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="15" left="315" top="477" width="227" height="24" border="true" color="#000000" bgColor="#ffffd5" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">clip_new_length</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">123.0574</e>
+      </result>
+    </math>
+  </region>
+  <region id="16" left="18" top="531" width="284" height="24" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>...which written more compact is:</p>
+    </text>
+  </region>
+  <region id="17" left="18" top="576" width="328" height="60" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">clip_new_length</e>
+        <e type="operand">clip_org_length</e>
+        <e type="operand">change_in_percent</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="18" left="360" top="594" width="227" height="24" border="true" color="#000000" bgColor="#ffffd5" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">clip_new_length</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">123.0574</e>
+      </result>
+    </math>
+  </region>
+  <region id="19" left="18" top="675" width="447" height="24" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Find difference in percent between old and new length</p>
+    </text>
+  </region>
+  <region id="20" left="18" top="702" width="158" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">old_length</e>
+        <e type="operand">150.13</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="21" left="180" top="702" width="167" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">new_length</e>
+        <e type="operand">94.3549</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="22" left="18" top="729" width="372" height="43" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">diff_in_percent</e>
+        <e type="operand">new_length</e>
+        <e type="operand">old_length</e>
+        <e type="operator" args="2">-</e>
+        <e type="bracket">(</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">old_length</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="23" left="405" top="738" width="228" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">diff_in_percent</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">37.1512</e>
+        <e type="operator" args="1">-</e>
+      </result>
+    </math>
+  </region>
+  <region id="24" left="18" top="783" width="421" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">new_length</e>
+        <e type="operand">old_length</e>
+        <e type="operand">old_length</e>
+        <e type="operand">diff_in_percent</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="25" left="459" top="792" width="177" height="24" border="true" color="#000000" bgColor="#ffffd5" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">new_length</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">94.3549</e>
+      </result>
+    </math>
+  </region>
+</regions>

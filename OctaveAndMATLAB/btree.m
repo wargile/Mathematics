@@ -1,0 +1,52 @@
+function ret = btree(array_to_search, search_num)
+%BTREE Octave implementation of BTREE search
+%   See: http://en.wikipedia.org/wiki/Binary_search_algorithm
+
+	is_sorted = false;
+	
+	if ~issorted(array_to_search)
+		warning('Input array is not sorted. Sorting it before search.');
+		array_to_search = sort(array_to_search);
+		is_sorted = true;
+	end
+	
+	tic;
+	
+	minn = 0;
+	maxx = length(array_to_search);
+	midd = round((minn + maxx) / 2);
+	
+	while minn <= maxx
+		midd = round((minn + maxx) / 2);
+		
+		if array_to_search(midd) == search_num
+			fprintf('MID ! %d (%d)\n', midd, array_to_search(midd));
+			break;
+		else
+			if search_num > array_to_search(midd)
+				fprintf('MID > %d (%d)\n', midd, array_to_search(midd));
+				minn = midd + 1;
+			else
+				fprintf('MID < %d (%d)\n', midd, array_to_search(midd));
+				maxx = midd - 1;
+			end
+		end
+	end
+	
+	format long;
+	toc;
+	format short;
+
+	if minn > maxx
+		fprintf('Unable to find the number %d!\n', search_num);
+	else
+		fprintf('Found %d in pos %d. Value = %d.\n', search_num, midd, ...
+			array_to_search(midd));
+			
+		if is_sorted
+			fprintf('(NOTE: Array has been sorted prior to search.)\n');
+		end
+	end
+	
+	ret = midd;
+end

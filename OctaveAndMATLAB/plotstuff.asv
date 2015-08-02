@@ -1,0 +1,29 @@
+function B = plotstuff()
+%Plot sine/cosin, bessel etc.
+
+hold off; % Clear previous plot
+
+% BesselJ curve
+a = 1:0.2:50;
+B = besselj(0, a);
+plot(B, '*b-');
+
+hold on;
+
+% BesselY curve
+a = 0:0.2:50;
+B = bessely(0, a);
+plot(B, '*m-');
+
+% Sine wave
+B = 0:0.1:8*pi;
+plot(sin(B), 'or-');
+
+% Cosine wave
+plot(cos(B), 'og-');
+
+% Get some anti-aliasing going (only works o....
+set(B, 'LineSmoothing', 'on')
+
+grid on;
+grid minor;

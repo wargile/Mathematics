@@ -1,0 +1,948 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     46155,        939]
+NotebookOptionsPosition[     45256,        907]
+NotebookOutlinePosition[     45830,        927]
+CellTagsIndexPosition[     45787,        924]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["MIDI2CV: 4-Voice Polyphony", "Title",
+ CellChangeTimes->{{3.5233467929119263`*^9, 3.5233467987762613`*^9}, 
+   3.523348697065837*^9, {3.523419684944112*^9, 3.523419686677211*^9}, {
+   3.5236179745649276`*^9, 3.523618020474553*^9}}],
+
+Cell["\<\
+This notebook demonstrates the \[OpenCurlyDoubleQuote]Polyphony\
+\[CloseCurlyDoubleQuote] code of the 4-voice Midi2CV PIC project.
+Copyright \[Copyright] Terje B. 2006-2011
+
+http://demonstrations.wolfram.com/PianoKeys/
+http://demonstrations.wolfram.com/MathSynth/
+http://demonstrations.wolfram.com/BasicFMSynthesisOfSounds/
+http://demonstrations.wolfram.com/topic.html?topic=Audio&limit=20\
+\>", "Text",
+ CellChangeTimes->{{3.5233468122310305`*^9, 3.523346838231518*^9}, {
+  3.5233487048452826`*^9, 3.5233487204891768`*^9}, {3.523365567813789*^9, 
+  3.5233656062519875`*^9}, {3.523365704813625*^9, 3.5233657065257225`*^9}, {
+  3.5234196944376545`*^9, 3.5234197288846245`*^9}, {3.523617978843172*^9, 
+  3.523617982963408*^9}, {3.5236672925937576`*^9, 3.5236672932067924`*^9}, {
+  3.523667864742482*^9, 3.52366786522151*^9}, {3.5236679658872676`*^9, 
+  3.523667966509303*^9}, {3.523668059149602*^9, 3.5236680595406246`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Clear", "[", 
+    RowBox[{"velocity", ",", " ", "polyphony", ",", " ", "polycounters"}], 
+    "]"}], ";"}], " ", 
+  RowBox[{"(*", " ", "IMPORTANT", " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"velocity", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "0", ",", "0"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"polyphony", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "0", ",", "0"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"polycounters", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "0", ",", "0"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"cmaxpoly", " ", "=", " ", "4"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"cresetvalue", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"cnoteoff", " ", "=", " ", "16^^80"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"cnoteon", " ", "=", " ", "16^^90"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"stuff", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"counter", " ", "=", " ", "0"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"UpdatePoly", "[", 
+   RowBox[{"pmidimessage_", ",", "pnotenumber_", ",", "pvelocitylevel_"}], 
+   "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"midiMessage", "=", "pmidimessage"}], ",", 
+      RowBox[{"noteNumber", "=", "pnotenumber"}], ",", 
+      RowBox[{"velocityLevel", "=", "pvelocitylevel"}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"midiMessage", "\[Equal]", "cnoteoff"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(", "\[IndentingNewLine]", 
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"counter", "=", "1"}], ",", 
+          RowBox[{"counter", "<=", "cmaxpoly"}], ",", 
+          RowBox[{"counter", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"(", 
+           RowBox[{"(*", 
+            RowBox[{
+            "Reset", " ", "counter", " ", "and", " ", "value", " ", "in", " ",
+              "notenumber", " ", "slot"}], "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"polyphony", "[", 
+                RowBox[{"[", "counter", "]"}], "]"}], "\[Equal]", 
+               "noteNumber"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"(", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"polyphony", "[", 
+                  RowBox[{"[", "counter", "]"}], "]"}], "=", "cresetvalue"}], 
+                ";", 
+                RowBox[{"(*", "Reset", "*)"}], "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"polycounters", "[", 
+                  RowBox[{"[", "counter", "]"}], "]"}], "=", "cresetvalue"}], 
+                ";", "\[IndentingNewLine]", 
+                RowBox[{"Break", "[", "]"}]}], "\[IndentingNewLine]", ")"}]}],
+              " ", 
+             RowBox[{"(*", 
+              RowBox[{"end", " ", "if", " ", "true"}], "*)"}], 
+             "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{"(*", 
+             RowBox[{
+              RowBox[{"Decrease", " ", "counter", " ", "if", " ", "counter"}],
+               ">", "1"}], "*)"}], "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"polycounters", "[", 
+                RowBox[{"[", "counter", "]"}], "]"}], ">", "1"}], ",", 
+              RowBox[{
+               RowBox[{"polycounters", "[", 
+                RowBox[{"[", "counter", "]"}], "]"}], "--"}]}], 
+             "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", ")"}]}], 
+         "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", ")"}]}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"midiMessage", "\[Equal]", "cnoteon"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"For", "[", 
+          RowBox[{
+           RowBox[{"counter", "=", "1"}], ",", 
+           RowBox[{"counter", "<=", "cmaxpoly"}], ",", 
+           RowBox[{"counter", "++"}], ",", " ", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+            "Check", " ", "if", " ", "we", " ", "have", " ", "the", " ", 
+             "note", " ", "already"}], " ", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"polyphony", "[", 
+               RowBox[{"[", "counter", "]"}], "]"}], "\[Equal]", 
+              "noteNumber"}], ",", " ", 
+             RowBox[{"Return", "[", "]"}]}], "]"}]}], "\[IndentingNewLine]", 
+          "]"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"For", "[", 
+          RowBox[{
+           RowBox[{"counter", "=", "1"}], ",", 
+           RowBox[{"counter", "<=", "cmaxpoly"}], ",", 
+           RowBox[{"counter", "++"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"polyphony", "[", 
+                RowBox[{"[", "counter", "]"}], "]"}], "\[Equal]", 
+               "cresetvalue"}], "||", 
+              RowBox[{
+               RowBox[{"polycounters", "[", 
+                RowBox[{"[", "counter", "]"}], "]"}], "\[Equal]", 
+               "cmaxpoly"}]}], ",", "\[IndentingNewLine]", 
+             RowBox[{"(", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"stuff", " ", "=", " ", "noteNumber"}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"polyphony", "[", 
+                 RowBox[{"[", "counter", "]"}], "]"}], "=", "noteNumber"}], 
+               ";", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"velocity", "[", 
+                 RowBox[{"[", "counter", "]"}], "]"}], "=", "velocityLevel"}],
+                ";", "\[IndentingNewLine]", " ", 
+               RowBox[{"Break", "[", "]"}]}], "\[IndentingNewLine]", ")"}]}], 
+            " ", 
+            RowBox[{"(*", 
+             RowBox[{"end", " ", "if", " ", "true"}], "*)"}], 
+            "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}], ";",
+          "\[IndentingNewLine]", 
+         RowBox[{"For", "[", 
+          RowBox[{
+           RowBox[{"counter", "=", "1"}], ",", 
+           RowBox[{"counter", "<=", "cmaxpoly"}], ",", 
+           RowBox[{"counter", "++"}], ",", 
+           RowBox[{"(*", 
+            RowBox[{
+             RowBox[{"Set", " ", "counter"}], "=", 
+             RowBox[{
+              RowBox[{"1", " ", "if", " ", "counter"}], "\[Equal]", 
+              "cmaxpoly"}]}], "*)"}], 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"polycounters", "[", 
+               RowBox[{"[", "counter", "]"}], "]"}], "\[Equal]", "cmaxpoly"}],
+              ",", 
+             RowBox[{
+              RowBox[{"polycounters", "[", 
+               RowBox[{"[", "counter", "]"}], "]"}], "=", "1"}], ",", 
+             RowBox[{"(*", 
+              RowBox[{"end", " ", "if", " ", "true"}], "*)"}], 
+             "\[IndentingNewLine]", 
+             RowBox[{"(", "\[IndentingNewLine]", 
+              RowBox[{"(*", 
+               RowBox[{
+                RowBox[{
+                "Increase", " ", "counter", " ", "if", " ", "counter"}], 
+                "\[NotEqual]", "cmaxpoly"}], "*)"}], "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"polyphony", "[", 
+                  RowBox[{"[", "counter", "]"}], "]"}], ">", "cresetvalue"}], 
+                ",", 
+                RowBox[{
+                 RowBox[{"polycounters", "[", 
+                  RowBox[{"[", "counter", "]"}], "]"}], "++"}]}], 
+               "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", ")"}]}], 
+            " ", 
+            RowBox[{"(*", 
+             RowBox[{"end", " ", "if", " ", "false"}], "*)"}], 
+            "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+        "\[IndentingNewLine]", ")"}]}], "\[IndentingNewLine]", "]"}], ";", 
+     "\[IndentingNewLine]", "polyphony"}]}], "\[IndentingNewLine]", 
+   "]"}]}]}], "Input",
+ CellChangeTimes->{{3.5233304783677874`*^9, 3.523330497564885*^9}, {
+   3.5233305309977975`*^9, 3.523330532770899*^9}, {3.5233305961725254`*^9, 
+   3.52333059852466*^9}, {3.523330654596867*^9, 3.5233306690766954`*^9}, {
+   3.5233307430209246`*^9, 3.523330743171933*^9}, 3.523330823034501*^9, 
+   3.5233309347148886`*^9, {3.5233309851947765`*^9, 3.523330985505794*^9}, {
+   3.523331138522546*^9, 3.523331155783533*^9}, {3.5233312596754756`*^9, 
+   3.5233312700890713`*^9}, {3.523331318240825*^9, 3.523331344095304*^9}, {
+   3.5233313838385773`*^9, 3.523331395127223*^9}, {3.523331707598095*^9, 
+   3.5233317079651165`*^9}, {3.523331909982671*^9, 3.5233322566905017`*^9}, {
+   3.5233322871462436`*^9, 3.523332302626129*^9}, {3.5233324393159475`*^9, 
+   3.5233324421211076`*^9}, {3.5233324833854675`*^9, 
+   3.5233325042226596`*^9}, {3.5233325479841623`*^9, 
+   3.5233325568626704`*^9}, {3.5233327540949516`*^9, 
+   3.5233327546709843`*^9}, {3.5233327918431106`*^9, 3.523332822114842*^9}, {
+   3.523333203661665*^9, 3.523333205793787*^9}, {3.523333883485549*^9, 
+   3.5233339288361425`*^9}, {3.5233341527329493`*^9, 3.52333416341856*^9}, {
+   3.5233343136981554`*^9, 3.5233343378195353`*^9}, {3.5233343763027363`*^9, 
+   3.5233343765007477`*^9}, {3.52333645008035*^9, 3.5233364950719233`*^9}, {
+   3.5233366416423063`*^9, 3.5233366861298513`*^9}, {3.5233367313984404`*^9, 
+   3.5233367446711993`*^9}, {3.523336780761264*^9, 3.5233367920709105`*^9}, {
+   3.5233370799883785`*^9, 3.52333709593229*^9}, {3.5233427559260235`*^9, 
+   3.523342786668782*^9}, {3.5233428813401966`*^9, 3.523342905412574*^9}, {
+   3.5233433525371475`*^9, 3.523343443580355*^9}, {3.523344492259336*^9, 
+   3.523344508713277*^9}, {3.523344551750739*^9, 3.5233446489532986`*^9}, {
+   3.523344865441681*^9, 3.523344930760417*^9}, {3.523345044854943*^9, 
+   3.523345109719653*^9}, {3.5233451500629606`*^9, 3.523345173397295*^9}, {
+   3.523345207506246*^9, 3.523345290870014*^9}, {3.5233453442940693`*^9, 
+   3.5233453660213127`*^9}, {3.523345455037404*^9, 3.523345457444542*^9}, {
+   3.5233466875669003`*^9, 3.5233467032857995`*^9}, {3.523346745940239*^9, 
+   3.5233467570938773`*^9}, {3.52334699316138*^9, 3.5233470239531407`*^9}, {
+   3.523349688556547*^9, 3.523349708135667*^9}, {3.5233497700492086`*^9, 
+   3.523349772614355*^9}, {3.523349916624592*^9, 3.523349979567192*^9}, {
+   3.5233500317081747`*^9, 3.523350054399472*^9}, {3.5233612879909973`*^9, 
+   3.523361340861021*^9}, {3.523361406321765*^9, 3.52336141095303*^9}, {
+   3.523361446593068*^9, 3.5233614538674846`*^9}, {3.523361485100271*^9, 
+   3.5233614993230844`*^9}, {3.5233620345416975`*^9, 
+   3.5233620350757275`*^9}, {3.5233620894988403`*^9, 3.52336209036989*^9}, {
+   3.5233623546870084`*^9, 3.523362358479225*^9}, {3.523362463912256*^9, 
+   3.5233624644632874`*^9}, {3.5234197374611154`*^9, 3.523419742530405*^9}, {
+   3.5234198434561777`*^9, 3.5234198509646077`*^9}, {3.5234200901002855`*^9, 
+   3.5234201379440217`*^9}, 3.5234203425787263`*^9, {3.52343114710264*^9, 
+   3.5234311751802464`*^9}, {3.5234312726918235`*^9, 3.523431305832719*^9}, {
+   3.5234313796399403`*^9, 3.523431380006962*^9}, {3.5234315218800764`*^9, 
+   3.5234315389340515`*^9}, {3.5234315699658265`*^9, 
+   3.5234315800544033`*^9}, {3.52343161426236*^9, 3.5234316861414714`*^9}, {
+   3.5234317830550146`*^9, 3.523431783429036*^9}, {3.523432392488872*^9, 
+   3.523432432816179*^9}, {3.5234327005584927`*^9, 3.5234327296311555`*^9}, {
+   3.523435143877242*^9, 3.5234351723538713`*^9}, {3.523435247636177*^9, 
+   3.523435276914852*^9}, {3.523435445661504*^9, 3.5234354512418227`*^9}, {
+   3.523436400622124*^9, 3.52343643412304*^9}, {3.5234477679132957`*^9, 
+   3.5234478191622276`*^9}, {3.5234478702011466`*^9, 3.5234479646855507`*^9}, 
+   3.5234480186366367`*^9, {3.523448103438487*^9, 3.5234481112439337`*^9}, {
+   3.523448158526638*^9, 3.5234481685552115`*^9}, {3.5234531015073605`*^9, 
+   3.523453102641425*^9}, {3.5234545217255917`*^9, 3.523454524922775*^9}, {
+   3.5236179956081314`*^9, 3.5236180018944907`*^9}, {3.523618037037501*^9, 
+   3.5236180811810255`*^9}, {3.523618607532131*^9, 3.523618721207633*^9}, {
+   3.5236187917866697`*^9, 3.5236188175371428`*^9}, {3.5237620458083315`*^9, 
+   3.5237620470104*^9}, {3.523769100886859*^9, 3.523769153044842*^9}, {
+   3.523769204567789*^9, 3.5237692064138947`*^9}, {3.5237805613663607`*^9, 
+   3.523780563070458*^9}, {3.5237817099830575`*^9, 3.5237817217167287`*^9}, {
+   3.523781789776622*^9, 3.5237817917587347`*^9}, {3.5237818467448797`*^9, 
+   3.5237818484709787`*^9}, {3.523782064013307*^9, 3.523782067126485*^9}, 
+   3.5237821773497896`*^9, {3.523885323640715*^9, 3.52388542006723*^9}, {
+   3.523961657602768*^9, 3.523961675975819*^9}, {3.523973550633011*^9, 
+   3.523973560342566*^9}, {3.5239736583991747`*^9, 3.5239736645195246`*^9}, {
+   3.5239738381314545`*^9, 3.5239738431387405`*^9}, {3.523973904523252*^9, 
+   3.5239739068123827`*^9}, {3.523974063904368*^9, 3.523974081227359*^9}, {
+   3.5239741264029427`*^9, 3.5239741301081543`*^9}, {3.5239750349199066`*^9, 
+   3.523975039102146*^9}, {3.5239751386788416`*^9, 3.523975141324993*^9}, {
+   3.52397599377275*^9, 3.5239759985540237`*^9}}],
+
+Cell["\<\
+Let\[CloseCurlyQuote]s animate and control the module we\[CloseCurlyQuote]ve \
+created through the nifty MANIPULATE command:\
+\>", "Text",
+ CellChangeTimes->{{3.5233412325908937`*^9, 3.5233412464466863`*^9}, {
+   3.5233487408733425`*^9, 3.5233487578813157`*^9}, 3.5233490387093782`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"mresult", " ", "=", " ", 
+  RowBox[{"Manipulate", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"cc", " ", "==", " ", "cresetvalue"}], ",", " ", 
+       RowBox[{"UpdatePoly", "[", 
+        RowBox[{"cnoteoff", ",", " ", "cc", ",", " ", "127"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"UpdatePoly", "[", 
+        RowBox[{"cnoteon", ",", " ", "cc", ",", " ", "127"}], "]"}]}], "]"}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"dflat", " ", "==", " ", "cresetvalue"}], ",", " ", 
+       RowBox[{"UpdatePoly", "[", 
+        RowBox[{"cnoteoff", ",", " ", "dflat", ",", " ", "127"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"UpdatePoly", "[", 
+        RowBox[{"cnoteon", ",", " ", "dflat", ",", " ", "127"}], "]"}]}], 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"dd", " ", "==", " ", "cresetvalue"}], ",", " ", 
+       RowBox[{"UpdatePoly", "[", 
+        RowBox[{"cnoteoff", ",", " ", "dd", ",", " ", "127"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"UpdatePoly", "[", 
+        RowBox[{"cnoteon", ",", " ", "dd", ",", " ", "127"}], "]"}]}], "]"}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"eflat", " ", "==", " ", "cresetvalue"}], ",", " ", 
+       RowBox[{"UpdatePoly", "[", 
+        RowBox[{"cnoteoff", ",", " ", "eflat", ",", " ", "127"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"UpdatePoly", "[", 
+        RowBox[{"cnoteon", ",", " ", "eflat", ",", " ", "127"}], "]"}]}], 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"ee", " ", "==", " ", "cresetvalue"}], ",", " ", 
+       RowBox[{"UpdatePoly", "[", 
+        RowBox[{"cnoteoff", ",", " ", "ee", ",", " ", "127"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"UpdatePoly", "[", 
+        RowBox[{"cnoteon", ",", " ", "ee", ",", " ", "127"}], "]"}]}], "]"}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"gg", " ", "==", " ", "cresetvalue"}], ",", " ", 
+       RowBox[{"UpdatePoly", "[", 
+        RowBox[{"cnoteoff", ",", " ", "gg", ",", " ", "127"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"UpdatePoly", "[", 
+        RowBox[{"cnoteon", ",", " ", "gg", ",", " ", "127"}], "]"}]}], "]"}], 
+     ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"g1", " ", "=", " ", 
+      RowBox[{"Show", "[", 
+       RowBox[{"Plot", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+          "cc", ",", " ", "dflat", ",", " ", "dd", ",", " ", "eflat", ",", 
+           " ", "ee", ",", " ", "ff", ",", " ", "gflat", ",", " ", "gg", ",", 
+           " ", "aflat", ",", " ", "aa", ",", " ", "bflat", ",", " ", "bb"}], 
+          "}"}], ",", " ", "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", " ", "0", ",", " ", "4"}], "}"}], ",", 
+         RowBox[{"PlotRange", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", " ", "4"}], "}"}], ",", " ", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", " ", "12"}], "}"}]}], "}"}]}], ",", " ", 
+         RowBox[{"ImageSize", "\[Rule]", 
+          RowBox[{"Scaled", "[", ".98", "]"}]}]}], "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"g2", " ", "=", " ", 
+      RowBox[{"Show", "[", 
+       RowBox[{"Plot", "[", 
+        RowBox[{"polyphony", ",", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", " ", "0", ",", " ", "4"}], "}"}], ",", 
+         RowBox[{"PlotRange", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", " ", "4"}], "}"}], ",", " ", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", " ", "12"}], "}"}]}], "}"}]}], ",", " ", 
+         RowBox[{"ImageSize", "\[Rule]", 
+          RowBox[{"Scaled", "[", ".98", "]"}]}]}], "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"Grid", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"{", 
+         RowBox[{
+         "stuff", ",", " ", "polyphony", ",", "polycounters", ",", " ", "g1", 
+          ",", " ", "g2"}], "}"}], "}"}], ",", " ", 
+       RowBox[{"ItemSize", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{
+          "2", ",", " ", "2", ",", " ", "2", ",", " ", "20", ",", " ", "25"}],
+           "}"}], "}"}]}], ",", " ", 
+       RowBox[{"Frame", "\[Rule]", "None"}]}], "]"}]}], ",", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Choose notes on the keyboard: \>\"", ",", " ", "Bold"}], 
+     "]"}], ",", " ", "Delimiter", ",", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"cc", ",", " ", "0", ",", " ", "\"\<C\>\""}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"1", "->", "\"\<note on\>\""}], ",", " ", 
+        RowBox[{"0", "->", "\"\<note off\>\""}]}], "}"}], ",", "  ", 
+      "Setter"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"dflat", ",", " ", "0", ",", " ", "\"\<Db\>\""}], "}"}], ",", 
+      " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"2", "->", "\"\<note on\>\""}], ",", " ", 
+        RowBox[{"0", "->", "\"\<note off\>\""}]}], "}"}], ",", "  ", 
+      "Setter"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"dd", ",", " ", "0", ",", " ", "\"\<D\>\""}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"3", "->", "\"\<note on\>\""}], ",", " ", 
+        RowBox[{"0", "->", "\"\<note off\>\""}]}], "}"}], ",", "  ", 
+      "Setter"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"eflat", ",", " ", "cresetvalue", ",", " ", "\"\<Eb\>\""}], 
+       "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"4", "->", "\"\<note on\>\""}], ",", " ", 
+        RowBox[{"cresetvalue", "->", "\"\<note off\>\""}]}], "}"}], ",", "  ", 
+      RowBox[{"ControlType", "->", "Setter"}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"ee", ",", " ", "0", ",", " ", "\"\<E\>\""}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"5", "->", "\"\<note on\>\""}], ",", " ", 
+        RowBox[{"0", "->", "\"\<note off\>\""}]}], "}"}], ",", "  ", 
+      "Setter"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"ff", ",", " ", "0", ",", " ", "\"\<F\>\""}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"6", "->", "\"\<note on\>\""}], ",", " ", 
+        RowBox[{"0", "->", "\"\<note off\>\""}]}], "}"}], ",", "  ", 
+      "Setter"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"gflat", ",", " ", "0", ",", " ", "\"\<Gb\>\""}], "}"}], ",", 
+      " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"7", "->", "\"\<note on\>\""}], ",", " ", 
+        RowBox[{"0", "->", "\"\<note off\>\""}]}], "}"}], ",", "  ", 
+      "Setter"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"gg", ",", " ", "0", ",", " ", "\"\<G\>\""}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"8", "->", "\"\<note on\>\""}], ",", " ", 
+        RowBox[{"0", "->", "\"\<note off\>\""}]}], "}"}], ",", "  ", 
+      "Setter"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"aflat", ",", " ", "0", ",", " ", "\"\<Ab\>\""}], "}"}], ",", 
+      " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"9", "->", "\"\<note on\>\""}], ",", " ", 
+        RowBox[{"0", "->", "\"\<note off\>\""}]}], "}"}], ",", "  ", 
+      "Setter"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"aa", ",", " ", "0", ",", " ", "\"\<A\>\""}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"10", "->", "\"\<note on\>\""}], ",", " ", 
+        RowBox[{"0", "->", "\"\<note off\>\""}]}], "}"}], ",", "  ", 
+      "Setter"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"bflat", ",", " ", "0", ",", " ", "\"\<Bb\>\""}], "}"}], ",", 
+      " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"11", "->", "\"\<note on\>\""}], ",", " ", 
+        RowBox[{"0", "->", "\"\<note off\>\""}]}], "}"}], ",", "  ", 
+      "Setter"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"bb", ",", " ", "0", ",", " ", "\"\<B\>\""}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"12", "->", "\"\<note on\>\""}], ",", " ", 
+        RowBox[{"0", "->", "\"\<note off\>\""}]}], "}"}], ",", "  ", 
+      "Setter"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"TrackedSymbols", "\[RuleDelayed]", "Manipulate"}], ",", " ", 
+    RowBox[{"SaveDefinitions", "\[Rule]", "False"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"ControlPlacement", "\[Rule]", "Left"}], ",", 
+    RowBox[{"ContinuousAction", "\[Rule]", "False"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Initialization", "\[RuleDelayed]", 
+     RowBox[{"{", "}"}]}]}], "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.523334735287269*^9, 3.523334772905421*^9}, {
+   3.523334810583576*^9, 3.5233349224789762`*^9}, 3.523334954318797*^9, {
+   3.523335017417406*^9, 3.5233350252068515`*^9}, {3.523335129780833*^9, 
+   3.5233351326449966`*^9}, {3.523335168615054*^9, 3.5233352066852317`*^9}, {
+   3.5233352413272133`*^9, 3.523335242829299*^9}, {3.523335295548314*^9, 
+   3.5233353258140454`*^9}, {3.5233354012213583`*^9, 
+   3.5233354219075413`*^9}, {3.5233354774347177`*^9, 
+   3.5233354782507644`*^9}, {3.5233362134068127`*^9, 
+   3.5233362383632402`*^9}, {3.5233362883190975`*^9, 3.523336310254352*^9}, {
+   3.523336382461482*^9, 3.5233363852136393`*^9}, {3.523336424543889*^9, 
+   3.5233364450070596`*^9}, {3.5233370440863247`*^9, 
+   3.5233370703448267`*^9}, {3.5233376679760094`*^9, 
+   3.5233376833808904`*^9}, {3.5233379520542574`*^9, 
+   3.5233380398512793`*^9}, {3.523338073347195*^9, 3.5233380978275957`*^9}, {
+   3.5233381380998993`*^9, 3.5233382357864866`*^9}, {3.5233383088686666`*^9, 
+   3.5233383276987433`*^9}, {3.523338371419244*^9, 3.5233384199140177`*^9}, {
+   3.523341301536837*^9, 3.523341340597071*^9}, {3.5233414725936213`*^9, 
+   3.5233414916587114`*^9}, {3.5233415678470693`*^9, 
+   3.5233415945485964`*^9}, {3.523341642388333*^9, 3.5233416546280327`*^9}, {
+   3.5233416996686087`*^9, 3.5233417049809127`*^9}, {3.5233418366604443`*^9, 
+   3.5233418457859664`*^9}, {3.5233419973876376`*^9, 
+   3.5233420023939238`*^9}, {3.5233420462974353`*^9, 
+   3.5233420469864745`*^9}, {3.5233421031536875`*^9, 
+   3.5233421227608085`*^9}, {3.5233427988414783`*^9, 3.523342817124524*^9}, {
+   3.5233435179436083`*^9, 3.5233435791191072`*^9}, {3.523343658665657*^9, 
+   3.5233436917655506`*^9}, {3.5233437968965635`*^9, 
+   3.5233437971485777`*^9}, {3.5233446814391565`*^9, 3.523344703415414*^9}, {
+   3.5233455873949747`*^9, 3.523345589081071*^9}, {3.5233459761102076`*^9, 
+   3.5233460158134785`*^9}, 3.5233460894316893`*^9, {3.523346140383603*^9, 
+   3.5233462434284973`*^9}, {3.5233463488385267`*^9, 
+   3.5233464232117805`*^9}, {3.523346627677475*^9, 3.523346628742536*^9}, {
+   3.5233490475608845`*^9, 3.523349108182352*^9}, {3.523365221592986*^9, 
+   3.5233652716558495`*^9}, 3.5234197701409845`*^9, {3.5234201928291607`*^9, 
+   3.523420212537288*^9}, {3.523431212929405*^9, 3.523431234880661*^9}, {
+   3.5234313921196547`*^9, 3.523431471886217*^9}, {3.5234318454455833`*^9, 
+   3.52343187353119*^9}, {3.5234319161396265`*^9, 3.5234319178197227`*^9}, {
+   3.5234320715605164`*^9, 3.5234320717585278`*^9}, {3.5234323582969165`*^9, 
+   3.523432370184596*^9}, {3.5234325626156025`*^9, 3.5234325678389015`*^9}, {
+   3.5234326080232*^9, 3.523432643374222*^9}, {3.5234326883347936`*^9, 
+   3.523432696518262*^9}, {3.52343293286078*^9, 3.5234329544840164`*^9}, {
+   3.5234332991327295`*^9, 3.523433299435746*^9}, {3.5234333325046377`*^9, 
+   3.5234333328156557`*^9}, {3.5234337313554506`*^9, 
+   3.5234337785191483`*^9}, {3.523433826920917*^9, 3.523434058504163*^9}, {
+   3.5234346105587387`*^9, 3.52343463750728*^9}, {3.523434761588377*^9, 
+   3.5234347695388317`*^9}, {3.5234348176865854`*^9, 
+   3.5234348184486294`*^9}, {3.5234348969231176`*^9, 
+   3.5234348999072886`*^9}, {3.5234349778347454`*^9, 3.523434983001041*^9}, {
+   3.5234352949118814`*^9, 3.5234353178801947`*^9}, {3.523435351974145*^9, 
+   3.5234354059412317`*^9}, {3.523435705955392*^9, 3.5234357149929085`*^9}, {
+   3.5234358648124776`*^9, 3.5234358673466225`*^9}, {3.5234359661222725`*^9, 
+   3.523435976801883*^9}, {3.5234360182432537`*^9, 3.5234360339051495`*^9}, {
+   3.523436239978936*^9, 3.5234362447522087`*^9}, {3.5234363032085524`*^9, 
+   3.5234363419787703`*^9}, {3.523452947732565*^9, 3.5234529736210456`*^9}, {
+   3.5234530044888115`*^9, 3.523453007200966*^9}, {3.523453043916066*^9, 
+   3.5234530501764245`*^9}, {3.5234532574372787`*^9, 
+   3.5234532836827803`*^9}, {3.523453355313877*^9, 3.5234533839025126`*^9}, {
+   3.5234534633640575`*^9, 3.523453493896804*^9}, {3.5234549883542814`*^9, 
+   3.523455023535294*^9}, {3.5235983219048595`*^9, 3.52359838974974*^9}, {
+   3.5236181516350555`*^9, 3.5236181635537367`*^9}, {3.5236182104654202`*^9, 
+   3.523618314567374*^9}, {3.5236183730307183`*^9, 3.5236184095258055`*^9}, {
+   3.5236184412376194`*^9, 3.5236184415896397`*^9}, {3.5236186364527855`*^9, 
+   3.5236186381728835`*^9}, {3.5236189137886477`*^9, 
+   3.5236189300755796`*^9}, {3.5236190906227627`*^9, 3.52361911034589*^9}, {
+   3.5236191407856317`*^9, 3.5236193469104214`*^9}, {3.523667395042617*^9, 
+   3.5236674049591846`*^9}, {3.5236675281132283`*^9, 3.523667537526767*^9}, {
+   3.5236677124427714`*^9, 3.5236677180870943`*^9}, {3.5237585030176954`*^9, 
+   3.523758705817295*^9}, {3.523758743696461*^9, 3.523758833263584*^9}, {
+   3.523758917997431*^9, 3.5237590497509665`*^9}, {3.523759131757657*^9, 
+   3.523759136934953*^9}, {3.5237591899979887`*^9, 3.523759317098258*^9}, {
+   3.5237593650840025`*^9, 3.5237593963387904`*^9}, {3.5237594516759553`*^9, 
+   3.5237594868279657`*^9}, {3.523759548123472*^9, 3.52375955316276*^9}, {
+   3.5237596085329275`*^9, 3.5237597094096966`*^9}, {3.523759799467848*^9, 
+   3.523759815186747*^9}, {3.52375991541148*^9, 3.523759964708299*^9}, {
+   3.52376005651355*^9, 3.5237601200771856`*^9}, {3.5237602017968597`*^9, 
+   3.523760203907981*^9}, {3.52376023414771*^9, 3.5237602355877924`*^9}, {
+   3.523760284392584*^9, 3.523760418634262*^9}, {3.523760469698183*^9, 
+   3.523760539479174*^9}, {3.5237606429810944`*^9, 3.523760723488699*^9}, {
+   3.52376076075183*^9, 3.523760772199485*^9}, {3.523762075662039*^9, 
+   3.5237621234257708`*^9}, {3.523762162075981*^9, 3.523762239782426*^9}, {
+   3.5237623090283866`*^9, 3.523762330503615*^9}, {3.5237623732150583`*^9, 
+   3.5237623751171665`*^9}, {3.523762456755836*^9, 3.5237624909647927`*^9}, {
+   3.5237627729619217`*^9, 3.5237628285060987`*^9}, {3.523762860071904*^9, 
+   3.523762878568962*^9}, {3.5237678704294806`*^9, 3.5237678900496025`*^9}, {
+   3.5237679739123993`*^9, 3.5237680272364492`*^9}, {3.5237692748988113`*^9, 
+   3.523769283803321*^9}, {3.5237693648679576`*^9, 3.5237693794137897`*^9}, {
+   3.5237694347529545`*^9, 3.523769463427595*^9}, {3.5237696133581705`*^9, 
+   3.523769663840058*^9}, {3.5237697099706964`*^9, 3.523769715966039*^9}, {
+   3.52376997333676*^9, 3.523770018391337*^9}, {3.523770086089209*^9, 
+   3.523770088832366*^9}, {3.523770136191075*^9, 3.5237701663477993`*^9}, {
+   3.523770389935588*^9, 3.5237704175981703`*^9}, {3.5237705924531717`*^9, 
+   3.523770606736988*^9}, {3.52377080940458*^9, 3.5237709055160775`*^9}, {
+   3.5237711990428667`*^9, 3.5237712095784693`*^9}, {3.5237713522216277`*^9, 
+   3.5237713609241257`*^9}, {3.523771395863124*^9, 3.523771431939187*^9}, {
+   3.5237715707831287`*^9, 3.523771590833276*^9}, {3.523771633979743*^9, 
+   3.5237716430022593`*^9}, {3.5237718580885615`*^9, 
+   3.5237719048702374`*^9}, {3.523774497527529*^9, 3.52377450366888*^9}, {
+   3.5237745623612375`*^9, 3.523774569173627*^9}, {3.5237746013904696`*^9, 
+   3.5237746034895897`*^9}, {3.523774710404705*^9, 3.523774723396448*^9}, {
+   3.523774780236699*^9, 3.523774799675811*^9}, {3.5237748298135347`*^9, 
+   3.523774837669984*^9}, {3.5237817362755613`*^9, 3.5237817635291204`*^9}, {
+   3.5237820714517326`*^9, 3.5237820915058794`*^9}, {3.523786505499346*^9, 
+   3.5237865947324495`*^9}, {3.52378667743918*^9, 3.5237867077599144`*^9}, {
+   3.523885584316625*^9, 3.5238856104111176`*^9}, {3.5238856457221375`*^9, 
+   3.523885716873207*^9}, {3.5238857471049356`*^9, 3.523885780755861*^9}, {
+   3.5239605607100296`*^9, 3.5239605679854455`*^9}, 3.5239606034644747`*^9, {
+   3.523961215754496*^9, 3.523961216996567*^9}, {3.5239612709496527`*^9, 
+   3.5239613646880145`*^9}, 3.5239617499200487`*^9, {3.5239618157488136`*^9, 
+   3.5239618944603157`*^9}, {3.523961974513894*^9, 3.5239619845674696`*^9}, {
+   3.523962273644004*^9, 3.5239623376346636`*^9}, {3.5239623758138475`*^9, 
+   3.523962379900081*^9}, {3.523962450095096*^9, 3.523962467157072*^9}, {
+   3.523973442817844*^9, 3.523973509975685*^9}, {3.523973572390255*^9, 
+   3.523973579140641*^9}, {3.5239745849051676`*^9, 3.5239746917882805`*^9}, {
+   3.5239747478294864`*^9, 3.5239747731609354`*^9}, {3.523975957474674*^9, 
+   3.523975974427644*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`aa$$ = 0, $CellContext`aflat$$ = 
+    0, $CellContext`bb$$ = 0, $CellContext`bflat$$ = 0, $CellContext`cc$$ = 
+    0, $CellContext`dd$$ = 3, $CellContext`dflat$$ = 2, $CellContext`ee$$ = 
+    0, $CellContext`eflat$$ = 4, $CellContext`ff$$ = 0, $CellContext`gflat$$ =
+     0, $CellContext`gg$$ = 0, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[
+       Style["Choose notes on the keyboard: ", Bold]], 
+      Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`cc$$], 0, "C"}, {1 -> "note on", 0 -> "note off"}}, {{
+       Hold[$CellContext`dflat$$], 0, "Db"}, {
+      2 -> "note on", 0 -> "note off"}}, {{
+       Hold[$CellContext`dd$$], 0, "D"}, {3 -> "note on", 0 -> "note off"}}, {{
+       Hold[$CellContext`eflat$$], 0, "Eb"}, {
+      4 -> "note on", 0 -> "note off"}}, {{
+       Hold[$CellContext`ee$$], 0, "E"}, {5 -> "note on", 0 -> "note off"}}, {{
+       Hold[$CellContext`ff$$], 0, "F"}, {6 -> "note on", 0 -> "note off"}}, {{
+       Hold[$CellContext`gflat$$], 0, "Gb"}, {
+      7 -> "note on", 0 -> "note off"}}, {{
+       Hold[$CellContext`gg$$], 0, "G"}, {8 -> "note on", 0 -> "note off"}}, {{
+       Hold[$CellContext`aflat$$], 0, "Ab"}, {
+      9 -> "note on", 0 -> "note off"}}, {{
+       Hold[$CellContext`aa$$], 0, "A"}, {
+      10 -> "note on", 0 -> "note off"}}, {{
+       Hold[$CellContext`bflat$$], 0, "Bb"}, {
+      11 -> "note on", 0 -> "note off"}}, {{
+       Hold[$CellContext`bb$$], 0, "B"}, {12 -> "note on", 0 -> "note off"}}},
+     Typeset`size$$ = {677., {99., 104.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`cc$29295$$ = False, $CellContext`dflat$29296$$ = 
+    False, $CellContext`dd$29297$$ = False, $CellContext`eflat$29298$$ = 
+    False, $CellContext`ee$29299$$ = False, $CellContext`ff$29300$$ = 
+    False, $CellContext`gflat$29301$$ = False, $CellContext`gg$29302$$ = 
+    False, $CellContext`aflat$29303$$ = False, $CellContext`aa$29304$$ = 
+    False, $CellContext`bflat$29305$$ = False, $CellContext`bb$29306$$ = 
+    False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`aa$$ = 0, $CellContext`aflat$$ = 
+        0, $CellContext`bb$$ = 0, $CellContext`bflat$$ = 0, $CellContext`cc$$ = 
+        0, $CellContext`dd$$ = 0, $CellContext`dflat$$ = 0, $CellContext`ee$$ = 
+        0, $CellContext`eflat$$ = 0, $CellContext`ff$$ = 
+        0, $CellContext`gflat$$ = 0, $CellContext`gg$$ = 0}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`cc$$, $CellContext`cc$29295$$, False], 
+        Hold[$CellContext`dflat$$, $CellContext`dflat$29296$$, False], 
+        Hold[$CellContext`dd$$, $CellContext`dd$29297$$, False], 
+        Hold[$CellContext`eflat$$, $CellContext`eflat$29298$$, False], 
+        Hold[$CellContext`ee$$, $CellContext`ee$29299$$, False], 
+        Hold[$CellContext`ff$$, $CellContext`ff$29300$$, False], 
+        Hold[$CellContext`gflat$$, $CellContext`gflat$29301$$, False], 
+        Hold[$CellContext`gg$$, $CellContext`gg$29302$$, False], 
+        Hold[$CellContext`aflat$$, $CellContext`aflat$29303$$, False], 
+        Hold[$CellContext`aa$$, $CellContext`aa$29304$$, False], 
+        Hold[$CellContext`bflat$$, $CellContext`bflat$29305$$, False], 
+        Hold[$CellContext`bb$$, $CellContext`bb$29306$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (If[$CellContext`cc$$ == $CellContext`cresetvalue, 
+         $CellContext`UpdatePoly[$CellContext`cnoteoff, $CellContext`cc$$, 
+          127], 
+         $CellContext`UpdatePoly[$CellContext`cnoteon, $CellContext`cc$$, 
+          127]]; If[$CellContext`dflat$$ == $CellContext`cresetvalue, 
+         $CellContext`UpdatePoly[$CellContext`cnoteoff, $CellContext`dflat$$, 
+          127], 
+         $CellContext`UpdatePoly[$CellContext`cnoteon, $CellContext`dflat$$, 
+          127]]; If[$CellContext`dd$$ == $CellContext`cresetvalue, 
+         $CellContext`UpdatePoly[$CellContext`cnoteoff, $CellContext`dd$$, 
+          127], 
+         $CellContext`UpdatePoly[$CellContext`cnoteon, $CellContext`dd$$, 
+          127]]; If[$CellContext`eflat$$ == $CellContext`cresetvalue, 
+         $CellContext`UpdatePoly[$CellContext`cnoteoff, $CellContext`eflat$$, 
+          127], 
+         $CellContext`UpdatePoly[$CellContext`cnoteon, $CellContext`eflat$$, 
+          127]]; If[$CellContext`ee$$ == $CellContext`cresetvalue, 
+         $CellContext`UpdatePoly[$CellContext`cnoteoff, $CellContext`ee$$, 
+          127], 
+         $CellContext`UpdatePoly[$CellContext`cnoteon, $CellContext`ee$$, 
+          127]]; If[$CellContext`gg$$ == $CellContext`cresetvalue, 
+         $CellContext`UpdatePoly[$CellContext`cnoteoff, $CellContext`gg$$, 
+          127], 
+         $CellContext`UpdatePoly[$CellContext`cnoteon, $CellContext`gg$$, 
+          127]]; $CellContext`g1 = Show[
+          
+          Plot[{$CellContext`cc$$, $CellContext`dflat$$, $CellContext`dd$$, \
+$CellContext`eflat$$, $CellContext`ee$$, $CellContext`ff$$, \
+$CellContext`gflat$$, $CellContext`gg$$, $CellContext`aflat$$, \
+$CellContext`aa$$, $CellContext`bflat$$, $CellContext`bb$$}, {$CellContext`x, 
+            0, 4}, PlotRange -> {{0, 4}, {0, 12}}, ImageSize -> 
+           Scaled[0.98]]]; $CellContext`g2 = Show[
+          
+          Plot[$CellContext`polyphony, {$CellContext`x, 0, 4}, 
+           PlotRange -> {{0, 4}, {0, 12}}, ImageSize -> Scaled[0.98]]]; 
+       Grid[{{$CellContext`stuff, $CellContext`polyphony, \
+$CellContext`polycounters, $CellContext`g1, $CellContext`g2}}, 
+         ItemSize -> {{2, 2, 2, 20, 25}}, Frame -> None]), "Specifications" :> {
+        Style["Choose notes on the keyboard: ", Bold], 
+        Delimiter, {{$CellContext`cc$$, 0, "C"}, {
+         1 -> "note on", 0 -> "note off"}, ControlType -> 
+         Setter}, {{$CellContext`dflat$$, 0, "Db"}, {
+         2 -> "note on", 0 -> "note off"}, ControlType -> 
+         Setter}, {{$CellContext`dd$$, 0, "D"}, {
+         3 -> "note on", 0 -> "note off"}, ControlType -> 
+         Setter}, {{$CellContext`eflat$$, 0, "Eb"}, {
+         4 -> "note on", 0 -> "note off"}, ControlType -> 
+         Setter}, {{$CellContext`ee$$, 0, "E"}, {
+         5 -> "note on", 0 -> "note off"}, ControlType -> 
+         Setter}, {{$CellContext`ff$$, 0, "F"}, {
+         6 -> "note on", 0 -> "note off"}, ControlType -> 
+         Setter}, {{$CellContext`gflat$$, 0, "Gb"}, {
+         7 -> "note on", 0 -> "note off"}, ControlType -> 
+         Setter}, {{$CellContext`gg$$, 0, "G"}, {
+         8 -> "note on", 0 -> "note off"}, ControlType -> 
+         Setter}, {{$CellContext`aflat$$, 0, "Ab"}, {
+         9 -> "note on", 0 -> "note off"}, ControlType -> 
+         Setter}, {{$CellContext`aa$$, 0, "A"}, {
+         10 -> "note on", 0 -> "note off"}, ControlType -> 
+         Setter}, {{$CellContext`bflat$$, 0, "Bb"}, {
+         11 -> "note on", 0 -> "note off"}, ControlType -> 
+         Setter}, {{$CellContext`bb$$, 0, "B"}, {
+         12 -> "note on", 0 -> "note off"}, ControlType -> Setter}}, 
+      "Options" :> {
+       TrackedSymbols :> Manipulate, ControlPlacement -> Left, 
+        ContinuousAction -> False}, "DefaultOptions" :> {}],
+     ImageSizeCache->{895., {170., 175.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.5239618766132946`*^9, 3.5239618959354*^9}, {
+   3.5239619860175524`*^9, 3.523962005059642*^9}, 3.5239620536644216`*^9, {
+   3.5239622757231226`*^9, 3.523962338870734*^9}, {3.5239623838533072`*^9, 
+   3.5239623907477016`*^9}, {3.5239624524672318`*^9, 3.523962462474804*^9}, {
+   3.5239734621659503`*^9, 3.523973511498772*^9}, {3.523973580100696*^9, 
+   3.5239735894622316`*^9}, 3.52397367440609*^9, 3.523973851200202*^9, 
+   3.5239739113486423`*^9, 3.5239740962102156`*^9, 3.5239741356814737`*^9, 
+   3.523974710222335*^9, {3.5239747625953307`*^9, 3.523974786160679*^9}, 
+   3.523975059612319*^9, 3.5239751455482345`*^9, {3.5239759649150996`*^9, 
+   3.5239760033102956`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"eflat", "=", " ", "22"}], ";", " ", 
+  RowBox[{"cc", " ", "=", " ", "33"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"UpdatePoly", "[", 
+   RowBox[{"cnoteon", ",", " ", "eflat", ",", " ", "127"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"UpdatePoly", "[", 
+   RowBox[{"cnoteon", ",", " ", "cc", ",", " ", "127"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"{", 
+  RowBox[{"polyphony", ",", "polycounters", ",", " ", "eflat"}], 
+  "}"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"UpdatePoly", "[", 
+   RowBox[{"cnoteoff", ",", " ", "eflat", ",", " ", "127"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"{", 
+  RowBox[{"polyphony", ",", "polycounters", ",", " ", "eflat"}], 
+  "}"}]}], "Input",
+ CellChangeTimes->{{3.5237694982865887`*^9, 3.5237695394359426`*^9}, {
+  3.5237696783018847`*^9, 3.5237696800649858`*^9}, {3.5237699039587917`*^9, 
+  3.5237699099131327`*^9}, {3.5238854943184776`*^9, 3.523885516654755*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"8", ",", "4", ",", "22", ",", "33"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "3", ",", "2", ",", "1"}], "}"}], ",", "22"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.523769681155048*^9, {3.523769887719863*^9, 3.523769912046254*^9}, 
+   3.5237706378807697`*^9, {3.5237708628916397`*^9, 3.5237708729762163`*^9}, 
+   3.523771416039278*^9, 3.5237718781307077`*^9, 3.523771908706457*^9, {
+   3.523774580197257*^9, 3.523774607768834*^9}, 3.523774730328844*^9, 
+   3.523774804308076*^9, 3.5237748868127947`*^9, 3.5237821534204206`*^9, {
+   3.5237821855102563`*^9, 3.523782199051031*^9}, {3.5238854688050184`*^9, 
+   3.5238855183378515`*^9}, {3.5238857769126406`*^9, 
+   3.5238857827439747`*^9}, {3.523960577136969*^9, 3.5239606067606635`*^9}, 
+   3.5239617563054132`*^9, {3.5239619894477487`*^9, 3.5239620052126503`*^9}, 
+   3.52396247760767*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"8", ",", "4", ",", "0", ",", "33"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "2", ",", "0", ",", "1"}], "}"}], ",", "22"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.523769681155048*^9, {3.523769887719863*^9, 3.523769912046254*^9}, 
+   3.5237706378807697`*^9, {3.5237708628916397`*^9, 3.5237708729762163`*^9}, 
+   3.523771416039278*^9, 3.5237718781307077`*^9, 3.523771908706457*^9, {
+   3.523774580197257*^9, 3.523774607768834*^9}, 3.523774730328844*^9, 
+   3.523774804308076*^9, 3.5237748868127947`*^9, 3.5237821534204206`*^9, {
+   3.5237821855102563`*^9, 3.523782199051031*^9}, {3.5238854688050184`*^9, 
+   3.5238855183378515`*^9}, {3.5238857769126406`*^9, 
+   3.5238857827439747`*^9}, {3.523960577136969*^9, 3.5239606067606635`*^9}, 
+   3.5239617563054132`*^9, {3.5239619894477487`*^9, 3.5239620052126503`*^9}, 
+   3.52396247761067*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{961, 1062},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "StyleSheet_TerjeDefault.nb"]]}, Visible -> 
+  False, FrontEndVersion -> 
+  "8.0 for Microsoft Windows (64-bit) (November 7, 2010)", StyleDefinitions -> 
+  "PrivateStylesheetFormatting.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 237, 3, 69, "Title"],
+Cell[819, 27, 932, 16, 160, "Text"],
+Cell[1754, 45, 13700, 274, 1074, "Input"],
+Cell[15457, 321, 296, 5, 46, "Text"],
+Cell[CellGroupData[{
+Cell[15778, 330, 17893, 351, 714, "Input"],
+Cell[33674, 683, 8660, 151, 362, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42371, 839, 1002, 24, 120, "Input"],
+Cell[43376, 865, 925, 18, 29, "Output"],
+Cell[44304, 885, 924, 18, 29, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

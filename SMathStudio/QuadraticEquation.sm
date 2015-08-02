@@ -1,0 +1,514 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio" version="0.95"?>
+<regions>
+  <settings>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="true" printAreas="true" simpleEqualsOnly="false">
+      <paper id="9" orientation="Landscape" width="1169" height="827" />
+      <margins left="39" right="39" top="39" bottom="39" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+    </pageModel>
+    <dependences>
+      <assembly name="SMath Studio" version="0.95" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Text Region" version="1.8.4594.45" guid="485d28c5-349a-48b6-93be-12a35a1c1e39" />
+      <assembly name="Picture Region" version="1.8.4594.35" guid="06b5df04-393e-4be7-9107-305196fcb861" />
+      <assembly name="Math Region" version="0.95" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+    </dependences>
+  </settings>
+  <region id="0" left="18" top="27" width="222" height="31" border="true" color="#000000" bgColor="#e0e0e0" fontSize="14">
+    <text lang="eng">
+      <p>Quadratic Equation</p>
+    </text>
+  </region>
+  <region id="1" left="864" top="27" width="212" height="253" border="true" color="#000000" bgColor="#ffffff">
+    <picture>
+      <raw format="png" encoding="base64">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</raw>
+    </picture>
+  </region>
+  <region id="2" left="18" top="81" width="41" height="23" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">a</e>
+        <e type="operand">4</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="3" left="63" top="81" width="41" height="23" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">b</e>
+        <e type="operand">6</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="4" left="108" top="81" width="41" height="23" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">c</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="5" left="324" top="81" width="143" height="24" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p>Check results...</p>
+    </text>
+  </region>
+  <region id="6" left="18" top="108" width="189" height="50" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">b</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">b</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">^</e>
+        <e type="operand">4</e>
+        <e type="operand">a</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">c</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">-</e>
+        <e type="function" preserve="true" args="1">sqrt</e>
+        <e type="operator" args="2">±</e>
+        <e type="operand">2</e>
+        <e type="operand">a</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">/</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.5</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">sys</e>
+      </result>
+    </math>
+  </region>
+  <region id="7" left="324" top="117" width="69" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">x</e>
+        <e type="operand">0.5</e>
+        <e type="operator" args="1">-</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="8" left="450" top="117" width="137" height="33" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">a</e>
+        <e type="operand">x</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">b</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">c</e>
+        <e type="operator" args="2">+</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="9" left="324" top="153" width="52" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">x</e>
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="10" left="450" top="153" width="137" height="33" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">a</e>
+        <e type="operand">x</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">b</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">c</e>
+        <e type="operator" args="2">+</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="11" left="18" top="180" width="41" height="23" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">a</e>
+        <e type="operand">5</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="12" left="63" top="180" width="48" height="23" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">b</e>
+        <e type="operand">12</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="13" left="117" top="180" width="41" height="23" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">c</e>
+        <e type="operand">4</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="14" left="18" top="207" width="189" height="50" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">b</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">b</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">^</e>
+        <e type="operand">4</e>
+        <e type="operand">a</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">c</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">-</e>
+        <e type="function" preserve="true" args="1">sqrt</e>
+        <e type="operator" args="2">±</e>
+        <e type="operand">2</e>
+        <e type="operand">a</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">/</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.4</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">2</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">sys</e>
+      </result>
+    </math>
+  </region>
+  <region id="15" left="324" top="216" width="69" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">x</e>
+        <e type="operand">0.4</e>
+        <e type="operator" args="1">-</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="16" left="450" top="216" width="137" height="33" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">a</e>
+        <e type="operand">x</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">b</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">c</e>
+        <e type="operator" args="2">+</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="17" left="324" top="252" width="52" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">x</e>
+        <e type="operand">2</e>
+        <e type="operator" args="1">-</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="18" left="450" top="252" width="137" height="33" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">a</e>
+        <e type="operand">x</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">b</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">c</e>
+        <e type="operator" args="2">+</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="19" left="18" top="279" width="41" height="23" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">a</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="20" left="63" top="279" width="41" height="23" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">b</e>
+        <e type="operand">3</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="21" left="108" top="279" width="41" height="23" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">c</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="22" left="18" top="306" width="174" height="50" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">b</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">b</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">^</e>
+        <e type="operand">4</e>
+        <e type="operand">a</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">c</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">-</e>
+        <e type="function" preserve="true" args="1">sqrt</e>
+        <e type="operator" args="2">±</e>
+        <e type="operand">2</e>
+        <e type="operand">a</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">/</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">2</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">sys</e>
+      </result>
+    </math>
+  </region>
+  <region id="23" left="324" top="315" width="52" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">x</e>
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="24" left="450" top="315" width="137" height="33" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">a</e>
+        <e type="operand">x</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">b</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">c</e>
+        <e type="operator" args="2">+</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="25" left="324" top="351" width="52" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">x</e>
+        <e type="operand">2</e>
+        <e type="operator" args="1">-</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="26" left="450" top="351" width="137" height="33" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">a</e>
+        <e type="operand">x</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">b</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">c</e>
+        <e type="operator" args="2">+</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="27" left="18" top="378" width="48" height="23" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">a</e>
+        <e type="operand">11</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="28" left="63" top="378" width="48" height="23" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">b</e>
+        <e type="operand">14</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="29" left="108" top="378" width="41" height="23" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">c</e>
+        <e type="operand">3</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="30" left="18" top="405" width="285" height="50" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math decimalPlaces="14">
+      <input>
+        <e type="operand">b</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">b</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">^</e>
+        <e type="operand">4</e>
+        <e type="operand">a</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">c</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">-</e>
+        <e type="function" preserve="true" args="1">sqrt</e>
+        <e type="operator" args="2">±</e>
+        <e type="operand">2</e>
+        <e type="operand">a</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">/</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.27272727272727</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">sys</e>
+      </result>
+    </math>
+  </region>
+  <region id="31" left="324" top="414" width="52" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">x</e>
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="32" left="450" top="414" width="137" height="33" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">a</e>
+        <e type="operand">x</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">b</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">c</e>
+        <e type="operator" args="2">+</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+      </result>
+    </math>
+  </region>
+  <region id="33" left="324" top="450" width="93" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">x</e>
+        <e type="operand">0.2727</e>
+        <e type="operator" args="1">-</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="34" left="450" top="450" width="178" height="33" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">a</e>
+        <e type="operand">x</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">b</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">c</e>
+        <e type="operator" args="2">+</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.0002</e>
+      </result>
+    </math>
+  </region>
+</regions>

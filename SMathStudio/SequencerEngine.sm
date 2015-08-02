@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio" version="0.96"?>
+<regions>
+  <settings>
+    <identity>
+      <id>a1c9d47d-0bc2-4663-901c-0f0237afd523</id>
+      <revision>5</revision>
+    </identity>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="true" printAreas="true" simpleEqualsOnly="false" printBackgroundImages="true">
+      <paper id="9" orientation="Portrait" width="827" height="1169" />
+      <margins left="39" right="39" top="39" bottom="39" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+      <backgrounds />
+    </pageModel>
+    <dependences>
+      <assembly name="SMath Studio" version="0.96" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Math Region" version="0.96" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+      <assembly name="Special Functions" version="1.10.4884.25035" guid="2814e667-4e12-48b1-8d51-194e480eabc5" />
+      <assembly name="Plot Region" version="1.8.4884.25023" guid="c451c2b5-798b-4f08-b9ec-b90963d1ddaa" />
+    </dependences>
+  </settings>
+  <region id="0" left="9" top="18" width="60" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">RUN</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="1" left="72" top="18" width="68" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">SKIP</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="2" left="144" top="18" width="76" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">RESET</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="3" left="225" top="18" width="68" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">STOP</e>
+        <e type="operand">3</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="4" left="9" top="54" width="60" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">FWD</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="5" left="72" top="54" width="60" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">REV</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="6" left="144" top="54" width="60" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">PND</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="7" left="225" top="54" width="60" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">RND</e>
+        <e type="operand">3</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="8" left="9" top="81" width="126" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">direction</e>
+        <e type="operand">FWD</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="9" left="144" top="81" width="101" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">maxsteps</e>
+        <e type="operand">8</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="10" left="9" top="108" width="373" height="80" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">steps</e>
+        <e type="operand">RUN</e>
+        <e type="operand">SKIP</e>
+        <e type="operand">STOP</e>
+        <e type="operand">RUN</e>
+        <e type="operand">SKIP</e>
+        <e type="operand">RUN</e>
+        <e type="operand">STOP</e>
+        <e type="operand">SKIP</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operand">3</e>
+        <e type="operand">4</e>
+        <e type="operand">5</e>
+        <e type="operand">6</e>
+        <e type="operand">7</e>
+        <e type="operand">8</e>
+        <e type="operand">1</e>
+        <e type="operand">64</e>
+        <e type="operand">32</e>
+        <e type="operand">32</e>
+        <e type="operand">8</e>
+        <e type="operand">8</e>
+        <e type="operand">16</e>
+        <e type="operand">16</e>
+        <e type="operand">8</e>
+        <e type="operand">4</e>
+        <e type="operand">8</e>
+        <e type="function" preserve="true" args="34">mat</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="11" left="9" top="198" width="667" height="150" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">get_rnd_step</e>
+        <e type="operand">next_step</e>
+        <e type="operand">maxsteps</e>
+        <e type="function" preserve="true" args="1">random</e>
+        <e type="function" preserve="true" args="1">eval</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">1</e>
+        <e type="operand">steps</e>
+        <e type="operand">1</e>
+        <e type="operand">next_step</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="function" preserve="true" args="1">eval</e>
+        <e type="operand">RUN</e>
+        <e type="operator" args="2">≡</e>
+        <e type="bracket">(</e>
+        <e type="operand">steps</e>
+        <e type="operand">1</e>
+        <e type="operand">next_step</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="function" preserve="true" args="1">eval</e>
+        <e type="operand">STOP</e>
+        <e type="operator" args="2">≡</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">|</e>
+        <e type="operand">break</e>
+        <e type="operand">next_step</e>
+        <e type="operand">maxsteps</e>
+        <e type="function" preserve="true" args="1">random</e>
+        <e type="function" preserve="true" args="1">eval</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">line</e>
+        <e type="function" preserve="true" args="2">while</e>
+        <e type="operand">next_step</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="12" left="9" top="360" width="713" height="192" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">step_no</e>
+        <e type="function" args="1">get_next_step</e>
+        <e type="operand">1</e>
+        <e type="operand">steps</e>
+        <e type="operand">1</e>
+        <e type="operand">step_no</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="function" preserve="true" args="1">eval</e>
+        <e type="operand">RUN</e>
+        <e type="operator" args="2">≡</e>
+        <e type="bracket">(</e>
+        <e type="operand">steps</e>
+        <e type="operand">1</e>
+        <e type="operand">step_no</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="function" preserve="true" args="1">eval</e>
+        <e type="operand">STOP</e>
+        <e type="operator" args="2">≡</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">|</e>
+        <e type="operand">break</e>
+        <e type="operand">step_no</e>
+        <e type="operand">step_no</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="operand">step_no</e>
+        <e type="operand">8</e>
+        <e type="operator" args="2">&gt;</e>
+        <e type="operand">break</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">line</e>
+        <e type="operand">0</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="function" preserve="true" args="2">while</e>
+        <e type="operand">step_no</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">line</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="13" left="18" top="585" width="243" height="32" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">steps</e>
+        <e type="operand">1</e>
+        <e type="operand">get_rnd_step</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">RUN</e>
+        <e type="operator" args="2">≡</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="14" left="18" top="639" width="261" height="76" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operand">8</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operand">step_array</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">step_array</e>
+        <e type="operand">n</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">get_rnd_step</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="function" preserve="true" args="3">for</e>
+      </input>
+    </math>
+  </region>
+  <region id="15" left="18" top="738" width="298" height="76" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operand">8</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operand">step_array2</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">step_array2</e>
+        <e type="operand">n</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="function" args="1">get_next_step</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="function" preserve="true" args="3">for</e>
+      </input>
+    </math>
+  </region>
+  <region id="16" left="549" top="747" width="152" height="152" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">step_array</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+        <e type="operand">7</e>
+        <e type="operand">2</e>
+        <e type="operand">4</e>
+        <e type="operand">3</e>
+        <e type="operand">3</e>
+        <e type="operand">4</e>
+        <e type="operand">1</e>
+        <e type="operand">5</e>
+        <e type="operand">7</e>
+        <e type="operand">6</e>
+        <e type="operand">6</e>
+        <e type="operand">7</e>
+        <e type="operand">7</e>
+        <e type="operand">8</e>
+        <e type="operand">6</e>
+        <e type="operand">8</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="18">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="17" left="27" top="837" width="365" height="216" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="2.17578372160882" scale_y="2.1977613349584" scale_z="4.92822659467211" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-138" transpose_y="-84" transpose_z="0">
+      <input>
+        <e type="operand">step_array</e>
+        <e type="operand">step_array2</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">sys</e>
+      </input>
+    </plot>
+  </region>
+  <region id="18" left="540" top="909" width="161" height="170" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">step_array2</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operand">0</e>
+        <e type="operand">3</e>
+        <e type="operand">3</e>
+        <e type="operand">4</e>
+        <e type="operand">4</e>
+        <e type="operand">5</e>
+        <e type="operand">0</e>
+        <e type="operand">6</e>
+        <e type="operand">6</e>
+        <e type="operand">7</e>
+        <e type="operand">7</e>
+        <e type="operand">8</e>
+        <e type="operand">0</e>
+        <e type="operand">0</e>
+        <e type="operand">9</e>
+        <e type="operand">9</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="20">mat</e>
+      </result>
+    </math>
+  </region>
+</regions>

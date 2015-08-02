@@ -1,0 +1,40 @@
+## Copyright (C) 2011 tbak
+## 
+## This program is free software; you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation; either version 2 of the License, or
+## (at your option) any later version.
+## 
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+## 
+## You should have received a copy of the GNU General Public License
+## along with Octave; see the file COPYING.  If not, see
+## <http://www.gnu.org/licenses/>.
+
+## murf
+
+## Author: tbak <tbak@EG11233>
+## Created: 2011-11-10
+
+function [curve_data] = murf(interval)
+
+
+    MAX_CHANNELS = 8;
+    
+    if nargin == 0
+        interval = 0.2;
+    end
+    
+    curve = -pi:interval:pi;
+    % floor(round(sin(sine_counter) * (MAX_CHANNELS - 1)) / 2.0F) + 4;
+    curve_data = floor((round(sin(curve) * (MAX_CHANNELS - 1))) / 2.05) + 4;
+
+    plot(curve_data, '*');
+    enhance_figure('MuRF Curve', 'Curve data', 'Curve Data'
+
+    ylim([-1, 8]);
+    grid on;
+end

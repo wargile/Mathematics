@@ -1,0 +1,699 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio" version="0.95"?>
+<regions>
+  <settings>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="true" printAreas="true" simpleEqualsOnly="false">
+      <paper id="9" orientation="Landscape" width="1169" height="827" />
+      <margins left="39" right="39" top="39" bottom="39" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+    </pageModel>
+    <dependences>
+      <assembly name="SMath Studio" version="0.95" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Area Region" version="0.95" guid="4974b228-4974-44cf-8274-bf2936b4a766" />
+      <assembly name="Math Region" version="0.95" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+      <assembly name="Text Region" version="1.8.4594.45" guid="485d28c5-349a-48b6-93be-12a35a1c1e39" />
+      <assembly name="Special Functions" version="1.9.4594.42" guid="2814e667-4e12-48b1-8d51-194e480eabc5" />
+      <assembly name="Plot Region" version="1.7.4594.38" guid="c451c2b5-798b-4f08-b9ec-b90963d1ddaa" />
+    </dependences>
+  </settings>
+  <region id="0" top="9" color="#000000" bgColor="#ffffff">
+    <area collapsed="true" protected="true" /><![CDATA[UEsDBBQAAAAAALV2LUEoT5Yf/QUAAP0FAAAJAAAAWFlaeHl6MjM077u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiIHN0YW5kYWxvbmU9InllcyI/PjxyZWdpb25zPjxyZWdpb24gaWQ9IjEiIGxlZnQ9IjkiIHRvcD0iMjciIHdpZHRoPSIyNjkiIGhlaWdodD0iMzIiIGNvbG9yPSIjMDAwMDAwIiBiZ0NvbG9yPSIjZmZmZmZmIiBmb250U2l6ZT0iMTAiPjxtYXRoPjxpbnB1dD48ZSB0eXBlPSJvcGVyYW5kIj5teVN0cmluZ3M8L2U+PGUgdHlwZT0ib3BlcmFuZCI+MTwvZT48ZSB0eXBlPSJvcGVyYW5kIj4yPC9lPjxlIHR5cGU9ImZ1bmN0aW9uIiBwcmVzZXJ2ZT0idHJ1ZSIgYXJncz0iMyI+ZWw8L2U+PGUgdHlwZT0ib3BlcmFuZCIgc3R5bGU9InN0cmluZyI+U2hhcmRzIG9mIExpZ2h0PC9lPjxlIHR5cGU9Im9wZXJhdG9yIiBhcmdzPSIyIj46PC9lPjwvaW5wdXQ+PC9tYXRoPjwvcmVnaW9uPjxyZWdpb24gaWQ9IjIiIGxlZnQ9IjkiIHRvcD0iNTQiIHdpZHRoPSIxMzciIGhlaWdodD0iMzIiIGNvbG9yPSIjMDAwMDAwIiBiZ0NvbG9yPSIjZmZmZmZmIiBmb250U2l6ZT0iMTAiPjxtYXRoPjxpbnB1dD48ZSB0eXBlPSJvcGVyYW5kIj5teVN0cmluZ3M8L2U+PGUgdHlwZT0ib3BlcmFuZCI+MTwvZT48ZSB0eXBlPSJvcGVyYW5kIj4xPC9lPjxlIHR5cGU9ImZ1bmN0aW9uIiBwcmVzZXJ2ZT0idHJ1ZSIgYXJncz0iMyI+ZWw8L2U+PGUgdHlwZT0ib3BlcmFuZCI+MTwvZT48ZSB0eXBlPSJvcGVyYXRvciIgYXJncz0iMiI+OjwvZT48L2lucHV0PjwvbWF0aD48L3JlZ2lvbj48cmVnaW9uIGlkPSIzIiBsZWZ0PSI5IiB0b3A9IjgxIiB3aWR0aD0iMjk0IiBoZWlnaHQ9IjMyIiBjb2xvcj0iIzAwMDAwMCIgYmdDb2xvcj0iI2ZmZmZmZiIgZm9udFNpemU9IjEwIj48bWF0aD48aW5wdXQ+PGUgdHlwZT0ib3BlcmFuZCI+bXlTdHJpbmdzPC9lPjxlIHR5cGU9Im9wZXJhbmQiPjI8L2U+PGUgdHlwZT0ib3BlcmFuZCI+MjwvZT48ZSB0eXBlPSJmdW5jdGlvbiIgcHJlc2VydmU9InRydWUiIGFyZ3M9IjMiPmVsPC9lPjxlIHR5cGU9Im9wZXJhbmQiIHN0eWxlPSJzdHJpbmciPkZyaWRheSBOaXRlIEdyb292ZTwvZT48ZSB0eXBlPSJvcGVyYXRvciIgYXJncz0iMiI+OjwvZT48L2lucHV0PjwvbWF0aD48L3JlZ2lvbj48cmVnaW9uIGlkPSI0IiBsZWZ0PSI5IiB0b3A9IjEwOCIgd2lkdGg9IjEzNyIgaGVpZ2h0PSIzMiIgY29sb3I9IiMwMDAwMDAiIGJnQ29sb3I9IiNmZmZmZmYiIGZvbnRTaXplPSIxMCI+PG1hdGg+PGlucHV0PjxlIHR5cGU9Im9wZXJhbmQiPm15U3RyaW5nczwvZT48ZSB0eXBlPSJvcGVyYW5kIj4yPC9lPjxlIHR5cGU9Im9wZXJhbmQiPjE8L2U+PGUgdHlwZT0iZnVuY3Rpb24iIHByZXNlcnZlPSJ0cnVlIiBhcmdzPSIzIj5lbDwvZT48ZSB0eXBlPSJvcGVyYW5kIj4yPC9lPjxlIHR5cGU9Im9wZXJhdG9yIiBhcmdzPSIyIj46PC9lPjwvaW5wdXQ+PC9tYXRoPjwvcmVnaW9uPjxyZWdpb24gaWQ9IjUiIHRvcD0iMTQ0IiBjb2xvcj0iIzAwMDAwMCIgYmdDb2xvcj0iI2ZmZmZmZiI+PGFyZWEgdGVybWluYXRvcj0idHJ1ZSIgLz48L3JlZ2lvbj48L3JlZ2lvbnM+UEsBAhcLFAAAAAAAtXYtQShPlh/9BQAA/QUAAAkAAAAAAAAAAAAAAACBAAAAAFhZWnh5ejIzNFBLBQYAAAAAAQABADcAAAAkBgAAAAA=]]></region>
+  <region id="6" left="9" top="171" width="339" height="137" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>Example of function returning a matrix</p>
+      </description>
+      <input>
+        <e type="operand">x</e>
+        <e type="function" args="1">get_stuff</e>
+        <e type="operand">a</e>
+        <e type="operand">x</e>
+        <e type="operand">10</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">b</e>
+        <e type="operand">a</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">c</e>
+        <e type="operand" style="string">Balle Kloriin jr.</e>
+        <e type="operand">b</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="4">mat</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">ret</e>
+        <e type="operand">a</e>
+        <e type="operand">b</e>
+        <e type="operand">c</e>
+        <e type="operand">3</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="5">mat</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">4</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="6">line</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="7" left="531" top="171" width="155" height="25" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p bold="true" fontName="Consolas">A Bitshift function</p>
+    </text>
+  </region>
+  <region id="8" left="531" top="189" width="147" height="34" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">a</e>
+        <e type="operand">b</e>
+        <e type="function" args="2">Shift</e>
+        <e type="operand">a</e>
+        <e type="operand">2</e>
+        <e type="operand">b</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="9" left="531" top="225" width="147" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">1</e>
+        <e type="operand">8</e>
+        <e type="function" args="2">Shift</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">256</e>
+      </result>
+    </math>
+  </region>
+  <region id="10" left="711" top="225" width="156" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">256</e>
+        <e type="operand">8</e>
+        <e type="operator" args="1">-</e>
+        <e type="function" args="2">Shift</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="11" left="531" top="243" width="164" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">128</e>
+        <e type="operand">1</e>
+        <e type="function" args="2">Shift</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">256</e>
+      </result>
+    </math>
+  </region>
+  <region id="12" left="711" top="243" width="147" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">16</e>
+        <e type="operand">2</e>
+        <e type="operator" args="1">-</e>
+        <e type="function" args="2">Shift</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">4</e>
+      </result>
+    </math>
+  </region>
+  <region id="13" left="531" top="297" width="315" height="25" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p bold="true" fontName="Consolas">Calculate note frequency from notenumber</p>
+    </text>
+  </region>
+  <region id="14" left="531" top="324" width="151" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">concertPitch</e>
+        <e type="operand">440</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="15" left="9" top="333" width="355" height="64" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">10</e>
+        <e type="function" args="1">get_stuff</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">100</e>
+        <e type="operand">10000</e>
+        <e type="operand" style="string">Balle Kloriin jr.</e>
+        <e type="operand">5000</e>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="4">mat</e>
+        <e type="operand">3</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="5">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="16" left="531" top="342" width="101" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">middleA</e>
+        <e type="operand">69</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="17" left="531" top="360" width="183" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">semitonesInOctave</e>
+        <e type="operand">12</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="18" left="531" top="378" width="424" height="54" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">n</e>
+        <e type="function" args="1">the_frequency</e>
+        <e type="operand">2</e>
+        <e type="operand">n</e>
+        <e type="operand">middleA</e>
+        <e type="operator" args="2">-</e>
+        <e type="bracket">(</e>
+        <e type="operand">semitonesInOctave</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">^</e>
+        <e type="bracket">(</e>
+        <e type="operand">concertPitch</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="19" left="9" top="396" width="178" height="34" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">10</e>
+        <e type="function" args="1">get_stuff</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="2">el</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">100</e>
+      </result>
+    </math>
+  </region>
+  <region id="20" left="9" top="432" width="360" height="34" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">10</e>
+        <e type="function" args="1">get_stuff</e>
+        <e type="operand">3</e>
+        <e type="function" preserve="true" args="2">el</e>
+      </input>
+      <result action="numeric">
+        <e type="operand" style="string">Balle Kloriin jr.</e>
+        <e type="operand">5000</e>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="4">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="21" left="540" top="441" width="286" height="204" color="#000000" bgColor="#ffffff" fontSize="9">
+    <plot type="2d" render="lines" scale_x="0.00149962982474615" scale_y="0.238072055387236" scale_z="0.000324563595179378" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-153" transpose_y="-72" transpose_z="0">
+      <input>
+        <e type="operand">x</e>
+        <e type="function" args="1">the_frequency</e>
+      </input>
+    </plot>
+  </region>
+  <region id="22" left="9" top="558" width="126" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>Calculate frequency</p>
+      </description>
+      <input>
+        <e type="operand">F_OSC</e>
+        <e type="operand">8000000</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="23" left="9" top="612" width="113" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">T_OSC</e>
+        <e type="operand">F_OSC</e>
+        <e type="operand">4</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="24" left="9" top="657" width="167" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">tmr_overflow</e>
+        <e type="operand">65536</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="25" left="180" top="657" width="126" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">tmr_preload</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="26" left="9" top="684" width="300" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">the_time</e>
+        <e type="operand">tmr_overflow</e>
+        <e type="operand">tmr_preload</e>
+        <e type="operator" args="2">-</e>
+        <e type="operand">T_OSC</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="27" left="531" top="684" width="409" height="25" border="true" color="#000000" bgColor="#ffffff" fontSize="10">
+    <text lang="eng">
+      <p bold="true" fontName="Consolas">Test the functions with A3 note and max midi note...</p>
+    </text>
+  </region>
+  <region id="28" left="531" top="711" width="197" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="false" position="Top" lang="eng">
+        <p>Test the function</p>
+      </description>
+      <input>
+        <e type="operand">69</e>
+        <e type="function" args="1">the_frequency</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">440</e>
+      </result>
+    </math>
+  </region>
+  <region id="29" left="756" top="711" width="255" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">127</e>
+        <e type="function" args="1">the_frequency</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">12543.854</e>
+      </result>
+    </math>
+  </region>
+  <region id="30" left="9" top="729" width="366" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">frequency1_in_hz</e>
+        <e type="operand">T_OSC</e>
+        <e type="operand">tmr_overflow</e>
+        <e type="operand">tmr_preload</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="31" left="9" top="774" width="229" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">frequency2_in_hz</e>
+        <e type="operand">1</e>
+        <e type="operand">the_time</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="32" left="9" top="819" width="218" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">frequency1_in_hz</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">30.518</e>
+      </result>
+    </math>
+  </region>
+  <region id="33" left="243" top="819" width="218" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">frequency2_in_hz</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">30.518</e>
+      </result>
+    </math>
+  </region>
+  <region id="34" left="9" top="855" width="207" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">bpm</e>
+        <e type="operand">frequency1_in_hz</e>
+        <e type="operand">60</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="35" left="243" top="855" width="136" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">bpm</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1831.0826</e>
+      </result>
+    </math>
+  </region>
+  <region id="36" left="9" top="909" width="124" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">notes</e>
+        <e type="operand">0</e>
+        <e type="operand">127</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="37" left="531" top="918" width="216" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>Example of using stack to create other types of lines/graphs</p>
+      </description>
+      <input>
+        <e type="operand">path</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="operand" style="string">O</e>
+        <e type="operand">10</e>
+        <e type="operand" style="string">green</e>
+        <e type="operand">1</e>
+        <e type="operand">5</e>
+        <e type="function" preserve="true" args="7">mat</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="38" left="9" top="936" width="466" height="115" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">n</e>
+        <e type="operand">notes</e>
+        <e type="operand">freq_in_kHz</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">freq_in_kHz</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">2</e>
+        <e type="operand">n</e>
+        <e type="operand">middleA</e>
+        <e type="operator" args="2">-</e>
+        <e type="bracket">(</e>
+        <e type="operand">semitonesInOctave</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">^</e>
+        <e type="bracket">(</e>
+        <e type="operand">concertPitch</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">1000</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="function" preserve="true" args="3">for</e>
+      </input>
+    </math>
+  </region>
+  <region id="39" left="531" top="972" width="346" height="53" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">n</e>
+        <e type="operand">2</e>
+        <e type="operand">10</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operand">path</e>
+        <e type="operand">path</e>
+        <e type="operand">n</e>
+        <e type="operand">n</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">^</e>
+        <e type="operand" style="string">O</e>
+        <e type="operand">10</e>
+        <e type="operand" style="string">green</e>
+        <e type="operand">1</e>
+        <e type="operand">5</e>
+        <e type="function" preserve="true" args="7">mat</e>
+        <e type="function" preserve="true" args="2">stack</e>
+        <e type="operator" args="2">:</e>
+        <e type="function" preserve="true" args="3">for</e>
+      </input>
+    </math>
+  </region>
+  <region id="40" left="531" top="1026" width="237" height="234" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="0.288067187018557" scale_y="2.92522033682963" scale_z="0.842659993839988" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-91" transpose_y="-83" transpose_z="0">
+      <input>
+        <e type="operand">path</e>
+      </input>
+    </plot>
+  </region>
+  <region id="41" left="9" top="1053" width="458" height="25" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">mytext</e>
+        <e type="operand">4</e>
+        <e type="operand">2</e>
+        <e type="operand" style="string">Frequency of MIDI note range in kHz</e>
+        <e type="operand">8</e>
+        <e type="operand" style="string">Green</e>
+        <e type="operand">1</e>
+        <e type="operand">5</e>
+        <e type="function" preserve="true" args="7">mat</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="42" left="18" top="1080" width="464" height="278" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="1.87004379502672" scale_y="0.309063294398219" scale_z="0.57796189595991" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-203" transpose_y="-115" transpose_z="0">
+      <input>
+        <e type="operand">freq_in_kHz</e>
+        <e type="operand">mytext</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">sys</e>
+      </input>
+    </plot>
+  </region>
+  <region id="43" top="1422" color="#000000" bgColor="#ffffff">
+    <area single="true" collapsed="true" />
+  </region>
+  <region id="44" left="9" top="1467" width="196" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>Simple ceil function</p>
+      </description>
+      <input>
+        <e type="operand">num</e>
+        <e type="function" args="1">ceil</e>
+        <e type="operand">num</e>
+        <e type="function" preserve="true" args="1">trunc</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="45" left="9" top="1530" width="146" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">volt_pr_note</e>
+        <e type="operand">1</e>
+        <e type="operand">12</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="46" left="162" top="1539" width="101" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">min_volt</e>
+        <e type="operand">4</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="47" left="270" top="1539" width="101" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">max_volt</e>
+        <e type="operand">5</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="48" left="9" top="1575" width="142" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">dac_12_bit</e>
+        <e type="operand">4095</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="49" left="162" top="1575" width="101" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">volt_ref</e>
+        <e type="operand">5</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="50" left="270" top="1575" width="93" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="51" left="9" top="1620" width="670" height="194" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">n</e>
+        <e type="operand">π</e>
+        <e type="operator" args="1">-</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">n</e>
+        <e type="operand">π</e>
+        <e type="operator" args="2">≤</e>
+        <e type="operand">n</e>
+        <e type="operand">n</e>
+        <e type="operand">0.05</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">volt_array</e>
+        <e type="operand">counter</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="function" preserve="true" args="1">sin</e>
+        <e type="operand">max_volt</e>
+        <e type="operand">min_volt</e>
+        <e type="operator" args="2">-</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">*</e>
+        <e type="bracket">(</e>
+        <e type="operand">max_volt</e>
+        <e type="operand">min_volt</e>
+        <e type="operator" args="2">-</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">/</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">min_volt</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">volt_array</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">counter</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">dac_array</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">counter</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">dac_array</e>
+        <e type="operand">counter</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">volt_array</e>
+        <e type="operand">counter</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">volt_pr_note</e>
+        <e type="operator" args="2">/</e>
+        <e type="function" args="1">ceil</e>
+        <e type="operand">dac_12_bit</e>
+        <e type="operand">volt_ref</e>
+        <e type="operand">volt_pr_note</e>
+        <e type="operator" args="2">/</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">counter</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">5</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="7">line</e>
+        <e type="function" preserve="true" args="4">for</e>
+      </input>
+    </math>
+  </region>
+  <region id="52" left="9" top="1827" width="230" height="158" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="8.59857739575186" scale_y="0.140579167985609" scale_z="1.20878085615467" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-67" transpose_y="-338" transpose_z="0">
+      <input>
+        <e type="operand">volt_array</e>
+      </input>
+    </plot>
+  </region>
+  <region id="53" left="243" top="1827" width="420" height="220" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="0.0215141347626149" scale_y="0.247588145037012" scale_z="0.00532664471795213" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-167" transpose_y="-927" transpose_z="0">
+      <input>
+        <e type="operand">dac_array</e>
+      </input>
+    </plot>
+  </region>
+</regions>

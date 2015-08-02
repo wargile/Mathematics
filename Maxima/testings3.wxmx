@@ -1,0 +1,66 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 11.04.0 ] */
+
+/* [wxMaxima: comment start ]
+    Function/block test:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+random_array(max_elements) := block
+(
+    [counter:1],
+    [m_max:max_elements],
+    [number:0],
+    [r:makelist(0, k, 1, m_max)],
+
+    for counter:1 thru m_max do
+    (
+        number: random(m_max) + 1,
+        if (number = 8) then print("Number", counter, "is 8!"),
+
+        r[counter]: number
+    ),
+    r
+)$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+random_array(8);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+random_array2(max_elements) := block
+(
+    [counter: 1],
+    [m_max: max_elements],
+    [number: 0],
+    [r: makelist(0, k, 1, m_max)],
+
+    while counter <= m_max do
+    (
+        [number: random(m_max) + 1],
+        
+        [counter: 1],
+        [break: 0],
+
+        while break = 0 do
+        (
+            if (counter = m_max) then [break: 1],
+            if (number = r[counter]) then [break: 1],
+
+            if (counter >= m_max) then
+            (
+                r[counter]: number,
+                counter: counter + 1
+            )
+        )
+    ),
+    
+    r
+)$
+
+random_array2(8);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

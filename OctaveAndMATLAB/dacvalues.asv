@@ -1,0 +1,37 @@
+function [dac_value_array, volt_value_array] = dacvalues(notenumber)
+%DACVALUES creates DAC values for MIDI notes 0-127
+%
+%   Syntax: [dac_value_array, volt_value_array] = DACVALUES([notenumber])
+%
+%   The function calculates values for a 12-bit DAC
+%   for the MIDI note range (0-127) if no arguent is given
+%   or for the note number argument.
+%
+%   http://en.wikipedia.org/wiki/CV/Gate
+%
+    
+    % Some useful constants
+    VOLT_PR_NOTE = 1.0/12.0; 
+    REF_VOLTAGE = 128 * VOLT_PR_NOTE; 
+    DAC_TWELVE_BIT = 4095; % hex2dec('0xfff'); 
+    %DAC_SIXTEEN_BIT = 65535; % hex2dec('0xffff'); 
+
+    %max_voltage_out = REF_VOLTAGE; 
+    %max_dac_value_12bit = (max_voltage_out * (DAC_TWELVE_BIT / REF_VOLTAGE)); 
+    %max_dac_value_16bit = (max_voltage_out * (DAC_SIXTEEN_BIT / REF_VOLTAGE));
+
+    if nargin == 0
+        % Create the 12-bit DAC value array
+        dac_value_array = (1:128); % Set array dimension before entering loop
+    
+        for i = 1:128
+            voltage_out = (i - 21) * VOLT_PR_NOTE;
+            volt_value_array(i) =  (i - 21) * VOLT_PR_NOTE;
+            dac_value_array(i) = floor((voltage_out + 1) * (DAC_TWELVE_BIT / REF_VOLTAGE));
+        end
+    else
+        voltage_out = (notenumber - 21) * VOLT_PR_NOTE;
+        volt_value_array(1) = voltage_out;
+        dac_value_array(1) = floor((voltage_out + 1) * (DAC_TWELVE_BIT / REF_VOLTAGE));
+    end
+    

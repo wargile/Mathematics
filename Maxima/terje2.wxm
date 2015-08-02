@@ -1,0 +1,60 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 11.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+x: 3.123$
+y: 440$
+x*y;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x: [1,2,3,4,5,6];
+x.x;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x*x;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x[2] * x[3];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(1/2)/(2/6);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(1/2)*(6/2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+F_1 (x, y) := (z: (x - 100) * y, z + 2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+F_1(200, 200);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+FixMyArray(x, y) := (z:[30,40,50], z*x*y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+FixMyArray(2,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+factor(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+max(33, 156, 2, 54.12, 2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+min(33, 156, 2, 54.12, 2);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

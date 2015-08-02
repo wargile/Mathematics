@@ -1,0 +1,1236 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     57608,       1227]
+NotebookOptionsPosition[     56652,       1193]
+NotebookOutlinePosition[     57001,       1208]
+CellTagsIndexPosition[     56958,       1205]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["MuRF project PIC functions", "Title",
+ CellChangeTimes->{{3.5601370914232435`*^9, 3.5601371240231085`*^9}}],
+
+Cell["\<\
+This notebook demonstrates various properties of the MuRF PIC code.
+Copyright \[Copyright] Terje B. 2012\
+\>", "Text",
+ CellChangeTimes->{{3.560136170399564*^9, 3.56013618815758*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "No", " ", "need", " ", "for", " ", "a", " ", "long", " ", "history", " ", 
+    "length", " ", "eating", " ", "memory"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"$HistoryLength", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"ClearAll", ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.560082280316228*^9, 3.5600823016514482`*^9}, {
+  3.560137221584688*^9, 3.5601372511523795`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"potpos", "=", "0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"resolution", "=", "0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"maxpotpos", "=", "10.0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"voltref", "=", "5.0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"offset", "=", "0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"potposorg", "=", "0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"peak", "=", "0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"percentrise", "=", "0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"percentfall", "=", "0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"startpos", "=", "0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"voltprsteprise", "=", "0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"voltprstepfall", "=", "0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"volt", "=", "0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"cutoff", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"curvebreakpercent", " ", "=", " ", "80"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"GetPlotData", "[", 
+   RowBox[{"resolutionin_", ",", "potposin_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"curvedata", "=", 
+      RowBox[{"ConstantArray", "[", 
+       RowBox[{"0", ",", " ", 
+        RowBox[{"resolutionin", "+", "1"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"resolution", "=", "resolutionin"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"potpos", "=", "potposin"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"potposorg", "=", "potpos"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", " ", "[", 
+      RowBox[{
+       RowBox[{"potposorg", ">", 
+        RowBox[{"maxpotpos", " ", "/", "2.0"}]}], ",", " ", 
+       RowBox[{"potpos", "=", 
+        RowBox[{"maxpotpos", "-", "potpos"}]}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"CreateRiseFallPercentCurve", "[", "potpos", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"percentrise", "=", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"percentrise", " ", "*", " ", "resolution"}], ")"}], "/", 
+       "100.0"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"percentfall", "=", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"percentfall", " ", "*", " ", "resolution"}], ")"}], "/", 
+       "100.0"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"GetCutoffVoltForFallCurve", "[", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"GetPeakPosInResolution", "[", "]"}], ";", "\[IndentingNewLine]",
+      "\[IndentingNewLine]", 
+     RowBox[{"If", " ", "[", 
+      RowBox[{
+       RowBox[{"cutoff", ">", "0"}], ",", " ", 
+       RowBox[{"startpos", "=", "0"}], ",", 
+       RowBox[{"startpos", "=", 
+        RowBox[{"peak", "-", "percentrise"}]}]}], "]"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"If", " ", "[", 
+      RowBox[{
+       RowBox[{"startpos", "<", "0"}], ",", " ", 
+       RowBox[{"startpos", "=", "0"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"If", " ", "[", 
+      RowBox[{
+       RowBox[{"percentrise", "\[Equal]", "0"}], ",", " ", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"voltprsteprise", "=", "voltref"}], ";", 
+         RowBox[{"(*", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"voltref", "-", "cutoff"}], ")"}], "/", "1.0"}], ";"}], 
+          "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"peak", "=", "0.0001"}], ";"}], 
+        RowBox[{"(*", 
+         RowBox[{"1.0", ";"}], "*)"}], "\[IndentingNewLine]", "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"voltprsteprise", "=", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"voltref", "-", "cutoff"}], ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{"peak", "-", "startpos"}], ")"}]}]}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"voltprstepfall", "=", 
+      RowBox[{"voltref", "/", "percentfall"}]}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"If", " ", "[", 
+      RowBox[{
+       RowBox[{"voltprsteprise", ">", "voltref"}], ",", " ", 
+       RowBox[{"voltprsteprise", "=", "voltref"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"If", " ", "[", 
+      RowBox[{
+       RowBox[{"voltprstepfall", ">", "voltref"}], ",", " ", 
+       RowBox[{"voltprstepfall", "=", "voltref"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{"START", ":", 
+       RowBox[{
+       "This", " ", "block", " ", "is", " ", "for", " ", "each", " ", "timer",
+         " ", "tick", " ", "in", " ", "PIC", " ", "from", " ", "0", " ", "to",
+         " ", "resolution"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"For", " ", "[", 
+      RowBox[{
+       RowBox[{"counter", "=", "0"}], ",", 
+       RowBox[{"counter", "<=", "resolution"}], ",", 
+       RowBox[{"counter", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"If", " ", "[", 
+         RowBox[{
+          RowBox[{"potposorg", ">", 
+           RowBox[{"maxpotpos", "/", "2.0"}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{"volt", " ", "=", " ", 
+           RowBox[{"GetVoltValue", "[", 
+            RowBox[{"resolution", "-", "counter"}], "]"}]}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"volt", " ", "=", " ", 
+            RowBox[{"GetVoltValue", "[", "counter", "]"}]}], ";"}]}], 
+         "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"curvedata", "[", 
+          RowBox[{"[", 
+           RowBox[{"counter", " ", "+", " ", "1"}], "]"}], "]"}], " ", "=", 
+         " ", "volt"}]}]}], "\[IndentingNewLine]", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{"END", ":", 
+       RowBox[{
+       "This", " ", "block", " ", "is", " ", "for", " ", "each", " ", "timer",
+         " ", "tick", " ", "in", " ", "PIC", " ", "from", " ", "0", " ", "to",
+         " ", "resolution"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "curvedata"}]}], "\[IndentingNewLine]", 
+   "]"}]}]}], "Input",
+ CellChangeTimes->{{3.56008244120643*^9, 3.560083156193325*^9}, {
+   3.5600831882891607`*^9, 3.5600832721749587`*^9}, {3.5600833552177086`*^9, 
+   3.560083477201686*^9}, {3.5600877970587673`*^9, 3.560087799761922*^9}, {
+   3.5600878683078423`*^9, 3.5600879077220964`*^9}, {3.5600881227993984`*^9, 
+   3.5600881381682777`*^9}, {3.560088213109564*^9, 3.560088264591509*^9}, {
+   3.560136243441742*^9, 3.560136249599094*^9}, {3.560136298423887*^9, 
+   3.5601363098115377`*^9}, {3.5601363495958138`*^9, 3.56013637924951*^9}, {
+   3.560136453137736*^9, 3.560136473761915*^9}, 3.560136598235035*^9, {
+   3.560153700063204*^9, 3.5601537209403973`*^9}, {3.5606150451808863`*^9, 
+   3.5606150681301985`*^9}, {3.561277309259533*^9, 3.561277316914971*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CreateRiseFallPercentCurve", "[", "potposin_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"curvebreak", "=", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"maxpotpos", " ", "/", " ", "2.0"}], ")"}], " ", "*", " ", 
+       RowBox[{"(", 
+        RowBox[{"curvebreakpercent", " ", "/", " ", "100.0"}], ")"}]}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"posrise", "=", "potposin"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"posfall", "=", "potposin"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"diprise", "=", "0"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"dipfall", "=", "0"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"ratiorise", "=", "0"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"ratiofall", "=", "0"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"advance", "=", "0"}], ";", "\n", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"potposin", ">", "curvebreak"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"diprise", "=", "1.6"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"dipfall", "=", "1.02"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"advance", "=", 
+          RowBox[{"Abs", "[", 
+           RowBox[{"curvebreak", "-", "potposin"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ratiorise", "=", 
+          RowBox[{"(", 
+           RowBox[{"curvebreak", "-", "diprise"}], ")"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"posrise", "=", 
+          RowBox[{"curvebreak", "-", 
+           RowBox[{"(", 
+            RowBox[{"advance", " ", "*", " ", "ratiorise"}], ")"}]}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ratiofall", "=", 
+          RowBox[{"(", 
+           RowBox[{"curvebreak", "-", "dipfall"}], ")"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"posfall", "=", 
+          RowBox[{"curvebreak", "-", 
+           RowBox[{"(", 
+            RowBox[{"advance", " ", "*", " ", "ratiofall"}], ")"}]}]}]}], 
+        "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", "]"}], ";", 
+     "\n", "\[IndentingNewLine]", 
+     RowBox[{"percentrise", "=", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"posrise", " ", "*", " ", "1.9"}], ")"}], "^", "2"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"percentfall", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"posfall", " ", "*", " ", "2.8"}], ")"}], "^", "2"}], "+", 
+       "1.0"}]}]}]}], "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.560086639081535*^9, 3.560086868609663*^9}, {
+  3.5601341623397093`*^9, 3.5601342029870343`*^9}, {3.5601342966603923`*^9, 
+  3.5601343118752623`*^9}, {3.5612772662790747`*^9, 3.5612773001200104`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GetPeakPosInResolution", "[", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"peak", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"potpos", "^", "2"}], "/", 
+        RowBox[{"(", 
+         RowBox[{"maxpotpos", " ", "/", " ", "2.0"}], ")"}]}], ")"}], " ", 
+      "*", " ", 
+      RowBox[{"(", 
+       RowBox[{"resolution", " ", "/", " ", "maxpotpos"}], ")"}]}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5600868969752855`*^9, 3.5600869606599283`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GetCutoffVoltForFallCurve", "[", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"voltprstepfall", "=", 
+      RowBox[{"(", 
+       RowBox[{"voltref", "/", "percentfall"}], ")"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"peak", "=", 
+      RowBox[{"GetPeakPosInResolution", "[", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"resolution", "-", "peak", "-", "percentfall"}], "<", "0"}], 
+       ",", "\[IndentingNewLine]", 
+       RowBox[{"cutoff", "=", 
+        RowBox[{
+         RowBox[{"Abs", "[", 
+          RowBox[{
+          "resolution", " ", "-", " ", "peak", "  ", "-", " ", 
+           "percentfall"}], "]"}], " ", "*", " ", "voltprstepfall"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"cutoff", "=", "0"}]}], "\[IndentingNewLine]", "]"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5600871147497416`*^9, 3.5600871812035427`*^9}, 
+   3.560088176253456*^9, {3.5601338955704513`*^9, 3.560133898906642*^9}, {
+   3.5606151083604994`*^9, 3.560615240241043*^9}, {3.560615310161042*^9, 
+   3.5606153111781*^9}, {3.5606154041614184`*^9, 3.560615406040526*^9}, 
+   3.560615470256199*^9, {3.560659496627363*^9, 3.560659528367179*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GetVoltValue", "[", "resolutionpos_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"resolutionpos", "<", "startpos"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"volt", "=", "0"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"If", " ", "[", 
+          RowBox[{
+           RowBox[{"resolutionpos", "<", "peak"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"volt", "=", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"cutoff", "+", 
+                RowBox[{"(", 
+                 RowBox[{"voltprsteprise", "*", 
+                  RowBox[{"(", 
+                   RowBox[{"resolutionpos", "-", "startpos"}], ")"}]}], 
+                 ")"}]}], ")"}], "^", "2"}], "/", "voltref"}]}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"resolutionpos", "\[LessEqual]", 
+               RowBox[{"peak", "+", "percentfall"}]}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"volt", "=", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"voltref", "-", 
+                   RowBox[{"(", 
+                    RowBox[{"voltprstepfall", "*", 
+                    RowBox[{"(", 
+                    RowBox[{"resolutionpos", "-", "peak"}], ")"}]}], ")"}]}], 
+                  ")"}], "^", "2"}], "/", "voltref"}]}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"volt", "=", "0"}]}], "\[IndentingNewLine]", "]"}], 
+            "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", "]"}], ";",
+          " ", "\[IndentingNewLine]", 
+         RowBox[{"If", " ", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"resolutionpos", "\[Equal]", 
+             RowBox[{"Round", "[", "peak", "]"}]}], "&&", 
+            RowBox[{"volt", "<=", "voltref"}]}], ",", " ", 
+           RowBox[{"volt", "=", "voltref"}]}], "]"}]}], "\[IndentingNewLine]",
+         " ", "}"}]}], "\[IndentingNewLine]", "]"}], ";", 
+     "\[IndentingNewLine]", "volt"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.5600872058549523`*^9, 3.5600872246810293`*^9}, {
+   3.5600873441028595`*^9, 3.5600875478675146`*^9}, {3.560087994115038*^9, 
+   3.5600879963761673`*^9}, 3.560617312410564*^9, {3.560659556916812*^9, 
+   3.5606595581368814`*^9}}],
+
+Cell["Test the module:", "Text",
+ CellChangeTimes->{{3.5601360665426235`*^9, 3.5601360691427727`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"murfcurve1", " ", "=", " ", 
+   RowBox[{"GetPlotData", "[", 
+    RowBox[{"100", ",", " ", "4"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"{", 
+  RowBox[{
+  "cutoff", ",", " ", "percentfall", ",", " ", "percentrise", ",", " ", 
+   "peak", ",", " ", "startpos", ",", " ", "resolution", ",", " ", "potpos", 
+   ",", " ", "potposorg", ",", " ", 
+   RowBox[{"murfcurve1", "[", 
+    RowBox[{"[", "1", "]"}], "]"}], ",", " ", 
+   RowBox[{"murfcurve1", "[", 
+    RowBox[{"[", 
+     RowBox[{"resolution", "+", "1"}], "]"}], "]"}]}], 
+  "}"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"murfcurve2", " ", "=", " ", 
+   RowBox[{"GetPlotData", "[", 
+    RowBox[{"100", ",", " ", "6"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"{", 
+  RowBox[{
+  "cutoff", ",", " ", "percentfall", ",", " ", "percentrise", ",", " ", 
+   "peak", ",", " ", "startpos", ",", " ", "resolution", ",", " ", "potpos", 
+   ",", " ", "potposorg", ",", " ", 
+   RowBox[{"murfcurve2", "[", 
+    RowBox[{"[", "1", "]"}], "]"}], ",", " ", 
+   RowBox[{"murfcurve2", "[", 
+    RowBox[{"[", 
+     RowBox[{"resolution", "+", "1"}], "]"}], "]"}]}], 
+  "}"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"murfcurve3", " ", "=", " ", 
+   RowBox[{"GetPlotData", "[", 
+    RowBox[{"100", ",", " ", "5"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"murfcurve4", " ", "=", " ", 
+    RowBox[{"GetPlotData", "[", 
+     RowBox[{"100", ",", " ", "8.5"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"mplot1", " ", "=", " ", 
+    RowBox[{"Show", "[", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "murfcurve1", ",", "murfcurve2", ",", "murfcurve3", ",", 
+         "murfcurve4"}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"PlotRange", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", " ", 
+            RowBox[{"resolution", "+", "1"}]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "0.3"}], ",", " ", 
+            RowBox[{"voltref", "+", "0.2"}]}], "}"}]}], "}"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"GridLines", "\[Rule]", "Automatic"}], ",", " ", 
+       RowBox[{"GridLinesStyle", "\[Rule]", "LightGray"}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", 
+        RowBox[{"Scaled", "[", ".50", "]"}]}], ",", "\[IndentingNewLine]", 
+       " ", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Resolution\>\"", ",", " ", "\"\<DAC Volt\>\""}], 
+         "}"}]}]}], "]"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Grid", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"{", "mplot1", "}"}], "}"}], ",", " ", 
+   RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.560087635959553*^9, 3.5600876724386396`*^9}, {
+   3.5600878211341443`*^9, 3.5600878215571685`*^9}, {3.5600879239120226`*^9, 
+   3.560087929796359*^9}, {3.5600880041586127`*^9, 3.560088020955573*^9}, {
+   3.560088052135357*^9, 3.5600880933077116`*^9}, 3.5600882828665543`*^9, {
+   3.5600995813847923`*^9, 3.5600995845889754`*^9}, {3.5601347004784894`*^9, 
+   3.560134711523121*^9}, {3.560134767034296*^9, 3.5601349876429143`*^9}, {
+   3.560135097058172*^9, 3.560135183250102*^9}, {3.560135226825595*^9, 
+   3.560135281866743*^9}, {3.5601353164587216`*^9, 3.560135460347952*^9}, {
+   3.560135493922872*^9, 3.56013552955591*^9}, {3.5601355637628665`*^9, 
+   3.5601355685401397`*^9}, {3.5601356125236554`*^9, 
+   3.5601356165228844`*^9}, {3.560135647357648*^9, 3.5601356829146814`*^9}, {
+   3.5601357556758432`*^9, 3.5601359052333975`*^9}, {3.560135949874951*^9, 
+   3.560135991156312*^9}, {3.560136934742282*^9, 3.560137034149968*^9}, {
+   3.5601543997632236`*^9, 3.5601544585325856`*^9}, {3.560154826740646*^9, 
+   3.5601548760904684`*^9}, {3.560156483801424*^9, 3.560156489044724*^9}, {
+   3.560615661464135*^9, 3.5606156766410036`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "2.3109775387535585`", ",", "126.43999999999998`", ",", "57.76`", ",", 
+   "32.`", ",", "0", ",", "100", ",", "4", ",", "4", ",", 
+   "1.068123436924691`", ",", "1.0681234369246915`"}], "}"}]], "Output",
+ CellChangeTimes->{{3.5600878132966957`*^9, 3.560087822540225*^9}, {
+   3.560087918176695*^9, 3.560087931413452*^9}, {3.5600879988073063`*^9, 
+   3.5600880218456244`*^9}, {3.560088053463433*^9, 3.5600880947417936`*^9}, 
+   3.5600881464677525`*^9, 3.5600881822437983`*^9, {3.5600882180448465`*^9, 
+   3.5600882837866063`*^9}, 3.5600995858870497`*^9, 3.560133906376069*^9, 
+   3.560134208410345*^9, {3.5601347036496706`*^9, 3.5601347124181724`*^9}, {
+   3.5601347983290863`*^9, 3.56013480993075*^9}, {3.560134839976468*^9, 
+   3.5601348725863333`*^9}, 3.560134907754345*^9, {3.5601349603933554`*^9, 
+   3.5601349882329483`*^9}, {3.560135263387686*^9, 3.560135282571783*^9}, {
+   3.560135425914982*^9, 3.5601354615490203`*^9}, {3.5601355070476227`*^9, 
+   3.5601355307649794`*^9}, 3.5601355694271903`*^9, {3.5601356135577145`*^9, 
+   3.5601356177859564`*^9}, {3.56013567362515*^9, 3.5601356835007153`*^9}, {
+   3.560135768823595*^9, 3.5601359060044413`*^9}, {3.5601359849089546`*^9, 
+   3.56013599216737*^9}, 3.5601363144718046`*^9, 3.5601363839347773`*^9, 
+   3.5601364792532296`*^9, 3.560136604028366*^9, {3.560136945110875*^9, 
+   3.560137034923012*^9}, 3.560137108625228*^9, 3.5601372066848364`*^9, 
+   3.560137258599806*^9, {3.560153708888708*^9, 3.560153727860793*^9}, 
+   3.560154413449007*^9, 3.560154459322631*^9, {3.5601548410374637`*^9, 
+   3.5601548766505003`*^9}, 3.560156490175789*^9, 3.5606152512746735`*^9, 
+   3.5606153242928505`*^9, 3.5606154115898433`*^9, 3.560615480116763*^9, 
+   3.5606156798451867`*^9, 3.5606173175488577`*^9, 3.5606595639192123`*^9, 
+   3.561277327823595*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "2.3109775387535585`", ",", "126.43999999999998`", ",", "57.76`", ",", 
+   "32.`", ",", "0", ",", "100", ",", "4.`", ",", "6", ",", 
+   "1.0681234369246915`", ",", "1.068123436924691`"}], "}"}]], "Output",
+ CellChangeTimes->{{3.5600878132966957`*^9, 3.560087822540225*^9}, {
+   3.560087918176695*^9, 3.560087931413452*^9}, {3.5600879988073063`*^9, 
+   3.5600880218456244`*^9}, {3.560088053463433*^9, 3.5600880947417936`*^9}, 
+   3.5600881464677525`*^9, 3.5600881822437983`*^9, {3.5600882180448465`*^9, 
+   3.5600882837866063`*^9}, 3.5600995858870497`*^9, 3.560133906376069*^9, 
+   3.560134208410345*^9, {3.5601347036496706`*^9, 3.5601347124181724`*^9}, {
+   3.5601347983290863`*^9, 3.56013480993075*^9}, {3.560134839976468*^9, 
+   3.5601348725863333`*^9}, 3.560134907754345*^9, {3.5601349603933554`*^9, 
+   3.5601349882329483`*^9}, {3.560135263387686*^9, 3.560135282571783*^9}, {
+   3.560135425914982*^9, 3.5601354615490203`*^9}, {3.5601355070476227`*^9, 
+   3.5601355307649794`*^9}, 3.5601355694271903`*^9, {3.5601356135577145`*^9, 
+   3.5601356177859564`*^9}, {3.56013567362515*^9, 3.5601356835007153`*^9}, {
+   3.560135768823595*^9, 3.5601359060044413`*^9}, {3.5601359849089546`*^9, 
+   3.56013599216737*^9}, 3.5601363144718046`*^9, 3.5601363839347773`*^9, 
+   3.5601364792532296`*^9, 3.560136604028366*^9, {3.560136945110875*^9, 
+   3.560137034923012*^9}, 3.560137108625228*^9, 3.5601372066848364`*^9, 
+   3.560137258599806*^9, {3.560153708888708*^9, 3.560153727860793*^9}, 
+   3.560154413449007*^9, 3.560154459322631*^9, {3.5601548410374637`*^9, 
+   3.5601548766505003`*^9}, 3.560156490175789*^9, 3.5606152512746735`*^9, 
+   3.5606153242928505`*^9, 3.5606154115898433`*^9, 3.560615480116763*^9, 
+   3.5606156798451867`*^9, 3.5606173175488577`*^9, 3.5606595639192123`*^9, 
+   3.561277327825595*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     GraphicsBox[{{}, {}, 
+       {Hue[0.67, 0.6, 0.6], LineBox[CompressedData["
+1:eJxd1QtQVGUUB3Ae8kagTXmbEEgSSCACKa//Agu4rMs+WHZpIBNBkdda6FBQ
+eEVFIywJMhhQgmoSGmSymQYx9cJIazhTUYi4thkFE6bFI1lQgR7D+Waqndm5
+87tnvjt395zv/3lnaxW5ZiYmJrl/f/+5Ln+mYjfd0zdau0zH0g086Jn0X3xu
+hmyNPLvPyw51/EF2whFDbE2TxSx5FVJCyp8XFRrJrrhgWTzN/TBH9sRIlqtI
+mvmA7IWW8LKMzvGH5CfhWFsXdLpsgeyLwKKcK14eS2Q/zAzccw/T/Ulej1CV
+c2PRZRMs+2n0WQiO2LSakgOxrnSPvPiYGTkIL7R7LjXtNycHQ9sc8MbbeSvI
+IVDKTs7Ld1iQN8K+PzNRv92SHIrmhxX7AnKsyJtgOr1QKSq2Joch6szwi+sr
+bMjhEHvZC4fqbMkRCM44NZXcZUd+Fr8pqrmqb+zJm/Hqyu+mauZWkrfg9rFS
+YaavIzkSx3+K3FwW4ESOgsvond4OHXM0bPn+nsu7HiPHYPeBr33OWwvIsXhm
+rdXiyU5mILulMDFD9fiyOdD9VXQVwjf8sFTVxepCTGgX3pFuJ5vEQdaZN3zX
+kdXjkPn7VccNvez58bAOXRMnKCFz8cgozy1qWsfqCZDoWmuvjtD7cgkYdf72
+bGMNe38R3PONVxyErC6CkXcYesrIfm8iXvLw+H7sYzKXiLpXPAyibFZPguqW
+4w2xG6snofTgVN0vrez/TEa1sr3goIDMJcMQKA7bediB6lv/2w9uK7Jm408v
+FbD+iFE51hzdPUr948SY1Bu+Oq9h/UxB24ilwnyQ+s2l4F2Di65ezPovwfU7
+TkHF/TQfnASaxemqt4RsXrZhjeuFwflLNE/cNgRsKXToiGbzJUXFTovo9y/S
+/HFSrK6vyhqLYfOYiplrk9qiXppXLhWr7YT7YkRsfmUol5flqwdoviGDf0uT
+oltG5mTwvP9B4I4R2g+87H/7Q47BT7WfVd+l/QM56p8I2WVXSubkaD6htxoy
+J/Ny/GpT2DRWy/afAq9Vj3tFe5OhgEqQ1GD4xIzWK1DSesL0i3gyr8CNiL5M
+4zDb30ocuH6rvbiADCW0ZYaJIFMyp0Sbn84tooHygVfCXd8QdTSY5UUazvl/
+2BZTT3mCNPR0TnQtfUl5w6VBgoX3pGZkPg35o7f3B0UvUv6oIPh3XkGFhFSX
+a6d6HtF6FVZ4FqRsWKR841WQzL3ZJYljeZeOtaOVc49epzxEOg7cTPSJHJqn
+9enY/aN+o603mU+HfjbGb89elqdqjLiVLKr7KG+hRo6ktHvYmcyp8fLxFPV4
+EeUzr4azYfLmId19Wq9BXGQOzvmQoYHxozPVeysp3zkNwnwudl/6mfKf18C0
+s3WgOYmdBxlIF6XztmfpvEAGwun8+AsG+7CK
+         "]]}, 
+       {Hue[0.9060679774997897, 0.6, 0.6], LineBox[CompressedData["
+1:eJxd1Q1M1GUcB/AD5B2BSHk3IZAkkEAEUjj4HnCAcB73wr01yERQ5NVCR0Hh
+X1Q0wpIgg4ESVEtoyLKtIaYeTDrDraIQ8ewyChamxUtyoHL0Mn7PVt12u33+
+3z373/+e3/M93+wSWa45j8fL/fv9z+fyazou8p6+ycZtJo4uQClUau3OMtvA
+rKttsCV5luyMCL+LPZd+Zl4F40dnavZW/UF2R3x0Ds753Sd7w9UwdfOQjtkH
+Lx9PU00UzZGfRI6orGfE1Uj2x6hHqUnVzxwA/VxswJ698+T12P2jfqOd7wL5
+aRy4meQXPcwcjLVjVfOPXn9ADoFo/s1uUfxDcihWeBekbTAxhyEx3e3aqd5H
+5I1wqasPOV2+SA5H/tjt/SF8E3kTRFh8T2y+RI5Ab9dk99KXzJE4F/hhe2zD
+n+QoeOobY46G8rDsZ9EeoPOIamTejJJyw2SImRl5Cw5cv9VRXMAcjRtR/ZnG
+EeYYlLadMPsiwZzMh8IludHwCXMsXquZ8OH7WpDj8KttYfN4HTPQckJvPWyx
+Ytkc0PBE2C77MjJPgKFPSz6ructyAeSSkwvSHZaUx8P7/gfBO0bJXDwCW5tl
+PRIryhNQIS3PVw2SuQSsthfsixVaU56I2WtTJUV9ZC4Rqxuqs8ZjbSgXonKn
+Jf/9i2ROiKAthY6dfFvKk7DG/cLQwiUylwS1aab6LYEd5cm4fsc5pHiAzCXj
+XYObriHVnvIUtI9aySyGyFwKpvSGr86rHSjfiqrxFn7PGJnbiqy5hNNLBSsp
+T8WrK7+brp0nc6kwBKdG7DzsSHkaauQdBQddnChPQ9nB6fpf2sg8ERS3nG6k
+ejhTLkL9K14GYTaZtw0veXl9P/4xy7fBqHUcfsrIcjE8841XHAWPUS7GmOu3
+Z5tqybx0iHRtdVdHWZ4OTUVuUfM6F8olsAlfE+9SSoYEmb9fddrQR+YkkHTl
+jdx1enzZWgkmSxbfEW8n86TwjzwsVnSTIaXrq2i9FNmthUkaBVsvxTNrrU0n
+u9j9Zdh94Gu/8zbs/jLYaQd6L+9i31cGt7E7fZ06el6tDMd/it5cHsSeX47b
+x8oEmf70e0L+v/2Q4zdZDVf9De2fVo5QzanplG62/xlI9XEQDNfTfCADMWdG
+XlxfyeYpA2Yzi1XCYpo/bQZaHlbuC8ph86uAw0Bmkn47zTcU/z0fnAIlLUFv
+vJ1H50erwAsd3kvN+9n5U2Jd2R5p8TFzWq9Ev6XLEds2Ot+cEuEK16aiy9QP
+WiVmB+95RuhYn6gQXJRzxceL+gYqOP27rzgVWiPLNV0T1G9aFUaz3IXiTNaH
+alywKp7hfqA+hRppYRXPCwupbzk1jhjiapstqZ+1auTZf15+qJP1uwYPeqcC
+Tc9R/0ODTfT/8RfsiLCK
+         "]]}, 
+       {Hue[0.1421359549995791, 0.6, 0.6], LineBox[CompressedData["
+1:eJxd0k1IVFEYxvEXdeFCKERBQnAKRzIltMzMzHkrv2Z0xo/UJiEGjFnl4MJF
+LkJOCGJQRPtcuNVFgooiSgdF0JVorpQ2SiIKZatw40fMucT8D1wuv/vw3HM4
+vNd7+zviaSISv3z+vZPrJCCpS1OZCV+Fc+A8OB/2wTfgQrgIvgnfgkvh23AZ
+XA7fge/CFfA9uBK+D1fBD+Bq+CFcAz+Ca+EArKk2sDxGDssT5LA8RQ5LHXJY
+6nXGHxiLnb1OzqWp18HV+VfD1+bcnDbon5/d6V++b7m8QdMj1QVvvu67vFEP
+tj/v+XfcXJtGLV2ZPvUvnrq8SQ8H3x39qE1L7muatG8qsDDwyZvzoPpGc/q2
+N664POi+e3Me0mW/KRlZ8vKQvgyt90T6vX6zriV2P0Zzvf83a7Yv8T4Y8/Zv
+0Zre2bP4W+98LZpfV/A3K8M7f1iLh36fT9pNl4f1eGL8W1VixuUR/fArXDwk
+UZdHcH+tuF9Y2lKtsIEtLO3owwa2sHSgDxvYwvIMfdjAFpZO9GEDW1i60IcN
+bGHpRh82sIXlOfqwgS0sUfRhA1tYXqD/3xcqIpDC
+         "]]}, 
+       {Hue[0.37820393249936934`, 0.6, 0.6], LineBox[CompressedData["
+1:eJxd1E1IFHEYx/HHkpJKijLpZbEXRCykLcte3DWfTO3NSp2dnVE8GdKhQ2yd
+AqHRAq1DiAZS0ckuQYcOHYIODUF5rGMHe5FS65AmC+0eCirmKdjvwDB89ssP
+Zufw39Z7sbNviYj0/bn/PqPre6MUXlrIEngNXAZvgGPwVng7XAlXwdXwTrgG
+3gXvhvfAtfBeeB9cB++HD8AH4UNwPZyAk3ADfBhuhLXQASxH0GFpQoflKDos
+zeiwtKDD0ooOyzF0WI6jw3ICHZaT6LCcQoelDR2W0+iwnEGH5Sw6LO2FVjiA
+Q1g6sIcDOISlE3s4gENYHOzhwNHbN/3WTf210bkWOpqsnxq4XzVm51xKS6ed
+5mUfHkfWlObOz/e27XgROUjpk2/Dl+Kjr22f0jdhf3W5+9b2rmZLRp6390zb
+3tXVdePvp67M2d7Vp5+dTPzavO1dza/8lKhMZm2f1p65H/mxRznbp3Xo+szC
+7OhP26f1WcYbuZWzczhM68bBhy33Pi61/+lpd/bL+J3i5ZHV06sv1w/dOLci
+cuDpcD6+7sKvUtt7mni1uWLL13/ntq8TWj5QtLjW9r79bud44Ovl2GQmNllk
+e1+7H6xKvru7YO/fZbbvo13/v/9vV8mfYQ==
+         "]]}},
+      AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+      Axes->True,
+      AxesLabel->{
+        FormBox["\"Resolution\"", TraditionalForm], 
+        FormBox["\"DAC Volt\"", TraditionalForm]},
+      AxesOrigin->{0, 0},
+      GridLines->Automatic,
+      GridLinesStyle->GrayLevel[0.85],
+      ImageSize->Scaled[0.5],
+      PlotRange->{{0, 101}, {-0.3, 5.2}},
+      PlotRangeClipping->True,
+      PlotRangePadding->{Automatic, Automatic}]}
+   },
+   AutoDelete->False,
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{{3.5600878132966957`*^9, 3.560087822540225*^9}, {
+   3.560087918176695*^9, 3.560087931413452*^9}, {3.5600879988073063`*^9, 
+   3.5600880218456244`*^9}, {3.560088053463433*^9, 3.5600880947417936`*^9}, 
+   3.5600881464677525`*^9, 3.5600881822437983`*^9, {3.5600882180448465`*^9, 
+   3.5600882837866063`*^9}, 3.5600995858870497`*^9, 3.560133906376069*^9, 
+   3.560134208410345*^9, {3.5601347036496706`*^9, 3.5601347124181724`*^9}, {
+   3.5601347983290863`*^9, 3.56013480993075*^9}, {3.560134839976468*^9, 
+   3.5601348725863333`*^9}, 3.560134907754345*^9, {3.5601349603933554`*^9, 
+   3.5601349882329483`*^9}, {3.560135263387686*^9, 3.560135282571783*^9}, {
+   3.560135425914982*^9, 3.5601354615490203`*^9}, {3.5601355070476227`*^9, 
+   3.5601355307649794`*^9}, 3.5601355694271903`*^9, {3.5601356135577145`*^9, 
+   3.5601356177859564`*^9}, {3.56013567362515*^9, 3.5601356835007153`*^9}, {
+   3.560135768823595*^9, 3.5601359060044413`*^9}, {3.5601359849089546`*^9, 
+   3.56013599216737*^9}, 3.5601363144718046`*^9, 3.5601363839347773`*^9, 
+   3.5601364792532296`*^9, 3.560136604028366*^9, {3.560136945110875*^9, 
+   3.560137034923012*^9}, 3.560137108625228*^9, 3.5601372066848364`*^9, 
+   3.560137258599806*^9, {3.560153708888708*^9, 3.560153727860793*^9}, 
+   3.560154413449007*^9, 3.560154459322631*^9, {3.5601548410374637`*^9, 
+   3.5601548766505003`*^9}, 3.560156490175789*^9, 3.5606152512746735`*^9, 
+   3.5606153242928505`*^9, 3.5606154115898433`*^9, 3.560615480116763*^9, 
+   3.5606156798451867`*^9, 3.5606173175488577`*^9, 3.5606595639192123`*^9, 
+   3.5612773279196005`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Animate and control the MuRF module with the MANIPULATE command:\
+\>", "Text",
+ CellChangeTimes->{{3.560136094326213*^9, 3.560136117158519*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"murfcurve", " ", "=", " ", 
+     RowBox[{"GetPlotData", "[", 
+      RowBox[{"theResolution", ",", " ", "envelopePos"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"mplot", " ", "=", " ", 
+     RowBox[{"Show", "[", 
+      RowBox[{
+       RowBox[{"ListLinePlot", "[", 
+        RowBox[{"murfcurve", ",", "  ", 
+         RowBox[{"PlotStyle", "\[Rule]", "Blue"}], ",", " ", 
+         RowBox[{"GridLines", "\[Rule]", "Automatic"}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"GridLinesStyle", "\[Rule]", "LightGray"}], ",", " ", 
+         RowBox[{"PlotRange", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", " ", 
+              RowBox[{"theResolution", " ", "+", " ", "2"}]}], "}"}], ",", 
+            " ", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "0.3"}], ",", " ", 
+              RowBox[{"voltref", " ", "+", " ", "0.2"}]}], "}"}]}], "}"}]}], 
+         ",", "\[IndentingNewLine]", " ", 
+         RowBox[{"Filling", "\[Rule]", "Axis"}], ",", " ", 
+         RowBox[{"PlotMarkers", "\[Rule]", "Automatic"}]}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"AspectRatio", "\[Rule]", ".35"}], ",", " ", 
+       RowBox[{"ImageSize", "\[Rule]", 
+        RowBox[{"Scaled", "[", ".98", "]"}]}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"Grid", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "mplot", "}"}], ",", 
+        RowBox[{"{", "murfcurve", "}"}]}], "}"}], ",", " ", 
+      RowBox[{"ItemSize", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"{", "45", "}"}], "}"}]}], ",", " ", 
+      RowBox[{"Spacings", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"0.5", ",", "1.5"}], "}"}]}], ",", " ", 
+      RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}]}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"NOTE", ":", " ", "theResolution"}], " ", "=", " ", 
+     RowBox[{"envelopePos", " ", "=", " ", 
+      RowBox[{"5", " ", "creates", " ", "curve", " ", "problem"}]}]}], " ", 
+    "*)"}], "\[IndentingNewLine]", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "theResolution", ",", " ", "50", ",", " ", "\"\<Max Elements\>\""}], 
+      "}"}], ",", " ", "6", ",", " ", "160", ",", " ", "1", ",", " ", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "envelopePos", ",", " ", "0", ",", " ", "\"\<Envelope Position\>\""}], 
+      "}"}], ",", " ", "0", ",", " ", "10", ",", " ", "0.025", ",", " ", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", " ", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.56008832108574*^9, 3.560088343589027*^9}, {
+   3.560088437652407*^9, 3.560088438515456*^9}, {3.5600992410423255`*^9, 
+   3.5600992513919177`*^9}, {3.560099681367511*^9, 3.560099681492518*^9}, {
+   3.5601336064079123`*^9, 3.5601336299672594`*^9}, {3.5601337919655256`*^9, 
+   3.560133798059874*^9}, {3.5601347242788506`*^9, 3.560134726157958*^9}, {
+   3.5601350022837515`*^9, 3.560135024422018*^9}, {3.560135070855674*^9, 
+   3.5601351079087934`*^9}, {3.560135653432995*^9, 3.5601356572882156`*^9}, {
+   3.560137154135831*^9, 3.560137185365617*^9}, {3.5601372676693244`*^9, 
+   3.560137294452856*^9}, {3.560137888378827*^9, 3.560137910029065*^9}, {
+   3.5601528953121743`*^9, 3.5601529425908785`*^9}, {3.5601545376131086`*^9, 
+   3.5601546099412456`*^9}, {3.5606595926988583`*^9, 3.560659592881869*^9}, {
+   3.5606696149760995`*^9, 3.560669616743201*^9}, {3.56066964732395*^9, 
+   3.5606696605237045`*^9}, {3.560736830472606*^9, 3.5607368848237147`*^9}, {
+   3.5607369696805687`*^9, 3.560736985462471*^9}, {3.560782150637771*^9, 
+   3.560782165683632*^9}, {3.5612698682739325`*^9, 3.5612698901361833`*^9}, {
+   3.561271076811057*^9, 3.5612710847495112`*^9}, {3.561271142158795*^9, 
+   3.5612711424768133`*^9}, {3.561271517557266*^9, 3.5612715681571608`*^9}, 
+   3.561271623405321*^9, {3.589810340191883*^9, 3.589810350495472*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`envelopePos$$ = 
+    7.95, $CellContext`theResolution$$ = 50, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`theResolution$$], 50, "Max Elements"}, 6, 160, 1}, {{
+       Hold[$CellContext`envelopePos$$], 0, "Envelope Position"}, 0, 10, 
+      0.025}}, Typeset`size$$ = {575., {149., 154.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`theResolution$415564$$ = 
+    0, $CellContext`envelopePos$415565$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`envelopePos$$ = 
+        0, $CellContext`theResolution$$ = 50}, "ControllerVariables" :> {
+        Hold[$CellContext`theResolution$$, \
+$CellContext`theResolution$415564$$, 0], 
+        Hold[$CellContext`envelopePos$$, $CellContext`envelopePos$415565$$, 
+         0]}, "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`murfcurve = \
+$CellContext`GetPlotData[$CellContext`theResolution$$, \
+$CellContext`envelopePos$$]; $CellContext`mplot = Show[
+          
+          ListLinePlot[$CellContext`murfcurve, PlotStyle -> Blue, GridLines -> 
+           Automatic, GridLinesStyle -> LightGray, 
+           PlotRange -> {{
+             0, $CellContext`theResolution$$ + 
+              2}, {-0.3, $CellContext`voltref + 0.2}}, Filling -> Axis, 
+           PlotMarkers -> Automatic], AspectRatio -> 0.35, ImageSize -> 
+          Scaled[0.98]]; 
+       Grid[{{$CellContext`mplot}, {$CellContext`murfcurve}}, 
+         ItemSize -> {{45}}, Spacings -> {0.5, 1.5}, Frame -> All]), 
+      "Specifications" :> {{{$CellContext`theResolution$$, 50, 
+          "Max Elements"}, 6, 160, 1, Appearance -> 
+         "Labeled"}, {{$CellContext`envelopePos$$, 0, "Envelope Position"}, 0,
+          10, 0.025, Appearance -> "Labeled"}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{624., {220., 225.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`murfcurve = {
+        5., 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0}, $CellContext`GetPlotData[
+         Pattern[$CellContext`resolutionin, 
+          Blank[]], 
+         Pattern[$CellContext`potposin, 
+          Blank[]], 
+         Pattern[$CellContext`peakposrisefallcurvein, 
+          Blank[]], 
+         Pattern[$CellContext`curvepeakrisein, 
+          Blank[]], 
+         Pattern[$CellContext`curvepeakfallin, 
+          Blank[]], 
+         Pattern[$CellContext`curvedipin, 
+          Blank[]], 
+         Pattern[$CellContext`voltrefin, 
+          Blank[]]] := 
+       Module[{}, $CellContext`curvedata = 
+          ConstantArray[
+           0, $CellContext`resolutionin + 
+            1]; $CellContext`resolution = $CellContext`resolutionin; \
+$CellContext`peakposrisefallcurve = $CellContext`peakposrisefallcurvein; \
+$CellContext`potpos = $CellContext`potposin; $CellContext`curvedip = \
+$CellContext`curvedipin; $CellContext`curvepeakrise = \
+$CellContext`curvepeakrisein; $CellContext`curvepeakfall = \
+$CellContext`curvepeakfallin; $CellContext`voltref = $CellContext`voltrefin; \
+$CellContext`potposorg = $CellContext`potpos; 
+         If[$CellContext`potposorg > $CellContext`maxpotpos/
+            2., $CellContext`potpos = $CellContext`maxpotpos - \
+$CellContext`potpos]; \
+$CellContext`GetRiseFallStepsAtPotPos[$CellContext`potpos]; \
+$CellContext`stepsrise = ($CellContext`stepsrise $CellContext`resolution)/
+           100.; $CellContext`stepsfall = ($CellContext`stepsfall \
+$CellContext`resolution)/
+           100.; $CellContext`GetCutoffVoltForFallCurve[]; \
+$CellContext`GetPeakPosInResolution[]; 
+         If[$CellContext`cutoff > 0, $CellContext`startpos = 
+           0, $CellContext`startpos = $CellContext`peak - \
+$CellContext`stepsrise]; 
+         If[$CellContext`startpos < 0, $CellContext`startpos = 0]; 
+         If[$CellContext`peak - $CellContext`startpos != 0, 
+           
+           If[$CellContext`stepsrise == 
+            0, $CellContext`voltprsteprise = $CellContext`voltref, \
+$CellContext`voltprsteprise = ($CellContext`voltref - \
+$CellContext`cutoff)/($CellContext`peak - $CellContext`startpos); 
+            Null], $CellContext`voltprsteprise = $CellContext`voltref]; 
+         If[$CellContext`voltprsteprise > $CellContext`voltref, \
+$CellContext`voltprsteprise = $CellContext`voltref]; 
+         If[$CellContext`voltprstepfall > $CellContext`voltref, \
+$CellContext`voltprstepfall = $CellContext`voltref]; 
+         For[$CellContext`counter = 
+           0, $CellContext`counter <= $CellContext`resolution, 
+           Increment[$CellContext`counter], 
+           If[$CellContext`potposorg > $CellContext`maxpotpos/
+              2., $CellContext`volt = \
+$CellContext`GetVoltValue[$CellContext`resolution - $CellContext`counter], \
+$CellContext`volt = $CellContext`GetVoltValue[$CellContext`counter]; Null]; 
+           Part[$CellContext`curvedata, $CellContext`counter + 
+              1] = $CellContext`volt]; $CellContext`curvedata], \
+$CellContext`GetPlotData[
+         Pattern[$CellContext`resolutionin, 
+          Blank[]], 
+         Pattern[$CellContext`potposin, 
+          Blank[]]] := 
+       Module[{}, $CellContext`curvedata = 
+          ConstantArray[
+           0, $CellContext`resolutionin + 
+            1]; $CellContext`resolution = $CellContext`resolutionin; \
+$CellContext`potpos = $CellContext`potposin; $CellContext`potposorg = \
+$CellContext`potpos; 
+         If[$CellContext`potposorg > $CellContext`maxpotpos/
+            2., $CellContext`potpos = $CellContext`maxpotpos - \
+$CellContext`potpos]; \
+$CellContext`CreateRiseFallPercentCurve[$CellContext`potpos]; \
+$CellContext`percentrise = ($CellContext`percentrise $CellContext`resolution)/
+           100.; $CellContext`percentfall = ($CellContext`percentfall \
+$CellContext`resolution)/
+           100.; $CellContext`GetCutoffVoltForFallCurve[]; \
+$CellContext`GetPeakPosInResolution[]; 
+         If[$CellContext`cutoff > 0, $CellContext`startpos = 
+           0, $CellContext`startpos = $CellContext`peak - \
+$CellContext`percentrise]; 
+         If[$CellContext`startpos < 0, $CellContext`startpos = 0]; 
+         If[$CellContext`percentrise == 
+           0, {$CellContext`voltprsteprise = $CellContext`voltref; \
+$CellContext`peak = 0.0001; 
+            Null}, $CellContext`voltprsteprise = ($CellContext`voltref - \
+$CellContext`cutoff)/($CellContext`peak - $CellContext`startpos); 
+           Null]; $CellContext`voltprstepfall = \
+$CellContext`voltref/$CellContext`percentfall; 
+         If[$CellContext`voltprsteprise > $CellContext`voltref, \
+$CellContext`voltprsteprise = $CellContext`voltref]; 
+         If[$CellContext`voltprstepfall > $CellContext`voltref, \
+$CellContext`voltprstepfall = $CellContext`voltref]; 
+         For[$CellContext`counter = 
+           0, $CellContext`counter <= $CellContext`resolution, 
+           Increment[$CellContext`counter], 
+           If[$CellContext`potposorg > $CellContext`maxpotpos/
+              2., $CellContext`volt = \
+$CellContext`GetVoltValue[$CellContext`resolution - $CellContext`counter], \
+$CellContext`volt = $CellContext`GetVoltValue[$CellContext`counter]; Null]; 
+           Part[$CellContext`curvedata, $CellContext`counter + 
+              1] = $CellContext`volt]; $CellContext`curvedata], \
+$CellContext`curvedata = {
+        5., 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+         0, 0, 0, 0, 0}, $CellContext`resolution = 
+       50, $CellContext`peakposrisefallcurve = 3.8, $CellContext`potpos = 
+       0, $CellContext`curvedip = 2.5, $CellContext`curvepeakrise = 
+       90, $CellContext`curvepeakfall = 150, $CellContext`voltref = 
+       5., $CellContext`potposorg = 0, $CellContext`maxpotpos = 
+       10., $CellContext`GetRiseFallStepsAtPotPos[
+         Pattern[$CellContext`potposin, 
+          Blank[]]] := 
+       Module[{}, $CellContext`elements = 0.; $CellContext`interval = 0.; 
+         If[$CellContext`potposin <= $CellContext`peakposrisefallcurve, \
+$CellContext`elements = $CellContext`peakposrisefallcurve \
+($CellContext`resolution/$CellContext`maxpotpos); $CellContext`interval = 
+            Sqrt[$CellContext`curvepeakrise]/$CellContext`elements; \
+$CellContext`stepsrise = (($CellContext`potposin \
+($CellContext`resolution/$CellContext`maxpotpos)) $CellContext`interval)^2; 
+           Null, $CellContext`elements = ($CellContext`maxpotpos/
+               2. - $CellContext`peakposrisefallcurve) \
+($CellContext`resolution/$CellContext`maxpotpos); $CellContext`interval = (
+              Sqrt[$CellContext`curvepeakrise] - 
+              Sqrt[$CellContext`curvedip])/$CellContext`elements; \
+$CellContext`stepsrise = (
+              Sqrt[$CellContext`curvepeakrise] - $CellContext`interval \
+(($CellContext`potposin - $CellContext`peakposrisefallcurve) \
+($CellContext`resolution/$CellContext`maxpotpos)))^2; Null]; 
+         If[$CellContext`potposin <= $CellContext`peakposrisefallcurve, \
+$CellContext`elements = $CellContext`peakposrisefallcurve \
+($CellContext`resolution/$CellContext`maxpotpos); $CellContext`interval = 
+            Sqrt[$CellContext`curvepeakfall]/$CellContext`elements; \
+$CellContext`stepsfall = (($CellContext`potposin \
+($CellContext`resolution/$CellContext`maxpotpos)) $CellContext`interval)^2; 
+           Null, $CellContext`elements = ($CellContext`maxpotpos/
+               2. - $CellContext`peakposrisefallcurve) \
+($CellContext`resolution/$CellContext`maxpotpos); $CellContext`interval = (
+              Sqrt[$CellContext`curvepeakfall] - 
+              Sqrt[$CellContext`curvedip])/$CellContext`elements; \
+$CellContext`stepsfall = (
+              Sqrt[$CellContext`curvepeakfall] - $CellContext`interval \
+(($CellContext`potposin - $CellContext`peakposrisefallcurve) \
+($CellContext`resolution/$CellContext`maxpotpos)))^2; Null]; 
+         Null], $CellContext`elements = 
+       6.000000000000001, $CellContext`interval = 
+       1.77771831397195, $CellContext`stepsrise = 
+       2.5000000000000373`, $CellContext`stepsfall = 
+       2.500000000000049, $CellContext`GetCutoffVoltForFallCurve[] := 
+       Module[{}, $CellContext`voltprstepfall = \
+$CellContext`voltref/$CellContext`percentfall; $CellContext`peak = \
+$CellContext`GetPeakPosInResolution[]; 
+         If[$CellContext`resolution - $CellContext`peak - \
+$CellContext`percentfall < 0, $CellContext`cutoff = 
+           Abs[$CellContext`resolution - $CellContext`peak - \
+$CellContext`percentfall] $CellContext`voltprstepfall, $CellContext`cutoff = 
+           0]], $CellContext`voltprstepfall = 5., $CellContext`percentfall = 
+       0.5, $CellContext`peak = 0.0001, $CellContext`GetPeakPosInResolution[] := 
+       Module[{}, $CellContext`peak = \
+($CellContext`potpos^2/($CellContext`maxpotpos/
+           2.)) ($CellContext`resolution/$CellContext`maxpotpos)], \
+$CellContext`cutoff = 0, $CellContext`startpos = 
+       0., $CellContext`voltprsteprise = 5., $CellContext`counter = 
+       51, $CellContext`volt = 0, $CellContext`GetVoltValue[
+         Pattern[$CellContext`resolutionpos, 
+          Blank[]]] := 
+       Module[{}, 
+         If[$CellContext`resolutionpos < $CellContext`startpos, \
+$CellContext`volt = 0, {
+           If[$CellContext`resolutionpos < $CellContext`peak, \
+$CellContext`volt = ($CellContext`cutoff + $CellContext`voltprsteprise \
+($CellContext`resolutionpos - $CellContext`startpos))^2/$CellContext`voltref, {
+               
+               If[$CellContext`resolutionpos <= $CellContext`peak + \
+$CellContext`percentfall, $CellContext`volt = ($CellContext`voltref - \
+$CellContext`voltprstepfall ($CellContext`resolutionpos - \
+$CellContext`peak))^2/$CellContext`voltref, $CellContext`volt = 0]}]; If[
+              
+              And[$CellContext`resolutionpos == 
+               Round[$CellContext`peak], $CellContext`volt <= \
+$CellContext`voltref], $CellContext`volt = $CellContext`voltref]}]; \
+$CellContext`volt], $CellContext`CreateRiseFallPercentCurve[
+         Pattern[$CellContext`potposin, 
+          Blank[]]] := 
+       Module[{}, $CellContext`curvebreak = ($CellContext`maxpotpos/
+            2.) ($CellContext`curvebreakpercent/
+            100.); $CellContext`posrise = $CellContext`potposin; \
+$CellContext`posfall = $CellContext`potposin; $CellContext`diprise = 
+          0; $CellContext`dipfall = 0; $CellContext`ratiorise = 
+          0; $CellContext`ratiofall = 0; $CellContext`advance = 0; 
+         If[$CellContext`potposin > $CellContext`curvebreak, \
+{$CellContext`diprise = 1.6; $CellContext`dipfall = 
+             1.02; $CellContext`advance = 
+             Abs[$CellContext`curvebreak - $CellContext`potposin]; \
+$CellContext`ratiorise = $CellContext`curvebreak - $CellContext`diprise; \
+$CellContext`posrise = $CellContext`curvebreak - $CellContext`advance \
+$CellContext`ratiorise; $CellContext`ratiofall = $CellContext`curvebreak - \
+$CellContext`dipfall; $CellContext`posfall = $CellContext`curvebreak - \
+$CellContext`advance $CellContext`ratiofall}]; $CellContext`percentrise = \
+($CellContext`posrise 
+            1.9)^2; $CellContext`percentfall = ($CellContext`posfall 2.8)^2 + 
+           1.], $CellContext`curvebreak = 4., $CellContext`curvebreakpercent = 
+       80, $CellContext`posrise = 0, $CellContext`posfall = 
+       0, $CellContext`diprise = 0, $CellContext`dipfall = 
+       0, $CellContext`ratiorise = 0, $CellContext`ratiofall = 
+       0, $CellContext`advance = 0, $CellContext`percentrise = 
+       0., $CellContext`mplot = Graphics[{{}, 
+          GraphicsComplex[CompressedData["
+1:eJxd0ztqQgEQQNHBKqWFhUUKFREJQfw9NWri/9e6BMHaLbhA3YsLsDAPQXln
+YBgOt57y4bQ/5iIi+d/0Puc2yd6YRmY+cB4XcBF/4hKu4Cqu4Tr+wt+4gZu4
+hdu4g7s4wT3cxwP8g4d4hMf4F//hCZ5mfcYxo+OY03Es6DiWdBwrOo41HceG
+jmNLx7Gjv329pHPnX15/Ew9y3SiN
+           "], {{{}, {
+              EdgeForm[], 
+              Directive[{
+                Opacity[0.2], 
+                Hue[0.67, 0.6, 0.6]}], 
+              GraphicsGroup[{
+                Polygon[{{1, 53, 2, 52}}]}]}, {}, {}}, {{}, {}, {
+              Hue[0.67, 0.6, 0.6], 
+              Directive[
+               RGBColor[0, 0, 1]], 
+              
+              Line[{52, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 
+               17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
+                33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 
+               48, 49, 50, 51}]}}, {{
+              Hue[0.67, 0.6, 0.6], 
+              Directive[
+               RGBColor[0, 0, 1]], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 2], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 3], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 4], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 5], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 6], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 7], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 8], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 9], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 10], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 11], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 12], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 13], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 14], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 15], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 16], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 17], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 18], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 19], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 20], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 21], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 22], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 23], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 24], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 25], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 26], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 27], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 28], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 29], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 30], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 31], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 32], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 33], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 34], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 35], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 36], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 37], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 38], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 39], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 40], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 41], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 42], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 43], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 44], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 45], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 46], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 47], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 48], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 49], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 50], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 51], 
+              Inset[
+               Style["\[FilledCircle]", FontSize -> 8.96], 52]}, {}}}], {}}, {
+         AspectRatio -> 0.35, ImageSize -> Scaled[0.98], 
+          AxesLabel -> {None, None}, AspectRatio -> GoldenRatio^(-1), Axes -> 
+          True, AxesOrigin -> {1., 0}, GridLines -> Automatic, GridLinesStyle -> 
+          GrayLevel[0.85], Method -> {}, PlotRange -> {{1., 51.}, {0, 0}}, 
+          PlotRangeClipping -> True, 
+          PlotRangePadding -> {{1., 1.}, {0., 0.}}}]}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.5600883494163604`*^9, 3.560088371985651*^9}, 
+   3.5600884395825176`*^9, 3.560099588829218*^9, 3.5600996825415783`*^9, 
+   3.560133634881541*^9, 3.560133799352948*^9, 3.5601339064270725`*^9, 
+   3.560134208441346*^9, 3.560134726850998*^9, 3.5601351090198565`*^9, 
+   3.560135658499285*^9, 3.560136314530808*^9, 3.5601363839947815`*^9, 
+   3.560136479335234*^9, 3.5601366040853696`*^9, 3.56013710867323*^9, {
+   3.5601371577700386`*^9, 3.560137206737839*^9}, {3.5601372586468086`*^9, 
+   3.5601372952419014`*^9}, 3.56013791290123*^9, {3.5601529024215813`*^9, 
+   3.560152943616937*^9}, {3.5601537089297104`*^9, 3.5601537279117966`*^9}, {
+   3.560154545396554*^9, 3.560154612103369*^9}, 3.5606152536288085`*^9, 
+   3.5606153243378525`*^9, 3.5606154116418467`*^9, 3.560615480161765*^9, 
+   3.5606173333727627`*^9, {3.5606595674684153`*^9, 3.560659593989932*^9}, {
+   3.560669619979386*^9, 3.5606696649379573`*^9}, {3.5607368401611605`*^9, 
+   3.5607368857627687`*^9}, {3.5607369714636707`*^9, 
+   3.5607369872575736`*^9}, {3.560782156538109*^9, 3.560782166451676*^9}, {
+   3.561269881594695*^9, 3.561269891106239*^9}, 3.5612710864126062`*^9, 
+   3.5612711438128896`*^9, 3.5612715690202103`*^9, 3.5612716479977274`*^9, 
+   3.561277327975603*^9, {3.589810343359064*^9, 3.58981035290361*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{866, 1065},
+WindowMargins->{{1, Automatic}, {Automatic, -1}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (January 25, 2013)",
+StyleDefinitions->"TerjeDefault.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 113, 1, 62, "Title"],
+Cell[695, 25, 193, 4, 65, "Text"],
+Cell[891, 31, 481, 12, 66, "Input"],
+Cell[1375, 45, 7086, 169, 1056, "Input"],
+Cell[8464, 216, 2875, 64, 462, "Input"],
+Cell[11342, 282, 612, 17, 66, "Input"],
+Cell[11957, 301, 1373, 32, 156, "Input"],
+Cell[13333, 335, 2625, 60, 336, "Input"],
+Cell[15961, 397, 102, 1, 46, "Text"],
+Cell[CellGroupData[{
+Cell[16088, 402, 4055, 92, 282, "Input"],
+Cell[20146, 496, 1842, 27, 29, "Output"],
+Cell[21991, 525, 1844, 27, 29, "Output"],
+Cell[23838, 554, 6735, 119, 229, "Output"]
+}, Open  ]],
+Cell[30588, 676, 154, 3, 46, "Text"],
+Cell[CellGroupData[{
+Cell[30767, 683, 4359, 91, 264, "Input"],
+Cell[35129, 776, 21495, 413, 494, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

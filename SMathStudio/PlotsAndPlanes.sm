@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio" version="0.95"?>
+<regions>
+  <settings>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="true" printAreas="true" simpleEqualsOnly="false">
+      <paper id="9" orientation="Portrait" width="827" height="1169" />
+      <margins left="39" right="39" top="39" bottom="39" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+    </pageModel>
+    <dependences>
+      <assembly name="SMath Studio" version="0.95" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Plot Region" version="1.7.4594.38" guid="c451c2b5-798b-4f08-b9ec-b90963d1ddaa" />
+      <assembly name="Special Functions" version="1.9.4594.42" guid="2814e667-4e12-48b1-8d51-194e480eabc5" />
+      <assembly name="Math Region" version="0.95" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+    </dependences>
+  </settings>
+  <region id="0" left="18" top="18" width="305" height="280" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="3d" render="lines" scale_x="1" scale_y="1" scale_z="1" rotate_x="299" rotate_y="-310" rotate_z="0" transpose_x="0" transpose_y="0" transpose_z="0">
+      <input>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">5</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">3</e>
+        <e type="operand">y</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">-</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">sys</e>
+      </input>
+    </plot>
+  </region>
+  <region id="1" left="333" top="18" width="299" height="280" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="1.76179271460883" scale_y="3.4166002578304" scale_z="6.01934144297625" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-2" transpose_y="-85" transpose_z="0">
+      <input>
+        <e type="operand">3</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">2</e>
+        <e type="operand">3</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand">x</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">x</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">^</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">2</e>
+        <e type="operand">4</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="6">sys</e>
+      </input>
+    </plot>
+  </region>
+  <region id="2" left="18" top="423" width="533" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>Data file must be tab-delimited with dots as decimal markers</p>
+      </description>
+      <input>
+        <e type="operand">matrixData</e>
+        <e type="operand" style="string">c:\\coding\\mathematics\\smathdata.txt</e>
+        <e type="function" preserve="true" args="1">importData</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="3" left="18" top="486" width="202" height="98" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">matrixData</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">2</e>
+        <e type="operand">4</e>
+        <e type="operand">3</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">0</e>
+        <e type="operand">3</e>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operand">2</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">0</e>
+        <e type="operand">5</e>
+        <e type="operand">4</e>
+        <e type="function" preserve="true" args="22">mat</e>
+      </result>
+    </math>
+  </region>
+</regions>

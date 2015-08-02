@@ -1,0 +1,61 @@
+## -*- texinfo -*-
+## @deftypefn {Function File} {} imagine ()
+## Testing some image stuff...
+##
+## @example
+## @group
+## imagine()
+##      @result{} [ image_data ]
+## @end group
+## @end example
+##
+## @seealso{}
+## @end deftypefn
+
+## Author: Terje B
+
+function [image_data, row, col] = imagine(max_number)
+	if mod(sqrt(max_number), 1) > 0
+		error 'Invalid number!'
+	end
+
+	% Get unique random numbers
+	image_data = fifteen(max_number);
+	
+	% Transform all values to below 1
+	image_data = image_data / max_number;
+
+	createfigure('Imagine', false);
+	% Display the image in a subplot
+	subplot(1, 2, 1);
+	title('Imagine');
+	imshow(image_data);
+	% colormap( [jet(); flipud( jet() );0 0 0] );
+	% colormap('default');
+	
+	hold on;
+	% Find elements with values above 0.9
+	[row, col] = find(image_data > 0.9);
+	
+	% Plot the finds over the image
+	plot(col, row, 'ro');
+    
+	hold off;
+	
+	% Another example: Create a 'chessboard'
+	b = zeros(8);
+	w = ones(8);
+	tile = [b w; w b];
+	I = repmat(tile, 8, 8);
+	% Display the image in a subplot
+	subplot(1, 2, 2);
+	title('Chessboard');
+	imshow(I);
+	colormap('hot');
+	% bone, autumn, summer, winter, spring, cool, copper,
+	% flag, gray, hot, hsv, jet, ocean, pink, prism,
+	# rainbow, contrast
+	
+	% set(gcf,'renderer','opengl')
+	
+end

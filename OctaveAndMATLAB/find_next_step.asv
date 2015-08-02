@@ -1,0 +1,162 @@
+function [ret, change, current_step, init, steps_found] = find_next_step...
+    (p_dir, p_steps, p_curstep, p_init, p_change, p_change_channel)
+% Find the next step, code for sequencer engine.
+%
+% Usage: [ret, change, currentstep, init, found] = 
+%   find_next_step(1, [0 0 0 1 1 0 1 1], currentstep, init, change, 0)
+
+    % TODO: NEXT_STEP handling in FWD mode
+    % TODO: Step counter for RND mode END_OUT detection
+
+    FWD = 0;
+    %REV = 1;
+    PND = 2;
+    RND = 3;
+    
+    SRUN = 0;
+    %SSKIP = 1;
+    SRESET = 2;
+    SSTOP = 3;
+    
+    ARRAY_OFFSET = 1; % TODO: Change to 0 for C code
+    NUM_STEPS = 8;
+    MIN_STEP = ARRAY_OFFSET;
+    MAX_STEP = MIN_STEP + (NUM_STEPS - 1);
+    DIR_FWD = 1;
+    DIR_REV = -1;
+    END_OUT = -1;
+    
+    steps_found = 0;
+    init = 0;
+    steps = p_steps;
+    ret = p_curstep;
+    
+    % Check if any steps are available
+    for counter = ARRAY_OFFSET:MAX_STEP
+        if (steps(counter) == SRUN || steps(counter) == SSTOP) 
+            steps_found = steps_found + 1;
+        end
+    end
+    
+    % We found no available steps, signal END OUT and return all info
+    if (steps_found == 0)
+        ret = END_OUT;
+        change = p_change;
+        current_step = p_curstep;
+        init = 1;
+        fprintf('Return: END_OUT, Change: %d, Current step: %d\n', ...
+            change, current_step);
+            
+        return;
+    end
+
+    if (p_dir == FWD || p_dir == RND || ...
+        (p_dir == PND && p_change == DIR_FWD))
+        change = DIR_FWD;
+        endstep = MAX_STEP;
+    else
+        change = DIR_REV;
+        endstep = MIN_STEP;
+    end
+
+    if (p_curstep == END_OUT)
+        if (change == DIR_FWD)
+            p_curstep = MIN_STEP;
+        else
+            p_curstep = MAX_STEP;
+        end
+    end
+    
+    current_step = p_curstep;
+    
+    if (p_dir == RND)
+        if (steps_found == 1)
+            ret = current_step;
+            return;
+        end
+        
+        while (1)
+            current_step = randi(MAX_STEP);
+            
+            if (steps(current_step) == SRUN || ...
+                    steps(current_step) == SSTOP)
+                ret = current_step;
+                return;
+            end
+        end
+    end
+
+    while (1)
+        %fprintf('-> Status: %d, CurStep: %d\n', ...
+        %    steps(current_step), current_step);
+
+        if (steps(current_step) == SRESET)
+            if (p_dir == PND && change == DIR_REV)
+                current_step = MAX_STEP;
+                
+                if (steps(current_step) == SRESET)
+                current_step = END_OUT; 
+                    ret = END_OUT;
+                    init = 1;
+                    break;
+                end
+                    
+            else
+                current_step = END_OUT; 
+                ret = END_OUT;
+                init = 1;
+                break;
+            end
+        end
+
+        if (steps(current_step) == SSTOP)
+            ret = current_step;
+            break;
+        end
+
+        if (current_step == endstep)
+            fprintf('At end: endstep = %d\n', endstep);
+            
+            if (p_dir == PND)
+                if (endstep == MIN_STEP)
+                    if (p_change_channel == 1)
+                        ret = END_OUT;
+                        break;
+                    end
+                    endstep = MAX_STEP;
+                    change = DIR_FWD;
+                else
+                    endstep = MIN_STEP;
+                    change = DIR_REV;
+                end
+            else
+                if change == DIR_FWD
+                    current_step = MIN_STEP;
+                else
+                    current_step = MAX_STEP;
+                end
+            
+                if (p_change_channel == 1)
+                    ret = END_OUT;
+                    break;
+                end
+            end
+        else
+            if (p_init == 0 || steps(current_step) ~= SRUN)
+                current_step = current_step + change;
+            end
+        end
+        
+        if (steps(current_step) == SRUN)
+            ret = current_step;
+            break;
+        end
+    end
+    
+    if (ret == END_OUT)
+        fprintf('Return: END_OUT, Change: %d, Current step: %d\n', ...
+            change, current_step);
+    else
+        fprintf('Return: %d, Change: %d, Current step: %d\n', ...
+            ret, change, current_step);
+    end

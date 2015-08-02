@@ -1,0 +1,149 @@
+function [curve_data] = murf_test(pot_pos, max_interval)
+%MURF_TEST Create MuRF envelope curve
+% MURF_TEST creates the shape of the MuRF bandpass filter envelope curve.
+% Parameters: rise_precent, fall_percent, max_interval
+% Returns: curve_data
+%
+% See also MURF, MURF_ENVELOPE
+
+	ref_voltage = 5;
+	min_pos = 1;
+	max_pos = 10;
+	%interval = 0.2;
+	%envelope_pos = min_pos:interval:max_pos;
+
+	if nargin == 0
+		max_interval = 100; % Units for DAC voltage curve
+		pot_pos = 5; % Initial pot position (middle)
+	end
+
+	%change_up = ((((-1) - (max_pos / 2.0) + envelope_pos).^2) / ...
+	%	ref_voltage) + 0.25;
+	%change_down = ((((0.1) - (max_pos / 2.0) + envelope_pos).^2) / ...
+	%	ref_voltage) + 0.25;
+
+	%rise_intervals = ((rise_percent * max_interval) / 100.0); % + 0.01;
+	%fall_intervals = ((fall_percent * max_interval) / 100.0);
+
+	%curve_min = 2; % Don't go below this value for rise/fall curve
+	%difference = ((sqrt(max_interval) - curve_min) / (max_interval / 2)) * -1;
+	%curve_min = 1.41421356237310; % Don't go below this value for rise/fall curve
+	
+	%change_up = [(sqrt(max_interval):difference:curve_min).^2, ...
+	%	(curve_min:(difference * -1):sqrt(max_interval)).^2]; 
+
+	%change_down = [(sqrt((max_interval) - 25):difference:curve_min).^2, ...
+	%	(curve_min:(difference * -1):sqrt(max_interval)).^2]; 
+
+	%fprintf('Pot pos in curve: %d\n', ...
+	%	get_pot_pos(max_interval, pot_pos));
+		
+	% Get current percent for rise/fall
+	%current_rise_curve = ref_voltage / 2; %max_interval;
+	%current_fall_curve = ref_voltage / 2;
+	
+	if pot_pos < 5
+		current_rise_curve = ref_voltage / get_pot_pos(max_interval, pot_pos);
+		current_fall_curve = ref_voltage / ...
+			get_pot_pos(max_interval - (max_interval / 2.0), pot_pos);
+	else
+		current_rise_curve = ref_voltage / ...
+			get_pot_pos(max_interval - (max_interval / 2.0), pot_pos);
+		current_fall_curve = ref_voltage / get_pot_pos(max_interval, pot_pos);
+	end
+
+	if current_rise_curve > ref_voltage
+		current_rise_curve = ref_voltage;
+	end
+	
+	if current_fall_curve > ref_voltage
+		current_fall_curve = ref_voltage;
+	end
+
+	rise_intervals = max_interval / (ref_voltage / current_rise_curve);
+	fall_intervals = max_interval / (ref_voltage / current_fall_curve);
+	
+	fprintf('Rise/fall Intervals: %.4f / %.4f\n', rise_intervals, fall_intervals);
+	
+	rise_inc = ref_voltage / rise_intervals;
+	fall_inc = ref_voltage / fall_intervals;
+	
+	if rise_inc > ref_voltage
+		rise_inc = ref_voltage;
+	end
+
+	if fall_inc > ref_voltage
+		fall_inc = ref_voltage;
+	end
+
+	fprintf('Inc: %.4f / %.4f\n', rise_inc, fall_inc);
+	
+	curve_data = zeros(1, ceil(rise_intervals + fall_intervals));
+	change = 0;
+	%curve_data(1) = 0; % Init
+	
+	if pot_pos > 5
+		start_pos = max_interval - ceil(rise_intervals + 1 + fall_intervals);
+	else
+		start_pos = 1;
+	end
+
+	fprintf('Start pos: %.2f / %.2f / %.2f\n', start_pos, rise_intervals, fall_intervals);
+	%start_pos = 1;
+
+	
+	% Do rise
+	for counter = start_pos:rise_intervals + 1
+		change = change + rise_inc;
+		
+		if change > ref_voltage
+			change = ref_voltage;
+		end
+		
+		curve_data(counter) = change;
+	end
+	
+	temp_counter = counter;
+
+	% Do fall
+	for counter = temp_counter:(fall_intervals + temp_counter + 1)
+		if change >= 0
+			curve_data(counter) = change;
+		else
+			curve_data(counter) = 0;
+		end
+
+		change = change - fall_inc;
+	end
+
+	%subplot(2, 1, 1);
+	%stairs(change_up, 'r-');
+	%box off;
+	%grid;
+	%hold on;
+	%stairs(change_down, 'g-');
+	%hold off;
+	%legend('Rise interval', 'Fall interval', 'Location', 'North');
+	%axis tight;
+	%enhancefigure('MuRF Rise/Fall Curve', 'Time', 'Rise and Fall');
+
+	%subplot(2, 1, 2);
+	plot(curve_data, 'co');
+	hold on;
+	stairs(curve_data, 'b');
+	hold off;
+	grid;
+	xlim([0, max_interval + 1]);
+	ylim([-0.5, ref_voltage + 0.5]);
+	enhancefigure('MuRF Envelope Curve', 'Time', 'Amplitude');
+end
+
+function pos_in_curve = get_pot_pos(max_elements, pot_pos)
+	max_pos = 10;
+
+	pos_in_curve = (((sqrt(max_elements) / max_pos) * (pot_pos - 5))^2)*4;
+	
+	if pos_in_curve < 2
+		pos_in_curve = 2;
+	end
+end

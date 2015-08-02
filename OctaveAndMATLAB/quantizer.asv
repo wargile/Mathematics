@@ -1,0 +1,88 @@
+function ret = quantizer(minvolt, maxvolt, triangle, offset)
+%QUANTIZER quantizes a value range
+%
+%   QUANTIZER quantizes a volt value range to nearest semitones.
+%   Choose triangle (default) or sine curve, note offset (default 0)
+%
+%   Params: minvolt, maxvolt, triangle [true|false], offset
+
+    if nargin < 2
+        error(['Usage: QUANTIZER(<minvolt>, <maxvolt>, 'triangle (true|false)], [offset]');
+    end
+    
+    if nargin < 3
+        triangle = false;
+    end
+    
+    if nargin < 4
+        offset = 0;
+    end
+    
+    if isnumeric(minvolt) == false || isnumeric(maxvolt) == false
+        error('Error in input value(s).');
+    end
+    
+    if minvolt >= maxvolt
+        error('Min volt value must be smaller than max volt value');
+    end
+    
+    VOLT_REF = 5.0;
+    DAC_12_BIT = 4095; % 0xfff;
+    % MAX_MIDI_NOTE = 128.0; % 127 ?
+    VOLT_PR_NOTE = 0.08333334;
+    MIN_VOLT = minvolt;
+    MAX_VOLT = maxvolt;
+    
+    MIN_VOLT = MIN_VOLT + (offset * VOLT_PR_NOTE);
+    MAX_VOLT = MAX_VOLT + (offset * VOLT_PR_NOTE);
+    
+    if triangle % Create a triangle value range
+        v = (MIN_VOLT:0.001:MAX_VOLT);
+        volt_range = [v fliplr(v)]; % Merge with the reversed range
+    else % Create a sine value range
+        volt_range = sin(MIN_VOLT:0.001:MAX_VOLT);
+    end
+    
+    quantized = volt_range; % Dimension the result array
+
+    % Let's quantize...
+    
+    for a = 1:length(volt_range)
+       quantized(a) = floor(ceil(volt_range(a) / ...
+           VOLT_PR_NOTE) * (DAC_12_BIT / (VOLT_REF / VOLT_PR_NOTE)));
+       volt_range(a) = floor((volt_range(a) / ...
+           VOLT_PR_NOTE) * (DAC_12_BIT / (VOLT_REF / VOLT_PR_NOTE)));
+    end
+
+    % Let's visualize it...
+    
+    hold off;
+    subplot(2, 1, 1);
+    plot(quantized, 'r-');
+    hold on;
+    plot(volt_range, 'b-');
+    title('Quantized output and original curve', 'FontWeight', 'bold', ...
+        'FontSize', 14)
+    ylabel('DAC value');
+    xlabel('Volt range');
+    %set(gca, 'FontSize', 8);
+    legend('Quantized value', 'Volt range');
+    %h_legend = legend('Quantized value', 'Volt range');
+    %if h_legend > 0
+    %    set(h_legend, 'FontSize', 8);
+    %end
+    box on;
+    grid on;
+    subplot(2, 1, 2);
+    plot(quantized, 'g-');
+    set(gca, 'FontSize', 8);
+    plot(quantized, 'm-');
+    grid off;
+    box off;
+    disp('Quantized output sent to GnuPlot!');
+    
+    % Let's return the stuff...
+    
+    ret.quantized = quantized;
+    ret.volt_range = volt_range;
+    

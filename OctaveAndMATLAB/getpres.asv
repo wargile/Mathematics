@@ -1,0 +1,22 @@
+function res = getpres(varargin)
+%GETPRES Gets the total resistance for a variable number of resistors in parallell connection.
+%   Syntax: getpres(res1, res2, .. resN)
+%
+%   GETPRES gets the total resistance for a variable number of resistors
+%   in parallell connection.
+%
+%   See also GETSRES
+
+tempvar = 0;
+
+if nargin == 0
+    error('Usage: getpres(res1, res2, .. res<n>)');
+end
+
+for n = 1:length(varargin)
+    tempvar = tempvar + (1 / varargin{n});
+end
+
+res = 1.0 / tempvar;
+
+fprintf('Total resistance for %d parallell resistors is %.2f Ohm\n', length(varargin), res);

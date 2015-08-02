@@ -1,0 +1,239 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      -->
+      <title>getvoct</title>
+      <meta name="generator" content="MATLAB 7.7">
+      <meta name="date" content="2008-12-04">
+      <meta name="m-file" content="getvoct"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head>
+   <body>
+      <div class="content"><pre class="codeinput"><span class="keyword">function</span> [volt, frequency] = getvoct(keyname)
+<span class="comment">% GETVOCT -- Copyright (C) T. Bakkelokken 2008</span>
+<span class="comment">%   Syntax:  [volt, frequency] = getvoct('keyname')</span>
+<span class="comment">%</span>
+<span class="comment">%   GETVOCT gets the 1V/OCT value and frequency for keyname, from 'C-1' to 'G9'.</span>
+<span class="comment">%   Example: [v, f] = getvoct('G#4'); [v, f] = getvoct('D-1');</span>
+<span class="comment">%</span>
+<span class="comment">%   Showdemo('getvoct.m')</span>
+
+<span class="keyword">if</span> nargin ~= 1
+    error(<span class="string">'syntax: [volt, frequency] = getvoct(''keyname'')'</span>);
+<span class="keyword">end</span>
+<span class="keyword">if</span> length(keyname) &gt; 4 || length(keyname) &lt; 2
+    error(<span class="string">'Max length for keyname is 4 (example: F#-1)'</span>);
+<span class="keyword">end</span>
+<span class="keyword">if</span> length(keyname) &gt;= 3
+    a = strfind(keyname, <span class="string">'-'</span>);
+    b = strfind(keyname, <span class="string">'#'</span>);
+    <span class="keyword">if</span> isempty(a) &amp;&amp; isempty(b) <span class="comment">% test for empty matrix []1x0</span>
+        error(<span class="string">'Max keyname is ''G9''.\n'</span>);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+voltpernote = 0.08333334;
+notenumber = 0;
+
+noteletters = { <span class="string">'C'</span>, <span class="string">'C#'</span>, <span class="string">'D'</span>, <span class="string">'D#'</span>, <span class="string">'E'</span>, <span class="string">'F'</span>, <span class="string">'F#'</span>, <span class="string">'G'</span>, <span class="string">'G#'</span>, <span class="string">'A'</span>, <span class="string">'A#'</span>, <span class="string">'B'</span> };
+
+<span class="keyword">if</span> length(keyname) == 4
+    key = keyname(1:2);
+    number = str2double(keyname(3:4));
+<span class="keyword">elseif</span> (length(keyname) == 3) &amp; (strfind(keyname, <span class="string">'-'</span>) &gt; 0)
+    <span class="comment">% NOTE: Single &amp; operator is correct here (comparing a boolean and a matrice of logical 0/1 (strfind))</span>
+    key = keyname(1:1);
+    number = str2double(keyname(2:3));
+<span class="keyword">elseif</span> (length(keyname) == 3) &amp; (strfind(keyname, <span class="string">'#'</span>) &gt; 0)
+    <span class="comment">% NOTE: Single &amp; operator is correct here (comparing a boolean and a matrice of logical 0/1 (strfind))</span>
+    key = keyname(1:2);
+    number = str2double(keyname(3:3));
+<span class="keyword">else</span>
+    key = keyname(1:1);
+    number = str2double(keyname(2:2));
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> number &gt; 9
+    error(<span class="string">'Max. keyname is ''G9'' (MIDI note no. 127).'</span>);
+<span class="keyword">end</span>
+
+<span class="comment">% B and H are equal, so handle both in input</span>
+<span class="keyword">if</span> strcmp(key(1), <span class="string">'H'</span>) == 1
+    key(1) = <span class="string">'B'</span>;
+<span class="keyword">end</span>
+
+<span class="keyword">for</span> n = 1:length(noteletters)
+    <span class="keyword">if</span> (strcmp(noteletters{n}, key) == 1)
+        notenumber = n;
+        <span class="keyword">break</span>;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> notenumber &gt; 0
+    notenumber = (number * 12) + (notenumber + 11);
+    <span class="keyword">if</span> notenumber &gt; 127
+        error(<span class="string">'Max. keyname is ''G9'' (MIDI note no. 127).'</span>);
+    <span class="keyword">end</span>
+    volt = (voltpernote * notenumber) + voltpernote;
+    fprintf(<span class="string">'\nThe volt value for key name %s (MIDI note %d) is %.4f V.\n'</span>, <span class="keyword">...</span>
+        keyname, notenumber, volt);
+    frequency = (2 ^ ((notenumber - 69) / 12)) * 440;
+    <span class="comment">% 69 = note number for concert pitch 440 Hz (note A4)</span>
+    fprintf(<span class="string">'\nThe frequency for note no. %d is %.4f Hz.\n'</span>, notenumber, frequency);
+<span class="keyword">else</span>
+    error(<span class="string">'Invalid keyname: ''%s''.'</span>, keyname);
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">
+The volt value for key name D#3 (MIDI note 51) is 4.3333 V.
+
+The frequency for note no. 51 is 155.5635 Hz.
+
+ans =
+
+    4.3333
+
+</pre><p class="footer"><br>
+            Published with MATLAB&reg; 7.7<br></p>
+      </div>
+      <!--
+##### SOURCE BEGIN #####
+function [volt, frequency] = getvoct(keyname)
+% GETVOCT REPLACE_WITH_DASH_DASH Copyright (C) T. Bakkelokken 2008
+%   Syntax:  [volt, frequency] = getvoct('keyname')
+%
+%   GETVOCT gets the 1V/OCT value and frequency for keyname, from 'C-1' to 'G9'.
+%   Example: [v, f] = getvoct('G#4'); [v, f] = getvoct('D-1');
+%
+%   Showdemo('getvoct.m')
+
+if nargin ~= 1
+    error('syntax: [volt, frequency] = getvoct(''keyname'')');
+end
+if length(keyname) > 4 || length(keyname) < 2
+    error('Max length for keyname is 4 (example: F#-1)');
+end
+if length(keyname) >= 3
+    a = strfind(keyname, '-');
+    b = strfind(keyname, '#');
+    if isempty(a) && isempty(b) % test for empty matrix []1x0
+        error('Max keyname is ''G9''.\n');
+    end
+end
+
+voltpernote = 0.08333334;
+notenumber = 0;
+
+noteletters = { 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B' };
+
+if length(keyname) == 4
+    key = keyname(1:2);
+    number = str2double(keyname(3:4));
+elseif (length(keyname) == 3) & (strfind(keyname, '-') > 0)
+    % NOTE: Single & operator is correct here (comparing a boolean and a matrice of logical 0/1 (strfind))
+    key = keyname(1:1);
+    number = str2double(keyname(2:3));
+elseif (length(keyname) == 3) & (strfind(keyname, '#') > 0)
+    % NOTE: Single & operator is correct here (comparing a boolean and a matrice of logical 0/1 (strfind))
+    key = keyname(1:2);
+    number = str2double(keyname(3:3));
+else
+    key = keyname(1:1);
+    number = str2double(keyname(2:2));
+end
+
+if number > 9
+    error('Max. keyname is ''G9'' (MIDI note no. 127).');
+end
+
+% B and H are equal, so handle both in input
+if strcmp(key(1), 'H') == 1
+    key(1) = 'B';
+end
+
+for n = 1:length(noteletters)
+    if (strcmp(noteletters{n}, key) == 1)
+        notenumber = n;
+        break;
+    end
+end
+
+if notenumber > 0
+    notenumber = (number * 12) + (notenumber + 11);
+    if notenumber > 127
+        error('Max. keyname is ''G9'' (MIDI note no. 127).');
+    end
+    volt = (voltpernote * notenumber) + voltpernote;
+    fprintf('\nThe volt value for key name %s (MIDI note %d) is %.4f V.\n', ...
+        keyname, notenumber, volt);
+    frequency = (2 ^ ((notenumber - 69) / 12)) * 440;
+    % 69 = note number for concert pitch 440 Hz (note A4)
+    fprintf('\nThe frequency for note no. %d is %.4f Hz.\n', notenumber, frequency);
+else
+    error('Invalid keyname: ''%s''.', keyname);
+end
+
+##### SOURCE END #####
+-->
+   </body>
+</html>

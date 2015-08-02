@@ -1,0 +1,297 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      7695,        288]
+NotebookOptionsPosition[      6496,        240]
+NotebookOutlinePosition[      6845,        255]
+CellTagsIndexPosition[      6802,        252]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"10", 
+     SqrtBox["1"]}], ",", 
+    SqrtBox[
+     RowBox[{"10", "*", "10"}]], ",", 
+    SqrtBox["100"]}], "}"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Take", " ", "out", " ", 
+     RowBox[{"10", "'"}], "s"}], ",", " ", 
+    RowBox[{"REMEMBER", " ", "to", " ", "leave", " ", "1"}]}], " ", 
+   "*)"}]}]], "Input",
+ CellChangeTimes->{{3.507187707911625*^9, 3.507187733036625*^9}, {
+  3.507188975942875*^9, 3.5071890112085*^9}, {3.507189524161625*^9, 
+  3.507189557646*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"10", ",", "10", ",", "10"}], "}"}]], "Output",
+ CellChangeTimes->{{3.507187709349125*^9, 3.507187733724125*^9}, {
+  3.50718952898975*^9, 3.50718955898975*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"5", 
+     SqrtBox["6"]}], ",", 
+    SqrtBox[
+     RowBox[{"5", "*", "5", "*", "6"}]], ",", 
+    SqrtBox["150"]}], "}"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Take", " ", "out", " ", 
+     RowBox[{"5", "'"}], "s"}], ",", " ", 
+    RowBox[{"leave", " ", "6"}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.507187751067875*^9, 3.507187757146*^9}, {
+  3.507187914005375*^9, 3.507187914224125*^9}, {3.507188961646*^9, 
+  3.507188993896*^9}, {3.507189468380375*^9, 3.507189512271*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"5", " ", 
+    SqrtBox["6"]}], ",", 
+   RowBox[{"5", " ", 
+    SqrtBox["6"]}], ",", 
+   RowBox[{"5", " ", 
+    SqrtBox["6"]}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.50718775280225*^9, 3.5071877575835*^9}, 
+   3.50718791492725*^9, 3.50718896561475*^9, {3.507189484536625*^9, 
+   3.50718951398975*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"5", 
+     SqrtBox["2"]}], ",", 
+    SqrtBox[
+     RowBox[{"5", "*", "5", "*", "2"}]], ",", 
+    SqrtBox["50"]}], "}"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Take", " ", "out", " ", 
+     RowBox[{"5", "'"}], "s"}], ",", " ", 
+    RowBox[{"leave", " ", "2"}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.507188743521*^9, 3.507188772067875*^9}, {
+  3.50718901973975*^9, 3.507189028130375*^9}, {3.5071894553335*^9, 
+  3.507189461849125*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"5", " ", 
+    SqrtBox["2"]}], ",", 
+   RowBox[{"5", " ", 
+    SqrtBox["2"]}], ",", 
+   RowBox[{"5", " ", 
+    SqrtBox["2"]}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.507188754786625*^9, 3.50718877430225*^9}, 
+   3.5071894638335*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"8", " ", 
+     SqrtBox["2"]}], ",", 
+    SqrtBox[
+     RowBox[{"8", "*", "8", "*", "2"}]], ",", 
+    SqrtBox["128"]}], "}"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Take", " ", "out", " ", 
+     RowBox[{"8", "'"}], "s"}], ",", " ", 
+    RowBox[{"leave", " ", "2"}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.5071887853335*^9, 3.507188814099125*^9}, {
+  3.507189030630375*^9, 3.507189038036625*^9}, {3.50718954180225*^9, 
+  3.507189542021*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"8", " ", 
+    SqrtBox["2"]}], ",", 
+   RowBox[{"8", " ", 
+    SqrtBox["2"]}], ",", 
+   RowBox[{"8", " ", 
+    SqrtBox["2"]}]}], "}"}]], "Output",
+ CellChangeTimes->{3.507188814896*^9, 3.507189544021*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"N", "[", 
+   SqrtBox["42"], "]"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Approximate", " ", "sqrt", 
+    RowBox[{"(", "42", ")"}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"36", "<", "42", "<", 
+    RowBox[{
+    "49.", "  ", "36", " ", "is", " ", "closer", " ", "to", " ", "42", " ", 
+     "than", " ", "49.", " ", "So", " ", "must", " ", "be", " ", "BELOW", " ", 
+     RowBox[{"6.5", ".", " ", 
+      RowBox[{"Try", ":", " ", "6.4"}]}]}]}], " ", "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.50718883680225*^9, 3.507188901161625*^9}, {
+  3.50718904561475*^9, 3.507189102771*^9}}],
+
+Cell[BoxData["6.48074069840786`"], "Output",
+ CellChangeTimes->{{3.507188894942875*^9, 3.5071889019585*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{" ", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "6"}], "+", "5", "-", "3", "+", "3", "-", "4"}], ")"}]}], 
+    ",", " ", 
+    RowBox[{"(", 
+     RowBox[{"6", "-", "5", "+", "3", "-", "3", "+", "4"}], ")"}]}], 
+   "}"}]}]], "Input",
+ CellChangeTimes->{{3.507190252411625*^9, 3.50719029011475*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"5", ",", "5"}], "}"}]], "Output",
+ CellChangeTimes->{{3.50719026323975*^9, 3.507190290942875*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "6"}], "*", 
+  RowBox[{"-", "12"}]}]], "Input",
+ CellChangeTimes->{{3.5071904184585*^9, 3.507190437974125*^9}}],
+
+Cell[BoxData["72"], "Output",
+ CellChangeTimes->{{3.507190430942875*^9, 3.50719043886475*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "36"}], "/", 
+  RowBox[{"-", "6"}]}]], "Input",
+ CellChangeTimes->{{3.507190544911625*^9, 3.507190560380375*^9}}],
+
+Cell[BoxData["6"], "Output",
+ CellChangeTimes->{{3.507190547005375*^9, 3.507190569786625*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["2", "3"], "*", 
+  FractionBox["4", "6"], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"2", "*", "4"}], ")"}], "/", 
+     RowBox[{"(", 
+      RowBox[{"3", "*", "6"}], ")"}]}], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"8", "/", "18"}], " ", "=", " ", 
+     RowBox[{"4", "/", "9"}]}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.507190808255375*^9, 3.507190868130375*^9}}],
+
+Cell[BoxData[
+ FractionBox["4", "9"]], "Output",
+ CellChangeTimes->{3.50719083136475*^9}]
+}, Open  ]]
+},
+WindowSize->{712, 950},
+WindowMargins->{{Automatic, 460}, {Automatic, -1}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (October 6, 2011)",
+StyleDefinitions->"TerjeDefault.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 551, 17, 40, "Input"],
+Cell[1133, 41, 199, 4, 29, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1369, 50, 564, 16, 40, "Input"],
+Cell[1936, 68, 355, 11, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2328, 84, 523, 16, 40, "Input"],
+Cell[2854, 102, 286, 10, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3177, 117, 529, 16, 40, "Input"],
+Cell[3709, 135, 255, 9, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4001, 149, 659, 16, 59, "Input"],
+Cell[4663, 167, 108, 1, 29, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4808, 173, 377, 12, 29, "Input"],
+Cell[5188, 187, 138, 3, 29, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5363, 195, 150, 4, 29, "Input"],
+Cell[5516, 201, 94, 1, 29, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5647, 207, 152, 4, 29, "Input"],
+Cell[5802, 213, 94, 1, 29, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5933, 219, 455, 14, 47, "Input"],
+Cell[6391, 235, 89, 2, 47, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

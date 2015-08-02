@@ -1,0 +1,52 @@
+UpdatePoly[pmidimessage_, pnotenumber_, pvelocitylevel_] :=
+Module[{midiMessage = pmidimessage, noteNumber = pnotenumber, velocityLevel = pvelocitylevel},
+	
+	i = 0; p = 0;
+	
+	If [midiMessage == cnoteoff,
+	{
+		For [i = 0, i < cmaxpoly, i++,
+		{
+			(* Reset counter and value in notenumber slot *)
+			If [polyphony[[i]] == noteNumber,
+			{
+				polyphony[[i]] = cresetvalue; (* Reset *)
+				poly_counters[[i]] = cresetvalue
+			} (* end if true *)
+			];
+			(* Decrease counter if counter > 1 *)
+			If [poly_counters[[i]] > 1,
+				poly_counters[[i]]--
+			]
+		}
+		]
+	}
+	];
+	
+	If [midiMessage == cnoteon,
+	{
+		For [i = 0, i < cmaxpoly, i++,
+			If [polyphony[[i]] == cresetvalue || poly_counters[[i]] == cmaxpoly,
+			{
+				polyphony[[i]] = noteNumber;
+				velocity[[i]] = velocityLevel;
+				break
+			} (* end if true *)
+			]
+		];
+
+		For [i = 0, i < cmaxpoly, i++,
+			(* Set counter = 1 if counter == cmaxpoly *)
+			If [poly_counters[i] == cmaxpoly,
+				poly_counters[i] = 1, (* end if true *)
+				{
+					(* Increase counter if counter != cmaxpoly *)
+					If [polyphony[[i]] > cresetvalue,
+					   poly_counters[i]++
+					]
+				} (* end if false *)
+			]
+		]
+	}
+	]
+]

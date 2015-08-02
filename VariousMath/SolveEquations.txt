@@ -1,0 +1,18 @@
+Solve for x:
+------------
+x = (x / 4) + ((24 - x) / 2)
+
+--> Find common denominator for the fractions and add them together:
+x = (x / 4) + ((48 - 2x) / 4)
+--> x - 2x = -x, so we get:
+x = ((48 - x) / 4)
+--> Multiply with 4 on each side to get rid of the fraction:
+4x = (48 - x)
+--> Add x on each side to get rid of the -x on the right:
+4x + x = 48
+5x = 48
+--> Divide by 5 on each side:
+
+--> Answer: x = 48/5
+====================
+

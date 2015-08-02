@@ -1,0 +1,234 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      7546,        225]
+NotebookOptionsPosition[      6739,        192]
+NotebookOutlinePosition[      7083,        207]
+CellTagsIndexPosition[      7040,        204]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"steps", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", 
+       "8"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", 
+       "8"}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Grid", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Item", "[", 
+        RowBox[{"\"\<a\>\"", ",", " ", 
+         RowBox[{"Background", " ", "->", " ", "Red"}], ",", " ", 
+         RowBox[{"Frame", " ", "->", " ", "True"}]}], "]"}], ",", " ", 
+       "\"\<b\>\"", ",", " ", "\"\<c\>\""}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"\"\<d\>\"", ",", " ", "\"\<e\>\"", ",", " ", "\"\<f\>\""}], 
+      "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"\"\<g\>\"", ",", " ", "\"\<h\>\"", ",", " ", "\"\<i\>\""}], 
+      "}"}]}], "}"}], ",", " ", 
+   RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.4893282341505003`*^9, 3.4893282892130003`*^9}, {
+  3.4893294786817503`*^9, 3.4893294964005003`*^9}, {3.4893296795098753`*^9, 
+  3.4893296895880003`*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     ItemBox["\<\"a\"\>",
+      Background->RGBColor[1, 0, 0],
+      Frame->True,
+      StripOnInput->False], "\<\"b\"\>", "\<\"c\"\>"},
+    {"\<\"d\"\>", "\<\"e\"\>", "\<\"f\"\>"},
+    {"\<\"g\"\>", "\<\"h\"\>", "\<\"i\"\>"}
+   },
+   AutoDelete->False,
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{{3.4893282848067503`*^9, 3.4893282900255003`*^9}, {
+   3.4893294822755003`*^9, 3.4893294906817503`*^9}, 3.4893296903848753`*^9, {
+   3.4893304350880003`*^9, 3.4893305161505003`*^9}, {3.4893305945411253`*^9, 
+   3.4893306167442503`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Grid", "[", 
+  RowBox[{"steps", ",", " ", 
+   RowBox[{"Frame", "\[Rule]", "None"}], ",", " ", 
+   RowBox[{"Background", "\[Rule]", "Cyan"}], ",", 
+   RowBox[{"Dividers", "\[Rule]", "Center"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"Spacings", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{".8", ",", " ", ".8"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.4893283030411253`*^9, 3.4893284051036253`*^9}, {
+  3.4893284415255003`*^9, 3.4893284531192503`*^9}, {3.4893297084005003`*^9, 
+  3.4893297100255003`*^9}, {3.4893298165255003`*^9, 3.4893298569942503`*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"1", "2", "3", "4", "5", "6", "7", "8"},
+    {"1", "2", "3", "4", "5", "6", "7", "8"}
+   },
+   AutoDelete->False,
+   GridBoxBackground->{"Columns" -> {{
+        RGBColor[0, 1, 1]}}},
+   GridBoxDividers->{
+    "Columns" -> {False, {True}, False}, "Rows" -> {False, {True}, False}},
+   GridBoxFrame->{"Columns" -> None, "Rows" -> None},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+   GridBoxSpacings->{"Columns" -> {{0.8}}, "Rows" -> {{0.8}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{{3.4893283060255003`*^9, 3.4893284056973753`*^9}, {
+   3.4893284471348753`*^9, 3.4893284535880003`*^9}, {3.4893296986817503`*^9, 
+   3.4893297105098753`*^9}, {3.4893298176505003`*^9, 3.4893298576973753`*^9}, 
+   3.4893304326817503`*^9, {3.4893304645411253`*^9, 3.4893305162286253`*^9}, {
+   3.4893305946192503`*^9, 3.4893306168223753`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", "steps", "]"}]], "Input",
+ CellChangeTimes->{{3.4893302141973753`*^9, 3.4893302410098753`*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"1", "2", "3", "4", "5", "6", "7", "8"},
+    {"1", "2", "3", "4", "5", "6", "7", "8"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.7]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.4893302184161253`*^9, 3.4893302415411253`*^9}, {
+  3.4893304454942503`*^9, 3.4893305162598753`*^9}, {3.4893305946505003`*^9, 
+  3.4893306168536253`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"balle", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", 
+       "8"}], "}"}], ",", 
+     RowBox[{"Range", "[", 
+      RowBox[{"1", ",", "8"}], "]"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Grid", "[", "balle", "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.4893303090411253`*^9, 3.4893303122286253`*^9}, {
+  3.4893303551661253`*^9, 3.4893304071505003`*^9}, {3.4893304511036253`*^9, 
+  3.4893306863848753`*^9}, {3.4893307428692503`*^9, 3.4893307845723753`*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"1", "2", "3", "4", "5", "6", "7", "8"},
+    {"1", "2", "3", "4", "5", "6", "7", "8"}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{3.4893308446505003`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Dynamic", "[", "theDynamicVar", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"theDynamicVar", " ", "=", " ", "0.5"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Slider", "[", 
+  RowBox[{"Dynamic", "[", "theDynamicVar", "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.4895905835924997`*^9, 3.4895906060143747`*^9}, {
+  3.4895906723893747`*^9, 3.4895907126081247`*^9}}],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[$CellContext`theDynamicVar, StandardForm],
+  ImageSizeCache->{35., {0., 8.}}]], "Output",
+ CellChangeTimes->{{3.4895906927018747`*^9, 3.4895907198268747`*^9}}],
+
+Cell[BoxData[
+ SliderBox[Dynamic[$CellContext`theDynamicVar]]], "Output",
+ CellChangeTimes->{{3.4895906927018747`*^9, 3.4895907198268747`*^9}}]
+}, Open  ]]
+},
+WindowSize->{614, 1002},
+WindowMargins->{{9, Automatic}, {24, Automatic}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 1253, 33, 66, "Input"],
+Cell[1823, 57, 707, 17, 67, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2567, 79, 589, 11, 48, "Input"],
+Cell[3159, 92, 892, 18, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4088, 115, 136, 2, 29, "Input"],
+Cell[4227, 119, 754, 19, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5018, 143, 633, 14, 66, "Input"],
+Cell[5654, 159, 292, 8, 42, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5983, 172, 398, 8, 66, "Input"],
+Cell[6384, 182, 193, 3, 29, "Output"],
+Cell[6580, 187, 143, 2, 40, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

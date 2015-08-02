@@ -1,0 +1,47 @@
+Find the derivative of a function by using limit:
+-------------------------------------------------
+
+We have: f(x) = x^2
+We wish to find f'(x) ("f prime of x", the derivative)
+
+We find another point on the x-axis, and call that x + h
+We want to find the slope of the line as h approaches zero, which is written: lim h->0
+
+The slope of the line as x approaches zero is:
+f(x + h) - f(x)
+---------------
+  (x + h) - x
+
+Put our function in:
+(x + h)^2 - x^2
+---------------
+      h
+
+Which is:
+(x^2 + 2xh + h^2) - x^2
+-----------------------
+        h
+
+Which is:
+2xh + h^2
+---------
+    h
+
+Divide both (remember, BOTH!) numerators with the denominator, and we get:
+2x + h
+
+And, when we find the limit as h approaches zero (lim h->0), we get:
+2x
+--
+
+Which is the derivative of x^2!
+-------------------------------
+
+Put in a few x's and check the slope:
+The slope of the tangent line at f'(4)    = 2 *    4 =  8 (rise/run)
+The slope of the tangent line at f'(1)    = 2 *    1 =  2 (rise/run)
+The slope of the tangent line at f'(0.5)  = 2 *  0.5 =  1 (rise/run)
+The slope of the tangent line at f'(0)    = 2 *    0 =  0 (rise/run)
+The slope of the tangent line at f'(-0.5) = 2 * -0.5 = -1 (rise/run)
+The slope of the tangent line at f'(-1)   = 2 *   -1 = -2 (rise/run)
+The slope of the tangent line at f'(-4)   = 2 *   -4 = -8 (rise/run)

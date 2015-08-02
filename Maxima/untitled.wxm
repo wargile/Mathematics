@@ -1,0 +1,26 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 11.04.0 ] */
+
+/* [wxMaxima: input   start ] */
+random_array(max) := block
+(
+    randomnumbers: makelist(0, k, 1, 10),
+    x: 1,
+    while x <= max do
+    (
+        num: random(max),
+        for p from 1 thru (x - 1) do
+        (
+            if num == random_numbers[p] then exit,
+            if p >= x then
+            (
+                random_numbers[x]: num,
+                x: x + 1
+            )
+        )
+    )
+);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

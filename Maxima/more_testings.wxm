@@ -1,0 +1,105 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 12.01.0 ] */
+
+/* [wxMaxima: input   start ] */
+solve([x^2=4], [x]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+integrate(x^2, x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+diff(cos(x),x,1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(cos(x), x, 0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cos(0.000000001);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(sin(x), x, 0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sin(0.01);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+genmatrix(balle, 3, 3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+determinant(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+genmatrix(f, 2, 2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eigenvalues(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+transpose(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+(x+5)^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ratsimp(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sqrt(25*9);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+radcan(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+factor(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+factor(x^2+10*x+25);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+factor(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+matrix(3,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+aa:matrix([1,2,3],[4,5,6],[6,7,8]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+aa[2,3];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+bb:transpose(aa);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+bb[2,3];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+bb[1,3];
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

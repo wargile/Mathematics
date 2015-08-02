@@ -1,0 +1,382 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     14389,        373]
+NotebookOptionsPosition[     13567,        340]
+NotebookOutlinePosition[     13909,        355]
+CellTagsIndexPosition[     13866,        352]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Graphics3D", "[", 
+    RowBox[{"Cone", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", " ", "0", ",", " ", "0"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"a", ",", " ", "a", ",", " ", "a"}], "}"}]}], "}"}], ",", 
+      " ", 
+      RowBox[{"1", "/", "2"}]}], "]"}], "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", " ", "20", ",", " ", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.440335657578125*^9, 3.440335677890625*^9}, {
+  3.440335722453125*^9, 3.4403357246875*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 1., Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`a$$], 20, 1}}, Typeset`size$$ = {360., {193., 198.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`a$1304$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`a$$ = 20}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$1304$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Graphics3D[
+        Cone[{{0, 0, 
+          0}, {$CellContext`a$$, $CellContext`a$$, $CellContext`a$$}}, 1/2]], 
+      "Specifications" :> {{$CellContext`a$$, 20, 1}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{411., {240., 245.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.440335681046875*^9, 3.44033572665625*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Graphics3D", "[", 
+    RowBox[{"Cylinder", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", " ", "0", ",", " ", "0"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"a", ",", " ", "b", ",", " ", "c"}], "}"}]}], "}"}], ",", 
+      " ", 
+      RowBox[{"1", "/", "3"}]}], "]"}], "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", " ", "40", ",", " ", "1"}], "}"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", " ", "1", ",", " ", "10"}], "}"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", " ", "10", ",", " ", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.440687562453125*^9, 3.440687617828125*^9}, {
+  3.4872304584744997`*^9, 3.4872305054432497`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 1.2, $CellContext`b$$ = 
+    1., $CellContext`c$$ = 2.14, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`a$$], 40, 1}, {
+      Hold[$CellContext`b$$], 1, 10}, {
+      Hold[$CellContext`c$$], 10, 1}}, Typeset`size$$ = {328., {214., 218.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`a$706$$ = 0, $CellContext`b$707$$ = 
+    0, $CellContext`c$708$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 40, $CellContext`b$$ = 
+        1, $CellContext`c$$ = 10}, "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$706$$, 0], 
+        Hold[$CellContext`b$$, $CellContext`b$707$$, 0], 
+        Hold[$CellContext`c$$, $CellContext`c$708$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Graphics3D[
+        Cylinder[{{0, 0, 
+          0}, {$CellContext`a$$, $CellContext`b$$, $CellContext`c$$}}, 1/3]], 
+      "Specifications" :> {{$CellContext`a$$, 40, 1}, {$CellContext`b$$, 1, 
+         10}, {$CellContext`c$$, 10, 1}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{379., {287., 292.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.440687599078125*^9, 3.440687620046875*^9}, {
+  3.4872304762557497`*^9, 3.4872305061151247`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Graphics3D", "[", 
+    RowBox[{"Tube", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", " ", "0", ",", " ", "0"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"a", ",", " ", "a", ",", " ", "a"}], "}"}]}], "}"}], ",", 
+      " ", 
+      RowBox[{"1", "/", "3"}]}], "]"}], "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", " ", "40", ",", " ", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.4406879705*^9, 3.4406879733125*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{Notebook$$13`a$$ = 2.2, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[Notebook$$13`a$$], 40, 1}}, Typeset`size$$ = {360., {193., 198.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    Notebook$$13`a$1445$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {Notebook$$13`a$$ = 40}, 
+      "ControllerVariables" :> {
+        Hold[Notebook$$13`a$$, Notebook$$13`a$1445$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Graphics3D[
+        Tube[{{0, 0, 0}, {
+          Notebook$$13`a$$, Notebook$$13`a$$, Notebook$$13`a$$}}, 1/3]], 
+      "Specifications" :> {{Notebook$$13`a$$, 40, 1}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{411., {240., 245.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.440687974546875*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", ":=", 
+      RowBox[{"Range", "[", "10", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"pts", ":=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", " ", "0"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", " ", "1"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"2", ",", " ", 
+          RowBox[{"-", "1"}]}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"a", ",", " ", "0"}], "}"}]}], "}"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Graphics", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"BezierCurve", "[", "pts", "]"}], ",", " ", "Green", ",", " ", 
+        RowBox[{"Line", "[", "pts", "]"}], ",", " ", "Red", ",", " ", 
+        RowBox[{"Point", "[", "pts", "]"}]}], "}"}], "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"pts", ",", " ", "1", ",", " ", "10"}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.4406881501875*^9, 3.44068831225*^9}, {
+  3.440688348265625*^9, 3.44068843425*^9}, {3.44068846771875*^9, 
+  3.4406884728125*^9}, {3.4406891279375*^9, 3.440689146953125*^9}, {
+  3.44068919346875*^9, 3.440689217109375*^9}, {3.440689259453125*^9, 
+  3.4406892978125*^9}, {3.440689330828125*^9, 3.440689341140625*^9}, {
+  3.440689421359375*^9, 3.44068947390625*^9}, {3.48578196515625*^9, 
+  3.485781968484375*^9}, {3.485782054203125*^9, 3.485782099640625*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Graphics3D", "[", 
+    RowBox[{"Polygon", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"c", ",", " ", "0", ",", " ", "0"}], "}"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", " ", "b", ",", " ", "c"}], "}"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", " ", "0", ",", " ", "a"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", " ", "0", ",", " ", "b"}], "}"}]}], "}"}], "]"}], 
+    "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", " ", "40", ",", " ", "1"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "5", ",", " ", "25"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", " ", "10", ",", " ", "20"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.440688580625*^9, 3.440688644484375*^9}, {
+  3.44068867553125*^9, 3.440688726796875*^9}, {3.4872305693026247`*^9, 
+  3.4872306525838747`*^9}, {3.4872307084744997`*^9, 3.4872307116776247`*^9}, {
+  3.4872314536307497`*^9, 3.4872314540682497`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 4.5, $CellContext`b$$ = 
+    8.35, $CellContext`c$$ = 10., Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`a$$], 40, 1}, {
+      Hold[$CellContext`b$$], 5, 25}, {
+      Hold[$CellContext`c$$], 10, 20}}, Typeset`size$$ = {360., {194., 198.}},
+     Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`a$1047$$ = 0, $CellContext`b$1048$$ = 
+    0, $CellContext`c$1049$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 40, $CellContext`b$$ = 
+        5, $CellContext`c$$ = 10}, "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$1047$$, 0], 
+        Hold[$CellContext`b$$, $CellContext`b$1048$$, 0], 
+        Hold[$CellContext`c$$, $CellContext`c$1049$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Graphics3D[
+        Polygon[{{$CellContext`c$$, 0, 0}, {
+          4, $CellContext`b$$, $CellContext`c$$}, {0, 0, $CellContext`a$$}, {
+          0, 0, $CellContext`b$$}}]], 
+      "Specifications" :> {{$CellContext`a$$, 40, 1}, {$CellContext`b$$, 5, 
+         25}, {$CellContext`c$$, 10, 20}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{411., {267., 272.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.440688630703125*^9, 3.440688645671875*^9}, {
+   3.44068867665625*^9, 3.44068872790625*^9}, {3.4872305935682497`*^9, 
+   3.4872306533651247`*^9}, 3.4872307128338747`*^9, 3.4872314552557497`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics3D", "[", 
+  RowBox[{"Sphere", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", " ", "0", ",", " ", "0"}], "}"}], ",", " ", "1"}], 
+   "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.44068880353125*^9, 3.44068890575*^9}, {
+  3.44068904559375*^9, 3.440689073859375*^9}}],
+
+Cell[BoxData[
+ Graphics3DBox[SphereBox[{0, 0, 0}, 4],
+  AutomaticImageSize->True,
+  ImageSize->{387.0552013425918, 366.5584044172768},
+  ViewPoint->{2.559725464479339, 1.1001462407669966`, 1.9202822176498635`},
+  ViewVertical->{0.024224415050672854`, 0.8537663748809532, 
+   0.5200924483571052}]], "Output",
+ CellChangeTimes->{{3.4406888478125*^9, 3.44068890675*^9}, {
+  3.44068905115625*^9, 3.44068907096875*^9}}]
+}, Open  ]]
+},
+WindowSize->{974, 961},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (January 25, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 628, 17, 31, "Input"],
+Cell[1198, 41, 1592, 33, 502, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2827, 79, 808, 21, 52, "Input"],
+Cell[3638, 102, 2075, 42, 596, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5750, 149, 574, 16, 31, "Input"],
+Cell[6327, 167, 1572, 33, 502, "Output"]
+}, Open  ]],
+Cell[7914, 203, 1527, 35, 112, "Input"],
+Cell[CellGroupData[{
+Cell[9466, 242, 1081, 26, 52, "Input"],
+Cell[10550, 270, 2238, 44, 556, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12825, 319, 309, 8, 31, "Input"],
+Cell[13137, 329, 414, 8, 382, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

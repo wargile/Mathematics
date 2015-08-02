@@ -1,0 +1,428 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     13596,        419]
+NotebookOptionsPosition[     12940,        391]
+NotebookOutlinePosition[     13282,        406]
+CellTagsIndexPosition[     13239,        403]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"forward", " ", "=", " ", "1"}], ";", " ", 
+   RowBox[{"reverse", " ", "=", " ", "2"}], ";", " ", 
+   RowBox[{"pendulum", " ", "=", " ", "4"}], ";", " ", 
+   RowBox[{"random", " ", "=", " ", "8"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Grid", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Graphics", "[", 
+        RowBox[{"{", 
+         RowBox[{"Blue", ",", " ", 
+          RowBox[{"Circle", "[", "]"}]}], "}"}], "]"}], ",", 
+       RowBox[{"{", "1", "}"}], ",", 
+       RowBox[{"{", "maxstep", "}"}]}], "]"}], ",", 
+     RowBox[{"Background", "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{"{", 
+        RowBox[{"nextstep", "\[Rule]", "Cyan"}], "}"}], "}"}]}]}], "]"}], ",",
+    "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"nextstep", ",", " ", "1", ",", " ", "maxstep", ",", " ", "1"}], 
+    "}"}], ",", " ", 
+   RowBox[{"Initialization", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"maxstep", " ", "=", " ", "8"}], ";", " ", 
+      RowBox[{"direction", " ", "=", " ", "forward"}]}], "}"}]}]}], 
+  "\[IndentingNewLine]", "]"}]}], "Input",
+ CellChangeTimes->{{3.525009815340477*^9, 3.525009903002491*^9}, {
+  3.525009955194476*^9, 3.525009976569699*^9}, {3.525010008970552*^9, 
+  3.5250100331939373`*^9}, {3.525010091681283*^9, 3.525010122785062*^9}, {
+  3.5250101957122326`*^9, 3.525010336127264*^9}, {3.52501040878442*^9, 
+  3.525010579678194*^9}, {3.5250106365174456`*^9, 3.5250106385495615`*^9}, {
+  3.525010903621723*^9, 3.52501099466693*^9}, {3.5250110366093297`*^9, 
+  3.52501117317214*^9}, {3.5250119478484497`*^9, 3.525011980781333*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`nextstep$$ = 3, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`nextstep$$], 1, 8, 1}}, Typeset`size$$ = {
+    536., {87.5, 92.5}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = False, $CellContext`nextstep$125341$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`nextstep$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`nextstep$$, $CellContext`nextstep$125341$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Grid[
+        Table[
+         Graphics[{Blue, 
+           Circle[]}], {1}, {$CellContext`maxstep}], 
+        Background -> {{$CellContext`nextstep$$ -> Cyan}}], 
+      "Specifications" :> {{$CellContext`nextstep$$, 1, 8, 1}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{585., {147., 152.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`maxstep = 
+        8; $CellContext`direction = $CellContext`forward}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.5250111746972275`*^9, 3.525011976237073*^9, 
+  3.55236060810588*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "See", " ", "all", " ", "options", " ", "for", " ", "a", " ", "control"}], 
+   " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"Options", "[", "Grid", "]"}]}]], "Input",
+ CellChangeTimes->{{3.5247197855699015`*^9, 3.5247197993356886`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"Alignment", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"Center", ",", "Baseline"}], "}"}]}], ",", 
+   RowBox[{"AllowedDimensions", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"AllowScriptLevelChange", "\[Rule]", "True"}], ",", 
+   RowBox[{"AutoDelete", "\[Rule]", "False"}], ",", 
+   RowBox[{"Background", "\[Rule]", "None"}], ",", 
+   RowBox[{"BaselinePosition", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"{", "}"}]}], ",", 
+   RowBox[{"DefaultBaseStyle", "\[Rule]", "\<\"Grid\"\>"}], ",", 
+   RowBox[{"DefaultElement", "\[Rule]", "\<\"\[Placeholder]\"\>"}], ",", 
+   RowBox[{"DeleteWithContents", "\[Rule]", "True"}], ",", 
+   RowBox[{"Dividers", "\[Rule]", "None"}], ",", 
+   RowBox[{"Editable", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"Frame", "\[Rule]", "None"}], ",", 
+   RowBox[{"FrameStyle", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"ItemSize", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"ItemStyle", "\[Rule]", "None"}], ",", 
+   RowBox[{"Selectable", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"Spacings", "\[Rule]", "Automatic"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.5247198002857428`*^9, 3.524725831772724*^9, 
+  3.5247258684778233`*^9, 3.52472621616971*^9, 3.524932734099682*^9, 
+  3.5523606081738834`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Grid", "[", 
+  RowBox[{
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"PrimeQ", "[", "i", "]"}], ",", 
+         RowBox[{"Item", "[", 
+          RowBox[{
+           RowBox[{"Tooltip", "[", "i", "]"}], ",", " ", 
+           RowBox[{"Background", " ", "\[Rule]", " ", "LightYellow"}]}], 
+          "]"}], ",", "i"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "100"}], "}"}]}], "]"}], ",", "10"}], 
+    "]"}], ",", " ", 
+   RowBox[{"Background", "\[Rule]", "LightBlue"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.524720174295135*^9, 3.5247201791984158`*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"1", 
+     ItemBox[
+      TagBox[
+       TooltipBox["2",
+        "2"],
+       Annotation[#, 2, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], 
+     ItemBox[
+      TagBox[
+       TooltipBox["3",
+        "3"],
+       Annotation[#, 3, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "4", 
+     ItemBox[
+      TagBox[
+       TooltipBox["5",
+        "5"],
+       Annotation[#, 5, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "6", 
+     ItemBox[
+      TagBox[
+       TooltipBox["7",
+        "7"],
+       Annotation[#, 7, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "8", "9", "10"},
+    {
+     ItemBox[
+      TagBox[
+       TooltipBox["11",
+        "11"],
+       Annotation[#, 11, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "12", 
+     ItemBox[
+      TagBox[
+       TooltipBox["13",
+        "13"],
+       Annotation[#, 13, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "14", "15", "16", 
+     ItemBox[
+      TagBox[
+       TooltipBox["17",
+        "17"],
+       Annotation[#, 17, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "18", 
+     ItemBox[
+      TagBox[
+       TooltipBox["19",
+        "19"],
+       Annotation[#, 19, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "20"},
+    {"21", "22", 
+     ItemBox[
+      TagBox[
+       TooltipBox["23",
+        "23"],
+       Annotation[#, 23, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "24", "25", "26", "27", "28", 
+     ItemBox[
+      TagBox[
+       TooltipBox["29",
+        "29"],
+       Annotation[#, 29, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "30"},
+    {
+     ItemBox[
+      TagBox[
+       TooltipBox["31",
+        "31"],
+       Annotation[#, 31, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "32", "33", "34", "35", "36", 
+     ItemBox[
+      TagBox[
+       TooltipBox["37",
+        "37"],
+       Annotation[#, 37, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "38", "39", "40"},
+    {
+     ItemBox[
+      TagBox[
+       TooltipBox["41",
+        "41"],
+       Annotation[#, 41, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "42", 
+     ItemBox[
+      TagBox[
+       TooltipBox["43",
+        "43"],
+       Annotation[#, 43, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "44", "45", "46", 
+     ItemBox[
+      TagBox[
+       TooltipBox["47",
+        "47"],
+       Annotation[#, 47, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "48", "49", "50"},
+    {"51", "52", 
+     ItemBox[
+      TagBox[
+       TooltipBox["53",
+        "53"],
+       Annotation[#, 53, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "54", "55", "56", "57", "58", 
+     ItemBox[
+      TagBox[
+       TooltipBox["59",
+        "59"],
+       Annotation[#, 59, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "60"},
+    {
+     ItemBox[
+      TagBox[
+       TooltipBox["61",
+        "61"],
+       Annotation[#, 61, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "62", "63", "64", "65", "66", 
+     ItemBox[
+      TagBox[
+       TooltipBox["67",
+        "67"],
+       Annotation[#, 67, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "68", "69", "70"},
+    {
+     ItemBox[
+      TagBox[
+       TooltipBox["71",
+        "71"],
+       Annotation[#, 71, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "72", 
+     ItemBox[
+      TagBox[
+       TooltipBox["73",
+        "73"],
+       Annotation[#, 73, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "74", "75", "76", "77", "78", 
+     ItemBox[
+      TagBox[
+       TooltipBox["79",
+        "79"],
+       Annotation[#, 79, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "80"},
+    {"81", "82", 
+     ItemBox[
+      TagBox[
+       TooltipBox["83",
+        "83"],
+       Annotation[#, 83, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "84", "85", "86", "87", "88", 
+     ItemBox[
+      TagBox[
+       TooltipBox["89",
+        "89"],
+       Annotation[#, 89, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "90"},
+    {"91", "92", "93", "94", "95", "96", 
+     ItemBox[
+      TagBox[
+       TooltipBox["97",
+        "97"],
+       Annotation[#, 97, "Tooltip"]& ],
+      Background->RGBColor[1, 1, 0.85],
+      StripOnInput->False], "98", "99", "100"}
+   },
+   AutoDelete->False,
+   GridBoxBackground->{"Columns" -> {{
+        RGBColor[0.87, 0.94, 1]}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{3.5247199474031577`*^9, 3.5247201806705*^9, 
+  3.5247258317977257`*^9, 3.524725868502825*^9, 3.5247262161897116`*^9, 
+  3.5249327341366844`*^9, 3.5523606081958847`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\"\<Balle Chlorin is \>\"", " ", "<>", " ", 
+  RowBox[{"ToString", "[", "77", "]"}], " ", "<>", " ", 
+  "\"\< points ahead!\>\"", " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"<>", " ", 
+    RowBox[{"=", " ", 
+     RowBox[{"shortcut", " ", "for", " ", "Join"}]}]}], " ", 
+   "*)"}]}]], "Input",
+ CellChangeTimes->{{3.524798187352543*^9, 3.524798213742052*^9}, {
+  3.524798270670308*^9, 3.5247982825109854`*^9}, {3.5247983132147417`*^9, 
+  3.524798339222229*^9}, {3.524798379693544*^9, 3.5247983849568453`*^9}, {
+  3.5247984318695283`*^9, 3.524798515380305*^9}}],
+
+Cell[BoxData["\<\"Balle Chlorin is 77 points ahead!\"\>"], "Output",
+ CellChangeTimes->{{3.5247981997042494`*^9, 3.524798214668105*^9}, {
+   3.524798272905436*^9, 3.5247982833570337`*^9}, {3.524798316347921*^9, 
+   3.524798340067278*^9}, 3.524798386425929*^9, {3.5247984330235944`*^9, 
+   3.5247984485684834`*^9}, 3.5247984873277006`*^9, 3.524932734151685*^9, 
+   3.552360608217886*^9}]
+}, Open  ]]
+},
+WindowSize->{707, 867},
+WindowMargins->{{23, Automatic}, {Automatic, 4}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 1757, 40, 152, "Input"],
+Cell[2339, 64, 1863, 39, 316, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4239, 108, 299, 7, 52, "Input"],
+Cell[4541, 117, 1318, 26, 126, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5896, 148, 707, 19, 52, "Input"],
+Cell[6606, 169, 5313, 195, 162, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11956, 369, 579, 12, 52, "Input"],
+Cell[12538, 383, 386, 5, 30, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

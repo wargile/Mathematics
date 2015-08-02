@@ -1,0 +1,11 @@
+max_elements = 100;
+pot_pos = 1;
+[rise, fall, max, pot] = murf_sine_calc(max_elments, pot_pos);
+ref_voltage = 5;
+ratio = fall/rise
+
+rise
+fall
+max
+pot
+

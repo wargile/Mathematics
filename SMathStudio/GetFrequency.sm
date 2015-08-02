@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio" version="0.96"?>
+<regions>
+  <settings>
+    <identity>
+      <id>67564f46-cde6-4727-9e8f-1dc2120d6471</id>
+      <revision>2</revision>
+    </identity>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="true" printAreas="true" simpleEqualsOnly="false" printBackgroundImages="true">
+      <paper id="9" orientation="Landscape" width="1169" height="827" />
+      <margins left="39" right="39" top="39" bottom="39" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+      <backgrounds />
+    </pageModel>
+    <dependences>
+      <assembly name="SMath Studio" version="0.96" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Special Functions" version="1.10.4884.25035" guid="2814e667-4e12-48b1-8d51-194e480eabc5" />
+      <assembly name="Math Region" version="0.96" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+      <assembly name="Plot Region" version="1.8.4884.25023" guid="c451c2b5-798b-4f08-b9ec-b90963d1ddaa" />
+    </dependences>
+  </settings>
+  <region id="0" left="9" top="18" width="722" height="301" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">osc</e>
+        <e type="operand">bits</e>
+        <e type="operand">preload</e>
+        <e type="operand">presc</e>
+        <e type="operand">postsc</e>
+        <e type="function" args="5">frequency_in_Hz</e>
+        <e type="operand">bits</e>
+        <e type="operand">16</e>
+        <e type="operator" args="2">≡</e>
+        <e type="operand">overflow</e>
+        <e type="operand">65536</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">result</e>
+        <e type="operand">osc</e>
+        <e type="operand">4</e>
+        <e type="operand">presc</e>
+        <e type="operand">overflow</e>
+        <e type="operand">preload</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="operand">overflow</e>
+        <e type="operand">256</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">result</e>
+        <e type="operand">osc</e>
+        <e type="operand">4</e>
+        <e type="operand">presc</e>
+        <e type="operand">preload</e>
+        <e type="operand">postsc</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="operand">preload</e>
+        <e type="operand">overflow</e>
+        <e type="operator" args="2">≥</e>
+        <e type="operand" style="string">Error: Preload value too high!</e>
+        <e type="operand">result</e>
+        <e type="operand">1000000</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">line</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="1" left="9" top="333" width="320" height="34" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">8</e>
+        <e type="operand">8</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="function" args="5">frequency_in_Hz</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">2</e>
+        <e type="operand">10</e>
+        <e type="operand">6</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+      </result>
+    </math>
+  </region>
+  <region id="2" left="9" top="369" width="361" height="34" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">8</e>
+        <e type="operand">16</e>
+        <e type="operand">65535</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="function" args="5">frequency_in_Hz</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">2</e>
+        <e type="operand">10</e>
+        <e type="operand">6</e>
+        <e type="operator" args="2">^</e>
+        <e type="operator" args="2">*</e>
+      </result>
+    </math>
+  </region>
+  <region id="3" left="333" top="405" width="204" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">tmr_prescaler</e>
+        <e type="operand">1</e>
+        <e type="operand">16</e>
+        <e type="operand">4</e>
+        <e type="function" preserve="true" args="3">range</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="4" left="900" top="405" width="170" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">tRange</e>
+        <e type="operand">0</e>
+        <e type="operand">2</e>
+        <e type="operand">π</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">0.1</e>
+        <e type="function" preserve="true" args="3">range</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="5" left="9" top="432" width="293" height="223" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="0.00581242289079075" scale_y="0.000341404911565588" scale_z="2.20487747001358E-06" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-46" transpose_y="-90" transpose_z="0">
+      <input>
+        <e type="operand">8</e>
+        <e type="operand">16</e>
+        <e type="operand">x</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="function" args="5">frequency_in_Hz</e>
+        <e type="operand">8</e>
+        <e type="operand">16</e>
+        <e type="operand">x</e>
+        <e type="operand">4</e>
+        <e type="operand">1</e>
+        <e type="function" args="5">frequency_in_Hz</e>
+        <e type="operand">8</e>
+        <e type="operand">16</e>
+        <e type="operand">x</e>
+        <e type="operand">8</e>
+        <e type="operand">1</e>
+        <e type="function" args="5">frequency_in_Hz</e>
+        <e type="operand">8</e>
+        <e type="operand">16</e>
+        <e type="operand">x</e>
+        <e type="operand">16</e>
+        <e type="operand">1</e>
+        <e type="function" args="5">frequency_in_Hz</e>
+        <e type="operand">4</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="6">sys</e>
+      </input>
+    </plot>
+  </region>
+  <region id="6" left="333" top="432" width="263" height="238" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="0.0105061337708725" scale_y="0.000411098316705697" scale_z="4.79894878698953E-06" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-62" transpose_y="-92" transpose_z="0" animate="tmr_prescaler" frameRate="2">
+      <input>
+        <e type="operand">8</e>
+        <e type="operand">16</e>
+        <e type="operand">x</e>
+        <e type="operand">t</e>
+        <e type="operand">1</e>
+        <e type="function" args="5">frequency_in_Hz</e>
+        <e type="operand">8</e>
+        <e type="operand">16</e>
+        <e type="operand">x</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="function" args="5">frequency_in_Hz</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">sys</e>
+      </input>
+    </plot>
+  </region>
+  <region id="7" left="603" top="432" width="291" height="245" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="4.58751457589254E-06" scale_y="0.0572315773949909" scale_z="2.62550695500843E-07" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="20" transpose_y="-4" transpose_z="0">
+      <input>
+        <e type="operand">8</e>
+        <e type="operand">8</e>
+        <e type="operand">x</e>
+        <e type="operand">1</e>
+        <e type="operand">1</e>
+        <e type="function" args="5">frequency_in_Hz</e>
+        <e type="operand">8</e>
+        <e type="operand">8</e>
+        <e type="operand">x</e>
+        <e type="operand">4</e>
+        <e type="operand">4</e>
+        <e type="function" args="5">frequency_in_Hz</e>
+        <e type="operand">8</e>
+        <e type="operand">8</e>
+        <e type="operand">x</e>
+        <e type="operand">8</e>
+        <e type="operand">8</e>
+        <e type="function" args="5">frequency_in_Hz</e>
+        <e type="operand">3</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="5">sys</e>
+      </input>
+    </plot>
+  </region>
+  <region id="8" left="900" top="432" width="175" height="89" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="1" scale_y="1" scale_z="1" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="3" transpose_y="-27" transpose_z="0" animate="tRange" frameRate="25">
+      <input>
+        <e type="operand">x</e>
+        <e type="operand">t</e>
+        <e type="operator" args="2">-</e>
+        <e type="function" preserve="true" args="1">sin</e>
+        <e type="operand">2.5</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">2.5</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">x</e>
+        <e type="operand">t</e>
+        <e type="operator" args="2">-</e>
+        <e type="function" preserve="true" args="1">cos</e>
+        <e type="operand">2.5</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">2.5</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">sys</e>
+      </input>
+    </plot>
+  </region>
+  <region id="9" left="900" top="567" width="155" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">tRange</e>
+        <e type="operand">0</e>
+        <e type="operand">1</e>
+        <e type="operand">0.2</e>
+        <e type="function" preserve="true" args="3">range</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="10" left="900" top="594" width="174" height="115" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="0.531441" scale_y="1" scale_z="0.531441" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-61" transpose_y="-35" transpose_z="0" animate="tRange" frameRate="5">
+      <input>
+        <e type="operand">x</e>
+        <e type="operand">t</e>
+        <e type="operator" args="2">-</e>
+        <e type="function" preserve="true" args="1">random</e>
+        <e type="function" preserve="true" args="1">eval</e>
+      </input>
+    </plot>
+  </region>
+  <region id="11" left="684" top="765" width="160" height="23" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">tRandomRange</e>
+        <e type="operand">4</e>
+        <e type="operand">32</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="12" left="9" top="774" width="462" height="97" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">max_num</e>
+        <e type="function" args="1">frand</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operand">max_num</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operand">random_range</e>
+        <e type="operand">n</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">max_num</e>
+        <e type="function" preserve="true" args="1">random</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">random_range</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">-</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="function" preserve="true" args="3">for</e>
+        <e type="operand">random_range</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">line</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="13" left="513" top="774" width="155" height="260" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">14</e>
+        <e type="function" args="1">frand</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="operand">7</e>
+        <e type="operand">2</e>
+        <e type="operand">6</e>
+        <e type="operand">3</e>
+        <e type="operand">10</e>
+        <e type="operand">4</e>
+        <e type="operand">11</e>
+        <e type="operand">5</e>
+        <e type="operand">3</e>
+        <e type="operand">6</e>
+        <e type="operand">7</e>
+        <e type="operand">7</e>
+        <e type="operand">2</e>
+        <e type="operand">8</e>
+        <e type="operand">5</e>
+        <e type="operand">9</e>
+        <e type="operand">4</e>
+        <e type="operand">10</e>
+        <e type="operand">12</e>
+        <e type="operand">11</e>
+        <e type="operand">9</e>
+        <e type="operand">12</e>
+        <e type="operand">7</e>
+        <e type="operand">13</e>
+        <e type="operand">9</e>
+        <e type="operand">14</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="30">mat</e>
+      </result>
+    </math>
+  </region>
+  <region id="14" left="684" top="792" width="383" height="217" color="#000000" bgColor="#ffffff" fontSize="9">
+    <plot type="2d" render="lines" scale_x="0.531441" scale_y="0.922744694427921" scale_z="0.490384363151469" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-157" transpose_y="-88" transpose_z="0" animate="tRandomRange" frameRate="5">
+      <input>
+        <e type="operand">t</e>
+        <e type="function" args="1">frand</e>
+        <e type="operand">32</e>
+        <e type="function" args="1">frand</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">sys</e>
+      </input>
+    </plot>
+  </region>
+  <region id="15" left="9" top="882" width="468" height="170" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <description active="true" position="Top" lang="eng">
+        <p>Remember to set optimization = numeric on ypos</p>
+      </description>
+      <input>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operand">16</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operand">ypos</e>
+        <e type="operand">16</e>
+        <e type="function" preserve="true" args="1">random</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="bracket">(</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">rand_range</e>
+        <e type="operand">n</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">ypos</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">rand_range</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">n</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">≡</e>
+        <e type="operand">path</e>
+        <e type="operand">n</e>
+        <e type="operand">0.18</e>
+        <e type="operator" args="2">-</e>
+        <e type="operand">ypos</e>
+        <e type="operand">0.2</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand" style="string">O</e>
+        <e type="operand">10</e>
+        <e type="operand" style="string">green</e>
+        <e type="operand">1</e>
+        <e type="operand">5</e>
+        <e type="function" preserve="true" args="7">mat</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">path</e>
+        <e type="operand">path</e>
+        <e type="operand">n</e>
+        <e type="operand">0.18</e>
+        <e type="operator" args="2">-</e>
+        <e type="operand">ypos</e>
+        <e type="operand">0.2</e>
+        <e type="operator" args="2">+</e>
+        <e type="operand" style="string">O</e>
+        <e type="operand">10</e>
+        <e type="operand" style="string">green</e>
+        <e type="operand">1</e>
+        <e type="operand">5</e>
+        <e type="function" preserve="true" args="7">mat</e>
+        <e type="function" preserve="true" args="2">stack</e>
+        <e type="operator" args="2">:</e>
+        <e type="function" preserve="true" args="3">if</e>
+        <e type="operand">4</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="6">line</e>
+        <e type="function" preserve="true" args="3">for</e>
+      </input>
+    </math>
+  </region>
+  <region id="16" left="9" top="1080" width="441" height="329" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="2.21996094440243" scale_y="3.07597365202426" scale_z="6.82854137350475" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-197" transpose_y="-135" transpose_z="0">
+      <input>
+        <e type="operand">rand_range</e>
+        <e type="operand">path</e>
+        <e type="operand">2</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="4">sys</e>
+      </input>
+    </plot>
+  </region>
+</regions>

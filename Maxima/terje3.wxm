@@ -1,0 +1,51 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 11.04.0 ] */
+
+/* [wxMaxima: comment start ]
+Set precision (no effect below?):
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+fpprec : 2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x : 20$
+y : 30.51$
+x * y;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(x, y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x*y^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(foo);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+defstruct (foo(a,b=2,c));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+structures;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x: new(foo);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x@a: 190; x@c: 222;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x@a * x@c * x@b^2;
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

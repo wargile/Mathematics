@@ -1,0 +1,522 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?application progid="SMath Studio" version="0.96"?>
+<regions>
+  <settings>
+    <identity>
+      <id>9c2d0487-74d0-4a38-91fa-86c6fc916700</id>
+      <revision>2</revision>
+    </identity>
+    <calculation>
+      <precision>4</precision>
+      <exponentialThreshold>5</exponentialThreshold>
+      <fractions>decimal</fractions>
+    </calculation>
+    <pageModel active="true" printAreas="true" simpleEqualsOnly="false" printBackgroundImages="true">
+      <paper id="9" orientation="Landscape" width="1169" height="827" />
+      <margins left="39" right="39" top="39" bottom="39" />
+      <header alignment="Center" color="#a9a9a9">&amp;[DATE] &amp;[TIME] - &amp;[FILENAME]</header>
+      <footer alignment="Center" color="#a9a9a9">&amp;[PAGENUM] / &amp;[COUNT]</footer>
+      <backgrounds />
+    </pageModel>
+    <dependences>
+      <assembly name="SMath Studio" version="0.96" guid="a37cba83-b69c-4c71-9992-55ff666763bd" />
+      <assembly name="Math Region" version="0.96" guid="02f1ab51-215b-466e-a74d-5d8b1cf85e8d" />
+      <assembly name="Special Functions" version="1.10.4868.42186" guid="2814e667-4e12-48b1-8d51-194e480eabc5" />
+      <assembly name="Plot Region" version="1.8.4868.42174" guid="c451c2b5-798b-4f08-b9ec-b90963d1ddaa" />
+    </dependences>
+  </settings>
+  <region id="0" left="18" top="18" width="330" height="39" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>β = Ic / Ib</p>
+      </description>
+      <input>
+        <e type="operand">base</e>
+        <e type="operand">collector</e>
+        <e type="function" args="2">transistor_gain</e>
+        <e type="operand">collector</e>
+        <e type="operand">base</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="1" left="711" top="18" width="145" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>Use ' to define custom units</p>
+      </description>
+      <input>
+        <e type="operand" preserve="false" style="unit">HalfKilohm</e>
+        <e type="operand">1</e>
+        <e type="operand">2</e>
+        <e type="operator" args="2">/</e>
+        <e type="operand" style="unit">kΩ</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="2" left="945" top="45" width="101" height="23" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">2.54</e>
+        <e type="operand" style="unit">cm</e>
+        <e type="operator" args="2">*</e>
+      </input>
+      <contract>
+        <e type="operand" style="unit">in</e>
+      </contract>
+      <result action="numeric">
+        <e type="operand">1</e>
+      </result>
+    </math>
+  </region>
+  <region id="3" left="945" top="72" width="126" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">1</e>
+        <e type="operand" style="unit">kg</e>
+        <e type="operator" args="2">*</e>
+      </input>
+      <contract>
+        <e type="operand" style="unit">lb</e>
+      </contract>
+      <result action="numeric">
+        <e type="operand">2.2046</e>
+      </result>
+    </math>
+  </region>
+  <region id="4" left="711" top="81" width="201" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">1000</e>
+        <e type="operand" style="unit">kΩ</e>
+        <e type="operator" args="2">*</e>
+      </input>
+      <contract>
+        <e type="operand" preserve="false" style="unit">HalfKilohm</e>
+      </contract>
+      <result action="numeric">
+        <e type="operand">2000</e>
+      </result>
+    </math>
+  </region>
+  <region id="5" left="18" top="90" width="257" height="25" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">25</e>
+        <e type="operand" style="unit">mA</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">200</e>
+        <e type="operand" style="unit">mA</e>
+        <e type="operator" args="2">*</e>
+        <e type="function" args="2">transistor_gain</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">8</e>
+      </result>
+    </math>
+  </region>
+  <region id="6" left="711" top="108" width="177" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">1</e>
+        <e type="operand" preserve="false" style="unit">HalfKilohm</e>
+        <e type="operator" args="2">*</e>
+      </input>
+      <contract>
+        <e type="operand" style="unit">ohm</e>
+      </contract>
+      <result action="numeric">
+        <e type="operand">500</e>
+      </result>
+    </math>
+  </region>
+  <region id="7" left="18" top="117" width="250" height="25" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">25</e>
+        <e type="operand" style="unit">mA</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">0.2</e>
+        <e type="operand" style="unit">A</e>
+        <e type="operator" args="2">*</e>
+        <e type="function" args="2">transistor_gain</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">8</e>
+      </result>
+    </math>
+  </region>
+  <region id="8" left="18" top="162" width="192" height="25" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>V = I x R</p>
+      </description>
+      <input>
+        <e type="operand">r</e>
+        <e type="operand">c</e>
+        <e type="function" args="2">V_from_R_and_C</e>
+        <e type="operand">r</e>
+        <e type="operand">c</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="9" left="18" top="216" width="284" height="25" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">1200</e>
+        <e type="operand" style="unit">ohm</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">10</e>
+        <e type="operand" style="unit">mA</e>
+        <e type="operator" args="2">*</e>
+        <e type="function" args="2">V_from_R_and_C</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">12</e>
+        <e type="operand" style="unit">V</e>
+        <e type="operator" args="2">*</e>
+      </result>
+    </math>
+  </region>
+  <region id="10" left="306" top="216" width="277" height="25" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">1.2</e>
+        <e type="operand" style="unit">kΩ</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">0.01</e>
+        <e type="operand" style="unit">A</e>
+        <e type="operator" args="2">*</e>
+        <e type="function" args="2">V_from_R_and_C</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">12</e>
+        <e type="operand" style="unit">V</e>
+        <e type="operator" args="2">*</e>
+      </result>
+    </math>
+  </region>
+  <region id="11" left="18" top="252" width="198" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>I = V / R</p>
+      </description>
+      <input>
+        <e type="operand">v</e>
+        <e type="operand">r</e>
+        <e type="function" args="2">C_from_V_and_R</e>
+        <e type="operand">v</e>
+        <e type="operand">r</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="12" left="351" top="252" width="198" height="41" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>R = V / I</p>
+      </description>
+      <input>
+        <e type="operand">v</e>
+        <e type="operand">c</e>
+        <e type="function" args="2">R_from_V_and_C</e>
+        <e type="operand">v</e>
+        <e type="operand">c</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="13" left="711" top="297" width="76" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">tcmax</e>
+        <e type="operand">5</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="14" left="801" top="297" width="93" height="24" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <input>
+        <e type="operand">counter</e>
+        <e type="operand">0</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="15" left="18" top="324" width="321" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">12</e>
+        <e type="operand" style="unit">V</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">1200</e>
+        <e type="operand" style="unit">ohm</e>
+        <e type="operator" args="2">*</e>
+        <e type="function" args="2">C_from_V_and_R</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.01</e>
+        <e type="operand" style="unit">A</e>
+        <e type="operator" args="2">*</e>
+      </result>
+    </math>
+  </region>
+  <region id="16" left="351" top="324" width="295" height="26" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">12</e>
+        <e type="operand" style="unit">V</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">10</e>
+        <e type="operand" style="unit">mA</e>
+        <e type="operator" args="2">*</e>
+        <e type="function" args="2">R_from_V_and_C</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">1200</e>
+        <e type="operand" style="unit">Ω</e>
+        <e type="operator" args="2">*</e>
+      </result>
+    </math>
+  </region>
+  <region id="17" left="711" top="324" width="279" height="28" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <description active="true" position="Top" lang="eng">
+        <p>NOTE: Optimized numeric for speed</p>
+      </description>
+      <input>
+        <e type="operand">a</e>
+        <e type="operand">0.1</e>
+        <e type="operand">tcmax</e>
+        <e type="operand">0.2</e>
+        <e type="function" preserve="true" args="3">range</e>
+        <e type="function" preserve="true" args="1">reverse</e>
+        <e type="function" preserve="true" args="1">eval</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="18" left="18" top="360" width="259" height="25" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>T = R x C</p>
+      </description>
+      <input>
+        <e type="operand">r</e>
+        <e type="operand">c</e>
+        <e type="function" args="2">capacitor_time_constant</e>
+        <e type="operand">r</e>
+        <e type="operand">c</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="19" left="711" top="378" width="272" height="28" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math optimize="2">
+      <description active="true" position="Top" lang="eng">
+        <p>NOTE: Optimized numeric for speed</p>
+      </description>
+      <input>
+        <e type="operand">chargeCurve</e>
+        <e type="operand">a</e>
+        <e type="function" preserve="true" args="1">length</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="2">matrix</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="20" left="18" top="414" width="359" height="25" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">0.1</e>
+        <e type="operand" style="unit">kΩ</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">1000</e>
+        <e type="operand" style="unit">μF</e>
+        <e type="operator" args="2">*</e>
+        <e type="function" args="2">capacitor_time_constant</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.1</e>
+        <e type="operand" style="unit">s</e>
+        <e type="operator" args="2">*</e>
+      </result>
+    </math>
+  </region>
+  <region id="21" left="711" top="432" width="368" height="119" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="operand">a</e>
+        <e type="function" preserve="true" args="1">length</e>
+        <e type="function" preserve="true" args="2">range</e>
+        <e type="operand">chargeCurve</e>
+        <e type="operand">n</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">counter</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">chargeCurve</e>
+        <e type="operand">n</e>
+        <e type="operand">2</e>
+        <e type="function" preserve="true" args="3">el</e>
+        <e type="operand">1</e>
+        <e type="operand">tcmax</e>
+        <e type="operand">a</e>
+        <e type="operand">n</e>
+        <e type="function" preserve="true" args="2">el</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="1">-</e>
+        <e type="function" preserve="true" args="1">exp</e>
+        <e type="operator" args="2">-</e>
+        <e type="bracket">(</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">*</e>
+        <e type="function" preserve="true" args="1">eval</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">counter</e>
+        <e type="operand">counter</e>
+        <e type="operand">1</e>
+        <e type="operator" args="2">+</e>
+        <e type="operator" args="2">:</e>
+        <e type="operand">3</e>
+        <e type="operand">1</e>
+        <e type="function" preserve="true" args="5">line</e>
+        <e type="function" preserve="true" args="3">for</e>
+      </input>
+    </math>
+  </region>
+  <region id="22" left="18" top="441" width="368" height="25" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">100</e>
+        <e type="operand" style="unit">ohm</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">0.001</e>
+        <e type="operand" style="unit">F</e>
+        <e type="operator" args="2">*</e>
+        <e type="function" args="2">capacitor_time_constant</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.1</e>
+        <e type="operand" style="unit">s</e>
+        <e type="operator" args="2">*</e>
+      </result>
+    </math>
+  </region>
+  <region id="23" left="18" top="468" width="359" height="25" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">50</e>
+        <e type="operand" style="unit">ohm</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">400</e>
+        <e type="operand" style="unit">μF</e>
+        <e type="operator" args="2">*</e>
+        <e type="function" args="2">capacitor_time_constant</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">0.02</e>
+        <e type="operand" style="unit">s</e>
+        <e type="operator" args="2">*</e>
+      </result>
+    </math>
+  </region>
+  <region id="24" left="18" top="522" width="501" height="47" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <description active="true" position="Top" lang="eng">
+        <p>The capacitor 63,2% ratio for full charge</p>
+      </description>
+      <input>
+        <e type="operand">r</e>
+        <e type="operand">c</e>
+        <e type="function" args="2">get_charge_ratio</e>
+        <e type="operand">1</e>
+        <e type="operand">r</e>
+        <e type="operand">c</e>
+        <e type="function" args="2">capacitor_time_constant</e>
+        <e type="operator" args="1">-</e>
+        <e type="operand">r</e>
+        <e type="operand">c</e>
+        <e type="function" args="2">capacitor_time_constant</e>
+        <e type="operator" args="2">/</e>
+        <e type="function" preserve="true" args="1">exp</e>
+        <e type="operator" args="2">-</e>
+        <e type="bracket">(</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">*</e>
+        <e type="operator" args="2">:</e>
+      </input>
+    </math>
+  </region>
+  <region id="25" left="711" top="558" width="351" height="137" color="#000000" bgColor="#ffffff" fontSize="10">
+    <plot type="2d" render="lines" scale_x="0.155622792325913" scale_y="0.373464280454274" scale_z="0.0581195541582817" rotate_x="0" rotate_y="0" rotate_z="0" transpose_x="-140" transpose_y="-195" transpose_z="0">
+      <input>
+        <e type="operand">chargeCurve</e>
+      </input>
+    </plot>
+  </region>
+  <region id="26" left="18" top="594" width="309" height="25" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">3</e>
+        <e type="operand" style="unit">ohm</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">100</e>
+        <e type="operand" style="unit">μF</e>
+        <e type="operator" args="2">*</e>
+        <e type="function" args="2">get_charge_ratio</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">63.2121</e>
+      </result>
+    </math>
+  </region>
+  <region id="27" left="18" top="621" width="324" height="25" color="#000000" bgColor="#ffffff" fontSize="9">
+    <math>
+      <input>
+        <e type="operand">3</e>
+        <e type="operand" preserve="false" style="unit">kilohm</e>
+        <e type="operator" args="2">*</e>
+        <e type="operand">100</e>
+        <e type="operand" style="unit">F</e>
+        <e type="operator" args="2">*</e>
+        <e type="function" args="2">get_charge_ratio</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">63.2121</e>
+      </result>
+    </math>
+  </region>
+  <region id="28" left="18" top="666" width="222" height="47" color="#000000" bgColor="#ffffff" fontSize="10">
+    <math>
+      <input>
+        <e type="operand">1</e>
+        <e type="operand">5</e>
+        <e type="operand">5</e>
+        <e type="operator" args="2">/</e>
+        <e type="operator" args="1">-</e>
+        <e type="function" preserve="true" args="1">exp</e>
+        <e type="operator" args="2">-</e>
+        <e type="bracket">(</e>
+        <e type="operand">100</e>
+        <e type="operator" args="2">*</e>
+        <e type="bracket">(</e>
+      </input>
+      <result action="numeric">
+        <e type="operand">63.2121</e>
+      </result>
+    </math>
+  </region>
+</regions>

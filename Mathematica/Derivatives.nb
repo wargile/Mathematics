@@ -1,0 +1,223 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5738,        214]
+NotebookOptionsPosition[      4581,        170]
+NotebookOutlinePosition[      5009,        186]
+CellTagsIndexPosition[      4966,        183]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["The quotient rule: (u/v)\[CloseCurlyQuote] = (u\[CloseCurlyQuote]v-uv\
+\[CloseCurlyQuote])/v^2, v <> 0", "Text",
+ CellChangeTimes->{{3.5564192222506604`*^9, 3.5564192352394037`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"D", "[", 
+  RowBox[{
+   RowBox[{"2", "/", "x"}], ",", "x"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5564188809741406`*^9, 3.5564188843803353`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox["2", 
+   SuperscriptBox["x", "2"]]}]], "Output",
+ CellChangeTimes->{3.556418885195382*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"D", "[", 
+  RowBox[{
+   RowBox[{"2", 
+    RowBox[{"x", "^", 
+     RowBox[{"-", "1"}]}]}], ",", "x"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5564189096277795`*^9, 3.5564189132429867`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox["2", 
+   SuperscriptBox["x", "2"]]}]], "Output",
+ CellChangeTimes->{3.5564189143250484`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"-", "1"}], "*", "2"}], ")"}], "*", 
+  RowBox[{"x", "^", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", "1"}], "-", "1"}], ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.556418945724844*^9, 3.5564189653469667`*^9}, 
+   3.5564194947352457`*^9}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox["2", 
+   SuperscriptBox["x", "2"]]}]], "Output",
+ CellChangeTimes->{{3.556418959791649*^9, 3.556418966247018*^9}, 
+   3.556419496089323*^9}]
+}, Open  ]],
+
+Cell["\<\
+Chain rule: Diff of outside function x diff of inside function. Inside: \
+sin(x), Outside: (u)^2. Diff of inside is: cos(x), Diff of outside is: \
+2(u)^(2-1)\
+\>", "Text",
+ CellChangeTimes->{{3.556419167100506*^9, 3.5564191834504414`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"D", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"Sin", "[", "x", "]"}], ")"}], "^", "2"}], ",", " ", "x"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.5564190041451855`*^9, 3.556419014170759*^9}, {
+  3.5564190698179417`*^9, 3.5564190715220394`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"2", " ", 
+  RowBox[{"Cos", "[", "x", "]"}], " ", 
+  RowBox[{"Sin", "[", "x", "]"}]}]], "Output",
+ CellChangeTimes->{3.556419015007807*^9, 3.556419072775111*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"2", 
+  RowBox[{
+   RowBox[{"Sin", "[", "x", "]"}], "^", 
+   RowBox[{"(", 
+    RowBox[{"2", "-", "1"}], ")"}]}], "*", 
+  RowBox[{"Cos", "[", "x", "]"}]}]], "Input",
+ CellChangeTimes->{{3.55641903813813*^9, 3.5564190800815287`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"2", " ", 
+  RowBox[{"Cos", "[", "x", "]"}], " ", 
+  RowBox[{"Sin", "[", "x", "]"}]}]], "Output",
+ CellChangeTimes->{3.5564190810355835`*^9}]
+}, Open  ]],
+
+Cell["The product rule: (u * v)\[CloseCurlyQuote] = (u\[CloseCurlyQuote] * v) \
++ (v\[CloseCurlyQuote] * u)", "Text",
+ CellChangeTimes->{3.556419271265464*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"D", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"x", "^", "2"}], "*", 
+    RowBox[{"Sin", "[", "x", "]"}]}], ",", " ", "x"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5564192866423435`*^9, 3.556419298184004*^9}, 
+   3.5564194797673893`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SuperscriptBox["x", "2"], " ", 
+   RowBox[{"Cos", "[", "x", "]"}]}], "+", 
+  RowBox[{"2", " ", "x", " ", 
+   RowBox[{"Sin", "[", "x", "]"}]}]}]], "Output",
+ CellChangeTimes->{3.5564192992520647`*^9, 3.556419480243417*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"2", "x", "*", 
+   RowBox[{"Sin", "[", "x", "]"}]}], "+", 
+  RowBox[{
+   RowBox[{"x", "^", "2"}], "*", 
+   RowBox[{"Cos", "[", "x", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.5564193372042356`*^9, 3.556419414247642*^9}, {
+  3.5564194450174017`*^9, 3.556419473088008*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SuperscriptBox["x", "2"], " ", 
+   RowBox[{"Cos", "[", "x", "]"}]}], "+", 
+  RowBox[{"2", " ", "x", " ", 
+   RowBox[{"Sin", "[", "x", "]"}]}]}]], "Output",
+ CellChangeTimes->{
+  3.556419415532716*^9, {3.5564194462044697`*^9, 3.556419473643039*^9}}]
+}, Open  ]]
+},
+WindowSize->{707, 789},
+WindowMargins->{{Automatic, 413}, {-30, Automatic}},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+FrontEndVersion->"10.1 for Microsoft Windows (64-bit) (March 23, 2015)",
+StyleDefinitions->"TerjeDefault.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 188, 2, 30, "Text"],
+Cell[CellGroupData[{
+Cell[770, 26, 171, 4, 31, "Input"],
+Cell[944, 32, 133, 4, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1114, 41, 212, 6, 31, "Input"],
+Cell[1329, 49, 135, 4, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1501, 58, 305, 10, 31, "Input"],
+Cell[1809, 70, 183, 5, 47, "Output"]
+}, Open  ]],
+Cell[2007, 78, 249, 5, 49, "Text"],
+Cell[CellGroupData[{
+Cell[2281, 87, 288, 8, 31, "Input"],
+Cell[2572, 97, 184, 4, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2793, 106, 254, 7, 31, "Input"],
+Cell[3050, 115, 164, 4, 31, "Output"]
+}, Open  ]],
+Cell[3229, 122, 159, 2, 30, "Text"],
+Cell[CellGroupData[{
+Cell[3413, 128, 259, 7, 31, "Input"],
+Cell[3675, 137, 259, 7, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3971, 149, 305, 8, 31, "Input"],
+Cell[4279, 159, 286, 8, 31, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
