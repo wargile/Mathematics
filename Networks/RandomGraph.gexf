@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gexf xmlns="http://www.gexf.net/1.2draft" version="1.2" xmlns:viz="http://www.gexf.net/1.2draft/viz" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd">
+  <meta lastmodifieddate="2014-10-09">
+    <creator>Gephi 0.8.1</creator>
+    <description></description>
+  </meta>
+  <graph defaultedgetype="directed" mode="static">
+    <attributes class="node" mode="static">
+      <attribute id="indegree" title="In-Degree" type="integer">
+        <default>0</default>
+      </attribute>
+      <attribute id="outdegree" title="Out-Degree" type="integer">
+        <default>0</default>
+      </attribute>
+      <attribute id="degree" title="Degree" type="integer">
+        <default>0</default>
+      </attribute>
+      <attribute id="pageranks" title="PageRank" type="double">
+        <default>0.0</default>
+      </attribute>
+    </attributes>
+    <nodes>
+      <node id="227" label="n98">
+        <attvalues>
+          <attvalue for="indegree" value="0"></attvalue>
+          <attvalue for="outdegree" value="3"></attvalue>
+          <attvalue for="degree" value="3"></attvalue>
+          <attvalue for="pageranks" value="0.04112018239453499"></attvalue>
+        </attvalues>
+        <viz:size value="18.571428"></viz:size>
+        <viz:position x="-157.6135" y="-421.01047" z="0.0"></viz:position>
+        <viz:color r="195" g="206" b="228"></viz:color>
+      </node>
+      <node id="228" label="n99">
+        <attvalues>
+          <attvalue for="indegree" value="0"></attvalue>
+          <attvalue for="outdegree" value="7"></attvalue>
+          <attvalue for="degree" value="7"></attvalue>
+          <attvalue for="pageranks" value="0.04112018239453499"></attvalue>
+        </attvalues>
+        <viz:size value="26.0"></viz:size>
+        <viz:position x="195.81342" y="150.56424" z="0.0"></viz:position>
+        <viz:color r="129" g="15" b="124"></viz:color>
+      </node>
+      <node id="229" label="n100">
+        <attvalues>
+          <attvalue for="indegree" value="2"></attvalue>
+          <attvalue for="outdegree" value="1"></attvalue>
+          <attvalue for="degree" value="3"></attvalue>
+          <attvalue for="pageranks" value="0.0577815001856971"></attvalue>
+        </attvalues>
+        <viz:size value="18.571428"></viz:size>
+        <viz:position x="164.09383" y="-414.9308" z="0.0"></viz:position>
+        <viz:color r="195" g="206" b="228"></viz:color>
+      </node>
+      <node id="230" label="n101">
+        <attvalues>
+          <attvalue for="indegree" value="1"></attvalue>
+          <attvalue for="outdegree" value="0"></attvalue>
+          <attvalue for="degree" value="1"></attvalue>
+          <attvalue for="pageranks" value="0.046118577731883624"></attvalue>
+        </attvalues>
+        <viz:size value="14.857143"></viz:size>
+        <viz:position x="369.3646" y="-209.67958" z="0.0"></viz:position>
+        <viz:color r="237" g="248" b="251"></viz:color>
+      </node>
+      <node id="231" label="n102">
+        <attvalues>
+          <attvalue for="indegree" value="2"></attvalue>
+          <attvalue for="outdegree" value="2"></attvalue>
+          <attvalue for="degree" value="4"></attvalue>
+          <attvalue for="pageranks" value="0.0577815001856971"></attvalue>
+        </attvalues>
+        <viz:size value="20.428572"></viz:size>
+        <viz:position x="-194.36792" y="-196.44957" z="0.0"></viz:position>
+        <viz:color r="160" g="170" b="209"></viz:color>
+      </node>
+      <node id="232" label="n103">
+        <attvalues>
+          <attvalue for="indegree" value="1"></attvalue>
+          <attvalue for="outdegree" value="4"></attvalue>
+          <attvalue for="degree" value="5"></attvalue>
+          <attvalue for="pageranks" value="0.046118577731883624"></attvalue>
+        </attvalues>
+        <viz:size value="22.285713"></viz:size>
+        <viz:position x="-2.8844244" y="422.08005" z="0.0"></viz:position>
+        <viz:color r="138" g="126" b="184"></viz:color>
+      </node>
+      <node id="233" label="n104">
+        <attvalues>
+          <attvalue for="indegree" value="1"></attvalue>
+          <attvalue for="outdegree" value="2"></attvalue>
+          <attvalue for="degree" value="3"></attvalue>
+          <attvalue for="pageranks" value="0.046118577731883624"></attvalue>
+        </attvalues>
+        <viz:size value="18.571428"></viz:size>
+        <viz:position x="277.2409" y="350.3404" z="0.0"></viz:position>
+        <viz:color r="195" g="206" b="228"></viz:color>
+      </node>
+      <node id="234" label="n105">
+        <attvalues>
+          <attvalue for="indegree" value="0"></attvalue>
+          <attvalue for="outdegree" value="0"></attvalue>
+          <attvalue for="degree" value="0"></attvalue>
+          <attvalue for="pageranks" value="0.04112018239453499"></attvalue>
+        </attvalues>
+        <viz:size value="13.0"></viz:size>
+        <viz:position x="-286.91257" y="347.6623" z="0.0"></viz:position>
+        <viz:color r="237" g="248" b="251"></viz:color>
+      </node>
+      <node id="235" label="n106">
+        <attvalues>
+          <attvalue for="indegree" value="3"></attvalue>
+          <attvalue for="outdegree" value="2"></attvalue>
+          <attvalue for="degree" value="5"></attvalue>
+          <attvalue for="pageranks" value="0.0951227872487328"></attvalue>
+        </attvalues>
+        <viz:size value="22.285713"></viz:size>
+        <viz:position x="-160.26012" y="174.17276" z="0.0"></viz:position>
+        <viz:color r="138" g="126" b="184"></viz:color>
+      </node>
+      <node id="236" label="n107">
+        <attvalues>
+          <attvalue for="indegree" value="3"></attvalue>
+          <attvalue for="outdegree" value="2"></attvalue>
+          <attvalue for="degree" value="5"></attvalue>
+          <attvalue for="pageranks" value="0.07554635362784587"></attvalue>
+        </attvalues>
+        <viz:size value="22.285713"></viz:size>
+        <viz:position x="441.69952" y="75.10978" z="0.0"></viz:position>
+        <viz:color r="138" g="126" b="184"></viz:color>
+      </node>
+      <node id="237" label="n108">
+        <attvalues>
+          <attvalue for="indegree" value="4"></attvalue>
+          <attvalue for="outdegree" value="1"></attvalue>
+          <attvalue for="degree" value="5"></attvalue>
+          <attvalue for="pageranks" value="0.13512411658786783"></attvalue>
+        </attvalues>
+        <viz:size value="22.285713"></viz:size>
+        <viz:position x="-440.03577" y="64.71138" z="0.0"></viz:position>
+        <viz:color r="138" g="126" b="184"></viz:color>
+      </node>
+      <node id="238" label="n109">
+        <attvalues>
+          <attvalue for="indegree" value="7"></attvalue>
+          <attvalue for="outdegree" value="0"></attvalue>
+          <attvalue for="degree" value="7"></attvalue>
+          <attvalue for="pageranks" value="0.3169274915872259"></attvalue>
+        </attvalues>
+        <viz:size value="26.0"></viz:size>
+        <viz:position x="-5.6082644" y="-169.83702" z="0.0"></viz:position>
+        <viz:color r="129" g="15" b="124"></viz:color>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="227" target="229">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="227" target="231">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="227" target="237">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="228" target="229">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="228" target="230">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="228" target="231">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="228" target="232">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="228" target="233">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="228" target="236">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="228" target="238">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="229" target="238">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="231" target="235">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="231" target="238">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="232" target="235">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="232" target="236">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="232" target="237">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="232" target="238">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="233" target="235">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="233" target="236">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="235" target="237">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="235" target="238">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="236" target="237">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="236" target="238">
+        <attvalues></attvalues>
+      </edge>
+      <edge source="237" target="238">
+        <attvalues></attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>
